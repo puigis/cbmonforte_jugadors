@@ -38,10 +38,19 @@ El CB Monforte és el club amb identificador **2**.
 
 Es guarden els grups complets (també els equips rivals) perquè les classificacions i les imatges tinguin tota la informació.
 
+## Descàrrega de dades
+
+El script `scraper/descarrega.py` recorre totes les pàgines públiques de **Lligues, Individuals, Copa i Rànquings** (tres bandes, banda, lliure, quadre, biathló i la resta de modalitats que hi hagi) i en desa el contingut en brut a `dades/brut/<secció>/<competició>.jsonl`.
+
+S'executa automàticament a GitHub **cada dilluns**. Per llançar-lo a mà: pestanya **Actions** → *Descarrega dades de la Federació* → **Run workflow**. Marcant l'opció *historic* també prova les competicions de temporades passades.
+
+Snooker i pool no surten a la intranet de competició de la Federació; s'afegiran quan en localitzem la font.
+
 ## Estat del projecte
 
 - [x] Pas 1 · Repositori creat
 - [x] Pas 2 · Estructura de dades definida
-- [ ] Pas 3 · Script que descarrega les dades de la Federació
-- [ ] Pas 4 · Automatització amb GitHub Actions
-- [ ] Pas 5 · Plantilla i generació d'imatges per a xarxes
+- [x] Pas 3 · Script que descarrega totes les dades de la Federació
+- [x] Pas 4 · Automatització amb GitHub Actions
+- [ ] Pas 5 · Organitzar les dades en brut a les taules de `dades/`
+- [ ] Pas 6 · Plantilla i generació d'imatges per a xarxes

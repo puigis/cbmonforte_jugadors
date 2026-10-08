@@ -1,0 +1,52 @@
+name: Descarrega dades de la Federació
+
+on:
+  workflow_dispatch:
+    inputs:
+      historic:
+        description: "Descarregar també temporades passades (triga més)"
+        type: boolean
+        default: false
+  schedule:
+    # Cada dilluns a les 6:00 (hora UTC), després de les jornades del cap de setmana
+    - cron: "0 6 * * 1"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: descarrega
+  cancel-in-progress: false
+
+jobs:
+  descarrega:
+    runs-on: ubuntu-latest
+    timeout-minutes: 350
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instal·la dependències
+        run: pip install -r scraper/requirements.txt
+
+      - name: Descarrega les dades
+        env:
+          HISTORIC: ${{ inputs.historic && '1' || '0' }}
+          MAX_MINUTS: "320"
+        run: python scraper/descarrega.py
+
+      - name: Desa els canvis al repositori
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dades/
+          if git diff --cached --quiet; then
+            echo "No hi ha dades noves."
+          else
+            git commit -m "Dades actualitzades $(date -u +'%Y-%m-%d')"
+            git pull --rebase
+            git push
+          fi
