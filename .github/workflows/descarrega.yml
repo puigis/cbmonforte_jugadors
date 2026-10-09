@@ -8,8 +8,9 @@ on:
         type: boolean
         default: false
   schedule:
-    # Cada dilluns a les 6:00 (hora UTC), després de les jornades del cap de setmana
-    - cron: "0 6 * * 1"
+    # Cada diumenge a les 4:00 UTC (6:00 a l'estiu, 5:00 a l'hivern, hora de Madrid),
+    # abans de generar el cartell de resultats del matí
+    - cron: "0 4 * * 0"
 
 permissions:
   contents: write

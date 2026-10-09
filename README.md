@@ -65,7 +65,7 @@ Com es calcula el rànquing (comprovat amb les dades de la Federació): carambol
 
 El script `scraper/descarrega.py` recorre totes les pàgines públiques de **Lligues, Individuals, Copa i Rànquings** (tres bandes, banda, lliure, quadre, biathló i la resta de modalitats que hi hagi) i en desa el contingut en brut a `dades/brut/<secció>/<competició>.jsonl`.
 
-S'executa automàticament a GitHub **cada dilluns**. Per llançar-lo a mà: pestanya **Actions** → *Descarrega dades de la Federació* → **Run workflow**. Marcant l'opció *historic* també prova les competicions de temporades passades.
+S'executa automàticament a GitHub **cada diumenge a primera hora** (cap a les 6:00). Per llançar-lo a mà: pestanya **Actions** → *Descarrega dades de la Federació* → **Run workflow**. Marcant l'opció *historic* també prova les competicions de temporades passades.
 
 Snooker i pool no surten a la intranet de competició de la Federació; s'afegiran quan en localitzem la font.
 
@@ -82,7 +82,7 @@ Snooker i pool no surten a la intranet de competició de la Federació; s'afegir
 
 ## Imatge de resultats
 
-Cada **diumenge al matí** el workflow *Imatge de resultats del cap de setmana* baixa els resultats nous (mode ràpid, només la temporada actual), actualitza l'app i genera el cartell amb tots els equips del Monforte que han jugat (1080 × 1350, format vertical d'Instagram):
+Cada **diumenge al matí** (cap a les 9:30, després de la descàrrega completa) el workflow *Imatge de resultats del cap de setmana* baixa els resultats nous (mode ràpid, només la temporada actual), actualitza l'app i genera el cartell amb tots els equips del Monforte que han jugat (1080 × 1350, format vertical d'Instagram):
 `imatges/resultats-AAAA-MM-DD-1.png` amb el resultat final de cada partit, `…-2.png` amb les classificacions, i `….mp4`, un vídeo amb transició entre les dues. Es pot llançar a mà des d'**Actions → Run workflow**, i indicar una data per refer la d'un cap de setmana passat. El script és `scraper/imatge_resultats.py`.
 
 ## Pendent d'actualitzar
