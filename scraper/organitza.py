@@ -517,6 +517,7 @@ def equips_monforte(lligues, grups, encontres, partides_lliga, rankings_idx, ara
         dades = {
             "equip": f'C.B. Monforte "{lletra}"' if lletra != "unic" else "C.B. Monforte",
             "equip_original": nom_equip,
+            "lliga_id": l, "grup_id": g,
             "competicio": " · ".join(x for x in (lliga.get("nom", ""), re.sub(r"(\d)[AªaÀ]\b", r"\1a", e0["divisio"].title()), e0["grup"].title()) if x),
             "modalitat": lliga.get("modalitat", ""),
             "temporada": lliga.get("temporada", ""),

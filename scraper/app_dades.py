@@ -144,6 +144,16 @@ def main():
     equips = []
     for f in sorted((DADES / "monforte" / "lligues").glob("*/*.json")):
         equips.append(json.loads(f.read_text(encoding="utf-8")))
+    # classificació del grup de cada equip
+    classif_lliga = defaultdict(list)
+    for c in llegeix_csv("classificacions_lliga.csv"):
+        if c["temporada"] == actual:
+            classif_lliga[(c["lliga_id"], c["grup_id"])].append({
+                "pos": enter(c["posicio"]), "equip": c["equip"], "pm": enter(c["punts_match"]),
+                "pp": enter(c["punts_parcials"]), "j": enter(c["jugats"]), "mon": "MONFORTE" in norm(c["equip"])})
+    for e in equips:
+        e["classificacio"] = sorted(classif_lliga.get((str(e.get("lliga_id")), str(e.get("grup_id"))), []),
+                                    key=lambda x: x["pos"] or 99)
     equip_de = defaultdict(list)
     for e in equips:
         lletra = e["equip"].split('"')[1] if '"' in e["equip"] else ""
