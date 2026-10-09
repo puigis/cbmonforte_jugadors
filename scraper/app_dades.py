@@ -100,6 +100,20 @@ def id_ranking_de(data):
     return None
 
 
+def resum_opens(pid, mod, actual, pos_opens, classif_de):
+    temps = {t: v for (m, t, j), v in pos_opens.items() if m == mod and j == pid}
+    opens = [c for c in classif_de.get(pid, {}).get(mod, []) if c["open"]]
+    if not temps and not opens:
+        return None
+    millor_t = min(temps.items(), key=lambda x: x[1][0]) if temps else None
+    millor_o = min(opens, key=lambda c: (c["pos"], c["t"])) if opens else None
+    act = temps.get(actual)
+    return {"pos": act[0] if act else None, "de": act[2] if act else None, "punts": act[1] if act else 0,
+            "millor_pos": millor_t[1][0] if millor_t else None, "millor_pos_t": millor_t[0] if millor_t else "",
+            "millor_open": millor_o, "jugats": len(opens),
+            "jugats_t": sum(1 for c in opens if c["t"] == actual)}
+
+
 # ---------------------------------------------------------------- principal
 
 def main():
@@ -110,6 +124,30 @@ def main():
     rankings = llegeix_csv("rankings.csv")
     partides = llegeix_csv("partides.csv")
     jugadors_csv = {j["jugador_id"]: j for j in llegeix_csv("jugadors.csv")}
+    # classificacions finals de competicions individuals (opens i campionats), per jugador i modalitat
+    classif = llegeix_csv("classificacions_individuals.csv")
+    participants = defaultdict(int)
+    for c in classif:
+        participants[(c["competicio_id"], c["divisio"])] += 1
+    classif_de = defaultdict(lambda: defaultdict(list))
+    for c in classif:
+        pos = enter(c["posicio"])
+        if pos is None:
+            continue
+        classif_de[slug(c["jugador"])][c["modalitat"]].append({
+            "t": c["temporada"], "comp": c["competicio"], "div": c["divisio"], "pos": pos,
+            "de": participants[(c["competicio_id"], c["divisio"])], "pts": enter(c["punts"]),
+            "open": "OPEN" in c["competicio"].upper(), "mg": num(c["mitjana_general"])})
+
+    # rànquing d'opens propi: suma dels punts de classificació de tots els opens de cada temporada
+    punts_opens = defaultdict(lambda: defaultdict(int))     # (modalitat, temporada) -> {jugador: punts}
+    for c in classif:
+        if "OPEN" in c["competicio"].upper() and c["temporada"]:
+            punts_opens[(c["modalitat"], c["temporada"])][slug(c["jugador"])] += enter(c["punts"]) or 0
+    pos_opens = {}
+    for k, tot in punts_opens.items():
+        for i, (j, pts) in enumerate(sorted(tot.items(), key=lambda x: -x[1])):
+            pos_opens[(k[0], k[1], j)] = (i + 1, pts, len(tot))
 
     # clubs d'aquesta temporada: inscripcions i equips en què han jugat
     club_actual = {}
@@ -152,7 +190,7 @@ def main():
                 "j": p["jornada"], "eq": p[f"equip_{jo}"], "riv": bonic(p[f"jugador_{ell}"]), "eqr": p[f"equip_{ell}"],
                 "car": enter(p[f"caramboles_{jo}"]), "ent": ent, "sm": enter(p[f"serie_major_{jo}"]),
                 "rc": enter(p[f"caramboles_{ell}"]), "rsm": enter(p[f"serie_major_{ell}"]), "res": res,
-                "_ril": slug(p[f"jugador_{ell}"])})
+                "_ril": slug(p[f"jugador_{ell}"]), "rid": slug(p[f"jugador_{ell}"])})
     for mods in per_jug.values():
         for llista in mods.values():
             llista.sort(key=lambda g: (g["d"], g["comp"]))
@@ -166,7 +204,7 @@ def main():
             rk[(r["data"], r["modalitat"])][slug(r["jugador"])] = r
     evolucio = defaultdict(list)
     for r in rankings:
-        if r["data"] >= "2024-08-01":
+        if r["data"]:
             evolucio[(slug(r["jugador"]), r["modalitat"])].append([r["data"], num(r["mitjana"]), enter(r["posicio"])])
 
     id_fed = id_ranking_de(data_fed)
@@ -284,6 +322,8 @@ def main():
                 "pendents": neteja(list(reversed(pr.get("pendents", [])))),
                 "temporades": temporades,
                 "partides": neteja(list(reversed(meves))),
+                "opens": resum_opens(pid, mod, actual, pos_opens, classif_de),
+                "classificacions": sorted(classif_de.get(pid, {}).get(mod, []), key=lambda c: (c["t"], c["comp"]), reverse=True),
             }
             fitxes[pid]["nom"] = nom_de(pid)
 
