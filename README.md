@@ -90,7 +90,6 @@ Cada **diumenge a les 16:00** (hora de Madrid) el workflow *Imatge de resultats 
 - **Rànquing d'opens**: quan la Federació publiqui el primer, extreure'l i afegir-lo a la fitxa de cada jugador.
 - **Snooker i pool**: localitzar on es publiquen els resultats i afegir-los a la base de dades.
 - **5 quilles (individual i per parelles), biathló i artístic**: la Federació encara no n'ha publicat resultats; s'afegiran sols quan n'hi hagi.
-- **Logo del CB Monforte**: desar-lo com a `imatges/logo.png` (o .svg) perquè surti als cartells; ara hi ha un segell provisional.
 - **Publicació automàtica a les xarxes socials** (falta decidir a quines). Continguts previstos:
   - Resultats dels partits de lliga (el cartell de cada diumenge).
   - Campionats aconseguits pels nostres jugadors.
