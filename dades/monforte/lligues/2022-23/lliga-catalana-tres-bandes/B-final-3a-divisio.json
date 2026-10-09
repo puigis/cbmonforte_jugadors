@@ -1,0 +1,166 @@
+{
+ "equip": "C.B. Monforte \"B\"",
+ "equip_original": "C.B. MONFORTE \"B\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Final 3A Divisió",
+ "modalitat": "Tres bandes",
+ "temporada": "2022-23",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "farina-villanueva-francisco",
+   "name": "Fariña Villanueva, Francisco",
+   "initials": {
+    "Tres bandes": "0.729"
+   },
+   "initial": "0.729"
+  },
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.704"
+   },
+   "initial": "0.704"
+  },
+  {
+   "id": "garcia-zaldivar-ricardo",
+   "name": "García Zaldivar, Ricardo",
+   "initials": {
+    "Tres bandes": "0.498"
+   },
+   "initial": "0.498"
+  },
+  {
+   "id": "juarez-de-alarcon-jorge",
+   "name": "Juárez De Alarcón, Jorge",
+   "initials": {
+    "Tres bandes": "0.644"
+   },
+   "initial": "0.644"
+  }
+ ],
+ "matches": [
+  {
+   "id": "jSEMIFINALS",
+   "jornada": "SEMIFINALS",
+   "date": "2023-05-13",
+   "rival": "C.B. SANTS \"B\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 30,
+     "ent": 36,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Dalmau Suñe, Enric",
+     "car_rival": 26
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 30,
+     "ent": 35,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Martínez Torres, Jordi",
+     "car_rival": 16
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 28,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "León Calvo, Luis",
+     "car_rival": 29
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 25,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Veiga Carrete, David",
+     "car_rival": 21
+    }
+   ]
+  },
+  {
+   "id": "jFINAL",
+   "jornada": "FINAL",
+   "date": "2023-05-13",
+   "rival": "S.E. CASAL CERVERA",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 30,
+     "ent": 43,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Serarols Montes, Josep",
+     "car_rival": 22
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 30,
+     "ent": 31,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Campaña Comino, Gregori",
+     "car_rival": 19
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 30,
+     "ent": 28,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Serrano Fernández, Jordi",
+     "car_rival": 28
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 24,
+     "ent": 33,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Longarón Calle, Antoni G.",
+     "car_rival": 30
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "SEMIFINALS",
+   "date": "2023-05-13",
+   "rival": "C.B. SANTS \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "FINAL",
+   "date": "2023-05-13",
+   "rival": "S.E. CASAL CERVERA",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

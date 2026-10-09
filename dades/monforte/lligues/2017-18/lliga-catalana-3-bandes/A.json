@@ -1,0 +1,714 @@
+{
+ "equip": "C.B. Monforte \"A\"",
+ "equip_original": "MONFORTE \"A\"",
+ "competicio": "LLIGA CATALANA 3 BANDES · 1a Divisió · Grup Unic",
+ "modalitat": "Tres bandes",
+ "temporada": "2017-18",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "initials": {
+    "Tres bandes": "0.462"
+   },
+   "initial": "0.462"
+  },
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "initials": {
+    "Tres bandes": "0.694"
+   },
+   "initial": "0.694"
+  },
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.704"
+   },
+   "initial": "0.704"
+  },
+  {
+   "id": "mula-callejon-francisco",
+   "name": "Mula Callejón, Francisco",
+   "initials": {
+    "Tres bandes": "0.834"
+   },
+   "initial": "0.834"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.774"
+   },
+   "initial": "0.774"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2017-09-16",
+   "rival": "SANT ADRIA \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 26,
+     "ent": 34,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pineda Lafuente, Joan Josep",
+     "car_rival": 40
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 28,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Vasco, Joan Carles",
+     "car_rival": 39
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 32,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ferrer González, Joaquim",
+     "car_rival": 37
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 26,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández López, Jonatan",
+     "car_rival": 37
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2017-09-30",
+   "rival": "SANT BOI \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 33,
+     "ent": 50,
+     "sm": 4,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Perales Sanz, Joan",
+     "car_rival": 33
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 30,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Gascón Reyes, Rafael",
+     "car_rival": 33
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 32,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Megias Navas, Mateu",
+     "car_rival": 35
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 13,
+     "ent": 29,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pastor Rivas, Manuel",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2017-10-21",
+   "rival": "DANY-ELLS \"A\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 38,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pareras Méndez, Joan Carles",
+     "car_rival": 27
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 22,
+     "ent": 38,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Liebana Camara, Gabriel",
+     "car_rival": 40
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 40,
+     "ent": 49,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Alarcón Galisteo, Francesc",
+     "car_rival": 27
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 23,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Avilés, Sergio",
+     "car_rival": 38
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2017-10-28",
+   "rival": "MONTMELÓ",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 13,
+     "ent": 31,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Galera, Sergi",
+     "car_rival": 40
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 40,
+     "ent": 45,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gavilan Raya, Jose Antonio",
+     "car_rival": 18
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 21,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Marín Romera, Felicià",
+     "car_rival": 24
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 40,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Pérez, Fernando",
+     "car_rival": 22
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2017-11-11",
+   "rival": "SANTS \"A\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 28,
+     "ent": 48,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Vicente Ruiz, José",
+     "car_rival": 40
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 27,
+     "ent": 44,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Varela Losada, Francesc",
+     "car_rival": 40
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 40,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Martínez, Pascual",
+     "car_rival": 34
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 40,
+     "ent": 47,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Fontanet Belles, Joan Carles",
+     "car_rival": 21
+    }
+   ]
+  },
+  {
+   "id": "j06",
+   "jornada": "6",
+   "date": "2017-12-02",
+   "rival": "MOLLET \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 43,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bouterin Bote, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 37,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sayeras Guiteras, Josep Mª",
+     "car_rival": 25
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 28,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Feliu Pi, Pere",
+     "car_rival": 34
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 27,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Busquets Troses, Romà",
+     "car_rival": 39
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2017-12-23",
+   "rival": "BANYOLES",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 40,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Maia, Mario Felipe",
+     "car_rival": 29
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 38,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Navarra, Ferrán",
+     "car_rival": 30
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 28,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ametller Congost, Lluis",
+     "car_rival": 24
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 17,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Nadal Font, Josep Mª",
+     "car_rival": 26
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2017-12-30",
+   "rival": "CORAL COLON \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 37,
+     "ent": 44,
+     "sm": 7,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espinasa Sánchez, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 31,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Mas Canadell, César",
+     "car_rival": 34
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 33,
+     "ent": 49,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Muñoz Muñoz, Pere",
+     "car_rival": 40
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 18,
+     "ent": 45,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Navarro Carmona, Joan Ant.",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2018-01-20",
+   "rival": "VIC \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 26,
+     "ent": 32,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Montes Monferrer, Antonio",
+     "car_rival": 40
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 14,
+     "ent": 23,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García Alarcón, Ricardo",
+     "car_rival": 40
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 21,
+     "ent": 31,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Mata Pardo, Esteve",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 37,
+     "ent": 44,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Luque Martínez, Jesús",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2018-02-03",
+   "rival": "LLEIDA \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 34,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Moreno Cortés, Armand",
+     "car_rival": 26
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 23,
+     "ent": 28,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sánchez-Mariscal Suárez, Xavier",
+     "car_rival": 40
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 24,
+     "ent": 47,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Colell Llop, Quim",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 27,
+     "ent": 50,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Guiu Giraut, Carlos",
+     "car_rival": 39
+    }
+   ]
+  },
+  {
+   "id": "j11",
+   "jornada": "11",
+   "date": "2018-02-10",
+   "rival": "BARCELONA \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 31,
+     "ent": 35,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Minguell Rosselló, Xavier",
+     "car_rival": 40
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 40,
+     "ent": 48,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Casademunt Valles, Miquel",
+     "car_rival": 28
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 31,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Limones Villalba, Jordi",
+     "car_rival": 39
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 26,
+     "ent": 39,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Maymó Torné, Marc",
+     "car_rival": 40
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2017-09-16",
+   "rival": "SANT ADRIA \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2017-09-30",
+   "rival": "SANT BOI \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2017-10-21",
+   "rival": "DANY-ELLS \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2017-10-28",
+   "rival": "MONTMELÓ",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2017-11-11",
+   "rival": "SANTS \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2017-12-02",
+   "rival": "MOLLET \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "7",
+   "date": "2017-12-23",
+   "rival": "BANYOLES",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2017-12-30",
+   "rival": "CORAL COLON \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2018-01-20",
+   "rival": "VIC \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2018-02-03",
+   "rival": "LLEIDA \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "11",
+   "date": "2018-02-10",
+   "rival": "BARCELONA \"A\"",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

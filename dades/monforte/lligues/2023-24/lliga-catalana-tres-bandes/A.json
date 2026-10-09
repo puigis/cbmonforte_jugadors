@@ -1,0 +1,654 @@
+{
+ "equip": "C.B. Monforte \"A\"",
+ "equip_original": "C. B. MONFORTE \"A\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+ "modalitat": "Tres bandes",
+ "temporada": "2023-24",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "farina-villanueva-francisco",
+   "name": "Fariña Villanueva, Francisco",
+   "initials": {
+    "Tres bandes": "0.729"
+   },
+   "initial": "0.729"
+  },
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.704"
+   },
+   "initial": "0.704"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "minguell-rossello-xavier",
+   "name": "Minguell Rosselló, Xavier",
+   "initials": {
+    "Tres bandes": "1.006"
+   },
+   "initial": "1.006"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.774"
+   },
+   "initial": "0.774"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2023-09-16",
+   "rival": "C.B. MOLLET \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 34,
+     "ent": 47,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pérez Andreu, Alejandro",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 32,
+     "ent": 50,
+     "sm": 7,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bouterin Bote, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 21,
+     "ent": 47,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Mas Canadell, César",
+     "car_rival": 40
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 40,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sayeras Guiteras, Josep Mª",
+     "car_rival": 32
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2023-09-23",
+   "rival": "C.B. MATARÓ \"A\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 33,
+     "sm": 6,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Benitez Reina, Pau",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 44,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Van Kessel, Mark Stefan",
+     "car_rival": 38
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 38,
+     "ent": 50,
+     "sm": 9,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Segarra Solé, Albert",
+     "car_rival": 31
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 31,
+     "ent": 43,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Uceda López, Raúl",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2023-10-07",
+   "rival": "B.C. GRANOLLERS \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 29,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pareras Méndez, Joan Carles",
+     "car_rival": 34
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 18,
+     "ent": 26,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espinasa Sánchez, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 26,
+     "ent": 43,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández Parra, Antoni",
+     "car_rival": 40
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 40,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Avilés, Sergio",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2023-10-21",
+   "rival": "C.B. BANYOLES \"A\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 34,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Maia, Mario Felipe",
+     "car_rival": 25
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 24,
+     "ent": 42,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ametller Congost, Lluis",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 28,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Molina Romero, Carlos Alberto",
+     "car_rival": 15
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 34,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rodriguez Jiménez, Eduard",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2023-11-04",
+   "rival": "C.B.SANT BOI \"A\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 24,
+     "ent": 38,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Navarra, Ferrán",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 38,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Megias Navas, Mateu",
+     "car_rival": 24
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pastor Rivas, Manuel",
+     "car_rival": 29
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 27,
+     "ent": 42,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Gascón Reyes, Rafael",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j06",
+   "jornada": "6",
+   "date": "2023-11-25",
+   "rival": "C.B. MOLLET \"A\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 38,
+     "sm": 8,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bouterin Bote, Joan",
+     "car_rival": 37
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 46,
+     "sm": 6,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Mas Canadell, César",
+     "car_rival": 40
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 27,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sayeras Guiteras, Josep Mª",
+     "car_rival": 31
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 40,
+     "ent": 47,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pérez Zorrilla, Rafael",
+     "car_rival": 37
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2023-12-16",
+   "rival": "C.B. MATARÓ \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 36,
+     "ent": 37,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Benitez Reina, Pau",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 31,
+     "ent": 39,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Van Kessel, Mark Stefan",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 43,
+     "sm": 6,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Segarra Solé, Albert",
+     "car_rival": 40
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 34,
+     "ent": 45,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Uceda López, Raúl",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2023-12-30",
+   "rival": "B.C. GRANOLLERS \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 26,
+     "ent": 27,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Galera, Sergi",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 34,
+     "sm": 4,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Pareras Méndez, Joan Carles",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 22,
+     "ent": 26,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espinasa Sánchez, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 15,
+     "ent": 40,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández Parra, Antoni",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2024-01-13",
+   "rival": "C.B. BANYOLES \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 31,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Corominas Franch, Esteve",
+     "car_rival": 28
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 25,
+     "ent": 27,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Maia, Mario Felipe",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 36,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ametller Congost, Lluis",
+     "car_rival": 40
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 24,
+     "ent": 50,
+     "sm": 4,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Ramirez Mateos, Eduard",
+     "car_rival": 24
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2024-01-20",
+   "rival": "C.B.SANT BOI \"A\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 35,
+     "ent": 32,
+     "sm": 7,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Navarra, Ferrán",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 30,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Perales Sanz, Joan",
+     "car_rival": 34
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 48,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bargallo Jaume, Josep",
+     "car_rival": 27
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 32,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jou Mora, Ferràn",
+     "car_rival": 31
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2023-09-16",
+   "rival": "C.B. MOLLET \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2023-09-23",
+   "rival": "C.B. MATARÓ \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2023-10-07",
+   "rival": "B.C. GRANOLLERS \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2023-10-21",
+   "rival": "C.B. BANYOLES \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2023-11-04",
+   "rival": "C.B.SANT BOI \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2023-11-25",
+   "rival": "C.B. MOLLET \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "7",
+   "date": "2023-12-16",
+   "rival": "C.B. MATARÓ \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2023-12-30",
+   "rival": "B.C. GRANOLLERS \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2024-01-13",
+   "rival": "C.B. BANYOLES \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2024-01-20",
+   "rival": "C.B.SANT BOI \"A\"",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "equip": "C.B. Monforte \"A\"",
+ "equip_original": "MONFORTE A",
+ "competicio": "LLIGA CATALANA 3 BANDES · Promoció A 1a · Grup Ùnic",
+ "modalitat": "Tres bandes",
+ "temporada": "2018-19",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "initials": {
+    "Tres bandes": "0.694"
+   },
+   "initial": "0.694"
+  },
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.704"
+   },
+   "initial": "0.704"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.774"
+   },
+   "initial": "0.774"
+  }
+ ],
+ "matches": [
+  {
+   "id": "jAnada",
+   "jornada": "Anada",
+   "date": "2019-04-13",
+   "rival": "MOLLET A",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 12,
+     "ent": 27,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bouterin Bote, Joan",
+     "car_rival": 35
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 30,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sayeras Guiteras, Josep Mª",
+     "car_rival": 28
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 32,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Busquets Troses, Romà",
+     "car_rival": 29
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 43,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Feliu Pi, Pere",
+     "car_rival": 31
+    }
+   ]
+  },
+  {
+   "id": "jTornada",
+   "jornada": "Tornada",
+   "date": "2019-04-14",
+   "rival": "MOLLET A",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 11,
+     "ent": 23,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bouterin Bote, Joan",
+     "car_rival": 35
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 30,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sayeras Guiteras, Josep Mª",
+     "car_rival": 24
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 35,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Fontanet Angosto, Ricard",
+     "car_rival": 30
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 32,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Feliu Pi, Pere",
+     "car_rival": 29
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "Anada",
+   "date": "2019-04-13",
+   "rival": "MOLLET A",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "Tornada",
+   "date": "2019-04-14",
+   "rival": "MOLLET A",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

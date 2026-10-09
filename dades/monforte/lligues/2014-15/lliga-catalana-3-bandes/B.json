@@ -1,0 +1,678 @@
+{
+ "equip": "C.B. Monforte \"B\"",
+ "equip_original": "04 C.B. MONFORTE B",
+ "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup E",
+ "modalitat": "Tres bandes",
+ "temporada": "2014-15",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "initials": {
+    "Tres bandes": "0.462"
+   },
+   "initial": "0.462"
+  },
+  {
+   "id": "chenoll-castro-enric",
+   "name": "Chenoll Castro, Enric",
+   "initials": {
+    "Tres bandes": "0.460"
+   },
+   "initial": "0.460"
+  },
+  {
+   "id": "cuenca-pardo-manuel",
+   "name": "Cuenca Pardo, Manuel",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "fabregas-fontanet-antoni",
+   "name": "Fàbregas Fontanet, Antoni",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "garcia-zaldivar-ricardo",
+   "name": "García Zaldivar, Ricardo",
+   "initials": {
+    "Tres bandes": "0.498"
+   },
+   "initial": "0.498"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "puig-latre-isaac",
+   "name": "Puig Latre, Isaac",
+   "initials": {
+    "Tres bandes": "0.472"
+   },
+   "initial": "0.472"
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "initials": {
+    "Tres bandes": "0.433"
+   },
+   "initial": "0.433"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2014-10-04",
+   "rival": "03 C.B. PREMIÀ",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 30,
+     "ent": 40,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bas Pastor, Enric",
+     "car_rival": 21
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 22,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Solé Marsiñach, Josep Maria",
+     "car_rival": 27
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 34,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Fecúndez Martínez, Joaquim",
+     "car_rival": 18
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 47,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Miravet Ariza, Lluis",
+     "car_rival": 21
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2014-10-18",
+   "rival": "02 C.B. MOLLET B",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pi Vilardell, Xavier",
+     "car_rival": 23
+    },
+    {
+     "pid": "puig-latre-isaac",
+     "car": 17,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Acosta Cano, José Cruz",
+     "car_rival": 24
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 25,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Vidal Martí, Pere",
+     "car_rival": 15
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 30,
+     "ent": 43,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Martínez Avilés, Sergio",
+     "car_rival": 12
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2014-11-01",
+   "rival": "01 C.B. CANET B",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 19,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Andrés Tarazona, Joaquim",
+     "car_rival": 18
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 48,
+     "sm": 8,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Mollá Martínez, Miquel",
+     "car_rival": 14
+    },
+    {
+     "pid": "fabregas-fontanet-antoni",
+     "car": 19,
+     "ent": 50,
+     "sm": 4,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Collado Banchs, Francesc",
+     "car_rival": 19
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 22,
+     "ent": 44,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bea Pigrau, Evaristo",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2014-11-08",
+   "rival": "05 SBPE CENTELLES",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 20,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Diez Ayza, Xavier",
+     "car_rival": 23
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 25,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Raulet Clos, Esteve",
+     "car_rival": 20
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 26,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jarque Sánchez, Raul",
+     "car_rival": 11
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 47,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Aguilera Buenosvinos, José Manuel",
+     "car_rival": 10
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2014-11-29",
+   "rival": "06 C.B. BANYOLES C",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 39,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Calle Ortega, Eusebi",
+     "car_rival": 20
+    },
+    {
+     "pid": "fabregas-fontanet-antoni",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Andrés Gil, Rafael",
+     "car_rival": 18
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 25,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Calle Ortega, Antoni",
+     "car_rival": 7
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 13,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Cros Gelma, Pere",
+     "car_rival": 18
+    }
+   ]
+  },
+  {
+   "id": "j06",
+   "jornada": "6",
+   "date": "2014-12-27",
+   "rival": "03 C.B. PREMIÀ",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 30,
+     "ent": 47,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bas Pastor, Enric",
+     "car_rival": 26
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 43,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Solé Marsiñach, Josep Maria",
+     "car_rival": 12
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 15,
+     "ent": 50,
+     "sm": 2,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Fecúndez Martínez, Joaquim",
+     "car_rival": 15
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 24,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Macias Chacón, Antoni",
+     "car_rival": 17
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2015-01-10",
+   "rival": "02 C.B. MOLLET B",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 30,
+     "ent": 34,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Castañe Sitjas, Jordi",
+     "car_rival": 9
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 22,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pi Vilardell, Xavier",
+     "car_rival": 19
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 27,
+     "ent": 43,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Acosta Cano, José Cruz",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 28,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Arias Sánchez, Miguel",
+     "car_rival": 12
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2015-01-24",
+   "rival": "01 C.B. CANET B",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 23,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Andrés Tarazona, Joaquim",
+     "car_rival": 24
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 24,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gálvez Parejo, José María",
+     "car_rival": 22
+    },
+    {
+     "pid": "fabregas-fontanet-antoni",
+     "car": 18,
+     "ent": 41,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Collado Banchs, Francesc",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 19,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bea Pigrau, Evaristo",
+     "car_rival": 16
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2015-02-07",
+   "rival": "05 SBPE CENTELLES",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 21,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Diez Ayza, Xavier",
+     "car_rival": 29
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Arroyo Trabal, Albert",
+     "car_rival": 18
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 22,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Caballé Oliva, Carles",
+     "car_rival": 16
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 21,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Aguilera Buenosvinos, José Manuel",
+     "car_rival": 12
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2015-02-21",
+   "rival": "06 C.B. BANYOLES C",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 22,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Carmona Martín, Enrique",
+     "car_rival": 20
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 40,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Calle Ortega, Eusebi",
+     "car_rival": 20
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 28,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Andrés Gil, Rafael",
+     "car_rival": 10
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 29,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Calle Ortega, Antoni",
+     "car_rival": 17
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2014-10-04",
+   "rival": "03 C.B. PREMIÀ",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2014-10-18",
+   "rival": "02 C.B. MOLLET B",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2014-11-01",
+   "rival": "01 C.B. CANET B",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2014-11-08",
+   "rival": "05 SBPE CENTELLES",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2014-11-29",
+   "rival": "06 C.B. BANYOLES C",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2014-12-27",
+   "rival": "03 C.B. PREMIÀ",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "7",
+   "date": "2015-01-10",
+   "rival": "02 C.B. MOLLET B",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2015-01-24",
+   "rival": "01 C.B. CANET B",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2015-02-07",
+   "rival": "05 SBPE CENTELLES",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2015-02-21",
+   "rival": "06 C.B. BANYOLES C",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

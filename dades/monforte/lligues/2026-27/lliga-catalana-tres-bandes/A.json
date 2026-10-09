@@ -1,0 +1,258 @@
+{
+ "equip": "C.B. Monforte \"A\"",
+ "equip_original": "C.B. MONFORTE \"A\"",
+ "competicio": "Lliga Catalana Tres Bandes · Honor · Grup A",
+ "modalitat": "Tres bandes",
+ "temporada": "2026-27",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "garcia-alarcon-ricardo",
+   "name": "García Alarcón, Ricardo",
+   "initials": {
+    "Tres bandes": "1.302"
+   },
+   "initial": "1.302"
+  },
+  {
+   "id": "juarez-de-alarcon-jorge",
+   "name": "Juárez De Alarcón, Jorge",
+   "initials": {
+    "Tres bandes": "0.717"
+   },
+   "initial": "0.717"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.751"
+   },
+   "initial": "0.751"
+  },
+  {
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
+   "initials": {
+    "Tres bandes": "0.651"
+   },
+   "initial": "0.651"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.817"
+   },
+   "initial": "0.817"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2026-09-26",
+   "rival": "C.B. SANT ADRIÀ \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "garcia-alarcon-ricardo",
+     "car": 40,
+     "ent": 32,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pineda Lafuente, Joan Josep",
+     "car_rival": 15
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 36,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Luque Martínez, Jesús",
+     "car_rival": 37
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 17,
+     "ent": 42,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Guerrero González, Miquel A.",
+     "car_rival": 40
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 35,
+     "ent": 50,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Vasco, Joan Carles",
+     "car_rival": 38
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2026-10-10",
+   "rival": "B. C. OLESA",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-alarcon-ricardo",
+     "car": 40,
+     "ent": 35,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ros Guarro, Joan",
+     "car_rival": 22
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Casadevall Sardañes, Valero",
+     "car_rival": 19
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 40,
+     "ent": 45,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "López Carbonell, Antoni",
+     "car_rival": 20
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 33,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Amado Gamboa, Jose Manuel",
+     "car_rival": 9
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2026-09-26",
+   "rival": "C.B. SANT ADRIÀ \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2026-10-10",
+   "rival": "B. C. OLESA",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2026-10-17",
+   "rival": "B.C. GRANOLLERS \"B\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "4",
+   "date": "2026-11-07",
+   "rival": "C.B. MATARÓ \"A\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "5",
+   "date": "2026-11-21",
+   "rival": "C.B. SANT BOI \"A\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "6",
+   "date": "2026-12-19",
+   "rival": "C.B. MONT-ROIG \"A\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "7",
+   "date": "2027-01-02",
+   "rival": "C.B. LLEIDA \"A\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "8",
+   "date": "2027-01-09",
+   "rival": "C.B. SANT ADRIÀ \"A\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "9",
+   "date": "2027-01-30",
+   "rival": "B. C. OLESA",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "10",
+   "date": "2027-02-20",
+   "rival": "B.C. GRANOLLERS \"B\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "11",
+   "date": "2027-02-27",
+   "rival": "C.B. MATARÓ \"A\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "12",
+   "date": "2027-03-13",
+   "rival": "C.B. SANT BOI \"A\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "13",
+   "date": "2027-03-20",
+   "rival": "C.B. MONT-ROIG \"A\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "14",
+   "date": "2027-04-03",
+   "rival": "C.B. LLEIDA \"A\"",
+   "venue": "F",
+   "played": false
+  }
+ ]
+}

@@ -1,0 +1,902 @@
+{
+ "equip": "C.B. Monforte \"B\"",
+ "equip_original": "MONFORTE \"B\"",
+ "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup E",
+ "modalitat": "Tres bandes",
+ "temporada": "2016-17",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "initials": {
+    "Tres bandes": "0.462"
+   },
+   "initial": "0.462"
+  },
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "initials": {
+    "Tres bandes": "0.694"
+   },
+   "initial": "0.694"
+  },
+  {
+   "id": "chenoll-castro-enric",
+   "name": "Chenoll Castro, Enric",
+   "initials": {
+    "Tres bandes": "0.460"
+   },
+   "initial": "0.460"
+  },
+  {
+   "id": "cuenca-pardo-manuel",
+   "name": "Cuenca Pardo, Manuel",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "garcia-zaldivar-ricardo",
+   "name": "García Zaldivar, Ricardo",
+   "initials": {
+    "Tres bandes": "0.498"
+   },
+   "initial": "0.498"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2016-09-17",
+   "rival": "OLESA",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 48,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ros Guarro, Joan",
+     "car_rival": 25
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 36,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Casadevall Sardañes, Valero",
+     "car_rival": 17
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Toledo López, Felipe",
+     "car_rival": 11
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 25,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Amado Gamboa, Jose Manuel",
+     "car_rival": 14
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2016-10-08",
+   "rival": "MANRESA \"B\"",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 26,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Montoliu Castellví, Albert",
+     "car_rival": 15
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 25,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bartoli Alsina, Josep",
+     "car_rival": 17
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 48,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ontiveros Polaino, Miquel",
+     "car_rival": 11
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Anghel Turmac, Georgeta",
+     "car_rival": 15
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2016-10-22",
+   "rival": "SANTS \"C\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 22,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bonet Carmona, Sebastià",
+     "car_rival": 24
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 46,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Badia Bosque, Llorenç",
+     "car_rival": 19
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 23,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Trigueros, Carles",
+     "car_rival": 29
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 30,
+     "ent": 49,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Chumillas Invernon, Cristobal",
+     "car_rival": 20
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2016-11-05",
+   "rival": "SANT ADRIÀ \"C\"",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Nuévalos Pérez, Carlos",
+     "car_rival": 12
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 37,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Montes Gallardo, Antonio",
+     "car_rival": 21
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 8,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "López Varela, Guillem",
+     "car_rival": 17
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 45,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Botias, Max",
+     "car_rival": 14
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2016-11-12",
+   "rival": "EL PRAT",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 17,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Barrera, Miguel",
+     "car_rival": 15
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 28,
+     "ent": 50,
+     "sm": 5,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Barrera, Jorge A.",
+     "car_rival": 28
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 17,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Deibis Fernández, Yhojan",
+     "car_rival": 22
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 13,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Montero Quero, Rafael",
+     "car_rival": 29
+    }
+   ]
+  },
+  {
+   "id": "j06",
+   "jornada": "6",
+   "date": "2016-11-26",
+   "rival": "SANT BOI \"B\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 20,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bargallo Jaume, Josep",
+     "car_rival": 26
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 11,
+     "ent": 36,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rojals Valls, Joan",
+     "car_rival": 30
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 30,
+     "ent": 49,
+     "sm": 9,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Alberich Sánchez, Vicente",
+     "car_rival": 23
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 28,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "López Balboa, Alejandro",
+     "car_rival": 18
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2016-12-10",
+   "rival": "UNIO CORAL \"A\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 26,
+     "ent": 45,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martín Lima, Melchor",
+     "car_rival": 30
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 30,
+     "ent": 38,
+     "sm": 8,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Correa Garrido, Alberto",
+     "car_rival": 22
+    },
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 30,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pérez Moreno, Carlos",
+     "car_rival": 22
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 19,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "García Alarcón, Carlos",
+     "car_rival": 18
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2017-01-07",
+   "rival": "OLESA",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 16,
+     "ent": 45,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ros Guarro, Joan",
+     "car_rival": 30
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 37,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "López Carbonell, Antoni",
+     "car_rival": 19
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 28,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Casadevall Sardañes, Valero",
+     "car_rival": 23
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 21,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Amado Gamboa, Jose Manuel",
+     "car_rival": 28
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2017-01-21",
+   "rival": "MANRESA \"B\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 26,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Montoliu Castellví, Albert",
+     "car_rival": 12
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 26,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bartoli Alsina, Josep",
+     "car_rival": 18
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 30,
+     "ent": 39,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ontiveros Polaino, Miquel",
+     "car_rival": 10
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 34,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Anghel Turmac, Georgeta",
+     "car_rival": 5
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2017-02-04",
+   "rival": "SANTS \"C\"",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 29,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Torres Penas, Jesús Andrés",
+     "car_rival": 23
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 30,
+     "ent": 47,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "León Puig, Esteban",
+     "car_rival": 18
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 30,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Roses Guitart, Antoni",
+     "car_rival": 18
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 17,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Castillo Algar, Juan Carlos",
+     "car_rival": 11
+    }
+   ]
+  },
+  {
+   "id": "j11",
+   "jornada": "11",
+   "date": "2017-02-25",
+   "rival": "SANT ADRIÀ \"C\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 24,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sotomayor Plata, Manuel",
+     "car_rival": 26
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 21,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Nuévalos Pérez, Carlos",
+     "car_rival": 22
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 20,
+     "ent": 50,
+     "sm": 3,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "López Varela, Guillem",
+     "car_rival": 20
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Orta López, Luis",
+     "car_rival": 23
+    }
+   ]
+  },
+  {
+   "id": "j12",
+   "jornada": "12",
+   "date": "2017-03-18",
+   "rival": "EL PRAT",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 13,
+     "ent": 24,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Barrera, Miguel",
+     "car_rival": 30
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 42,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Barrera, Jorge A.",
+     "car_rival": 18
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 30,
+     "ent": 45,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Deibis Fernández, Yhojan",
+     "car_rival": 19
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 22,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Mauri Joan, Salvador",
+     "car_rival": 24
+    }
+   ]
+  },
+  {
+   "id": "j13",
+   "jornada": "13",
+   "date": "2017-03-25",
+   "rival": "SANT BOI \"B\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 49,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bargallo Jaume, Josep",
+     "car_rival": 29
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 30,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Rojals Valls, Joan",
+     "car_rival": 27
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 30,
+     "ent": 48,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Alberich Sánchez, Vicente",
+     "car_rival": 27
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 22,
+     "ent": 44,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bernad Daza, Jaime",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "j14",
+   "jornada": "14",
+   "date": "2017-04-29",
+   "rival": "UNIO CORAL \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 12,
+     "ent": 38,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Correa Garrido, Alberto",
+     "car_rival": 30
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 24,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pérez Moreno, Carlos",
+     "car_rival": 15
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 30,
+     "ent": 46,
+     "sm": 5,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Agullo Taboas, Josep",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 22,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García Alarcón, Carlos",
+     "car_rival": 27
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2016-09-17",
+   "rival": "OLESA",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2016-10-08",
+   "rival": "MANRESA \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2016-10-22",
+   "rival": "SANTS \"C\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2016-11-05",
+   "rival": "SANT ADRIÀ \"C\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2016-11-12",
+   "rival": "EL PRAT",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2016-11-26",
+   "rival": "SANT BOI \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "7",
+   "date": "2016-12-10",
+   "rival": "UNIO CORAL \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2017-01-07",
+   "rival": "OLESA",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2017-01-21",
+   "rival": "MANRESA \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2017-02-04",
+   "rival": "SANTS \"C\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "11",
+   "date": "2017-02-25",
+   "rival": "SANT ADRIÀ \"C\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "12",
+   "date": "2017-03-18",
+   "rival": "EL PRAT",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "13",
+   "date": "2017-03-25",
+   "rival": "SANT BOI \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "14",
+   "date": "2017-04-29",
+   "rival": "UNIO CORAL \"A\"",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

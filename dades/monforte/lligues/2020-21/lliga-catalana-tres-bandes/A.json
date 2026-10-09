@@ -1,0 +1,346 @@
+{
+ "equip": "C.B. Monforte \"A\"",
+ "equip_original": "MONFORTE \"A\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+ "modalitat": "Tres bandes",
+ "temporada": "2020-21",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "initials": {
+    "Tres bandes": "0.694"
+   },
+   "initial": "0.694"
+  },
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.704"
+   },
+   "initial": "0.704"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.774"
+   },
+   "initial": "0.774"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2021-03-13",
+   "rival": "LLINARS \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 30,
+     "ent": 49,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ferré Guallar, Jaume",
+     "car_rival": 40
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 25,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Calderón, Xavier",
+     "car_rival": 37
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 27,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Marín Vicioso, Bartolomé",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 28,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pérez Viña, Manuel",
+     "car_rival": 29
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2021-04-10",
+   "rival": "TARRAGONA \"A\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 36,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Martínez Lopezosa, Vicenç",
+     "car_rival": 29
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 40,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Vidal Gibert, Joan",
+     "car_rival": 30
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 36,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Casadó Roca, Alex",
+     "car_rival": 23
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 36,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Angarita Cristancho, Alexander",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2021-05-01",
+   "rival": "LLEIDA \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 30,
+     "ent": 49,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Colell Llop, Quim",
+     "car_rival": 40
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 20,
+     "ent": 45,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Torres Ezequiel, Jaume Manel",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 28,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Guiu Giraut, Carlos",
+     "car_rival": 27
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 18,
+     "ent": 46,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Orrego Cardona, Yibeth Andrés",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2021-05-15",
+   "rival": "MOLLET \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bouterin Bote, Joan",
+     "car_rival": 37
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 20,
+     "ent": 38,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Avilés, Sergio",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 43,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Alves Da Cunha, David M.",
+     "car_rival": 31
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 50,
+     "sm": 5,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Martínez Alberto, Xavier",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2021-06-05",
+   "rival": "VIC \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 26,
+     "ent": 40,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Mata Pardo, Esteve",
+     "car_rival": 40
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pineda Lafuente, Joan Josep",
+     "car_rival": 32
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 27,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Luque Martínez, Jesús",
+     "car_rival": 26
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 26,
+     "ent": 41,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Durán Salgado, Jhon Eder",
+     "car_rival": 40
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2021-03-13",
+   "rival": "LLINARS \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2021-04-10",
+   "rival": "TARRAGONA \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2021-05-01",
+   "rival": "LLEIDA \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2021-05-15",
+   "rival": "MOLLET \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2021-06-05",
+   "rival": "VIC \"A\"",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

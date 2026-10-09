@@ -1,0 +1,438 @@
+{
+ "equip": "C.B. Monforte \"D\"",
+ "equip_original": "MONFORTE \"D\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup B",
+ "modalitat": "Tres bandes",
+ "temporada": "2020-21",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "aris-guitart-albert",
+   "name": "Aris Guitart, Albert",
+   "initials": {
+    "Tres bandes": "0.409"
+   },
+   "initial": "0.409"
+  },
+  {
+   "id": "barragan-de-la-cruz-luis",
+   "name": "Barragán De La Cruz, Luis",
+   "initials": {
+    "Tres bandes": "0.406"
+   },
+   "initial": "0.406"
+  },
+  {
+   "id": "gili-bertral-joan",
+   "name": "Gili Bertral, Joan",
+   "initials": {
+    "Tres bandes": "0.337"
+   },
+   "initial": "0.337"
+  },
+  {
+   "id": "gimenez-escrig-miquel",
+   "name": "Giménez Escrig Miquel",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "munoz-lopez-javier",
+   "name": "Muñoz López, Javier",
+   "initials": {
+    "Tres bandes": "0.593"
+   },
+   "initial": "0.593"
+  },
+  {
+   "id": "obando-quintero-carlos-ariel",
+   "name": "Obando Quintero, Carlos Ariel",
+   "initials": {
+    "Tres bandes": "0.416"
+   },
+   "initial": "0.416"
+  },
+  {
+   "id": "rodriguez-sanchez-cesar",
+   "name": "Rodríguez Sánchez, César",
+   "initials": {
+    "Tres bandes": "0.306"
+   },
+   "initial": "0.306"
+  },
+  {
+   "id": "tormo-calatayud-jorge",
+   "name": "Tormo Calatayud, Jorge",
+   "initials": {
+    "Tres bandes": "0.361"
+   },
+   "initial": "0.361"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2021-03-13",
+   "rival": "SANTS \"D\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "aris-guitart-albert",
+     "car": 22,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "García Aguado, Miguel",
+     "car_rival": 21
+    },
+    {
+     "pid": "gili-bertral-joan",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ibañez Aparicio, Julià",
+     "car_rival": 16
+    },
+    {
+     "pid": "barragan-de-la-cruz-luis",
+     "car": 17,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ramon Morcillo, Miquel",
+     "car_rival": 21
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 15,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Chumillas Invernon, Cristobal",
+     "car_rival": 23
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2021-04-10",
+   "rival": "TARRAGONA \"C\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "aris-guitart-albert",
+     "car": 15,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Miró Giné, Joaquim",
+     "car_rival": 29
+    },
+    {
+     "pid": "barragan-de-la-cruz-luis",
+     "car": 12,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pastor Balagué, Jordi",
+     "car_rival": 21
+    },
+    {
+     "pid": "rodriguez-sanchez-cesar",
+     "car": 14,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Arnau Abilleira, Aleix",
+     "car_rival": 25
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 10,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Lopezosa, José",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2021-05-01",
+   "rival": "PRAT \"B\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "gimenez-escrig-miquel",
+     "car": 5,
+     "ent": 50,
+     "sm": 1,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bonaluque Sánchez, Manuel",
+     "car_rival": 10
+    },
+    {
+     "pid": "rodriguez-sanchez-cesar",
+     "car": 15,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García Espigares, José",
+     "car_rival": 18
+    },
+    {
+     "pid": "barragan-de-la-cruz-luis",
+     "car": 9,
+     "ent": 50,
+     "sm": 1,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bellot Botello, Francisco",
+     "car_rival": 16
+    },
+    {
+     "pid": "gili-bertral-joan",
+     "car": 10,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García Marín, Fernando",
+     "car_rival": 29
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2021-05-15",
+   "rival": "SANTS \"D\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "gili-bertral-joan",
+     "car": 21,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Roses Guitart, Antoni",
+     "car_rival": 23
+    },
+    {
+     "pid": "barragan-de-la-cruz-luis",
+     "car": 12,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ramon Morcillo, Miquel",
+     "car_rival": 28
+    },
+    {
+     "pid": "gimenez-escrig-miquel",
+     "car": 5,
+     "ent": 50,
+     "sm": 1,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Trigueros, Carles",
+     "car_rival": 18
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 22,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ángel García, Miguel",
+     "car_rival": 17
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2021-06-05",
+   "rival": "TARRAGONA \"C\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "munoz-lopez-javier",
+     "car": 21,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Miró Giné, Joaquim",
+     "car_rival": 29
+    },
+    {
+     "pid": "obando-quintero-carlos-ariel",
+     "car": 18,
+     "ent": 44,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pastor Balagué, Jordi",
+     "car_rival": 30
+    },
+    {
+     "pid": "gimenez-escrig-miquel",
+     "car": 10,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Lopezosa, José",
+     "car_rival": 15
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Prades Montesó, Ernest",
+     "car_rival": 20
+    }
+   ]
+  },
+  {
+   "id": "j06",
+   "jornada": "6",
+   "date": "2021-06-12",
+   "rival": "PRAT \"B\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "obando-quintero-carlos-ariel",
+     "car": 21,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Martínez Orozco, Pedro",
+     "car_rival": 19
+    },
+    {
+     "pid": "gili-bertral-joan",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Bellot Botello, Francisco",
+     "car_rival": 18
+    },
+    {
+     "pid": "barragan-de-la-cruz-luis",
+     "car": 15,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García Espigares, José",
+     "car_rival": 22
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 10,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bonaluque Sánchez, Manuel",
+     "car_rival": 15
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2021-03-13",
+   "rival": "SANTS \"D\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2021-04-10",
+   "rival": "TARRAGONA \"C\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2021-05-01",
+   "rival": "PRAT \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2021-05-15",
+   "rival": "SANTS \"D\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2021-06-05",
+   "rival": "TARRAGONA \"C\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2021-06-12",
+   "rival": "PRAT \"B\"",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

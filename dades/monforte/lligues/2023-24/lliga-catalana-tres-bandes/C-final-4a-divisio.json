@@ -1,0 +1,106 @@
+{
+ "equip": "C.B. Monforte \"C\"",
+ "equip_original": "C.B. MONFORTE \"C\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Final 4A Divisió",
+ "modalitat": "Tres bandes",
+ "temporada": "2023-24",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "initials": {
+    "Tres bandes": "0.462"
+   },
+   "initial": "0.462"
+  },
+  {
+   "id": "cardona-gallego-julian-alberto",
+   "name": "Cardona Gallego, Julián Alberto",
+   "initials": {
+    "Tres bandes": "0.636"
+   },
+   "initial": "0.636"
+  },
+  {
+   "id": "lopez-gallego-cristian",
+   "name": "López Gallego, Cristian",
+   "initials": {
+    "Tres bandes": "0.630"
+   },
+   "initial": "0.630"
+  },
+  {
+   "id": "rocha-vera-jeferson",
+   "name": "Rocha Vera, Jeferson",
+   "initials": {
+    "Tres bandes": "0.408"
+   },
+   "initial": "0.408"
+  }
+ ],
+ "matches": [
+  {
+   "id": "jSEMIFINALS",
+   "jornada": "SEMIFINALS",
+   "date": "2024-04-13",
+   "rival": "C.B. SANT ADRIÀ \"D\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "lopez-gallego-cristian",
+     "car": 25,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Yáñez Acuña, Enrique",
+     "car_rival": 19
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 23,
+     "ent": 38,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Chaura Gallego, Santiago",
+     "car_rival": 25
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 16,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Montesinos, Roque",
+     "car_rival": 25
+    },
+    {
+     "pid": "rocha-vera-jeferson",
+     "car": 9,
+     "ent": 29,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sotomayor Plata, Manuel",
+     "car_rival": 25
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "SEMIFINALS",
+   "date": "2024-04-13",
+   "rival": "C.B. SANT ADRIÀ \"D\"",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

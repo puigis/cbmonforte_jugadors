@@ -1,0 +1,646 @@
+{
+ "equip": "C.B. Monforte \"A\"",
+ "equip_original": "C.B. MONFORTE \"A\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+ "modalitat": "Tres bandes",
+ "temporada": "2022-23",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.704"
+   },
+   "initial": "0.704"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "minguell-rossello-xavier",
+   "name": "Minguell Rosselló, Xavier",
+   "initials": {
+    "Tres bandes": "1.006"
+   },
+   "initial": "1.006"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.774"
+   },
+   "initial": "0.774"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2022-09-10",
+   "rival": "C.B. SANT ADRIA \"A\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 25,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Garriga Comas, Jordi",
+     "car_rival": 37
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 36,
+     "ent": 42,
+     "sm": 8,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Vasco, Joan Carles",
+     "car_rival": 40
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 29,
+     "ent": 46,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ferrer González, Joaquim",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 48,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Martín Vílchez, Josep",
+     "car_rival": 34
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2022-09-24",
+   "rival": "C.B.LLEIDA \"A\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 33,
+     "sm": 8,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Moreno Cortés, Armand",
+     "car_rival": 38
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 33,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Colell Llop, Quim",
+     "car_rival": 34
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 40,
+     "ent": 46,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Orrego Cardona, Yibeth Andrés",
+     "car_rival": 30
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 35,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Torres Ezequiel, Jaume Manel",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2022-10-08",
+   "rival": "CLUB BILLAR VIC \"A\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Lluma Vergara, Pere",
+     "car_rival": 24
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 27,
+     "ent": 50,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Barnolas Parés, Joan",
+     "car_rival": 33
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 46,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Durán Salgado, Jhon Eder",
+     "car_rival": 37
+    },
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 36,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Luque Martínez, Jesús",
+     "car_rival": 37
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2022-10-29",
+   "rival": "BILLAR CLUB GRANOLLERS \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 15,
+     "ent": 26,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pareras Méndez, Joan Carles",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 12,
+     "ent": 28,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández Parra, Antoni",
+     "car_rival": 40
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 34,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espinasa Sánchez, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 24,
+     "ent": 40,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Navarro Carmona, Joan Ant.",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2022-11-12",
+   "rival": "MATADEPERA",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 41,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Moreno Aguilera, Francesc",
+     "car_rival": 32
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 30,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pérez Zorrilla, Rafael",
+     "car_rival": 39
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 27,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martín Sierra, Andreu",
+     "car_rival": 29
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 31,
+     "ent": 36,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pablo Calmet, Albert",
+     "car_rival": 40
+    }
+   ]
+  },
+  {
+   "id": "j06",
+   "jornada": "6",
+   "date": "2022-11-26",
+   "rival": "C.B. SANT ADRIA \"A\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 33,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Vasco, Joan Carles",
+     "car_rival": 33
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 44,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "González López, Jesús",
+     "car_rival": 36
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 40,
+     "ent": 37,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ferrer González, Joaquim",
+     "car_rival": 23
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 46,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Hernández López, Jonatan",
+     "car_rival": 17
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2022-12-10",
+   "rival": "C.B.LLEIDA \"A\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 39,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Colell Llop, Quim",
+     "car_rival": 39
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 46,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Orrego Cardona, Yibeth Andrés",
+     "car_rival": 37
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Torres Ezequiel, Jaume Manel",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 28,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Cardet Calderó, Isidor",
+     "car_rival": 36
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2022-12-17",
+   "rival": "CLUB BILLAR VIC \"A\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 40,
+     "ent": 44,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Luque Martínez, Jesús",
+     "car_rival": 30
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 47,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Durán Salgado, Jhon Eder",
+     "car_rival": 40
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 32,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Barnolas Parés, Joan",
+     "car_rival": 37
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Lluma Vergara, Pere",
+     "car_rival": 32
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2023-01-21",
+   "rival": "BILLAR CLUB GRANOLLERS \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 26,
+     "ent": 22,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pareras Méndez, Joan Carles",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 26,
+     "ent": 29,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández Parra, Antoni",
+     "car_rival": 40
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 23,
+     "ent": 31,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espinasa Sánchez, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 27,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Moreno Medina, Juan Carlos",
+     "car_rival": 18
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2023-02-04",
+   "rival": "MATADEPERA",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "minguell-rossello-xavier",
+     "car": 22,
+     "ent": 26,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pérez Andreu, Alejandro",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 43,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pérez Zorrilla, Rafael",
+     "car_rival": 32
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 22,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pablo Calmet, Albert",
+     "car_rival": 39
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 34,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "José Torrisco, Enrique",
+     "car_rival": 20
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2022-09-10",
+   "rival": "C.B. SANT ADRIA \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2022-09-24",
+   "rival": "C.B.LLEIDA \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2022-10-08",
+   "rival": "CLUB BILLAR VIC \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2022-10-29",
+   "rival": "BILLAR CLUB GRANOLLERS \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2022-11-12",
+   "rival": "MATADEPERA",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2022-11-26",
+   "rival": "C.B. SANT ADRIA \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "7",
+   "date": "2022-12-10",
+   "rival": "C.B.LLEIDA \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2022-12-17",
+   "rival": "CLUB BILLAR VIC \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2023-01-21",
+   "rival": "BILLAR CLUB GRANOLLERS \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2023-02-04",
+   "rival": "MATADEPERA",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

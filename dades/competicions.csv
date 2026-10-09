@@ -1,0 +1,246 @@
+competicio_id,tipus,nom,modalitat,modalitat_deduida,temporada
+L2,lliga,LLIGA CATALANA 3 BANDES,Tres bandes,,2014-15
+L3,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2014-15
+L4,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2015-16
+L5,lliga,LLIGA CATALANA 3 BANDES,Tres bandes,,2015-16
+L6,lliga,LLIGA 3 BANDES ZONA 1,Tres bandes,,2015-16
+L7,lliga,LLIGA 4 MODALITATS ZONA 1,4 Modalitats,,2015-16
+L8,lliga,LLIGA CATALANA 3 BANDES,Tres bandes,,2016-17
+L9,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2016-17
+L10,lliga,LLIGA JOC CURT ZONA 1,Joc curt,,2016-17
+L11,lliga,LLIGA 3 BANDES ZONA 1,Tres bandes,,2016-17
+L12,lliga,LLIGA CATALANA 3 BANDES,Tres bandes,,2017-18
+L13,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2017-18
+L14,lliga,INTERCLUBS ZONA 1,Altres,,2017-18
+L15,lliga,LLIGA 3 BANDES ZONA 1,Tres bandes,,2017-18
+L16,lliga,LLIGA JOC CURT ZONA 1,Joc curt,,2017-18
+L17,lliga,LLIGA CATALANA 3 BANDES,Tres bandes,,2018-19
+L18,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2018-19
+L19,lliga,LLIGA 3 BANDES ZONA 1,Tres bandes,,2018-19
+L20,lliga,LLIGA JDS ZONA 1,Altres,,2018-19
+L21,lliga,LLIGA CATALANA 3 BANDES,Tres bandes,,2019-20
+L22,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2019-20
+L24,lliga,LLIGA CATALANA TRES BANDES,Tres bandes,,2020-21
+L25,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2020-21
+L26,lliga,LLIGA CATALANA TRES BANDES,Tres bandes,,2021-22
+L27,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2021-22
+L28,lliga,LLIGA 3B ZONA 1,Tres bandes,,2021-22
+L29,lliga,LLIGA 4 MOD. ZONA 1,4 Modalitats,,2021-22
+L30,lliga,LLIGA CATALANA TRES BANDES,Tres bandes,,2022-23
+L31,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2022-23
+L32,lliga,LLIGA CATALANA TRES BANDES,Tres bandes,,2023-24
+L33,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2023-24
+L34,lliga,LLIGA CATALANA TRES BANDES,Tres bandes,,2024-25
+L35,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2024-25
+L36,lliga,LLIGA CATALANA TRES BANDES,Tres bandes,,2025-26
+L37,lliga,LLIGA CATALANA 4 MODALITATS,4 Modalitats,,2025-26
+L38,lliga,Lliga Catalana Tres Bandes,Tres bandes,,2026-27
+L39,lliga,Lliga Catalana 4 Modalitats,4 Modalitats,,2026-27
+I2,individual,CAMPIONAT CATALUNYA 3 BANDES,Tres bandes,False,2014-15
+I3,individual,CAMPIONAT CATALUNYA BANDA,Banda,False,2014-15
+I4,individual,CAMPIONAT CATALUNYA LLIURE,Lliure,False,2014-15
+I5,individual,CAMPIONAT CATALUNYA QUADRE 47/2,Quadre 47/2,False,2014-15
+I6,individual,CAMPIONAT CATALUNYA ARTISTIC,Artístic,False,
+I7,individual,CAMPIONAT CATALUNYA QUADRE 71/2,Quadre 71/2,False,2014-15
+I8,individual,CAMPIONAT CATALUNYA 5 QUILLES,5 quilles,False,
+I9,individual,CAMPIONAT CATALUNYA BIATHLO,Biathló,False,
+I10,individual,"OPEN MANRESA ""MISTERIOSA LLUM""",Tres bandes,True,2014-15
+I11,individual,HISTÒRIC 3 BANDES,Tres bandes,False,2012-13
+I12,individual,HISTÒRIC BANDA,Banda,False,2012-13
+I13,individual,HISTÒRIC LLIURE,Lliure,False,2012-13
+I14,individual,HISTÒRIC QUADRE 47/2,Quadre 47/2,False,2012-13
+I16,individual,OPEN CIUTAT MONTMELÓ,Tres bandes,True,2014-15
+I17,individual,MEMORIAL MIQUEL ESPONA,Lliure,True,2014-15
+I18,individual,OPEN ZONA 2 LLIURE,Lliure,False,2013-14
+I19,individual,OPEN ZONA 2 BANDA,Banda,False,2013-14
+I20,individual,OPEN ZONA 2 QUADRE 47/2,Quadre 47/2,False,2014-15
+I21,individual,OPEN ZONA 2 3 BANDES,Tres bandes,False,2014-15
+I22,individual,OPEN CIUTAT SANT ADRIÀ,Tres bandes,True,2014-15
+I23,individual,II MEMORIAL MIQUEL ESPONA,Tres bandes,True,2015-16
+I24,individual,CAMPIONAT CATALUNYA 3 BANDES,Tres bandes,False,2015-16
+I25,individual,CAMPIONAT CATALUNYA BANDA,Banda,False,2015-16
+I26,individual,CAMPIONAT CATALUNYA QUADRE 47/2,Quadre 47/2,False,2015-16
+I27,individual,CAMPIONAT CATALUNYA LLIURE,Lliure,False,2015-16
+I28,individual,CAMPIONAT CATALUNYA QUADRE 71/2,Quadre 71/2,False,2015-16
+I29,individual,CAMPIONAT CATALUNYA 5 QUILLES,5 quilles,False,
+I30,individual,CAMPIONAT CATALUNYA ARTISTIC,Artístic,False,
+I31,individual,CAMPIONAT CATALUNYA BIATLO,Biathló,False,
+I32,individual,IX OPEN VILA DE TORREDEMBARRA,Tres bandes,True,2015-16
+I33,individual,HOMENATGE ANTONI MAYMÓ,Tres bandes,True,2015-16
+I34,individual,I OPEN C.B. MONFORTE,Tres bandes,True,2015-16
+I35,individual,"OPEN MANRESA ""MISTERIOSA LLUM""",Tres bandes,True,2015-16
+I40,individual,"V OPEN MATARÓ ""LES SANTES""",Tres bandes,True,2015-16
+I41,individual,LLIURE,Lliure,False,2016-17
+I42,individual,I OPEN CIUTAT DE VIC,Tres bandes,True,2016-17
+I43,individual,TRES BANDES,Tres bandes,False,2016-17
+I44,individual,BANDA,Banda,False,2016-17
+I45,individual,III OPEN CIUTAT DE SANT ADRIÀ,Tres bandes,True,2016-17
+I46,individual,QUADRE 71/2,Quadre 71/2,False,2016-17
+I47,individual,QUADRE 47/2,Quadre 47/2,False,2016-17
+I48,individual,5 QUILLES,5 quilles,False,
+I49,individual,XIV OPEN CIUTAT DE MANRESA,Tres bandes,True,2016-17
+I50,individual,BIATHLÓ,Biathló,False,
+I51,individual,II OPEN C.B. MONFORTE,Tres bandes,True,2016-17
+I52,individual,"VI OPEN MATARÓ ""LES SANTES""",Tres bandes,True,2016-17
+I53,individual,3 BANDES,Tres bandes,False,2017-18
+I54,individual,II OPEN CIUTAT DE VIC,Tres bandes,True,2017-18
+I55,individual,X OPEN VILA DE TORREDEMBARRA,Tres bandes,True,2017-18
+I56,individual,LLIURE,Lliure,False,2017-18
+I57,individual,QUADRE 47/2,Quadre 47/2,False,2017-18
+I58,individual,QUADRE 71/2,Quadre 71/2,False,2017-18
+I59,individual,BANDA,Banda,False,2017-18
+I60,individual,XVIII MEMORIAL JOAQUIM DOMINGO,Tres bandes,True,2017-18
+I61,individual,5 QUILLES,5 quilles,False,
+I62,individual,BIATHLÓ,Biathló,False,
+I63,individual,XV OPEN CIUTAT DE MANRESA,Tres bandes,True,2017-18
+I64,individual,OPEN QUADRE 47/2 LLEIDA,Quadre 47/2,False,2017-18
+I65,individual,IV OPEN CIUTAT DE SANT ADRIÀ,Tres bandes,True,2017-18
+I66,individual,VI OPEN CIUTAT DE MATARÓ,Tres bandes,True,2017-18
+I67,individual,III OPEN CIUTAT DE VIC,Tres bandes,True,2018-19
+I68,individual,X OPEN PROVINCIAL,Tres bandes,True,2018-19
+I69,individual,3 BANDES,Tres bandes,False,2018-19
+I70,individual,5 QUILLES,5 quilles,False,
+I71,individual,BIATHLÓ,Biathló,False,
+I72,individual,LLIURE,Lliure,False,2018-19
+I73,individual,OPEN BANDA LLEIDA,Banda,False,2018-19
+I74,individual,JUNIOR 3 BANDES MOLLET,Tres bandes,False,2018-19
+I75,individual,QUADRE 71/2,Quadre 71/2,False,2018-19
+I76,individual,OPEN 3 BANDES MOLINS,Tres bandes,False,2018-19
+I77,individual,BANDA,Banda,False,2018-19
+I78,individual,ARTÍSTIC,Artístic,False,
+I79,individual,3 BANDES FEMENÍ,Tres bandes,False,2018-19
+I80,individual,XVI CIUTAT DE MANRESA,Tres bandes,True,2018-19
+I81,individual,QUADRE 47/2,Quadre 47/2,False,2018-19
+I82,individual,OPEN LLIURE MANRESA,Lliure,False,2018-19
+I83,individual,OPEN QUADRE 47/2 SANTS,Quadre 47/2,False,2018-19
+I84,individual,LLIURE JUNIOR 4 BOLES,Lliure,False,2018-19
+I85,individual,IV OPEN CIUTAT DE VIC,Tres bandes,True,2018-19
+I86,individual,VIII OPEN CIUTAT DE MATARÓ,Tres bandes,True,2018-19
+I87,individual,OPEN 3 BANDES MOLINS,Tres bandes,False,2019-20
+I88,individual,3 BANDES,Tres bandes,False,2019-20
+I89,individual,OPEN 3 BANDES TORREDEMBARRA,Tres bandes,False,2019-20
+I90,individual,LLIURE,Lliure,False,2019-20
+I91,individual,5 QUILLES,5 quilles,False,
+I92,individual,BIATHLÓ,Biathló,False,
+I93,individual,3 BANDES JUNIOR,Tres bandes,False,
+I94,individual,3 BANDES JUNIOR,Tres bandes,False,2019-20
+I95,individual,QUADRE 71/2,Quadre 71/2,False,2019-20
+I96,individual,OPEN 3 BANDES LLINARS,Tres bandes,False,2019-20
+I97,individual,BANDA,Banda,False,2019-20
+I98,individual,OPEN LLIURE MONT-ROIG,Lliure,False,2019-20
+I99,individual,ARTÌSTIC MANRESA,Artístic,False,
+I100,individual,QUADRE 47/2,Quadre 47/2,False,2019-20
+I101,individual,OPEN 3 BANDES MANRESA,Tres bandes,False,2019-20
+I102,individual,3 BANDES FEMENÍ,Tres bandes,False,2019-20
+I103,individual,3 BANDES,Tres bandes,False,2020-21
+I105,individual,QUADRE 47/2,Quadre 47/2,False,2020-21
+I106,individual,5 QUILLES,5 quilles,False,
+I107,individual,BIATHLÓ,Biathló,False,
+I108,individual,LLIURE,Lliure,False,2020-21
+I109,individual,TRES BANDES JUNIOR,Tres bandes,False,
+I110,individual,BANDA,Banda,False,2020-21
+I111,individual,ABSOLUT TRES BANDES CATALUNYA,Tres bandes,False,2020-21
+I112,individual,ABSOLUT QUADRE 71/2 CATALUNYA,Quadre 71/2,False,2020-21
+I113,individual,ABSOLUT QUADRE 47/2 CATALUNYA,Quadre 47/2,False,2020-21
+I114,individual,ARTÍSTIC,Artístic,False,
+I115,individual,QUADRE 71/2,Quadre 71/2,False,2020-21
+I116,individual,TRES BANDES FEMENÍ,Tres bandes,False,2020-21
+I117,individual,ABSOLUT BANDA CATALUNYA,Banda,False,2020-21
+I118,individual,OPEN TRES BANDES MATARÓ LES SANTES,Tres bandes,False,
+I119,individual,IX OPEN MATARÓ,Tres bandes,True,2020-21
+I120,individual,TRES BANDES,Tres bandes,False,2021-22
+I121,individual,LLIURE,Lliure,False,2021-22
+I122,individual,5 QUILLES,5 quilles,False,
+I123,individual,TRES BANDES JUNIOR,Tres bandes,False,2021-22
+I124,individual,BIATHLÓ,Biathló,False,
+I125,individual,TRES BANDES FEMENÍ,Tres bandes,False,2021-22
+I126,individual,QUADRE 71/2,Quadre 71/2,False,2021-22
+I127,individual,ARTÍSTIC,Artístic,False,
+I128,individual,OPEN TRES BANDES SANT ADRIÀ,Tres bandes,False,2021-22
+I129,individual,BANDA,Banda,False,2021-22
+I130,individual,QUADRE 47/2,Quadre 47/2,False,2021-22
+I131,individual,OPEN TRES BANDES MANRESA,Tres bandes,False,2021-22
+I132,individual,OPEN TRES BANDES VIC,Tres bandes,False,2021-22
+I133,individual,OPEN TRES BANDES MATARÓ,Tres bandes,False,2021-22
+I134,individual,TRES BANDES,Tres bandes,False,2022-23
+I135,individual,QUADRE 47/2,Quadre 47/2,False,2022-23
+I136,individual,5 QUILLES,5 quilles,False,
+I137,individual,LLIURE,Lliure,False,2022-23
+I138,individual,ARTÍSTIC,Artístic,False,
+I139,individual,ARTÍSTIC,Artístic,False,
+I140,individual,QUADRE 71/2,Quadre 71/2,False,2022-23
+I141,individual,OPEN TRES BANDES SANT ADRIÀ,Tres bandes,False,2022-23
+I142,individual,TRES BANDES JUNIOR,Tres bandes,False,2022-23
+I143,individual,BANDA,Banda,False,2022-23
+I145,individual,TRES BANDES FEMENÍ,Tres bandes,False,2022-23
+I146,individual,OPEN TRES BANDES MANRESA,Tres bandes,False,2022-23
+I147,individual,OPEN TRES BANDES SANTS,Tres bandes,False,2022-23
+I148,individual,BIATHLÓ,Biathló,False,
+I149,individual,OPEN TRES BANDES COSTA DAURADA,Tres bandes,False,2022-23
+I150,individual,OPEN TRES BANDES MATARÓ,Tres bandes,False,2022-23
+I151,individual,TRES BANDES,Tres bandes,False,2023-24
+I152,individual,LLIURE,Lliure,False,2023-24
+I153,individual,5 QUILLES,5 quilles,False,
+I154,individual,OPEN TRES BANDES LLINARS,Tres bandes,False,2023-24
+I155,individual,QUADRE 47/2,Quadre 47/2,False,2022-23
+I156,individual,QUADRE 71/2,Quadre 71/2,False,2023-24
+I157,individual,OPEN TRES BANDES SANT ADRIÀ,Tres bandes,False,2023-24
+I158,individual,BANDA,Banda,False,2023-24
+I159,individual,ARTISTIC,Artístic,False,
+I160,individual,TRES BANDES FEMENÍ,Tres bandes,False,2023-24
+I161,individual,TRES BANDES JUNIOR,Tres bandes,False,2023-24
+I162,individual,OPEN TRES BANDES MANRESA,Tres bandes,False,2023-24
+I163,individual,OPEN TRES BANDES SANTS,Tres bandes,False,2023-24
+I164,individual,BIATHLÓ,Biathló,False,
+I165,individual,OPEN LLIURE CANET,Lliure,False,2023-24
+I166,individual,OPEN TRES BANDES COSTA DAURADA,Tres bandes,False,2023-24
+I167,individual,OPEN TRES BANDES MATARÓ,Tres bandes,False,2023-24
+I168,individual,QUADRE 47/2,Quadre 47/2,False,2024-25
+I169,individual,LLIURE,Lliure,False,2024-25
+I170,individual,5 QUILLES,5 quilles,False,
+I171,individual,OPEN TRES BANDES LLINARS,Tres bandes,False,2024-25
+I172,individual,TRES BANDES,Tres bandes,False,2024-25
+I173,individual,OPEN SANTS QUADRE 47/2,Quadre 47/2,False,2024-25
+I174,individual,OPEN TRES BANDES SANT ADRIÀ 2024,Tres bandes,False,2024-25
+I175,individual,ARTISTIC,Artístic,False,
+I176,individual,OPEN LLIURE CANET,Lliure,False,2024-25
+I177,individual,OPEN 600 LLINARS,Tres bandes,True,2024-25
+I178,individual,BANDA,Banda,False,2024-25
+I179,individual,QUADRE 71/2,Quadre 71/2,False,2024-25
+I180,individual,OPEN TRES BANDES MANRESA,Tres bandes,False,2024-25
+I181,individual,BIATHLÓ,Biathló,False,
+I182,individual,TRES BANDES FEMENI,Tres bandes,False,2024-25
+I183,individual,TRES BANDES JUNIOR,Tres bandes,False,2024-25
+I184,individual,OPEN TRES BANDES SANTS,Tres bandes,False,2024-25
+I185,individual,OPEN QUADRE 47/2 CERDANYOLA,Quadre 47/2,False,2024-25
+I186,individual,OPEN COSTA DAURADA,Tres bandes,True,2024-25
+I187,individual,OPEN MATARO,Tres bandes,True,2024-25
+I188,individual,BANDA,Banda,False,2025-26
+I189,individual,OPEN TRES BANDES LLINARS,Tres bandes,False,2025-26
+I190,individual,LLIURE,Lliure,False,2025-26
+I191,individual,OPEN QUADRE 71/2 PUNT D'ATAC,Quadre 71/2,False,2025-26
+I192,individual,TRES BANDES,Tres bandes,False,2025-26
+I193,individual,5 QUILLES,5 quilles,False,
+I194,individual,QUADRE 47/2,Quadre 47/2,False,2025-26
+I195,individual,OPEN FEMENI TRES BANDES MATARO,Tres bandes,False,2025-26
+I196,individual,OPEN TRES BANDES SANT ADRIÀ,Tres bandes,False,2025-26
+I197,individual,ARTISTIC,Artístic,False,
+I198,individual,SNOOKER,Altres,False,
+I199,individual,OPEN FEMENI TRES BANDES BANYOLES,Tres bandes,False,2025-26
+I200,individual,TRES BANDES FEMENI,Tres bandes,False,2025-26
+I201,individual,TRES BANDES JUNIOR,Tres bandes,False,2025-26
+I202,individual,QUADRE 71/2,Quadre 71/2,False,2025-26
+I203,individual,OPEN FEMENI TRES BANDES CANET,Tres bandes,False,2025-26
+I204,individual,OPEN TRES BANDES MANRESA,Tres bandes,False,2025-26
+I205,individual,OPEN ARTISTIC DE BLANES,Artístic,False,
+I206,individual,OPEN TRES BANDES SANTS,Tres bandes,False,2025-26
+I207,individual,BIATHLO,Biathló,False,
+I208,individual,OPEN FEMENI TRES BANDES UNIO CORAL,Tres bandes,False,2025-26
+I209,individual,OPEN TRES BANDES COSTA DAURADA,Tres bandes,False,2025-26
+I210,individual,OPEN QUADRE 47/2 SANTS,Quadre 47/2,False,2025-26
+I211,individual,OPEN TRES BANDES MATARO,Tres bandes,False,2025-26
+I216,individual,TRES BANDES INDIVIDUAL,Tres bandes,False,2026-27
+I217,individual,OPEN LLIURE PUNT D'ATAC,Lliure,False,2026-27
+I218,individual,QUADRE 47/2,Quadre 47/2,False,2026-27
+I219,individual,OPEN BANDA GRANOLLERS,Banda,False,2026-27
+I220,individual,BIATHLO,Biathló,False,

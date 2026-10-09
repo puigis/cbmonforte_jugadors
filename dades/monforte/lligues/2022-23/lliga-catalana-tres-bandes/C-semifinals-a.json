@@ -1,0 +1,106 @@
+{
+ "equip": "C.B. Monforte \"C\"",
+ "equip_original": "C.B. MONFORTE \"C\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Semifinals \"A\"",
+ "modalitat": "Tres bandes",
+ "temporada": "2022-23",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "gil-perez-albert",
+   "name": "Gil Pérez, Albert",
+   "initials": {
+    "Tres bandes": "0.592"
+   },
+   "initial": "0.592"
+  },
+  {
+   "id": "lopez-gallego-cristian",
+   "name": "López Gallego, Cristian",
+   "initials": {
+    "Tres bandes": "0.630"
+   },
+   "initial": "0.630"
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "initials": {
+    "Tres bandes": "0.433"
+   },
+   "initial": "0.433"
+  },
+  {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "initials": {
+    "Tres bandes": "0.481"
+   },
+   "initial": "0.481"
+  }
+ ],
+ "matches": [
+  {
+   "id": "jQUARTS DE FINAL",
+   "jornada": "QUARTS DE FINAL",
+   "date": "2023-05-13",
+   "rival": "C.B. BANYOLES \"B\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "gil-perez-albert",
+     "car": 30,
+     "ent": 47,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ramirez Mateos, Eduard",
+     "car_rival": 28
+    },
+    {
+     "pid": "lopez-gallego-cristian",
+     "car": 18,
+     "ent": 31,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rodriguez Jiménez, Eduard",
+     "car_rival": 30
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 27,
+     "ent": 49,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sanglás Puig, Salvi",
+     "car_rival": 30
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 15,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Restrepo Hernández, Carlos",
+     "car_rival": 13
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "QUARTS DE FINAL",
+   "date": "2023-05-13",
+   "rival": "C.B. BANYOLES \"B\"",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

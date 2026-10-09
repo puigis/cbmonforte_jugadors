@@ -1,0 +1,684 @@
+{
+ "updated": "2026-10-09T06:17+00:00",
+ "equips": [
+  {
+   "temporada": "2026-27",
+   "competicio": "Lliga Catalana Tres Bandes · Honor · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2026-27/lliga-catalana-tres-bandes/B.json"
+  },
+  {
+   "temporada": "2026-27",
+   "competicio": "Lliga Catalana Tres Bandes · Honor · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2026-27/lliga-catalana-tres-bandes/A.json"
+  },
+  {
+   "temporada": "2026-27",
+   "competicio": "Lliga Catalana Tres Bandes · 4a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"E\"",
+   "lletra": "E",
+   "fitxer": "monforte/lligues/2026-27/lliga-catalana-tres-bandes/E.json"
+  },
+  {
+   "temporada": "2026-27",
+   "competicio": "Lliga Catalana Tres Bandes · 3a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"D\"",
+   "lletra": "D",
+   "fitxer": "monforte/lligues/2026-27/lliga-catalana-tres-bandes/D.json"
+  },
+  {
+   "temporada": "2026-27",
+   "competicio": "Lliga Catalana Tres Bandes · 1a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2026-27/lliga-catalana-tres-bandes/C.json"
+  },
+  {
+   "temporada": "2025-26",
+   "competicio": "LLIGA CATALANA TRES BANDES · Honor · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2025-26/lliga-catalana-tres-bandes/A.json"
+  },
+  {
+   "temporada": "2025-26",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"E\"",
+   "lletra": "E",
+   "fitxer": "monforte/lligues/2025-26/lliga-catalana-tres-bandes/E.json"
+  },
+  {
+   "temporada": "2025-26",
+   "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"D\"",
+   "lletra": "D",
+   "fitxer": "monforte/lligues/2025-26/lliga-catalana-tres-bandes/D.json"
+  },
+  {
+   "temporada": "2025-26",
+   "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2025-26/lliga-catalana-tres-bandes/C.json"
+  },
+  {
+   "temporada": "2025-26",
+   "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2025-26/lliga-catalana-tres-bandes/B.json"
+  },
+  {
+   "temporada": "2025-26",
+   "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Final 1A Divisió",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2025-26/lliga-catalana-tres-bandes/B-final-1a-divisio.json"
+  },
+  {
+   "temporada": "2024-25",
+   "competicio": "LLIGA CATALANA TRES BANDES · Honor · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C. B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2024-25/lliga-catalana-tres-bandes/A.json"
+  },
+  {
+   "temporada": "2024-25",
+   "competicio": "LLIGA CATALANA TRES BANDES · Honor · Final Honor",
+   "modalitat": "Tres bandes",
+   "equip": "C. B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2024-25/lliga-catalana-tres-bandes/A-final-honor.json"
+  },
+  {
+   "temporada": "2024-25",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"E\"",
+   "lletra": "E",
+   "fitxer": "monforte/lligues/2024-25/lliga-catalana-tres-bandes/E.json"
+  },
+  {
+   "temporada": "2024-25",
+   "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"D\"",
+   "lletra": "D",
+   "fitxer": "monforte/lligues/2024-25/lliga-catalana-tres-bandes/D.json"
+  },
+  {
+   "temporada": "2024-25",
+   "competicio": "LLIGA CATALANA TRES BANDES · 2a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2024-25/lliga-catalana-tres-bandes/C.json"
+  },
+  {
+   "temporada": "2024-25",
+   "competicio": "LLIGA CATALANA TRES BANDES · 2a Divisió · Final 2A Divisió",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2024-25/lliga-catalana-tres-bandes/C-final-2a-divisio.json"
+  },
+  {
+   "temporada": "2024-25",
+   "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2024-25/lliga-catalana-tres-bandes/B.json"
+  },
+  {
+   "temporada": "2023-24",
+   "competicio": "LLIGA CATALANA TRES BANDES · 5a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"E\"",
+   "lletra": "E",
+   "fitxer": "monforte/lligues/2023-24/lliga-catalana-tres-bandes/E.json"
+  },
+  {
+   "temporada": "2023-24",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"D\"",
+   "lletra": "D",
+   "fitxer": "monforte/lligues/2023-24/lliga-catalana-tres-bandes/D.json"
+  },
+  {
+   "temporada": "2023-24",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2023-24/lliga-catalana-tres-bandes/C.json"
+  },
+  {
+   "temporada": "2023-24",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Final 4A Divisió",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2023-24/lliga-catalana-tres-bandes/C-final-4a-divisio.json"
+  },
+  {
+   "temporada": "2023-24",
+   "competicio": "LLIGA CATALANA TRES BANDES · 2a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2023-24/lliga-catalana-tres-bandes/B.json"
+  },
+  {
+   "temporada": "2023-24",
+   "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C. B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2023-24/lliga-catalana-tres-bandes/A.json"
+  },
+  {
+   "temporada": "2022-23",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Semifinals \"A\"",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2022-23/lliga-catalana-tres-bandes/C-semifinals-a.json"
+  },
+  {
+   "temporada": "2022-23",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup C",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2022-23/lliga-catalana-tres-bandes/C.json"
+  },
+  {
+   "temporada": "2022-23",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"D\"",
+   "lletra": "D",
+   "fitxer": "monforte/lligues/2022-23/lliga-catalana-tres-bandes/D.json"
+  },
+  {
+   "temporada": "2022-23",
+   "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2022-23/lliga-catalana-tres-bandes/B.json"
+  },
+  {
+   "temporada": "2022-23",
+   "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Final 3A Divisió",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2022-23/lliga-catalana-tres-bandes/B-final-3a-divisio.json"
+  },
+  {
+   "temporada": "2022-23",
+   "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2022-23/lliga-catalana-tres-bandes/A.json"
+  },
+  {
+   "temporada": "2021-22",
+   "competicio": "LLIGA CATALANA TRES BANDES · Promoció A 1a · Únic",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2021-22/lliga-catalana-tres-bandes/A-unic.json"
+  },
+  {
+   "temporada": "2021-22",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup C",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2021-22/lliga-catalana-tres-bandes/C.json"
+  },
+  {
+   "temporada": "2021-22",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"D\"",
+   "lletra": "D",
+   "fitxer": "monforte/lligues/2021-22/lliga-catalana-tres-bandes/D.json"
+  },
+  {
+   "temporada": "2021-22",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Final 4A Divisió",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2021-22/lliga-catalana-tres-bandes/C-final-4a-divisio.json"
+  },
+  {
+   "temporada": "2021-22",
+   "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2021-22/lliga-catalana-tres-bandes/B.json"
+  },
+  {
+   "temporada": "2021-22",
+   "competicio": "LLIGA CATALANA TRES BANDES · 2a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2021-22/lliga-catalana-tres-bandes/A.json"
+  },
+  {
+   "temporada": "2021-22",
+   "competicio": "LLIGA CATALANA TRES BANDES · 2a Divisió · Final 2A Divisió",
+   "modalitat": "Tres bandes",
+   "equip": "C.B. MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2021-22/lliga-catalana-tres-bandes/A-final-2a-divisio.json"
+  },
+  {
+   "temporada": "2020-21",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"D\"",
+   "lletra": "D",
+   "fitxer": "monforte/lligues/2020-21/lliga-catalana-tres-bandes/D.json"
+  },
+  {
+   "temporada": "2020-21",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2020-21/lliga-catalana-tres-bandes/C.json"
+  },
+  {
+   "temporada": "2020-21",
+   "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Final 4A",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2020-21/lliga-catalana-tres-bandes/C-final-4a.json"
+  },
+  {
+   "temporada": "2020-21",
+   "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2020-21/lliga-catalana-tres-bandes/B.json"
+  },
+  {
+   "temporada": "2020-21",
+   "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Final 3A",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2020-21/lliga-catalana-tres-bandes/B-final-3a.json"
+  },
+  {
+   "temporada": "2020-21",
+   "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Promoció 1A",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2020-21/lliga-catalana-tres-bandes/A-promocio-1a.json"
+  },
+  {
+   "temporada": "2020-21",
+   "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2020-21/lliga-catalana-tres-bandes/A.json"
+  },
+  {
+   "temporada": "2019-20",
+   "competicio": "LLIGA CATALANA 3 BANDES · 4a Divisió · Grup D",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE C",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2019-20/lliga-catalana-3-bandes/C.json"
+  },
+  {
+   "temporada": "2019-20",
+   "competicio": "LLIGA CATALANA 3 BANDES · 4a Divisió · Grup C",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE B",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2019-20/lliga-catalana-3-bandes/B.json"
+  },
+  {
+   "temporada": "2019-20",
+   "competicio": "LLIGA CATALANA 3 BANDES · 4a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE D",
+   "lletra": "D",
+   "fitxer": "monforte/lligues/2019-20/lliga-catalana-3-bandes/D.json"
+  },
+  {
+   "temporada": "2019-20",
+   "competicio": "LLIGA CATALANA 3 BANDES · 1º Divisió · Grup B",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE A",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2019-20/lliga-catalana-3-bandes/A.json"
+  },
+  {
+   "temporada": "2018-19",
+   "competicio": "LLIGA CATALANA 3 BANDES · Promoció A 1a · Grup Ùnic",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE A",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2018-19/lliga-catalana-3-bandes/A-grup-unic.json"
+  },
+  {
+   "temporada": "2018-19",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup E",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE C",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2018-19/lliga-catalana-3-bandes/C.json"
+  },
+  {
+   "temporada": "2018-19",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup D",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE B",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2018-19/lliga-catalana-3-bandes/B.json"
+  },
+  {
+   "temporada": "2018-19",
+   "competicio": "LLIGA CATALANA 3 BANDES · 2a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE A",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2018-19/lliga-catalana-3-bandes/A.json"
+  },
+  {
+   "temporada": "2018-19",
+   "competicio": "LLIGA CATALANA 3 BANDES · 2a Divisió · Final 2A Divisió",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE A",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2018-19/lliga-catalana-3-bandes/A-final-2a-divisio.json"
+  },
+  {
+   "temporada": "2017-18",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup F",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2017-18/lliga-catalana-3-bandes/C.json"
+  },
+  {
+   "temporada": "2017-18",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup D",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2017-18/lliga-catalana-3-bandes/B.json"
+  },
+  {
+   "temporada": "2017-18",
+   "competicio": "LLIGA CATALANA 3 BANDES · 1a Divisió · Grup Unic",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2017-18/lliga-catalana-3-bandes/A.json"
+  },
+  {
+   "temporada": "2017-18",
+   "competicio": "LLIGA CATALANA 3 BANDES · 1a Divisió · Grup C",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2017-18/lliga-catalana-3-bandes/A-grup-c.json"
+  },
+  {
+   "temporada": "2016-17",
+   "competicio": "LLIGA CATALANA 3 BANDES · Promoció A 1a · Grup Unic",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2016-17/lliga-catalana-3-bandes/A-grup-unic.json"
+  },
+  {
+   "temporada": "2016-17",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup E",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2016-17/lliga-catalana-3-bandes/B.json"
+  },
+  {
+   "temporada": "2016-17",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup D",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2016-17/lliga-catalana-3-bandes/C.json"
+  },
+  {
+   "temporada": "2016-17",
+   "competicio": "LLIGA CATALANA 3 BANDES · 1a Divisió · Grup Unic",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2016-17/lliga-catalana-3-bandes/A.json"
+  },
+  {
+   "temporada": "2016-17",
+   "competicio": "LLIGA CATALANA 3 BANDES · 1a Divisió · Grup C",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2016-17/lliga-catalana-3-bandes/A-grup-c.json"
+  },
+  {
+   "temporada": "2015-16",
+   "competicio": "LLIGA CATALANA 3 BANDES · Promoció A 1a · Grup Unic",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2015-16/lliga-catalana-3-bandes/A-grup-unic.json"
+  },
+  {
+   "temporada": "2015-16",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup F",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"B\"",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2015-16/lliga-catalana-3-bandes/B.json"
+  },
+  {
+   "temporada": "2015-16",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup D",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"C\"",
+   "lletra": "C",
+   "fitxer": "monforte/lligues/2015-16/lliga-catalana-3-bandes/C.json"
+  },
+  {
+   "temporada": "2015-16",
+   "competicio": "LLIGA CATALANA 3 BANDES · 1a Divisió · Grup Unic",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2015-16/lliga-catalana-3-bandes/A.json"
+  },
+  {
+   "temporada": "2015-16",
+   "competicio": "LLIGA CATALANA 3 BANDES · 1a Divisió · Grup C",
+   "modalitat": "Tres bandes",
+   "equip": "MONFORTE \"A\"",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2015-16/lliga-catalana-3-bandes/A-grup-c.json"
+  },
+  {
+   "temporada": "2014-15",
+   "competicio": "LLIGA CATALANA 3 BANDES · Promoció A 2a · Grup Unic",
+   "modalitat": "Tres bandes",
+   "equip": "04 C.B. MONFORTE B",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2014-15/lliga-catalana-3-bandes/B-grup-unic.json"
+  },
+  {
+   "temporada": "2014-15",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup E",
+   "modalitat": "Tres bandes",
+   "equip": "04 C.B. MONFORTE B",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2014-15/lliga-catalana-3-bandes/B.json"
+  },
+  {
+   "temporada": "2014-15",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Final Ko",
+   "modalitat": "Tres bandes",
+   "equip": "04 C.B. MONFORTE B",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2014-15/lliga-catalana-3-bandes/B-final-ko.json"
+  },
+  {
+   "temporada": "2014-15",
+   "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Final Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "04 C.B. MONFORTE B",
+   "lletra": "B",
+   "fitxer": "monforte/lligues/2014-15/lliga-catalana-3-bandes/B-final-grup-a.json"
+  },
+  {
+   "temporada": "2014-15",
+   "competicio": "LLIGA CATALANA 3 BANDES · 2a Divisió · Grup A",
+   "modalitat": "Tres bandes",
+   "equip": "02 C.B. MONFORTE A",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2014-15/lliga-catalana-3-bandes/A.json"
+  },
+  {
+   "temporada": "2014-15",
+   "competicio": "LLIGA CATALANA 3 BANDES · 2a Divisió · Final",
+   "modalitat": "Tres bandes",
+   "equip": "02 C.B. MONFORTE A",
+   "lletra": "A",
+   "fitxer": "monforte/lligues/2014-15/lliga-catalana-3-bandes/A-final.json"
+  }
+ ],
+ "modalitats": [
+  {
+   "modalitat": "Banda",
+   "jugadors": 18,
+   "partides": 243,
+   "fitxer": "monforte/modalitats/banda.json"
+  },
+  {
+   "modalitat": "Lliure",
+   "jugadors": 16,
+   "partides": 146,
+   "fitxer": "monforte/modalitats/lliure.json"
+  },
+  {
+   "modalitat": "Quadre 47/2",
+   "jugadors": 15,
+   "partides": 124,
+   "fitxer": "monforte/modalitats/quadre-47-2.json"
+  },
+  {
+   "modalitat": "Quadre 71/2",
+   "jugadors": 1,
+   "partides": 2,
+   "fitxer": "monforte/modalitats/quadre-71-2.json"
+  },
+  {
+   "modalitat": "Tres bandes",
+   "jugadors": 77,
+   "partides": 4061,
+   "fitxer": "monforte/modalitats/tres-bandes.json"
+  }
+ ],
+ "jugadors_actuals": [
+  "Abegón Fortet, David",
+  "Abellan Aviles, Josep",
+  "Adell Casarramona, Pere",
+  "Alcoberro Melero, David",
+  "Barragán De La Cruz, Luis",
+  "Bonet Moreno, Pau",
+  "Campos González, Jºmª",
+  "Canals Ibáñez, Xavier",
+  "Cano Poirrier Lalanne, Santiago",
+  "Cardona Gallego, Julián Alberto",
+  "Castro Téllez, Henry",
+  "Cervera Sans, Gabriel",
+  "Chenoll Castro, Enric",
+  "Chuecos Enriquez, Luis",
+  "Conejero Alcázar, Francisco",
+  "Costa Gásquez, Sergi",
+  "Donat Garay, Arcadi",
+  "Fàbregas Fontanet, Antoni",
+  "Fariña Villanueva, Francisco",
+  "Fernández Núñez, Manuel",
+  "Fonellosa Caro, Aleix",
+  "Fonellosa Casanovas, Xavier",
+  "García Alarcón, Ricardo",
+  "García Cañadas, Marco Antonio",
+  "García Zaldivar, Ricardo",
+  "Gili Bertral, Joan",
+  "Giménez Escrig Miquel",
+  "Gómez Vera, Javier",
+  "Hernández Falco, Ignasi",
+  "Hernandez Giraldo, Fabian Alberto",
+  "Juárez De Alarcón, Jorge",
+  "Lafarga Roca, Oscar",
+  "Leyton Cortes, Santiago",
+  "López Gallego, Cristian",
+  "Lozano Herrero, Manuel",
+  "Lozano Villegas, Mauricio",
+  "Mejia Arias, Duvan",
+  "Montaña Pérez, Joan",
+  "Morales Carmona, Diego Fernando",
+  "Morlesin Chacón, José",
+  "Muñoz López, Javier",
+  "Obando Quintero, Carlos Ariel",
+  "Oliver Sinca, Jordi",
+  "Oquendo Rave, Carlos Andrés",
+  "Pardo Soriano, Anna",
+  "Pardo Soriano, David",
+  "Perez Conesa, Francisco",
+  "Puig Latre, Isaac",
+  "Rocha Vera, Jeferson",
+  "Rodríguez Sánchez, César",
+  "Sánchez Trigueros, Jaime",
+  "Santiago Flores, Juan José",
+  "Segura Gonzálvez, Fernando",
+  "Segura Mondriá, Francesc Xavier",
+  "Tirado Gutierrez, Francisco",
+  "Tormo Calatayud, Jorge",
+  "Vargas Buitrago, César",
+  "Villate Malagón, Brian Steven",
+  "Zabaleta Campo, Roberto Carlos",
+  "Zambrano Barón, Juan Sebastián",
+  "Zuleta Giraldo, John Jairo"
+ ]
+}

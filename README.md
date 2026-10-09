@@ -27,16 +27,29 @@ El CB Monforte és el club amb identificador **2**.
 
 ## Fitxers de dades (`dades/`)
 
+Taules generals (tota la Federació, totes les temporades des del 2012):
+
 | Fitxer | Què conté |
 |---|---|
-| `lligues.csv` | Cada lliga: modalitat i temporada |
-| `grups.csv` | Divisions i grups on juga algun equip del Monforte |
-| `jornades.csv` | Número i data de cada jornada |
-| `encontres.csv` | Resultats equip contra equip |
-| `partides.csv` | Resultats jugador contra jugador |
-| `classificacions.csv` | Classificació de cada grup |
+| `competicions.csv` | Totes les lligues i competicions individuals, amb modalitat i temporada |
+| `jugadors.csv` | Tots els jugadors, el club actual, l'historial de clubs i si són del Monforte |
+| `partides.csv` | Totes les partides jugador contra jugador (lligues i individuals) |
+| `encontres.csv` | Encontres de lliga equip contra equip |
+| `classificacions_lliga.csv` | Classificacions dels grups de lliga |
+| `classificacions_individuals.csv` | Classificacions finals de les competicions individuals |
+| `rankings.csv` | Tots els rànquings de la Federació (3 bandes, banda, lliure, quadre 47/2 i 71/2) |
 
-Es guarden els grups complets (també els equips rivals) perquè les classificacions i les imatges tinguin tota la informació.
+Fitxers per a l'app del club (`dades/monforte/`):
+
+| Fitxer | Què conté |
+|---|---|
+| `index.json` | Llista de tots els fitxers disponibles i dels jugadors actuals del club |
+| `lligues/<temporada>/<lliga>/<equip>.json` | Un fitxer per equip (A, B, C, D, E…), amb el mateix format que l'app Monforte C |
+| `modalitats/<modalitat>.json` | Per a cada modalitat: jugadors del Monforte, estadístiques, rànquing i totes les seves partides |
+
+Notes:
+- La modalitat dels opens que no la diuen al nom es dedueix per la mitjana de les partides (columna `modalitat_deduida`).
+- Biathló, 5 quilles i artístic surten com a competicions, però la Federació no n'ha publicat resultats.
 
 ## Descàrrega de dades
 
@@ -52,5 +65,5 @@ Snooker i pool no surten a la intranet de competició de la Federació; s'afegir
 - [x] Pas 2 · Estructura de dades definida
 - [x] Pas 3 · Script que descarrega totes les dades de la Federació
 - [x] Pas 4 · Automatització amb GitHub Actions
-- [ ] Pas 5 · Organitzar les dades en brut a les taules de `dades/`
+- [x] Pas 5 · Organitzar les dades en taules (`scraper/organitza.py`, s'executa després de cada descàrrega)
 - [ ] Pas 6 · Plantilla i generació d'imatges per a xarxes

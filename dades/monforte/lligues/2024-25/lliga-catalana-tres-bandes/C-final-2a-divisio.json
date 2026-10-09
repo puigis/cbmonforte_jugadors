@@ -1,0 +1,106 @@
+{
+ "equip": "C.B. Monforte \"C\"",
+ "equip_original": "C.B. MONFORTE \"C\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 2a Divisió · Final 2A Divisió",
+ "modalitat": "Tres bandes",
+ "temporada": "2024-25",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "farina-villanueva-francisco",
+   "name": "Fariña Villanueva, Francisco",
+   "initials": {
+    "Tres bandes": "0.729"
+   },
+   "initial": "0.729"
+  },
+  {
+   "id": "lozano-villegas-mauricio",
+   "name": "Lozano Villegas, Mauricio",
+   "initials": {
+    "Tres bandes": "0.522"
+   },
+   "initial": "0.522"
+  },
+  {
+   "id": "munoz-lopez-javier",
+   "name": "Muñoz López, Javier",
+   "initials": {
+    "Tres bandes": "0.593"
+   },
+   "initial": "0.593"
+  },
+  {
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
+   "initials": {
+    "Tres bandes": "0.620"
+   },
+   "initial": "0.620"
+  }
+ ],
+ "matches": [
+  {
+   "id": "jSEMIFINALS",
+   "jornada": "SEMIFINALS",
+   "date": "2025-05-03",
+   "rival": "C.B.ALBA",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "munoz-lopez-javier",
+     "car": 30,
+     "ent": 27,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "García Oliva, Antonio Manuel",
+     "car_rival": 14
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 17,
+     "ent": 44,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Santamaría Barbará, Jordi",
+     "car_rival": 30
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 28,
+     "ent": 50,
+     "sm": 6,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Lindo Alvarado, Enric",
+     "car_rival": 28
+    },
+    {
+     "pid": "lozano-villegas-mauricio",
+     "car": 19,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Torrent Cot, Josep",
+     "car_rival": 25
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "SEMIFINALS",
+   "date": "2025-05-03",
+   "rival": "C.B.ALBA",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

@@ -1,0 +1,182 @@
+{
+ "equip": "C.B. Monforte \"C\"",
+ "equip_original": "C.B. MONFORTE \"C\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 4a Divisió · Final 4A Divisió",
+ "modalitat": "Tres bandes",
+ "temporada": "2021-22",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "initials": {
+    "Tres bandes": "0.462"
+   },
+   "initial": "0.462"
+  },
+  {
+   "id": "cervera-sans-gabriel",
+   "name": "Cervera Sans, Gabriel",
+   "initials": {
+    "Tres bandes": "0.411"
+   },
+   "initial": "0.411"
+  },
+  {
+   "id": "farina-villanueva-francisco",
+   "name": "Fariña Villanueva, Francisco",
+   "initials": {
+    "Tres bandes": "0.729"
+   },
+   "initial": "0.729"
+  },
+  {
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
+   "initials": {
+    "Tres bandes": "0.620"
+   },
+   "initial": "0.620"
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "initials": {
+    "Tres bandes": "0.433"
+   },
+   "initial": "0.433"
+  },
+  {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "initials": {
+    "Tres bandes": "0.481"
+   },
+   "initial": "0.481"
+  }
+ ],
+ "matches": [
+  {
+   "id": "jSEMIFINALS GRUP A",
+   "jornada": "SEMIFINALS GRUP A",
+   "date": "2022-05-07",
+   "rival": "CERVERA",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 29,
+     "ent": 49,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Campaña Comino, Gregori",
+     "car_rival": 30
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 30,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Serarols Montes, Josep",
+     "car_rival": 28
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 28,
+     "ent": 41,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Serrano Fernández, Jordi",
+     "car_rival": 30
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 26,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Longarón Calle, Antoni G.",
+     "car_rival": 22
+    }
+   ]
+  },
+  {
+   "id": "jSEMIFINALS GRUP A",
+   "jornada": "SEMIFINALS GRUP A",
+   "date": "2022-05-07",
+   "rival": "C.B. AMISTAT MOLLERUSSA",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 16,
+     "ent": 38,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martí Sendra, Jordi",
+     "car_rival": 30
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 22,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Bellmunt, Jordi",
+     "car_rival": 27
+    },
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 20,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández Perea, Angel",
+     "car_rival": 22
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 21,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Solé Ruestes, Robert",
+     "car_rival": 13
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "SEMIFINALS GRUP A",
+   "date": "2022-05-07",
+   "rival": "CERVERA",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "SEMIFINALS GRUP A",
+   "date": "2022-05-07",
+   "rival": "C.B. AMISTAT MOLLERUSSA",
+   "venue": "L",
+   "played": true
+  }
+ ]
+}

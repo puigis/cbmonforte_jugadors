@@ -1,0 +1,853 @@
+{
+ "equip": "C.B. Monforte \"B\"",
+ "equip_original": "C.B. MONFORTE \"B\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 1a Divisió · Grup A",
+ "modalitat": "Tres bandes",
+ "temporada": "2024-25",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "bonet-moreno-pau",
+   "name": "Bonet Moreno, Pau",
+   "initials": {
+    "Tres bandes": "0.584"
+   },
+   "initial": "0.584"
+  },
+  {
+   "id": "cardona-gallego-julian-alberto",
+   "name": "Cardona Gallego, Julián Alberto",
+   "initials": {
+    "Tres bandes": "0.636"
+   },
+   "initial": "0.636"
+  },
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "initials": {
+    "Tres bandes": "0.694"
+   },
+   "initial": "0.694"
+  },
+  {
+   "id": "gil-perez-albert",
+   "name": "Gil Pérez, Albert",
+   "initials": {
+    "Tres bandes": "0.592"
+   },
+   "initial": "0.592"
+  },
+  {
+   "id": "juarez-de-alarcon-jorge",
+   "name": "Juárez De Alarcón, Jorge",
+   "initials": {
+    "Tres bandes": "0.644"
+   },
+   "initial": "0.644"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "munoz-lopez-javier",
+   "name": "Muñoz López, Javier",
+   "initials": {
+    "Tres bandes": "0.593"
+   },
+   "initial": "0.593"
+  },
+  {
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
+   "initials": {
+    "Tres bandes": "0.620"
+   },
+   "initial": "0.620"
+  },
+  {
+   "id": "oquendo-rave-carlos-andres",
+   "name": "Oquendo Rave, Carlos Andrés",
+   "initials": {
+    "Tres bandes": "0.694"
+   },
+   "initial": "0.694"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2024-10-05",
+   "rival": "CB LLEIDA \"B\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 43,
+     "sm": 6,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Orrego Cardona, Yibeth Andrés",
+     "car_rival": 35
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 28,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Cardet Calderó, Isidor",
+     "car_rival": 29
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 31,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Bellmunt, Jordi",
+     "car_rival": 34
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 35,
+     "ent": 49,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gracia Rodriguez, Emilio",
+     "car_rival": 28
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2024-10-26",
+   "rival": "SB FOMENT MOLINS \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 23,
+     "ent": 50,
+     "sm": 3,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Gallego, Joel",
+     "car_rival": 23
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 32,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Gómez Morán, Lluis",
+     "car_rival": 35
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 22,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "García García, Jordi",
+     "car_rival": 18
+    },
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 35,
+     "ent": 36,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Santigosa Gasset, Delfí",
+     "car_rival": 17
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2024-11-09",
+   "rival": "C.B. 2000 CERDANYOLA \"A\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 31,
+     "ent": 42,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Muñoz Muñoz, Pere",
+     "car_rival": 35
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 31,
+     "ent": 44,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Soto Oliver, Lluís",
+     "car_rival": 35
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "López López, Saturio",
+     "car_rival": 22
+    },
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 35,
+     "ent": 47,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Majua Peris, Josep Lluis",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2024-11-23",
+   "rival": "BC OLESA",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 14,
+     "ent": 17,
+     "sm": 8,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Yeste De Pablo, Antoni Xavier",
+     "car_rival": 35
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 30,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Casadevall Sardañes, Valero",
+     "car_rival": 28
+    },
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 35,
+     "ent": 26,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Juárez Roldán, José",
+     "car_rival": 10
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 28,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Huanqui Gamarra, Luis",
+     "car_rival": 29
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2024-12-14",
+   "rival": "C.B. BANYOLES \"A\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 27,
+     "ent": 42,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Corominas Franch, Esteve",
+     "car_rival": 35
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 31,
+     "ent": 38,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Maia, Mario Felipe",
+     "car_rival": 35
+    },
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 28,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ametller Congost, Lluis",
+     "car_rival": 32
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 28,
+     "ent": 42,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Restrepo Hernández, Carlos",
+     "car_rival": 35
+    }
+   ]
+  },
+  {
+   "id": "j06",
+   "jornada": "6",
+   "date": "2024-12-21",
+   "rival": "C.B.SANT BOI \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 40,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Rojals Valls, Joan",
+     "car_rival": 21
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 34,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Fernández Fernández, Jorge",
+     "car_rival": 27
+    },
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 28,
+     "ent": 50,
+     "sm": 5,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "López Balboa, Alejandro",
+     "car_rival": 28
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 27,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bargallo Jaume, Josep",
+     "car_rival": 35
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2025-01-11",
+   "rival": "C.B. PRAT \"A",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 38,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bernad Daza, Jaime",
+     "car_rival": 22
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 35,
+     "ent": 47,
+     "sm": 5,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Barrera, Jorge A.",
+     "car_rival": 35
+    },
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 35,
+     "ent": 28,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Iñigo Grisaleña, Alejandro",
+     "car_rival": 25
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 35,
+     "ent": 49,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Valentin German, Ionel",
+     "car_rival": 12
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2025-01-18",
+   "rival": "CB LLEIDA \"B\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 28,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Orrego Cardona, Yibeth Andrés",
+     "car_rival": 33
+    },
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 35,
+     "ent": 45,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Cardet Calderó, Isidor",
+     "car_rival": 26
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 35,
+     "ent": 48,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Martínez Bellmunt, Jordi",
+     "car_rival": 32
+    },
+    {
+     "pid": "munoz-lopez-javier",
+     "car": 35,
+     "ent": 41,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Labrador Codina, Josep",
+     "car_rival": 10
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2025-02-08",
+   "rival": "SB FOMENT MOLINS \"B\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 33,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Tormo Blanco, Félix",
+     "car_rival": 34
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 30,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Gallego, Joel",
+     "car_rival": 35
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 34,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gómez Morán, Lluis",
+     "car_rival": 28
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 24,
+     "ent": 48,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García García, Jordi",
+     "car_rival": 35
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2025-02-22",
+   "rival": "C.B. 2000 CERDANYOLA \"A\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 40,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Soto Oliver, Lluís",
+     "car_rival": 31
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 31,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Barrientos Caballero, Joan Josep",
+     "car_rival": 24
+    },
+    {
+     "pid": "gil-perez-albert",
+     "car": 27,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Mota Calderón, José",
+     "car_rival": 17
+    },
+    {
+     "pid": "bonet-moreno-pau",
+     "car": 35,
+     "ent": 47,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pérez Clariana, Xavier",
+     "car_rival": 12
+    }
+   ]
+  },
+  {
+   "id": "j11",
+   "jornada": "11",
+   "date": "2025-03-01",
+   "rival": "BC OLESA",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 21,
+     "ent": 40,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ros Guarro, Joan",
+     "car_rival": 35
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 27,
+     "ent": 50,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Casadevall Sardañes, Valero",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 35,
+     "ent": 36,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "López Carbonell, Antoni",
+     "car_rival": 23
+    },
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 28,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Delgado Bosch, Jº Mª",
+     "car_rival": 22
+    }
+   ]
+  },
+  {
+   "id": "j12",
+   "jornada": "12",
+   "date": "2025-03-15",
+   "rival": "C.B. BANYOLES \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 29,
+     "ent": 47,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Corominas Franch, Esteve",
+     "car_rival": 35
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 33,
+     "ent": 48,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Maia, Mario Felipe",
+     "car_rival": 35
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 30,
+     "ent": 48,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ametller Congost, Lluis",
+     "car_rival": 35
+    },
+    {
+     "pid": "gil-perez-albert",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Restrepo Hernández, Carlos",
+     "car_rival": 13
+    }
+   ]
+  },
+  {
+   "id": "j14",
+   "jornada": "14",
+   "date": "2025-04-12",
+   "rival": "C.B. PRAT \"A",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "oquendo-rave-carlos-andres",
+     "car": 25,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bernad Daza, Jaime",
+     "car_rival": 28
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 35,
+     "ent": 50,
+     "sm": 8,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Barrera, Jorge A.",
+     "car_rival": 34
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2024-10-05",
+   "rival": "CB LLEIDA \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2024-10-26",
+   "rival": "SB FOMENT MOLINS \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2024-11-09",
+   "rival": "C.B. 2000 CERDANYOLA \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2024-11-23",
+   "rival": "BC OLESA",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2024-12-14",
+   "rival": "C.B. BANYOLES \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2024-12-21",
+   "rival": "C.B.SANT BOI \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "7",
+   "date": "2025-01-11",
+   "rival": "C.B. PRAT \"A",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2025-01-18",
+   "rival": "CB LLEIDA \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2025-02-08",
+   "rival": "SB FOMENT MOLINS \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2025-02-22",
+   "rival": "C.B. 2000 CERDANYOLA \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "11",
+   "date": "2025-03-01",
+   "rival": "BC OLESA",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "12",
+   "date": "2025-03-15",
+   "rival": "C.B. BANYOLES \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "13",
+   "date": "2025-04-05",
+   "rival": "C.B.SANT BOI \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "14",
+   "date": "2025-04-12",
+   "rival": "C.B. PRAT \"A",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

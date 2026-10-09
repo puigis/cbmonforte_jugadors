@@ -1,0 +1,197 @@
+{
+ "equip": "C.B. Monforte \"E\"",
+ "equip_original": "C.B. MONFORTE \"E\"",
+ "competicio": "Lliga Catalana Tres Bandes · 4a Divisió · Grup B",
+ "modalitat": "Tres bandes",
+ "temporada": "2026-27",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "cervera-sans-gabriel",
+   "name": "Cervera Sans, Gabriel",
+   "initials": {
+    "Tres bandes": "0.386"
+   },
+   "initial": "0.386"
+  },
+  {
+   "id": "gili-bertral-joan",
+   "name": "Gili Bertral, Joan",
+   "initials": {
+    "Tres bandes": "0.321"
+   },
+   "initial": "0.321"
+  },
+  {
+   "id": "rodriguez-sanchez-cesar",
+   "name": "Rodríguez Sánchez, César",
+   "initials": {
+    "Tres bandes": "0.318"
+   },
+   "initial": "0.318"
+  },
+  {
+   "id": "tormo-calatayud-jorge",
+   "name": "Tormo Calatayud, Jorge",
+   "initials": {
+    "Tres bandes": "0.360"
+   },
+   "initial": "0.360"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2026-09-26",
+   "rival": "C.B. MONT-ROIG \"D\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Trilleras Cárdenas, David Camilo",
+     "car_rival": 18
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 20,
+     "ent": 41,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Martí Torrente, Damià",
+     "car_rival": 18
+    },
+    {
+     "pid": "gili-bertral-joan",
+     "car": 20,
+     "ent": 45,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Verschelden De Rybel, Luc",
+     "car_rival": 13
+    },
+    {
+     "pid": "rodriguez-sanchez-cesar",
+     "car": 18,
+     "ent": 37,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Moreno Vera, Julià",
+     "car_rival": 20
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2026-09-26",
+   "rival": "C.B. MONT-ROIG \"D\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2026-10-10",
+   "rival": "S.B. LA UNIÓ CORAL \"C\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "3",
+   "date": "2026-10-17",
+   "rival": "C.B. LLINARS \"D\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "4",
+   "date": "2026-11-07",
+   "rival": "C.B. MATARÓ \"D\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "5",
+   "date": "2026-11-21",
+   "rival": "C.B. SANT FELIU \"B\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "6",
+   "date": "2026-12-19",
+   "rival": "C.B.BORGES",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "7",
+   "date": "2027-01-02",
+   "rival": "C.B. BANYOLES \"D\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "8",
+   "date": "2027-01-09",
+   "rival": "C.B. MONT-ROIG \"D\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "9",
+   "date": "2027-01-30",
+   "rival": "S.B. LA UNIÓ CORAL \"C\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "10",
+   "date": "2027-02-20",
+   "rival": "C.B. LLINARS \"D\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "11",
+   "date": "2027-02-27",
+   "rival": "C.B. MATARÓ \"D\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "12",
+   "date": "2027-03-13",
+   "rival": "C.B. SANT FELIU \"B\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "13",
+   "date": "2027-03-20",
+   "rival": "C.B.BORGES",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "14",
+   "date": "2027-04-03",
+   "rival": "C.B. BANYOLES \"D\"",
+   "venue": "F",
+   "played": false
+  }
+ ]
+}

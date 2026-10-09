@@ -1,0 +1,826 @@
+{
+ "equip": "C.B. Monforte \"B\"",
+ "equip_original": "MONFORTE \"B\"",
+ "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup D",
+ "modalitat": "Tres bandes",
+ "temporada": "2017-18",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "abegon-fortet-david",
+   "name": "Abegón Fortet, David",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "chenoll-castro-enric",
+   "name": "Chenoll Castro, Enric",
+   "initials": {
+    "Tres bandes": "0.460"
+   },
+   "initial": "0.460"
+  },
+  {
+   "id": "garcia-zaldivar-ricardo",
+   "name": "García Zaldivar, Ricardo",
+   "initials": {
+    "Tres bandes": "0.498"
+   },
+   "initial": "0.498"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "morlesin-chacon-jose",
+   "name": "Morlesin Chacón, José",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "initials": {
+    "Tres bandes": "0.433"
+   },
+   "initial": "0.433"
+  },
+  {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "initials": {
+    "Tres bandes": "0.481"
+   },
+   "initial": "0.481"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.774"
+   },
+   "initial": "0.774"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2017-09-16",
+   "rival": "CORAL COLON \"B\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 26,
+     "ent": 42,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Herrerías Cruz, Joan Josep",
+     "car_rival": 30
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 21,
+     "ent": 44,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Trullás Vera, Yuri",
+     "car_rival": 30
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 14,
+     "ent": 50,
+     "sm": 2,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Yubero Vázquez, Jose Antonio",
+     "car_rival": 14
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 21,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Rodríguez, Tomás",
+     "car_rival": 11
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2017-09-30",
+   "rival": "MANRESA \"B\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 30,
+     "ent": 39,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sáez Romero, Antonio",
+     "car_rival": 24
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 17,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Carrillo Letona, Valentin",
+     "car_rival": 20
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 25,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Algaba Castro, José",
+     "car_rival": 18
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Anghel Turmac, Georgeta",
+     "car_rival": 14
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2017-10-21",
+   "rival": "TARRAGONA \"B\"",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 15,
+     "ent": 38,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Robledo González, Isidre",
+     "car_rival": 30
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Cortés Testillano, Francisco",
+     "car_rival": 22
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Pastor Balagué, Jordi",
+     "car_rival": 29
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 19,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Mosquera Granados, Angel",
+     "car_rival": 14
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2017-10-28",
+   "rival": "SANTS \"C\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Cuenca Pardo, Manuel",
+     "car_rival": 28
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 30,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Torres Penas, Jesús Andrés",
+     "car_rival": 21
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Roses Guitart, Antoni",
+     "car_rival": 19
+    },
+    {
+     "pid": "morlesin-chacon-jose",
+     "car": 13,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Trigueros, Carles",
+     "car_rival": 19
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2017-11-11",
+   "rival": "UNIÓ CORAL \"A\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 23,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "García Alarcón, Carlos",
+     "car_rival": 19
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 16,
+     "ent": 38,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Agullo Taboas, Josep",
+     "car_rival": 30
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Faura Tubau, Jaume",
+     "car_rival": 25
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 21,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ruiz Vélez, Martín",
+     "car_rival": 20
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2017-12-23",
+   "rival": "SANT ADRIA \"B\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 18,
+     "ent": 21,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "González López, Jesús",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 25,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Hernández López, Jonatan",
+     "car_rival": 21
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 20,
+     "ent": 50,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sotomayor Plata, Manuel",
+     "car_rival": 22
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 18,
+     "ent": 44,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Calvet Llach, Joan",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2017-12-30",
+   "rival": "CORAL COLON \"B\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 23,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Moya Gálvez, Rafael",
+     "car_rival": 29
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 45,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Trullás Vera, Yuri",
+     "car_rival": 11
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 20,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Franquet Masip, Albert",
+     "car_rival": 17
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 23,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Yubero Vázquez, Jose Antonio",
+     "car_rival": 19
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2018-01-20",
+   "rival": "MANRESA \"B\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 20,
+     "ent": 48,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sáez Romero, Antonio",
+     "car_rival": 30
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Montoliu Castellví, Albert",
+     "car_rival": 23
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 25,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bartoli Alsina, Josep",
+     "car_rival": 16
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 12,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Anghel Turmac, Georgeta",
+     "car_rival": 15
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2018-02-03",
+   "rival": "TARRAGONA \"B\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 23,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Prinzivalli Carrubba, Pietro",
+     "car_rival": 16
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 22,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Cortés Testillano, Francisco",
+     "car_rival": 25
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 20,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Mosquera Granados, Angel",
+     "car_rival": 26
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 16,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Recasens Lahoz, Iván",
+     "car_rival": 17
+    }
+   ]
+  },
+  {
+   "id": "j11",
+   "jornada": "11",
+   "date": "2018-02-10",
+   "rival": "SANTS \"C\"",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 28,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Torres Penas, Jesús Andrés",
+     "car_rival": 25
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 27,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Artigas Bentanachs, Xavier",
+     "car_rival": 23
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 18,
+     "ent": 50,
+     "sm": 2,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Roses Guitart, Antoni",
+     "car_rival": 18
+    },
+    {
+     "pid": "abegon-fortet-david",
+     "car": 23,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ramírez Torres, Óscar",
+     "car_rival": 18
+    }
+   ]
+  },
+  {
+   "id": "j12",
+   "jornada": "12",
+   "date": "2018-02-24",
+   "rival": "UNIÓ CORAL \"A\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 42,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "García Alarcón, Carlos",
+     "car_rival": 21
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 20,
+     "ent": 48,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Agullo Taboas, Josep",
+     "car_rival": 30
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 25,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Faura Tubau, Jaume",
+     "car_rival": 28
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 28,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ruiz Vélez, Martín",
+     "car_rival": 17
+    }
+   ]
+  },
+  {
+   "id": "j14",
+   "jornada": "14",
+   "date": "2018-03-24",
+   "rival": "SANT ADRIA \"B\"",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 29,
+     "ent": 50,
+     "sm": 4,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Ferrer González, Joaquim",
+     "car_rival": 29
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 43,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Yáñez Acuña, Enrique",
+     "car_rival": 19
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 18,
+     "ent": 40,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sotomayor Plata, Manuel",
+     "car_rival": 30
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 24,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Calvet Llach, Joan",
+     "car_rival": 18
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2017-09-16",
+   "rival": "CORAL COLON \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2017-09-30",
+   "rival": "MANRESA \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2017-10-21",
+   "rival": "TARRAGONA \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2017-10-28",
+   "rival": "SANTS \"C\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2017-11-11",
+   "rival": "UNIÓ CORAL \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2017-12-02",
+   "rival": "MONFORTE \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2017-12-02",
+   "rival": "MONFORTE \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "7",
+   "date": "2017-12-23",
+   "rival": "SANT ADRIA \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2017-12-30",
+   "rival": "CORAL COLON \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2018-01-20",
+   "rival": "MANRESA \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2018-02-03",
+   "rival": "TARRAGONA \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "11",
+   "date": "2018-02-10",
+   "rival": "SANTS \"C\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "12",
+   "date": "2018-02-24",
+   "rival": "UNIÓ CORAL \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "13",
+   "date": "2018-03-10",
+   "rival": "MONFORTE \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "13",
+   "date": "2018-03-10",
+   "rival": "MONFORTE \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "14",
+   "date": "2018-03-24",
+   "rival": "SANT ADRIA \"B\"",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

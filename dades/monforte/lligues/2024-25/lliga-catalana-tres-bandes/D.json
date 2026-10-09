@@ -1,0 +1,934 @@
+{
+ "equip": "C.B. Monforte \"D\"",
+ "equip_original": "C.B. MONFORTE \"D\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Grup B",
+ "modalitat": "Tres bandes",
+ "temporada": "2024-25",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "initials": {
+    "Tres bandes": "0.462"
+   },
+   "initial": "0.462"
+  },
+  {
+   "id": "aguilera-torres-juan-antonio",
+   "name": "Aguilera Torres, Juan Antonio",
+   "initials": {
+    "Tres bandes": "0.521"
+   },
+   "initial": "0.521"
+  },
+  {
+   "id": "cervera-sans-gabriel",
+   "name": "Cervera Sans, Gabriel",
+   "initials": {
+    "Tres bandes": "0.411"
+   },
+   "initial": "0.411"
+  },
+  {
+   "id": "chenoll-castro-enric",
+   "name": "Chenoll Castro, Enric",
+   "initials": {
+    "Tres bandes": "0.460"
+   },
+   "initial": "0.460"
+  },
+  {
+   "id": "mejia-arias-duvan",
+   "name": "Mejia Arias, Duvan",
+   "initials": {
+    "Tres bandes": "0.476"
+   },
+   "initial": "0.476"
+  },
+  {
+   "id": "obando-quintero-carlos-ariel",
+   "name": "Obando Quintero, Carlos Ariel",
+   "initials": {
+    "Tres bandes": "0.416"
+   },
+   "initial": "0.416"
+  },
+  {
+   "id": "puig-latre-isaac",
+   "name": "Puig Latre, Isaac",
+   "initials": {
+    "Tres bandes": "0.472"
+   },
+   "initial": "0.472"
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "initials": {
+    "Tres bandes": "0.433"
+   },
+   "initial": "0.433"
+  },
+  {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "initials": {
+    "Tres bandes": "0.481"
+   },
+   "initial": "0.481"
+  },
+  {
+   "id": "tormo-calatayud-jorge",
+   "name": "Tormo Calatayud, Jorge",
+   "initials": {
+    "Tres bandes": "0.361"
+   },
+   "initial": "0.361"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2024-10-05",
+   "rival": "B. EL MASNOU",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 25,
+     "ent": 44,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Lázaro, David",
+     "car_rival": 12
+    },
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 23,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Miravet Ariza, Lluis",
+     "car_rival": 25
+    },
+    {
+     "pid": "aguilera-torres-juan-antonio",
+     "car": 25,
+     "ent": 40,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Andrés Auladell, Lluis",
+     "car_rival": 21
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 12,
+     "ent": 49,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Vázquez Vache, Joaquín",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2024-10-26",
+   "rival": "B.C. GRANOLLERS \"C\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 24,
+     "ent": 42,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Moreno Medina, Juan Carlos",
+     "car_rival": 25
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 20,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "José Torrisco, Enrique",
+     "car_rival": 24
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 23,
+     "ent": 39,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Gassó Chumillas, Jordi",
+     "car_rival": 25
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 12,
+     "ent": 40,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Varela Peña, Angel M.",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2024-11-09",
+   "rival": "S.B. GEIEG",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 25,
+     "ent": 44,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Calle Ortega, Eusebi",
+     "car_rival": 21
+    },
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 12,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Galeano Amado, Ramón",
+     "car_rival": 20
+    },
+    {
+     "pid": "puig-latre-isaac",
+     "car": 22,
+     "ent": 46,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Carmona Martín, Enrique",
+     "car_rival": 25
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 15,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Calle Ortega, Antoni",
+     "car_rival": 17
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2024-11-23",
+   "rival": "C.B. PRAT \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 25,
+     "ent": 47,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Mauri Joan, Salvador",
+     "car_rival": 12
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 21,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bellot Botello, Francisco",
+     "car_rival": 20
+    },
+    {
+     "pid": "puig-latre-isaac",
+     "car": 16,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bonaluque Sánchez, Manuel",
+     "car_rival": 13
+    },
+    {
+     "pid": "aguilera-torres-juan-antonio",
+     "car": 25,
+     "ent": 45,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Iñiguez Triquell, Isidro",
+     "car_rival": 11
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2024-12-14",
+   "rival": "C.B. PUNT D’ATAC",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 24,
+     "ent": 37,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Fernández Velasco, Enric",
+     "car_rival": 25
+    },
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 19,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espejo Merino, Manuel",
+     "car_rival": 22
+    },
+    {
+     "pid": "aguilera-torres-juan-antonio",
+     "car": 17,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bruna Ochoa, Rubén",
+     "car_rival": 22
+    },
+    {
+     "pid": "obando-quintero-carlos-ariel",
+     "car": 25,
+     "ent": 34,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Toro Corrales, Germán",
+     "car_rival": 11
+    }
+   ]
+  },
+  {
+   "id": "j06",
+   "jornada": "6",
+   "date": "2024-12-21",
+   "rival": "C.B.LLIÇA AMUNT \"B\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 25,
+     "ent": 40,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bastida Sala, Xavier",
+     "car_rival": 21
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 24,
+     "ent": 46,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pi Vilardell, Xavier",
+     "car_rival": 25
+    },
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 15,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Calls Sarroca, Josep",
+     "car_rival": 17
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 16,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Guarino Gutierrez, Mateo",
+     "car_rival": 20
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2025-01-11",
+   "rival": "B.C. GRANOLLERS \"D\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 13,
+     "ent": 29,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García Martínez, Manuel",
+     "car_rival": 25
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 25,
+     "ent": 42,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Cuevas Galan, Pablo",
+     "car_rival": 6
+    },
+    {
+     "pid": "obando-quintero-carlos-ariel",
+     "car": 25,
+     "ent": 49,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Berengueras Costa, F. Xavier",
+     "car_rival": 24
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 18,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Masachs Xena, Salvadó",
+     "car_rival": 15
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2025-01-18",
+   "rival": "B. EL MASNOU",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "mejia-arias-duvan",
+     "car": 25,
+     "ent": 39,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Lázaro, David",
+     "car_rival": 15
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 11,
+     "ent": 24,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Molins Garrobo, Xavier",
+     "car_rival": 25
+    },
+    {
+     "pid": "aguilera-torres-juan-antonio",
+     "car": 25,
+     "ent": 39,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Andrés Auladell, Lluis",
+     "car_rival": 18
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 23,
+     "ent": 50,
+     "sm": 3,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Brigos Hermida, Miguel",
+     "car_rival": 23
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2025-02-08",
+   "rival": "B.C. GRANOLLERS \"C\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 19,
+     "ent": 50,
+     "sm": 8,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Moreno Medina, Juan Carlos",
+     "car_rival": 23
+    },
+    {
+     "pid": "mejia-arias-duvan",
+     "car": 24,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García Martínez, Manuel",
+     "car_rival": 25
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 12,
+     "ent": 28,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Pérez, Fernando",
+     "car_rival": 25
+    },
+    {
+     "pid": "puig-latre-isaac",
+     "car": 24,
+     "ent": 43,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Varela Peña, Angel M.",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2025-02-22",
+   "rival": "S.B. GEIEG",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 19,
+     "ent": 42,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Legido Fernández, Sergio",
+     "car_rival": 25
+    },
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 12,
+     "ent": 23,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Calle Ortega, Eusebi",
+     "car_rival": 25
+    },
+    {
+     "pid": "aguilera-torres-juan-antonio",
+     "car": 25,
+     "ent": 47,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Calle Ortega, Antoni",
+     "car_rival": 12
+    },
+    {
+     "pid": "obando-quintero-carlos-ariel",
+     "car": 17,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sellarés Burgués, Jaime",
+     "car_rival": 16
+    }
+   ]
+  },
+  {
+   "id": "j11",
+   "jornada": "11",
+   "date": "2025-03-01",
+   "rival": "C.B. PRAT \"B\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 25,
+     "ent": 48,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bellot Botello, Francisco",
+     "car_rival": 19
+    },
+    {
+     "pid": "chenoll-castro-enric",
+     "car": 16,
+     "ent": 40,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bonaluque Sánchez, Manuel",
+     "car_rival": 25
+    },
+    {
+     "pid": "puig-latre-isaac",
+     "car": 25,
+     "ent": 43,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Iñiguez Triquell, Isidro",
+     "car_rival": 20
+    },
+    {
+     "pid": "aguilera-torres-juan-antonio",
+     "car": 25,
+     "ent": 49,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Valentin German, Ionel",
+     "car_rival": 13
+    }
+   ]
+  },
+  {
+   "id": "j12",
+   "jornada": "12",
+   "date": "2025-03-15",
+   "rival": "C.B. PUNT D’ATAC",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 21,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Fernández Velasco, Enric",
+     "car_rival": 22
+    },
+    {
+     "pid": "mejia-arias-duvan",
+     "car": 24,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espejo Merino, Manuel",
+     "car_rival": 25
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 15,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bruna Ochoa, Rubén",
+     "car_rival": 19
+    },
+    {
+     "pid": "puig-latre-isaac",
+     "car": 14,
+     "ent": 30,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Toro Corrales, Germán",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j13",
+   "jornada": "13",
+   "date": "2025-04-05",
+   "rival": "C.B.LLIÇA AMUNT \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 25,
+     "ent": 38,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bastida Sala, Xavier",
+     "car_rival": 21
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Carrió Lacasa, Carles",
+     "car_rival": 23
+    },
+    {
+     "pid": "puig-latre-isaac",
+     "car": 15,
+     "ent": 50,
+     "sm": 4,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Calls Sarroca, Josep",
+     "car_rival": 15
+    },
+    {
+     "pid": "obando-quintero-carlos-ariel",
+     "car": 21,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Guarino Gutierrez, Mateo",
+     "car_rival": 16
+    }
+   ]
+  },
+  {
+   "id": "j14",
+   "jornada": "14",
+   "date": "2025-04-12",
+   "rival": "B.C. GRANOLLERS \"D\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 15,
+     "ent": 30,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Gassó Chumillas, Jordi",
+     "car_rival": 25
+    },
+    {
+     "pid": "aguilera-torres-juan-antonio",
+     "car": 22,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Cuevas Galan, Pablo",
+     "car_rival": 25
+    },
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 14,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Masachs Xena, Salvadó",
+     "car_rival": 19
+    },
+    {
+     "pid": "obando-quintero-carlos-ariel",
+     "car": 20,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Tapia Mordillo, Antoni",
+     "car_rival": 15
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2024-10-05",
+   "rival": "B. EL MASNOU",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2024-10-26",
+   "rival": "B.C. GRANOLLERS \"C\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2024-11-09",
+   "rival": "S.B. GEIEG",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2024-11-23",
+   "rival": "C.B. PRAT \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2024-12-14",
+   "rival": "C.B. PUNT D’ATAC",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2024-12-21",
+   "rival": "C.B.LLIÇA AMUNT \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "7",
+   "date": "2025-01-11",
+   "rival": "B.C. GRANOLLERS \"D\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2025-01-18",
+   "rival": "B. EL MASNOU",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2025-02-08",
+   "rival": "B.C. GRANOLLERS \"C\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2025-02-22",
+   "rival": "S.B. GEIEG",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "11",
+   "date": "2025-03-01",
+   "rival": "C.B. PRAT \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "12",
+   "date": "2025-03-15",
+   "rival": "C.B. PUNT D’ATAC",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "13",
+   "date": "2025-04-05",
+   "rival": "C.B.LLIÇA AMUNT \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "14",
+   "date": "2025-04-12",
+   "rival": "B.C. GRANOLLERS \"D\"",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

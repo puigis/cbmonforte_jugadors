@@ -1,0 +1,174 @@
+{
+ "equip": "C.B. Monforte \"B\"",
+ "equip_original": "MONFORTE \"B\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 3a Divisió · Final 3A",
+ "modalitat": "Tres bandes",
+ "temporada": "2020-21",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "initials": {
+    "Tres bandes": "0.462"
+   },
+   "initial": "0.462"
+  },
+  {
+   "id": "cervera-sans-gabriel",
+   "name": "Cervera Sans, Gabriel",
+   "initials": {
+    "Tres bandes": "0.411"
+   },
+   "initial": "0.411"
+  },
+  {
+   "id": "garcia-zaldivar-ricardo",
+   "name": "García Zaldivar, Ricardo",
+   "initials": {
+    "Tres bandes": "0.498"
+   },
+   "initial": "0.498"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "pardo-soriano-david",
+   "name": "Pardo Soriano, David",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  }
+ ],
+ "matches": [
+  {
+   "id": "jSEMIFINALS",
+   "jornada": "SEMIFINALS",
+   "date": "2021-07-17",
+   "rival": "SANT ADRIÀ \"C\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Calvet Tarrida, Lluís",
+     "car_rival": 10
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Rodríguez Montesinos, Roque",
+     "car_rival": 25
+    },
+    {
+     "pid": "pardo-soriano-david",
+     "car": 30,
+     "ent": 48,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Giménez Font, Francesc Xavier",
+     "car_rival": 15
+    },
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 15,
+     "ent": 45,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Arias Herrero, José",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "jFINAL",
+   "jornada": "FINAL",
+   "date": "2021-07-17",
+   "rival": "GRANOLLERS \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 25,
+     "ent": 48,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pareras Méndez, Joan Carles",
+     "car_rival": 30
+    },
+    {
+     "pid": "pardo-soriano-david",
+     "car": 19,
+     "ent": 41,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández Parra, Antoni",
+     "car_rival": 30
+    },
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 16,
+     "ent": 32,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espinasa Sánchez, Joan",
+     "car_rival": 30
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 17,
+     "ent": 50,
+     "sm": 50,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Clapés Miró, Jordi",
+     "car_rival": 24
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "SEMIFINALS",
+   "date": "2021-07-17",
+   "rival": "SANT ADRIÀ \"C\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "FINAL",
+   "date": "2021-07-17",
+   "rival": "GRANOLLERS \"A\"",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

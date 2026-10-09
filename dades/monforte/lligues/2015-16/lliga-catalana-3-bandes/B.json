@@ -1,0 +1,609 @@
+{
+ "equip": "C.B. Monforte \"B\"",
+ "equip_original": "MONFORTE \"B\"",
+ "competicio": "LLIGA CATALANA 3 BANDES · 3a Divisió · Grup F",
+ "modalitat": "Tres bandes",
+ "temporada": "2015-16",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "cuenca-pardo-manuel",
+   "name": "Cuenca Pardo, Manuel",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "garcia-zaldivar-ricardo",
+   "name": "García Zaldivar, Ricardo",
+   "initials": {
+    "Tres bandes": "0.498"
+   },
+   "initial": "0.498"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
+   "initials": {
+    "Tres bandes": "0.620"
+   },
+   "initial": "0.620"
+  },
+  {
+   "id": "pares-herrera-manel",
+   "name": "Parés Herrera, Manel",
+   "initials": {
+    "Tres bandes": "0.421"
+   },
+   "initial": "0.421"
+  },
+  {
+   "id": "zambrano-baron-juan-sebastian",
+   "name": "Zambrano Barón, Juan Sebastián",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2015-09-19",
+   "rival": "LA UNIÓ CORAL \"B\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    0
+   ],
+   "results": [
+    {
+     "pid": "pares-herrera-manel",
+     "car": 0,
+     "ent": 0,
+     "sm": 0,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Daude Costa, Alberto",
+     "car_rival": 0
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 0,
+     "ent": 0,
+     "sm": 0,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "García Alarcón, Carlos",
+     "car_rival": 0
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 0,
+     "ent": 0,
+     "sm": 0,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Alarcón, José",
+     "car_rival": 0
+    },
+    {
+     "pid": "zambrano-baron-juan-sebastian",
+     "car": 0,
+     "ent": 0,
+     "sm": 0,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Martínez García, Josep",
+     "car_rival": 0
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2015-10-03",
+   "rival": "MANRESA \"B\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "pares-herrera-manel",
+     "car": 20,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Narváez, Jacinto",
+     "car_rival": 19
+    },
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 16,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Montoliu Castellví, Albert",
+     "car_rival": 19
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 28,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bartoli Alsina, Josep",
+     "car_rival": 17
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 26,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Anghel Turmac, Georgeta",
+     "car_rival": 11
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2015-10-10",
+   "rival": "BARCELONA \"C\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "pares-herrera-manel",
+     "car": 16,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Espejo Molina, Antonio",
+     "car_rival": 17
+    },
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 22,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Rubio Benet, José Tomás",
+     "car_rival": 12
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 22,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Porqueras Sabaté, Víctor",
+     "car_rival": 25
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 1,
+     "ent": 1,
+     "sm": 0,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Blasco Ros, Angels",
+     "car_rival": 0
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2015-10-17",
+   "rival": "SANT BOI \"C\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 18,
+     "ent": 48,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jou Mora, Ferràn",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 16,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Llamas Sánchez, Manuel",
+     "car_rival": 20
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 20,
+     "ent": 50,
+     "sm": 3,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Martín Sánchez, Andreu",
+     "car_rival": 20
+    },
+    {
+     "pid": "zambrano-baron-juan-sebastian",
+     "car": 21,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gómez González, Josep",
+     "car_rival": 8
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2015-10-24",
+   "rival": "FOMENT MOLINS \"B\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "pares-herrera-manel",
+     "car": 21,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Tormo Blanco, Félix",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 26,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Santigosa Gasset, Delfí",
+     "car_rival": 28
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 30,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Márquez Montes, Antonio",
+     "car_rival": 20
+    },
+    {
+     "pid": "zambrano-baron-juan-sebastian",
+     "car": 23,
+     "ent": 42,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "García García, Jordi",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2015-11-14",
+   "rival": "MANRESA \"B\"",
+   "venue": "F",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "pares-herrera-manel",
+     "car": 6,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Montoliu Castellví, Albert",
+     "car_rival": 17
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 43,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bartoli Alsina, Josep",
+     "car_rival": 19
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ontiveros Polaino, Miquel",
+     "car_rival": 18
+    },
+    {
+     "pid": "zambrano-baron-juan-sebastian",
+     "car": 30,
+     "ent": 46,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Molins Manau, Isidre",
+     "car_rival": 5
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2015-11-28",
+   "rival": "BARCELONA \"C\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 23,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jorba Homar, Pau",
+     "car_rival": 19
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 25,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Riera Prats, Carles",
+     "car_rival": 29
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 23,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Espejo Molina, Antonio",
+     "car_rival": 20
+    },
+    {
+     "pid": "zambrano-baron-juan-sebastian",
+     "car": 23,
+     "ent": 45,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Rubio Benet, José Tomás",
+     "car_rival": 30
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2015-12-12",
+   "rival": "SANT BOI \"C\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 14,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "López Balboa, Alejandro",
+     "car_rival": 21
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 19,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Quesada Martos, José Luis",
+     "car_rival": 30
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 30,
+     "ent": 41,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jou Mora, Ferràn",
+     "car_rival": 16
+    },
+    {
+     "pid": "zambrano-baron-juan-sebastian",
+     "car": 25,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Llamas Sánchez, Manuel",
+     "car_rival": 19
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2016-01-09",
+   "rival": "FOMENT MOLINS \"B\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 22,
+     "ent": 46,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Tormo Blanco, Félix",
+     "car_rival": 30
+    },
+    {
+     "pid": "cuenca-pardo-manuel",
+     "car": 25,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Quiñonero Nuñez, Pere",
+     "car_rival": 28
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 24,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Gomez De La Torre Ruiz, Ignacio",
+     "car_rival": 26
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 20,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Mérida Martin, Marc",
+     "car_rival": 17
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2015-09-19",
+   "rival": "LA UNIÓ CORAL \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2015-10-03",
+   "rival": "MANRESA \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2015-10-10",
+   "rival": "BARCELONA \"C\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2015-10-17",
+   "rival": "SANT BOI \"C\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2015-10-24",
+   "rival": "FOMENT MOLINS \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2015-11-07",
+   "rival": "LA UNIÓ CORAL \"B\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "7",
+   "date": "2015-11-14",
+   "rival": "MANRESA \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2015-11-28",
+   "rival": "BARCELONA \"C\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2015-12-12",
+   "rival": "SANT BOI \"C\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2016-01-09",
+   "rival": "FOMENT MOLINS \"B\"",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

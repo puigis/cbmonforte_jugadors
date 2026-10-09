@@ -1,0 +1,62 @@
+{
+ "modalitat": "Quadre 71/2",
+ "updated": "2026-10-09T06:17+00:00",
+ "jugadors": [
+  {
+   "id": "abegon-fortet-david",
+   "name": "Abegón Fortet, David",
+   "partides": 2,
+   "G": 1,
+   "E": 0,
+   "P": 1,
+   "caramboles": 160,
+   "entrades": 49,
+   "serie_major": 21,
+   "temporades": [
+    "2017-18"
+   ],
+   "mitjana": 3.265,
+   "ranking": null
+  }
+ ],
+ "partides": [
+  {
+   "data": "2017-12-02",
+   "temporada": "2017-18",
+   "tipus": "individual",
+   "competicio": "QUADRE 71/2",
+   "divisio": "1a DIVISIÓ",
+   "fase": "PRÈVIA · Grup A",
+   "jornada": "",
+   "pid": "abegon-fortet-david",
+   "equip": "",
+   "rival": "Polo Camarasa, Josep Mª",
+   "equip_rival": "",
+   "car": 99,
+   "sm": 11,
+   "ent": 30,
+   "car_rival": 44,
+   "sm_rival": 5,
+   "res": "G"
+  },
+  {
+   "data": "2017-12-02",
+   "temporada": "2017-18",
+   "tipus": "individual",
+   "competicio": "QUADRE 71/2",
+   "divisio": "1a DIVISIÓ",
+   "fase": "PRÈVIA · Grup A",
+   "jornada": "",
+   "pid": "abegon-fortet-david",
+   "equip": "",
+   "rival": "Quiñonero Nuñez, Pere",
+   "equip_rival": "",
+   "car": 61,
+   "sm": 21,
+   "ent": 19,
+   "car_rival": 100,
+   "sm_rival": 17,
+   "res": "P"
+  }
+ ]
+}

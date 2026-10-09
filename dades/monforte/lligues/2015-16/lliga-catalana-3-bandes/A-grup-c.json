@@ -1,0 +1,234 @@
+{
+ "equip": "C.B. Monforte \"A\"",
+ "equip_original": "MONFORTE \"A\"",
+ "competicio": "LLIGA CATALANA 3 BANDES · 1a Divisió · Grup C",
+ "modalitat": "Tres bandes",
+ "temporada": "2015-16",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.704"
+   },
+   "initial": "0.704"
+  },
+  {
+   "id": "gonzalez-lopez-jesus",
+   "name": "González López, Jesús",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "mula-callejon-francisco",
+   "name": "Mula Callejón, Francisco",
+   "initials": {
+    "Tres bandes": "0.834"
+   },
+   "initial": "0.834"
+  },
+  {
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
+   "initials": {
+    "Tres bandes": "0.620"
+   },
+   "initial": "0.620"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.774"
+   },
+   "initial": "0.774"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j12",
+   "jornada": "12",
+   "date": "2016-05-07",
+   "rival": "LA COLMENA \"A\"",
+   "venue": "L",
+   "punts_match": [
+    2,
+    0
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 48,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Benavides Cortés, Leopoldo",
+     "car_rival": 19
+    },
+    {
+     "pid": "gonzalez-lopez-jesus",
+     "car": 40,
+     "ent": 50,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Palma Leiva, Josep Manel",
+     "car_rival": 31
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 40,
+     "ent": 41,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "García Durán, Carmelo",
+     "car_rival": 18
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 34,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "García Durán, Manuel",
+     "car_rival": 22
+    }
+   ]
+  },
+  {
+   "id": "j13",
+   "jornada": "13",
+   "date": "2016-05-21",
+   "rival": "MATARÓ \"A\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 46,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Garriga Comas, Jordi",
+     "car_rival": 40
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 14,
+     "ent": 26,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Benitez Reina, Pau",
+     "car_rival": 40
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 33,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sans Lafarga, Santiago",
+     "car_rival": 30
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 35,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Van Kessel, Mark Stefan",
+     "car_rival": 28
+    }
+   ]
+  },
+  {
+   "id": "j14",
+   "jornada": "14",
+   "date": "2016-06-18",
+   "rival": "SANT BOI \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    2
+   ],
+   "results": [
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 40,
+     "ent": 44,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pastor Rivas, Manuel",
+     "car_rival": 30
+    },
+    {
+     "pid": "gonzalez-lopez-jesus",
+     "car": 36,
+     "ent": 40,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Perales Sanz, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "mula-callejon-francisco",
+     "car": 39,
+     "ent": 42,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Gascón Reyes, Rafael",
+     "car_rival": 40
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 26,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Megias Navas, Mateu",
+     "car_rival": 30
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "12",
+   "date": "2016-05-07",
+   "rival": "LA COLMENA \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "13",
+   "date": "2016-05-21",
+   "rival": "MATARÓ \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "14",
+   "date": "2016-06-18",
+   "rival": "SANT BOI \"A\"",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

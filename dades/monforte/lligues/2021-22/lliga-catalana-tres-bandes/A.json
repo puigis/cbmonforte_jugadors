@@ -1,0 +1,1090 @@
+{
+ "equip": "C.B. Monforte \"A\"",
+ "equip_original": "C.B. MONFORTE \"A\"",
+ "competicio": "LLIGA CATALANA TRES BANDES · 2a Divisió · Grup B",
+ "modalitat": "Tres bandes",
+ "temporada": "2021-22",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "alcoberro-melero-david",
+   "name": "Alcoberro Melero, David",
+   "initials": {
+    "Tres bandes": ""
+   },
+   "initial": ""
+  },
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "initials": {
+    "Tres bandes": "0.694"
+   },
+   "initial": "0.694"
+  },
+  {
+   "id": "farina-villanueva-francisco",
+   "name": "Fariña Villanueva, Francisco",
+   "initials": {
+    "Tres bandes": "0.729"
+   },
+   "initial": "0.729"
+  },
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.704"
+   },
+   "initial": "0.704"
+  },
+  {
+   "id": "garcia-zaldivar-ricardo",
+   "name": "García Zaldivar, Ricardo",
+   "initials": {
+    "Tres bandes": "0.498"
+   },
+   "initial": "0.498"
+  },
+  {
+   "id": "gil-perez-albert",
+   "name": "Gil Pérez, Albert",
+   "initials": {
+    "Tres bandes": "0.592"
+   },
+   "initial": "0.592"
+  },
+  {
+   "id": "juarez-de-alarcon-jorge",
+   "name": "Juárez De Alarcón, Jorge",
+   "initials": {
+    "Tres bandes": "0.644"
+   },
+   "initial": "0.644"
+  },
+  {
+   "id": "lozano-herrero-manuel",
+   "name": "Lozano Herrero, Manuel",
+   "initials": {
+    "Tres bandes": "0.738"
+   },
+   "initial": "0.738"
+  },
+  {
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
+   "initials": {
+    "Tres bandes": "0.620"
+   },
+   "initial": "0.620"
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "initials": {
+    "Tres bandes": "0.433"
+   },
+   "initial": "0.433"
+  },
+  {
+   "id": "zuleta-giraldo-john-jairo",
+   "name": "Zuleta Giraldo, John Jairo",
+   "initials": {
+    "Tres bandes": "0.774"
+   },
+   "initial": "0.774"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2021-09-18",
+   "rival": "C.B.VIC \"B\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 33,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Lluma Vergara, Pere",
+     "car_rival": 34
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 45,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Aguilar Sala, Ramón",
+     "car_rival": 15
+    },
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 29,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Algaba Castro, José",
+     "car_rival": 26
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Vilaplana Penella, Jaume",
+     "car_rival": 16
+    }
+   ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2021-10-02",
+   "rival": "C.B. PREMIÀ",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 21,
+     "ent": 48,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Lloveras Martínez, Fco. José",
+     "car_rival": 35
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Marín Romera, Felicià",
+     "car_rival": 24
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 35,
+     "ent": 44,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bas Pastor, Enric",
+     "car_rival": 24
+    },
+    {
+     "pid": "garcia-zaldivar-ricardo",
+     "car": 27,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Prats Rins, Jaime",
+     "car_rival": 17
+    }
+   ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2021-10-16",
+   "rival": "C.B.MOLLET \"B\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 32,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Busquets Troses, Romà",
+     "car_rival": 23
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 48,
+     "sm": 8,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Acosta Cano, José Cruz",
+     "car_rival": 27
+    },
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 32,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Hernández Martínez, Manuel",
+     "car_rival": 14
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 30,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Román Lozano, Bibiano",
+     "car_rival": 26
+    }
+   ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2021-10-30",
+   "rival": "C.B.SANT ADRIÀ \"B\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 40,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Hernández López, Jonatan",
+     "car_rival": 25
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 26,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "González López, Jesús",
+     "car_rival": 35
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 27,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sogués Beltrán, Carlos",
+     "car_rival": 30
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 30,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Suárez Lasso, Héctor Fabio",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2021-11-20",
+   "rival": "C.B.BARCELONA \"B\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 38,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jorba Homar, Pau",
+     "car_rival": 23
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 31,
+     "ent": 44,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Arbiol Morera, Ramon",
+     "car_rival": 35
+    },
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 35,
+     "ent": 42,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ricart Martínez, Francesc",
+     "car_rival": 21
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Porqueras Sabaté, Víctor",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j07",
+   "jornada": "7",
+   "date": "2021-12-18",
+   "rival": "C.B. SANT BOI \"A\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gascón Reyes, Rafael",
+     "car_rival": 29
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 11,
+     "ent": 24,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Perales Sanz, Joan",
+     "car_rival": 35
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 35,
+     "ent": 26,
+     "sm": 10,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pastor Rivas, Manuel",
+     "car_rival": 17
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 35,
+     "ent": 40,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bernad Daza, Jaime",
+     "car_rival": 24
+    }
+   ]
+  },
+  {
+   "id": "j08",
+   "jornada": "8",
+   "date": "2022-01-08",
+   "rival": "C.B.TARRAGONA \"B\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 35,
+     "ent": 49,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Fernández Velasco, Enric",
+     "car_rival": 26
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 41,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pastor Balagué, Jordi",
+     "car_rival": 28
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 32,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Cadillac Jodar, Jordi",
+     "car_rival": 23
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 26,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Robledo González, Isidre",
+     "car_rival": 12
+    }
+   ]
+  },
+  {
+   "id": "j09",
+   "jornada": "9",
+   "date": "2022-01-22",
+   "rival": "C.B.CERDANYOLA \"A\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 25,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Márquez Montes, José Miguel",
+     "car_rival": 15
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 33,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Márquez Montes, Antonio",
+     "car_rival": 7
+    },
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 35,
+     "ent": 48,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Barrientos Caballero, Joan Josep",
+     "car_rival": 23
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 35,
+     "ent": 33,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sarrate Poch, Pere",
+     "car_rival": 9
+    }
+   ]
+  },
+  {
+   "id": "j10",
+   "jornada": "10",
+   "date": "2022-02-05",
+   "rival": "C.B.VIC \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 33,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Caralt Vila, Miquel",
+     "car_rival": 20
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 25,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Lluma Vergara, Pere",
+     "car_rival": 23
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 35,
+     "ent": 33,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Aguilar Sala, Ramón",
+     "car_rival": 15
+    },
+    {
+     "pid": "gil-perez-albert",
+     "car": 27,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Algaba Castro, José",
+     "car_rival": 12
+    }
+   ]
+  },
+  {
+   "id": "j11",
+   "jornada": "11",
+   "date": "2022-02-19",
+   "rival": "C.B. PREMIÀ",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 40,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Lloveras Martínez, Fco. José",
+     "car_rival": 25
+    },
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 33,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Marín Romera, Felicià",
+     "car_rival": 20
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 23,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Prats Rins, Jaime",
+     "car_rival": 14
+    },
+    {
+     "pid": "gil-perez-albert",
+     "car": 21,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Durán De La Rosa, Antonio",
+     "car_rival": 12
+    }
+   ]
+  },
+  {
+   "id": "j12",
+   "jornada": "12",
+   "date": "2022-02-26",
+   "rival": "C.B.MOLLET \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 32,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Busquets Troses, Romà",
+     "car_rival": 31
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Deibis Fernández, Yhojan",
+     "car_rival": 28
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 32,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Feliu Pi, Pere",
+     "car_rival": 28
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 29,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Hernández Martínez, Manuel",
+     "car_rival": 22
+    }
+   ]
+  },
+  {
+   "id": "j13",
+   "jornada": "13",
+   "date": "2022-03-19",
+   "rival": "C.B.SANT ADRIÀ \"B\"",
+   "venue": "L",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 23,
+     "ent": 34,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pineda Lafuente, Joan Josep",
+     "car_rival": 35
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 26,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández López, Jonatan",
+     "car_rival": 30
+    },
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 16,
+     "ent": 32,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "González López, Jesús",
+     "car_rival": 35
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 33,
+     "ent": 49,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sánz Gracia, Ramón",
+     "car_rival": 35
+    }
+   ]
+  },
+  {
+   "id": "j14",
+   "jornada": "14",
+   "date": "2022-03-26",
+   "rival": "C.B.BARCELONA \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 33,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jorba Homar, Pau",
+     "car_rival": 27
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Arbiol Morera, Ramon",
+     "car_rival": 28
+    },
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 35,
+     "ent": 48,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ricart Martínez, Francesc",
+     "car_rival": 21
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 33,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Porqueras Sabaté, Víctor",
+     "car_rival": 34
+    }
+   ]
+  },
+  {
+   "id": "j16",
+   "jornada": "16",
+   "date": "2022-04-09",
+   "rival": "C.B. SANT BOI \"A\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 35,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gascón Reyes, Rafael",
+     "car_rival": 30
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 27,
+     "ent": 47,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Perales Sanz, Joan",
+     "car_rival": 35
+    },
+    {
+     "pid": "alcoberro-melero-david",
+     "car": 32,
+     "ent": 44,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Pastor Rivas, Manuel",
+     "car_rival": 35
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 35,
+     "ent": 33,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Alberich Sánchez, Vicente",
+     "car_rival": 25
+    }
+   ]
+  },
+  {
+   "id": "j17",
+   "jornada": "17",
+   "date": "2022-04-23",
+   "rival": "C.B.TARRAGONA \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 35,
+     "ent": 41,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Fernández Velasco, Enric",
+     "car_rival": 24
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 35,
+     "ent": 42,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Manresa Viñals, Joaquim",
+     "car_rival": 26
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pastor Balagué, Jordi",
+     "car_rival": 29
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 35,
+     "ent": 46,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Moreno Carretero, Fernando",
+     "car_rival": 21
+    }
+   ]
+  },
+  {
+   "id": "j18",
+   "jornada": "18",
+   "date": "2022-04-30",
+   "rival": "C.B.CERDANYOLA \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 26,
+     "ent": 31,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Márquez Montes, José Miguel",
+     "car_rival": 35
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 33,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "López López, Saturio",
+     "car_rival": 34
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 34,
+     "ent": 47,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Márquez Montes, Antonio",
+     "car_rival": 35
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 17,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Sabio Monfort, Daniel",
+     "car_rival": 18
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2021-09-18",
+   "rival": "C.B.VIC \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2021-10-02",
+   "rival": "C.B. PREMIÀ",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "3",
+   "date": "2021-10-16",
+   "rival": "C.B.MOLLET \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "4",
+   "date": "2021-10-30",
+   "rival": "C.B.SANT ADRIÀ \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "5",
+   "date": "2021-11-20",
+   "rival": "C.B.BARCELONA \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "6",
+   "date": "2021-12-11",
+   "rival": "C.B. MONFORTE \"A\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "6",
+   "date": "2021-12-11",
+   "rival": "C.B. MONFORTE \"A\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "7",
+   "date": "2021-12-18",
+   "rival": "C.B. SANT BOI \"A\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "8",
+   "date": "2022-01-08",
+   "rival": "C.B.TARRAGONA \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "9",
+   "date": "2022-01-22",
+   "rival": "C.B.CERDANYOLA \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "10",
+   "date": "2022-02-05",
+   "rival": "C.B.VIC \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "11",
+   "date": "2022-02-19",
+   "rival": "C.B. PREMIÀ",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "12",
+   "date": "2022-02-26",
+   "rival": "C.B.MOLLET \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "13",
+   "date": "2022-03-19",
+   "rival": "C.B.SANT ADRIÀ \"B\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "14",
+   "date": "2022-03-26",
+   "rival": "C.B.BARCELONA \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "15",
+   "date": "2022-04-02",
+   "rival": "C.B. MONFORTE \"A\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "15",
+   "date": "2022-04-02",
+   "rival": "C.B. MONFORTE \"A\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "16",
+   "date": "2022-04-09",
+   "rival": "C.B. SANT BOI \"A\"",
+   "venue": "L",
+   "played": true
+  },
+  {
+   "jornada": "17",
+   "date": "2022-04-23",
+   "rival": "C.B.TARRAGONA \"B\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "18",
+   "date": "2022-04-30",
+   "rival": "C.B.CERDANYOLA \"A\"",
+   "venue": "F",
+   "played": true
+  }
+ ]
+}

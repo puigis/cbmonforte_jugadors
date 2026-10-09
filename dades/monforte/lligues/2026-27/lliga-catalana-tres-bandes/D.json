@@ -1,0 +1,197 @@
+{
+ "equip": "C.B. Monforte \"D\"",
+ "equip_original": "C.B. MONFORTE \"D\"",
+ "competicio": "Lliga Catalana Tres Bandes · 3a Divisió · Grup A",
+ "modalitat": "Tres bandes",
+ "temporada": "2026-27",
+ "updated": "2026-10-09T06:17+00:00",
+ "players": [
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "initials": {
+    "Tres bandes": "0.479"
+   },
+   "initial": "0.479"
+  },
+  {
+   "id": "rocha-vera-jeferson",
+   "name": "Rocha Vera, Jeferson",
+   "initials": {
+    "Tres bandes": "0.480"
+   },
+   "initial": "0.480"
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "initials": {
+    "Tres bandes": "0.451"
+   },
+   "initial": "0.451"
+  },
+  {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "initials": {
+    "Tres bandes": "0.478"
+   },
+   "initial": "0.478"
+  }
+ ],
+ "matches": [
+  {
+   "id": "j01",
+   "jornada": "1",
+   "date": "2026-09-26",
+   "rival": "B.C. GRANOLLERS \"C\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "rocha-vera-jeferson",
+     "car": 21,
+     "ent": 41,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Moreno Medina, Juan Carlos",
+     "car_rival": 25
+    },
+    {
+     "pid": "adell-casarramona-pere",
+     "car": 25,
+     "ent": 45,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Cuevas Galan, Pablo",
+     "car_rival": 12
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 25,
+     "ent": 47,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Pérez, Fernando",
+     "car_rival": 19
+    },
+    {
+     "pid": "segura-gonzalvez-fernando",
+     "car": 18,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Ardisson Vieira Dos Santos, Anton",
+     "car_rival": 24
+    }
+   ]
+  }
+ ],
+ "calendar": [
+  {
+   "jornada": "1",
+   "date": "2026-09-26",
+   "rival": "B.C. GRANOLLERS \"C\"",
+   "venue": "F",
+   "played": true
+  },
+  {
+   "jornada": "2",
+   "date": "2026-10-10",
+   "rival": "C.B. SANT BOI \"C\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "3",
+   "date": "2026-10-17",
+   "rival": "C.B. SANTS \"D\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "4",
+   "date": "2026-11-07",
+   "rival": "S.B.GEiEG",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "5",
+   "date": "2026-11-21",
+   "rival": "C.B. LLINARS \"C\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "6",
+   "date": "2026-12-19",
+   "rival": "C.B. LLIÇÀ \"B\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "7",
+   "date": "2027-01-02",
+   "rival": "C.B. PRAT \"B\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "8",
+   "date": "2027-01-09",
+   "rival": "B.C. GRANOLLERS \"C\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "9",
+   "date": "2027-01-30",
+   "rival": "C.B. SANT BOI \"C\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "10",
+   "date": "2027-02-20",
+   "rival": "C.B. SANTS \"D\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "11",
+   "date": "2027-02-27",
+   "rival": "S.B.GEiEG",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "12",
+   "date": "2027-03-13",
+   "rival": "C.B. LLINARS \"C\"",
+   "venue": "L",
+   "played": false
+  },
+  {
+   "jornada": "13",
+   "date": "2027-03-20",
+   "rival": "C.B. LLIÇÀ \"B\"",
+   "venue": "F",
+   "played": false
+  },
+  {
+   "jornada": "14",
+   "date": "2027-04-03",
+   "rival": "C.B. PRAT \"B\"",
+   "venue": "F",
+   "played": false
+  }
+ ]
+}
