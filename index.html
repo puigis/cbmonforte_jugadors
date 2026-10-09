@@ -82,7 +82,7 @@ td small{font-size:12px;font-weight:400}
 </head>
 <body>
 <header><div class="hwrap"><h1>CB Monforte</h1><p id="sub">Billar · temporada</p></div>
-<nav id="nav"><button data-t="equips">Equips</button><button data-t="ranking">Rànquing</button><button data-t="jugadors">Jugadors</button></nav></header>
+<nav id="nav"><button data-t="equips">Equips</button><button data-t="calendari">Calendari</button><button data-t="ranking">Rànquing</button><button data-t="jugadors">Jugadors</button></nav></header>
 <main id="app"><div class="card"><p class="muted">Carregant dades…</p></div></main>
 <script>
 const MODS=['Tres bandes','Banda','Lliure','Quadre 47/2','Quadre 71/2'];
@@ -116,7 +116,7 @@ function render(){
   if(!RK||!EQ)return;
   document.querySelectorAll('#nav button').forEach(b=>b.classList.toggle('on',!st.player&&b.dataset.t===st.tab));
   if(st.player){fitxa(st.player).then(h=>{a.innerHTML=h;window.scrollTo(0,0)});return}
-  a.innerHTML=st.tab==='equips'?equips():st.tab==='ranking'?ranking():jugadors();
+  a.innerHTML=st.tab==='equips'?equips():st.tab==='calendari'?calendari():st.tab==='ranking'?ranking():jugadors();
 }
 
 /* ---------- equips ---------- */
@@ -143,14 +143,34 @@ function equips(){
    <tr><th class="l">Jugador</th><th>PJ</th><th>Inicial</th><th>Lliga</th><th>Evolució</th></tr>
    ${rows.map(({p,s})=>`<tr class="click" onclick="openP('${p.id}','${esc(e.modalitat)}')"><td class="l">${esc(p.name)}</td><td>${s.pj}</td><td>${f3(p.initial===''?null:+p.initial)}</td><td><b>${f3(s.avg)}</b></td><td>${delta(s.avg,p.initial===''?null:+p.initial)}</td></tr>`).join('')}
   </table></div><p class="muted">Inicial: rànquing del 27/07/2026. Toca un jugador per veure'n la fitxa.</p></div>
-  ${(e.classificacio||[]).length?`<div class="card"><h3>Classificació</h3><div class="scroll"><table class="t2">
-   <tr><th>#</th><th class="l">Equip</th><th>J</th><th>PM</th><th>PP</th></tr>
-   ${e.classificacio.map(c=>`<tr class="${c.mon?'mon':''}"><td>${c.pos}</td><td class="l">${c.mon?'<b>'+esc(c.equip)+'</b>':esc(c.equip)}</td><td>${c.j??0}</td><td><b>${c.pm??0}</b></td><td>${c.pp??0}</td></tr>`).join('')}
-  </table></div><p class="muted">J: jugats · PM: punts de match · PP: punts parcials.</p></div>`:''}
   <div class="card"><h3>Partits</h3>${e.matches.length?e.matches.slice().reverse().map(m=>`<div class="match"><span class="badge ${m.venue}">${m.venue==='L'?'CASA':'FORA'}</span><b>${esc(m.rival)}</b> ${m.punts_match?`<b style="float:right">${m.punts_match[0]} – ${m.punts_match[1]}</b>`:''}<br><span class="muted">Jornada ${esc(m.jornada)} · ${fd(m.date)}</span>
    <div style="margin-top:6px">${m.results.map(r=>{const p=e.players.find(x=>x.id===r.pid);return`<div class="muted"><span class="link" onclick="openP('${r.pid}','${esc(r.mod||e.modalitat)}')">${esc(p?p.name:r.pid)}</span> ${r.car}/${r.ent} = ${f3(av(r.car,r.ent))} ${res(r.res)}${r.rival?` · vs ${esc(r.rival)} (${r.car_rival} car.)`:''}</div>`}).join('')}</div></div>`).join(''):'<p class="muted">Encara no s\'ha jugat cap partit.</p>'}</div>
   <div class="card"><h3>Calendari</h3>${cal.map(c=>`<div class="match"><span class="badge ${c.venue}">${c.venue==='L'?'CASA':'FORA'}</span>${esc(c.rival)}<br><span class="muted">Jornada ${esc(c.jornada)} · ${fd(c.date)}${c.played?' · Jugat':''}</span></div>`).join('')}</div>
   ${peu()}`;
+}
+
+/* ---------- calendari de tots els equips ---------- */
+const DIES=['Diumenge','Dilluns','Dimarts','Dimecres','Dijous','Divendres','Dissabte'];
+function diaSetmana(d){const x=new Date(d+'T12:00:00');return DIES[x.getDay()]}
+function calendari(){
+  const avui=new Date().toISOString().slice(0,10);
+  const tots=[];
+  EQ.equips.forEach((e,i)=>{const l=(e.equip.match(/"(.+)"/)||[,''])[1];const div=e.competicio.split(' · ').slice(1).join(' · ');
+    (e.calendar||[]).forEach(c=>{const m=e.matches.find(m=>String(m.jornada)===String(c.jornada));
+      tots.push({...c,l,i,div,pm:m&&m.punts_match,jugat:!!(m&&m.results&&m.results.length)})})});
+  const fila=c=>{let r='';if(c.jugat&&c.pm){const[a,b]=c.pm;const cl=a>b?'G':a<b?'P':'E';r=`<b class="${cl}" style="float:right;font-size:16px">${c.venue==='L'?a+' – '+b:b+' – '+a}</b>`}
+    const loc=c.venue==='L'?`<b>Monforte ${esc(c.l)}</b> – ${esc(c.rival)}`:`${esc(c.rival)} – <b>Monforte ${esc(c.l)}</b>`;
+    return`<div class="match click" onclick="st.equip=${c.i};go('equips')"><span class="badge L" style="background:var(--felt);color:#fff">${esc(c.l)}</span><span class="badge ${c.venue}">${c.venue==='L'?'CASA':'FORA'}</span>${r}<div style="margin-top:6px">${loc}</div><span class="muted">${esc(c.div)}</span></div>`};
+  const perData={};tots.forEach(c=>(perData[c.date||'—']=perData[c.date||'—']||[]).push(c));
+  const dates=Object.keys(perData).sort();
+  const propers=dates.filter(d=>perData[d].some(c=>!c.jugat)&&d>=avui), jugats=dates.filter(d=>!propers.includes(d)).reverse();
+  const bloc=(d,prim)=>{const cs=perData[d].sort((a,b)=>a.l.localeCompare(b.l));const j=[...new Set(cs.map(c=>c.jornada))].join(', ');
+    const casa=cs.filter(c=>c.venue==='L').length;
+    return`<div class="card"${prim?' style="border:2px solid var(--felt)"':''}><h3>${prim?'Propera jornada · ':''}${d==='—'?'Sense data':diaSetmana(d)+' '+fd(d)}</h3><p class="muted" style="margin:-4px 0 4px">Jornada ${esc(j)} · ${casa} a casa · ${cs.length-casa} a fora</p>${cs.map(fila).join('')}</div>`};
+  return`<div class="seg">${[['propers','Propers'],['jugats','Jugats']].map(([k,t])=>`<button class="${(st.cal||'propers')===k?'on':''}" onclick="st.cal='${k}';render()">${t}</button>`).join('')}</div>
+   ${(st.cal||'propers')==='propers'?(propers.map((d,i)=>bloc(d,i===0)).join('')||'<div class="card"><p class="muted">No queden jornades per jugar.</p></div>')
+     :(jugats.map(d=>bloc(d,false)).join('')||'<div class="card"><p class="muted">Encara no s\'ha jugat cap jornada.</p></div>')}
+   ${peu()}`;
 }
 
 /* ---------- rànquing ---------- */
