@@ -135,6 +135,10 @@ function equips(){
   return`<div class="chips">${E.map((x,i)=>`<button class="chip${i===st.equip?' on':''}" onclick="st.equip=${i};push();render()">Equip ${esc(lt(x))}</button>`).join('')}</div>
   <div class="card"><h2>${esc(e.equip)}</h2><p class="muted" style="margin-top:-4px">${esc(e.competicio)}</p>
    <div class="kpis"><div class="kpi"><b>${e.matches.length}</b><span>Jugats</span></div><div class="kpi"><b>${pmL}–${pmR}</b><span>Punts de match</span></div><div class="kpi"><b>${f3(av(car,ent))}</b><span>Promig equip</span></div></div></div>
+  ${(e.classificacio||[]).length?`<div class="card"><h3>Classificació</h3><div class="scroll"><table class="t2">
+   <tr><th>#</th><th class="l">Equip</th><th>J</th><th>PM</th><th>PP</th></tr>
+   ${e.classificacio.map(c=>`<tr class="${c.mon?'mon':''}"><td>${c.pos??''}</td><td class="l">${c.mon?'<b>'+esc(c.equip)+'</b>':esc(c.equip)}</td><td>${c.j??0}</td><td><b>${c.pm??0}</b></td><td>${c.pp??0}</td></tr>`).join('')}
+  </table></div><p class="muted">J: jornades jugades · PM: punts de match · PP: punts parcials.</p></div>`:''}
   <div class="card"><h3>Jugadors</h3><div class="scroll"><table class="t2">
    <tr><th class="l">Jugador</th><th>PJ</th><th>Inicial</th><th>Lliga</th><th>Evolució</th></tr>
    ${rows.map(({p,s})=>`<tr class="click" onclick="openP('${p.id}','${esc(e.modalitat)}')"><td class="l">${esc(p.name)}</td><td>${s.pj}</td><td>${f3(p.initial===''?null:+p.initial)}</td><td><b>${f3(s.avg)}</b></td><td>${delta(s.avg,p.initial===''?null:+p.initial)}</td></tr>`).join('')}

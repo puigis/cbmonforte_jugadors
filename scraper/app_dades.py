@@ -154,6 +154,15 @@ def main():
     for e in equips:
         e["classificacio"] = sorted(classif_lliga.get((str(e.get("lliga_id")), str(e.get("grup_id"))), []),
                                     key=lambda x: x["pos"] or 99)
+    # classificació del grup de cada equip
+    class_lliga = [c for c in llegeix_csv("classificacions_lliga.csv") if c["temporada"] == actual]
+    for e in equips:
+        grups = {c["grup_id"] for c in class_lliga if norm(c["equip"]) == norm(e.get("equip_original", ""))}
+        files_ = [c for c in class_lliga if c["grup_id"] in grups]
+        e["classificacio"] = [{"pos": enter(c["posicio"]), "equip": c["equip"], "pm": enter(c["punts_match"]),
+                               "pp": enter(c["punts_parcials"]), "j": enter(c["jugats"]),
+                               "mon": norm(c["equip"]) == norm(e.get("equip_original", ""))}
+                              for c in sorted(files_, key=lambda c: enter(c["posicio"]) or 99)]
     equip_de = defaultdict(list)
     for e in equips:
         lletra = e["equip"].split('"')[1] if '"' in e["equip"] else ""
