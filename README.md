@@ -82,11 +82,18 @@ Snooker i pool no surten a la intranet de competició de la Federació; s'afegir
 
 ## Imatge de resultats
 
-Cada **diumenge al matí** el workflow *Imatge de resultats del cap de setmana* baixa els resultats nous (mode ràpid, només la temporada actual), actualitza l'app i genera una imatge amb tots els equips del Monforte que han jugat: `imatges/resultats-AAAA-MM-DD.png` (1080 × 1350, format vertical d'Instagram). Es pot llançar a mà des d'**Actions → Run workflow**, i indicar una data per refer la d'un cap de setmana passat. El script és `scraper/imatge_resultats.py`.
+Cada **diumenge al matí** el workflow *Imatge de resultats del cap de setmana* baixa els resultats nous (mode ràpid, només la temporada actual), actualitza l'app i genera el cartell amb tots els equips del Monforte que han jugat (1080 × 1350, format vertical d'Instagram):
+`imatges/resultats-AAAA-MM-DD-1.png` amb el resultat final de cada partit, `…-2.png` amb les classificacions, i `….mp4`, un vídeo amb transició entre les dues. Es pot llançar a mà des d'**Actions → Run workflow**, i indicar una data per refer la d'un cap de setmana passat. El script és `scraper/imatge_resultats.py`.
 
 ## Pendent d'actualitzar
 
 - **Rànquing d'opens**: quan la Federació publiqui el primer, extreure'l i afegir-lo a la fitxa de cada jugador.
 - **Snooker i pool**: localitzar on es publiquen els resultats i afegir-los a la base de dades.
 - **5 quilles (individual i per parelles), biathló i artístic**: la Federació encara no n'ha publicat resultats; s'afegiran sols quan n'hi hagi.
-- **Publicar la imatge de resultats a les xarxes socials** de manera automàtica (falta decidir a quines xarxes).
+- **Logo del CB Monforte**: desar-lo com a `imatges/logo.png` (o .svg) perquè surti als cartells; ara hi ha un segell provisional.
+- **Publicació automàtica a les xarxes socials** (falta decidir a quines). Continguts previstos:
+  - Resultats dels partits de lliga (el cartell de cada diumenge).
+  - Campionats aconseguits pels nostres jugadors.
+  - Jugadors classificats per a les fases finals.
+  - Notícies i imatges del club.
+  - Informació general: comunicats de la junta, dies de tancament del club i horaris extraordinaris.
