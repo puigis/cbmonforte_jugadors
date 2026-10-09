@@ -184,19 +184,34 @@ async function fitxa(id){
   const fila=g=>`<tr><td class="l">${g.pendent?'<span class="badge PD">PENDENT</span>':''}${esc(g.riv)}<br><span class="muted">${fd(g.d)}${g.comp?' · '+esc(g.comp):''}${g.fase?' · '+esc(g.fase):''}${g.j?' · J'+esc(g.j):''}</span></td><td>${g.car??'—'}${g.rc!=null?`<span class="muted">-${g.rc}</span>`:''}</td><td>${g.ent??'—'}</td><td class="w">${g.sm??'—'}</td><td>${f3(av(g.car,g.ent))}</td><td>${res(g.res)}</td></tr>`;
   const cap='<tr><th class="l">Rival</th><th>Car</th><th>Ent</th><th class="w">SM</th><th>Prom.</th><th></th></tr>';
   const T=M.temporades;
+  // històric de totes les partides de la modalitat
+  const PJ=M.partides.filter(g=>g.ent);
+  const H=PJ.reduce((a,g)=>{a.c+=g.car||0;a.e+=g.ent||0;if(g.res)a[g.res]++;
+    if((g.sm||0)>(a.sm?.sm||0))a.sm=g; const pm=av(g.car,g.ent); if(pm!=null&&(!a.mp||pm>av(a.mp.car,a.mp.ent)))a.mp=g; return a},{c:0,e:0,G:0,E:0,P:0,sm:null,mp:null});
+  const millorT={};PJ.forEach(g=>{const pm=av(g.car,g.ent);if(pm!=null&&(millorT[g.t]==null||pm>millorT[g.t]))millorT[g.t]=pm});
+  const qui=g=>g?`<small class="muted">${fd(g.d)} · vs ${esc(g.riv)}</small>`:'';
+  const historic=PJ.length?`<div class="card"><h3>Històric a ${mod.toLowerCase()}</h3>
+   <div class="kpis"><div class="kpi"><b>${PJ.length}</b><span>Partides</span><small class="muted">${H.G} G · ${H.E} E · ${H.P} P</small></div>
+    <div class="kpi"><b>${f3(av(H.c,H.e))}</b><span>Promig total</span><small class="muted">${H.c} car. / ${H.e} ent.</small></div>
+    <div class="kpi"><b>${H.e?Math.round(100*H.G/PJ.length)+'%':'—'}</b><span>Victòries</span></div></div>
+   <div class="kpis" style="grid-template-columns:repeat(2,1fr);margin-top:8px">
+    <div class="kpi"><b>${H.sm?.sm??'—'}</b><span>Sèrie major</span>${qui(H.sm)}</div>
+    <div class="kpi"><b>${H.mp?f3(av(H.mp.car,H.mp.ent)):'—'}</b><span>Millor promig en una partida</span>${H.mp?`<small class="muted">${H.mp.car}/${H.mp.ent}</small>`:''}${qui(H.mp)}</div></div>
+   <p class="muted" style="margin:10px 0 0">Totes les partides a la base de dades de la Federació${PJ.length?', des del '+fd(PJ[PJ.length-1].d):''}.</p></div>`:'';
   const totH=T.reduce((a,t)=>(a.pj+=t.pj,a.G+=t.G,a.E+=t.E,a.P+=t.P,a.c+=t.car,a.e+=t.ent,a.sm=Math.max(a.sm,t.sm),a),{pj:0,G:0,E:0,P:0,c:0,e:0,sm:0});
   return`<button class="back" onclick="history.back()">‹ Enrere</button>
   <div class="card"><h2 style="margin-bottom:2px">${esc(J.nom)}</h2><p class="muted" style="margin:0 0 10px">${esc(J.club||'')}${J.equips.length?' · Equip '+J.equips.join(', '):''}</p>
    ${mods.length>1?`<div class="chips">${mods.map(m=>`<button class="chip${m===mod?' on':''}" onclick="st.pmod='${m}';st.mostra=20;render()">${m}</button>`).join('')}</div>`:`<p class="muted" style="margin-top:0">${mod}</p>`}
    <div class="kpis">${kpi('Inici temporada',I)}${kpi('Federatiu',F)}${kpi('Personal',P)}</div>
    <p class="muted" style="margin:10px 0 0">Respecte a l'inici: mitjana ${delta(P?.mj,I?.mj)} · ${I?.pos&&P?.pos?delta(P.pos,I.pos,0,true).replace('▲','↑').replace('▼','↓')+' llocs':'—'}</p></div>
+  ${historic}
   <div class="card"><h3>Evolució al rànquing</h3>${grafic(M)}<p class="muted">Línia verda: mitjana de cada rànquing federatiu. Punt taronja: rànquing personal d'avui. Línia discontínua: inici de temporada.</p></div>
   ${M.pendents.length?`<div class="card"><h3>Partides pendents de comptar (${M.pendents.length})</h3><p class="muted" style="margin-top:0">Ja s'han jugat però encara no surten al rànquing federatiu del ${fd(RK.data_federatiu)}. Sí que compten al personal.</p><div class="scroll"><table class="t2">${cap}${M.pendents.map(fila).join('')}</table></div></div>`:''}
   <div class="card"><h3>Les ${M.ultimes.length} partides del promig</h3><p class="muted" style="margin-top:0">Són les que fan la mitjana personal: ${tot.c} caramboles ÷ ${tot.e} entrades = <b>${f3(av(tot.c,tot.e))}</b></p><div class="scroll"><table class="t2">${cap}${M.ultimes.map(fila).join('')}</table></div></div>
-  <div class="card"><h3>Historial per temporada</h3><div class="scroll"><table class="t2"><tr><th class="l">Temporada</th><th>PJ</th><th>G-E-P</th><th class="w">Car</th><th class="w">Ent</th><th>Mitjana</th><th>SM</th></tr>
-   ${T.map(t=>`<tr><td class="l">${t.t}</td><td>${t.pj}</td><td>${t.G}-${t.E}-${t.P}</td><td class="w">${t.car}</td><td class="w">${t.ent}</td><td><b>${f3(t.mj)}</b></td><td>${t.sm||'—'}</td></tr>`).join('')}
-   ${T.length>1?`<tr><td class="l"><b>Total</b></td><td><b>${totH.pj}</b></td><td>${totH.G}-${totH.E}-${totH.P}</td><td class="w">${totH.c}</td><td class="w">${totH.e}</td><td><b>${f3(av(totH.c,totH.e))}</b></td><td>${totH.sm||'—'}</td></tr>`:''}
-   ${T.length?'':'<tr><td class="l muted" colspan="7">Sense partides a la base de dades.</td></tr>'}</table></div></div>
+  <div class="card"><h3>Historial per temporada</h3><div class="scroll"><table class="t2"><tr><th class="l">Temporada</th><th>PJ</th><th>G-E-P</th><th class="w">Car</th><th class="w">Ent</th><th>Mitjana</th><th>Millor</th><th>SM</th></tr>
+   ${T.map(t=>`<tr><td class="l">${t.t}</td><td>${t.pj}</td><td>${t.G}-${t.E}-${t.P}</td><td class="w">${t.car}</td><td class="w">${t.ent}</td><td><b>${f3(t.mj)}</b></td><td>${f3(millorT[t.t])}</td><td>${t.sm||'—'}</td></tr>`).join('')}
+   ${T.length>1?`<tr><td class="l"><b>Total</b></td><td><b>${totH.pj}</b></td><td>${totH.G}-${totH.E}-${totH.P}</td><td class="w">${totH.c}</td><td class="w">${totH.e}</td><td><b>${f3(av(totH.c,totH.e))}</b></td><td>${H.mp?f3(av(H.mp.car,H.mp.ent)):'—'}</td><td>${totH.sm||'—'}</td></tr>`:''}
+   ${T.length?'':'<tr><td class="l muted" colspan="8">Sense partides a la base de dades.</td></tr>'}</table></div></div>
   <div class="card"><h3>Totes les partides (${M.partides.length})</h3><div class="scroll"><table class="t2">${cap}${M.partides.slice(0,st.mostra).map(fila).join('')}</table></div>
    ${M.partides.length>st.mostra?`<button class="more" onclick="st.mostra+=40;render()">Veure'n més</button>`:''}</div>
   ${peu()}`;
