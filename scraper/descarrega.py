@@ -6,7 +6,9 @@ Recorre les seccions Lligues, Individuals, Copa i Rànquings seguint tots els en
 interns, i de cada pàgina en guarda els títols, la ruta (breadcrumb), les taules i els enllaços.
 
 Opcions (variables d'entorn):
-  HISTORIC=1      També prova identificadors antics de competicions (temporades passades).
+  HISTORIC=1      També prova identificadors antics de competicions (temporades passades)
+                  i torna a baixar els rànquings històrics (que no canvien).
+  RAPID=1         Només lligues i individuals de la temporada actual (uns minuts). Per al diumenge.
   MAX_MINUTS=300  Temps màxim d'execució; en arribar-hi desa el que tingui i s'atura.
   PAUSA=0.3       Segons d'espera entre peticions, per no sobrecarregar la web.
 """
@@ -24,10 +26,11 @@ import requests
 from bs4 import BeautifulSoup
 
 BASE = "https://intranet.fcbillar.cat"
-SECCIONS = ["lligues", "individuals", "copa", "rankings"]
+HISTORIC = os.environ.get("HISTORIC", "0") == "1"
+RAPID = os.environ.get("RAPID", "0") == "1"
+SECCIONS = ["lligues", "individuals"] if RAPID else ["lligues", "individuals", "copa", "rankings"]
 SORTIDA = Path(__file__).resolve().parent.parent / "dades" / "brut"
 
-HISTORIC = os.environ.get("HISTORIC", "0") == "1"
 MAX_SEGONS = float(os.environ.get("MAX_MINUTS", "300")) * 60
 PAUSA = float(os.environ.get("PAUSA", "0.3"))
 
@@ -48,6 +51,10 @@ def normalitza(url):
     if not p.path.startswith("/frontend/"):
         return None
     if "login" in p.path:
+        return None
+    if "historial-" in p.path and not HISTORIC:   # els rànquings antics no canvien
+        return None
+    if RAPID and "/rankings/" in p.path:
         return None
     return url.rstrip("/")
 

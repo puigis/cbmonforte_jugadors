@@ -1,0 +1,67 @@
+name: Imatge de resultats del cap de setmana
+
+on:
+  schedule:
+    # Cada diumenge a les 7:30 UTC (9:30 a l'estiu, 8:30 a l'hivern, hora de Madrid)
+    - cron: "30 7 * * 0"
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "Dia de referència AAAA-MM-DD (buit = avui)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: descarrega
+  cancel-in-progress: false
+
+jobs:
+  imatge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Instal·la dependències
+        run: |
+          pip install -r scraper/requirements.txt playwright
+          python -m playwright install --with-deps chromium
+          sudo apt-get install -y fonts-inter || true
+
+      - name: Descarrega els resultats d'aquesta temporada
+        env:
+          RAPID: "1"
+          MAX_MINUTS: "60"
+        run: python scraper/descarrega.py
+
+      - name: Organitza les dades
+        run: |
+          python scraper/organitza.py
+          python scraper/app_dades.py
+
+      - name: Genera la imatge
+        env:
+          DATA: ${{ inputs.data }}
+        run: python scraper/imatge_resultats.py
+
+      # PENDENT: publicar la imatge automàticament a les xarxes socials (per decidir quines)
+
+      - name: Desa els canvis al repositori
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dades/ imatges/
+          if git diff --cached --quiet; then
+            echo "No hi ha canvis."
+          else
+            git commit -m "Resultats del cap de setmana $(date -u +'%Y-%m-%d')"
+            git pull --rebase
+            git push
+          fi
