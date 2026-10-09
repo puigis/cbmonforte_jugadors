@@ -11,8 +11,8 @@ Sortida:
   dades/classificacions_individuals.csv  Classificacions finals dels individuals
   dades/rankings.csv                  Rànquings de la Federació (tot l'historial)
   dades/monforte/index.json           Índex de tot el que hi ha a dades/monforte/
-  dades/monforte/lligues/<temporada>/<lliga>/<equip>.json   Un fitxer per equip (format app Monforte C)
-  dades/monforte/modalitats/<modalitat>.json                Jugadors del Monforte per modalitat
+  dades/monforte/lligues/<lliga>/<equip>.json   Un fitxer per equip, temporada actual (format app Monforte C)
+  dades/monforte/modalitats/<modalitat>.json    Jugadors del Monforte per modalitat, temporada actual
 """
 
 import csv
@@ -525,7 +525,7 @@ def equips_monforte(lligues, grups, encontres, partides_lliga, rankings_idx, ara
             "matches": matches,
             "calendar": calendari,
         }
-        carpeta = MONFORTE / "lligues" / (lliga.get("temporada") or "sense-temporada") / slug(lliga.get("nom", f"lliga-{l}"))
+        carpeta = MONFORTE / "lligues" / slug(lliga.get("nom", f"lliga-{l}"))
         cami = carpeta / f"{lletra}.json"
         if cami in usats:
             cami = carpeta / f"{lletra}-{slug(e0['grup']) or g}.json"
@@ -662,10 +662,14 @@ def main():
     # fitxers de l'app
     if MONFORTE.exists():
         shutil.rmtree(MONFORTE)
-    idx_equips = equips_monforte(lligues, grups, encontres, part_lliga, rankings_idx, ara)
-    idx_mods = modalitats_monforte(partides, clubs, rankings, rankings_idx, ara)
+    actual = max(v["temporada"] for v in lligues.values() if v["temporada"])
+    print(f"Temporada actual: {actual}")
+    idx_equips = equips_monforte(lligues, grups, [e for e in encontres if e["temporada"] == actual],
+                                 [p for p in part_lliga if p["temporada"] == actual], rankings_idx, ara)
+    idx_mods = modalitats_monforte([p for p in partides if p["temporada"] == actual], clubs, rankings, rankings_idx, ara)
     escriu_json(MONFORTE / "index.json", {
         "updated": ara,
+        "temporada": actual,
         "equips": sorted(idx_equips, key=lambda x: (x["temporada"], x["competicio"], x["lletra"]), reverse=True),
         "modalitats": idx_mods,
         "jugadors_actuals": [j["nom_bonic"] for j in jugadors if j["monforte_actual"]],

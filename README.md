@@ -39,12 +39,12 @@ Taules generals (tota la Federació, totes les temporades des del 2012):
 | `classificacions_individuals.csv` | Classificacions finals de les competicions individuals |
 | `rankings.csv` | Tots els rànquings de la Federació (3 bandes, banda, lliure, quadre 47/2 i 71/2) |
 
-Fitxers per a l'app del club (`dades/monforte/`):
+Fitxers per a l'app del club (`dades/monforte/`), només de la **temporada actual**:
 
 | Fitxer | Què conté |
 |---|---|
 | `index.json` | Llista de tots els fitxers disponibles i dels jugadors actuals del club |
-| `lligues/<temporada>/<lliga>/<equip>.json` | Un fitxer per equip (A, B, C, D, E…), amb el mateix format que l'app Monforte C |
+| `lligues/<lliga>/<equip>.json` | Un fitxer per equip (A, B, C, D, E…), amb el mateix format que l'app Monforte C |
 | `modalitats/<modalitat>.json` | Per a cada modalitat: jugadors del Monforte, estadístiques, rànquing i totes les seves partides |
 
 Notes:
