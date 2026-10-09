@@ -51,6 +51,16 @@ Notes:
 - La modalitat dels opens que no la diuen al nom es dedueix per la mitjana de les partides (columna `modalitat_deduida`).
 - Biathló, 5 quilles i artístic surten com a competicions, però la Federació no n'ha publicat resultats.
 
+## L'app
+
+`index.html` és l'app del club (es publica amb GitHub Pages). Té tres pestanyes:
+
+- **Equips**: els equips del Monforte d'aquesta temporada, amb jugadors, partits i calendari.
+- **Rànquing**: per a cada modalitat, tres vistes: *inici de temporada* (rànquing del 27/07/2026), *federatiu* (darrer rànquing publicat, cada mes) i *personal* (calculat amb les partides que la Federació encara no ha comptat).
+- **Jugadors**: tots els jugadors del club. Tocant qualsevol nom s'obre la seva fitxa: rànquings, evolució, les partides que fan el promig, les pendents de comptar i l'historial de totes les temporades.
+
+Com es calcula el rànquing (comprovat amb les dades de la Federació): caramboles ÷ entrades de les darreres **15 partides a tres bandes** i **10 a la resta de modalitats**. Els jugadors que encara no tenen aquest nombre de partides són provisionals i van al final. Les dades de l'app les genera `scraper/app_dades.py` a `dades/app/`.
+
 ## Descàrrega de dades
 
 El script `scraper/descarrega.py` recorre totes les pàgines públiques de **Lligues, Individuals, Copa i Rànquings** (tres bandes, banda, lliure, quadre, biathló i la resta de modalitats que hi hagi) i en desa el contingut en brut a `dades/brut/<secció>/<competició>.jsonl`.
@@ -66,4 +76,5 @@ Snooker i pool no surten a la intranet de competició de la Federació; s'afegir
 - [x] Pas 3 · Script que descarrega totes les dades de la Federació
 - [x] Pas 4 · Automatització amb GitHub Actions
 - [x] Pas 5 · Organitzar les dades en taules (`scraper/organitza.py`, s'executa després de cada descàrrega)
-- [ ] Pas 6 · Plantilla i generació d'imatges per a xarxes
+- [x] Pas 6 · App del club (equips, rànquings i fitxes de jugador)
+- [ ] Pas 7 · Plantilla i generació d'imatges per a xarxes

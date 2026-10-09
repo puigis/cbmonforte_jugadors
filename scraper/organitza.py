@@ -648,13 +648,15 @@ def main():
         noms.setdefault(slug(r["jugador"]), r["jugador"])
         if r["jugador_fcb_id"]:
             fcb_id[slug(r["jugador"])] = r["jugador_fcb_id"]
+    temp_actual = max(v["temporada"] for v in lligues.values() if v["temporada"])
+    temp_anterior = f"{int(temp_actual[:4]) - 1}-{temp_actual[2:4]}"
     jugadors = []
     for pid, nom in sorted(noms.items()):
         temps = clubs.get(pid, {})
         actual = temps[max(temps)] if temps else ""
         jugadors.append({"jugador_id": pid, "nom": nom, "nom_bonic": bonic(nom), "jugador_fcb_id": fcb_id.get(pid, ""),
                          "club_actual": actual, "temporada_club_actual": max(temps) if temps else "",
-                         "monforte_actual": "MONFORTE" in actual,
+                         "monforte_actual": "MONFORTE" in actual and bool(temps) and max(temps) >= temp_anterior,
                          "monforte_alguna_vegada": any("MONFORTE" in c for c in temps.values()),
                          "historial_clubs": "; ".join(f"{t}: {c}" for t, c in sorted(temps.items()))})
     escriu_csv("jugadors.csv", list(jugadors[0].keys()), jugadors)

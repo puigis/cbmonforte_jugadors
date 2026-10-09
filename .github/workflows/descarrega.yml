@@ -41,6 +41,9 @@ jobs:
       - name: Organitza les dades en taules
         run: python scraper/organitza.py
 
+      - name: Genera les dades de l'app
+        run: python scraper/app_dades.py
+
       - name: Desa els canvis al repositori
         run: |
           git config user.name "github-actions[bot]"
