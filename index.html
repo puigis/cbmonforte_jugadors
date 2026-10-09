@@ -216,13 +216,6 @@ async function fitxa(id){
     <div class="sts" style="grid-template-columns:repeat(3,1fr);margin-top:14px">${stat(millorPos?'#'+millorPos:'–','Millor pos. rànquing','or')}${stat(f3(millorMj),'Millor promig rànquing','gr')}${stat(I?.pos?'#'+I.pos:'–','Inici temporada')}</div>
     <div class="act"><b>Actual:</b> <span class="muted">${RA.G} G · ${RA.P} P${RA.E?' · '+RA.E+' E':''}${F?.def==='No'?' · provisional':''}</span></div>${prox}</div>`;
 
-  // opens
-  const O=M.opens;
-  const opCard=O?`<div class="card sec"><h4>Rànquing d'opens ${esc(mod.toLowerCase())}</h4>
-    <div class="sts" style="grid-template-columns:repeat(2,1fr)">${stat(O.pos?'#'+O.pos:'–','Posició actual')}${stat(O.millor_pos?'#'+O.millor_pos:'–','Millor posició','gr')}</div>
-    <div class="sts" style="grid-template-columns:repeat(2,1fr);margin-top:14px">${stat(O.millor_open?'#'+O.millor_open.pos:'–','Millor en un open','or')}${stat(O.punts,'Punts')}</div>
-    <p class="muted rec">${O.jugats} opens jugats${O.millor_open?` · millor: ${esc(O.millor_open.comp)} (${O.millor_open.t}), ${O.millor_open.pos}è de ${O.millor_open.de}`:''}${O.millor_pos?` · millor posició el ${O.millor_pos_t}`:''}.<br>Calculat sumant els punts de les classificacions dels opens de cada temporada.</p></div>`:'';
-
   // cara a cara
   const cc={};PJ.forEach(g=>{const k=g.rid||g.riv;const x=cc[k]=cc[k]||{id:g.rid,nom:g.riv,n:0,G:0,E:0,P:0,c:0,e:0,rc:0};x.n++;if(g.res)x[g.res]++;x.c+=g.car||0;x.e+=g.ent||0;x.rc+=g.rc||0});
   const ccl=Object.values(cc).sort((a,b)=>b.n-a.n||a.nom.localeCompare(b.nom));
@@ -242,7 +235,6 @@ async function fitxa(id){
   ${blocStats(H,'Històric')}
   ${blocStats(TA,'Temporada actual')}
   ${rkCard}
-  ${opCard}
   ${ccCard}
   <div class="card sec"><h4>Evolució al rànquing</h4>${grafic(M)}<p class="muted">Línia verda: mitjana de cada rànquing federatiu. Punt taronja: rànquing personal d'avui. Línia discontínua: inici de temporada.</p></div>
   ${M.pendents.length?`<div class="card sec"><h4>Partides pendents de comptar (${M.pendents.length})</h4><p class="muted" style="margin-top:0">Ja s'han jugat però encara no surten al rànquing federatiu del ${fd(RK.data_federatiu)}.</p><div class="scroll"><table class="t2">${cap}${M.pendents.map(fila).join('')}</table></div></div>`:''}

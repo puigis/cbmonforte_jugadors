@@ -100,20 +100,6 @@ def id_ranking_de(data):
     return None
 
 
-def resum_opens(pid, mod, actual, pos_opens, classif_de):
-    temps = {t: v for (m, t, j), v in pos_opens.items() if m == mod and j == pid}
-    opens = [c for c in classif_de.get(pid, {}).get(mod, []) if c["open"]]
-    if not temps and not opens:
-        return None
-    millor_t = min(temps.items(), key=lambda x: x[1][0]) if temps else None
-    millor_o = min(opens, key=lambda c: (c["pos"], c["t"])) if opens else None
-    act = temps.get(actual)
-    return {"pos": act[0] if act else None, "de": act[2] if act else None, "punts": act[1] if act else 0,
-            "millor_pos": millor_t[1][0] if millor_t else None, "millor_pos_t": millor_t[0] if millor_t else "",
-            "millor_open": millor_o, "jugats": len(opens),
-            "jugats_t": sum(1 for c in opens if c["t"] == actual)}
-
-
 # ---------------------------------------------------------------- principal
 
 def main():
@@ -139,15 +125,6 @@ def main():
             "de": participants[(c["competicio_id"], c["divisio"])], "pts": enter(c["punts"]),
             "open": "OPEN" in c["competicio"].upper(), "mg": num(c["mitjana_general"])})
 
-    # rànquing d'opens propi: suma dels punts de classificació de tots els opens de cada temporada
-    punts_opens = defaultdict(lambda: defaultdict(int))     # (modalitat, temporada) -> {jugador: punts}
-    for c in classif:
-        if "OPEN" in c["competicio"].upper() and c["temporada"]:
-            punts_opens[(c["modalitat"], c["temporada"])][slug(c["jugador"])] += enter(c["punts"]) or 0
-    pos_opens = {}
-    for k, tot in punts_opens.items():
-        for i, (j, pts) in enumerate(sorted(tot.items(), key=lambda x: -x[1])):
-            pos_opens[(k[0], k[1], j)] = (i + 1, pts, len(tot))
 
     # clubs d'aquesta temporada: inscripcions i equips en què han jugat
     club_actual = {}
@@ -322,7 +299,6 @@ def main():
                 "pendents": neteja(list(reversed(pr.get("pendents", [])))),
                 "temporades": temporades,
                 "partides": neteja(list(reversed(meves))),
-                "opens": resum_opens(pid, mod, actual, pos_opens, classif_de),
                 "classificacions": sorted(classif_de.get(pid, {}).get(mod, []), key=lambda c: (c["t"], c["comp"]), reverse=True),
             }
             fitxes[pid]["nom"] = nom_de(pid)

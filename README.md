@@ -78,3 +78,10 @@ Snooker i pool no surten a la intranet de competició de la Federació; s'afegir
 - [x] Pas 5 · Organitzar les dades en taules (`scraper/organitza.py`, s'executa després de cada descàrrega)
 - [x] Pas 6 · App del club (equips, rànquings i fitxes de jugador)
 - [ ] Pas 7 · Plantilla i generació d'imatges per a xarxes
+
+## Pendent d'actualitzar
+
+- **Rànquing d'opens**: quan la Federació publiqui el primer, extreure'l i afegir-lo a la fitxa de cada jugador.
+- **Snooker i pool**: localitzar on es publiquen els resultats i afegir-los a la base de dades.
+- **5 quilles (individual i per parelles), biathló i artístic**: la Federació encara no n'ha publicat resultats; s'afegiran sols quan n'hi hagi.
+- **Imatges per a xarxes socials**: plantilla i generació automàtica dels resultats de lliga.
