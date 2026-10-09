@@ -82,7 +82,7 @@ Snooker i pool no surten a la intranet de competició de la Federació; s'afegir
 
 ## Imatge de resultats
 
-Cada **diumenge al matí** (cap a les 9:30, després de la descàrrega completa) el workflow *Imatge de resultats del cap de setmana* baixa els resultats nous (mode ràpid, només la temporada actual), actualitza l'app i genera el cartell amb tots els equips del Monforte que han jugat (1080 × 1350, format vertical d'Instagram):
+Cada **diumenge a les 16:00** (hora de Madrid) el workflow *Imatge de resultats del cap de setmana* baixa els resultats nous (mode ràpid, només la temporada actual), actualitza l'app i genera el cartell amb tots els equips del Monforte que han jugat (1080 × 1350, format vertical d'Instagram):
 `imatges/resultats-AAAA-MM-DD-1.png` amb el resultat final de cada partit, `…-2.png` amb les classificacions, i `….mp4`, un vídeo amb transició entre les dues. Es pot llançar a mà des d'**Actions → Run workflow**, i indicar una data per refer la d'un cap de setmana passat. El script és `scraper/imatge_resultats.py`.
 
 ## Pendent d'actualitzar
