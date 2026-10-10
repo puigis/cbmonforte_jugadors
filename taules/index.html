@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TAULES</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="TAULES">
+<meta name="theme-color" content="#124a2e">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Source+Sans+3:wght@400;600;700&display=swap">
+<style>
+/* Layout: columna única tipus app, capçalera amb escut, taules a dalt, preguntes en blocs a sota, resum fix al peu */
+:root{
+  --bg:#f3f5f2; --surface:#ffffff; --fg:#17201b; --muted:#5f6b64; --line:#d6ddd8;
+  --felt:#124a2e; --felt-ink:#ffffff; --ivory:#f7f1df; --red:#b3261e; --off:#e6e9e7; --off-ink:#9aa49e;
+  --display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"Source Sans 3",system-ui,-apple-system,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e1411; --surface:#16201b; --fg:#e8eee9; --muted:#9aa8a0; --line:#2a3630;
+  --felt:#1f8a5b; --felt-ink:#ffffff; --ivory:#2a2a20; --red:#e5574d; --off:#1b2420; --off-ink:#55615a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1411; --surface:#16201b; --fg:#e8eee9; --muted:#9aa8a0; --line:#2a3630;
+  --felt:#1f8a5b; --felt-ink:#ffffff; --ivory:#2a2a20; --red:#e5574d; --off:#1b2420; --off-ink:#55615a; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;margin:0}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 120px}
+header{display:flex;align-items:center;gap:14px;padding-block:18px 14px;border-bottom:1px solid var(--line)}
+header .escut{width:auto;height:84px;flex:none}
+.brand{font-family:var(--display);font-weight:800;font-size:2.1rem;letter-spacing:.06em;line-height:1}
+.brand small{display:block;font-family:var(--body);font-weight:600;font-size:.78rem;letter-spacing:.12em;color:var(--muted);margin-top:4px;text-transform:uppercase}
+.label{font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin:0 0 10px}
+section{padding-block:20px;border-bottom:1px solid var(--line)}
+.tables{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.t{appearance:none;border:2px solid var(--line);background:var(--surface);color:var(--fg);border-radius:10px;padding:10px 4px;font-family:var(--display);font-weight:700;font-size:1rem;letter-spacing:.05em;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:2px;min-height:72px;justify-content:center}
+.t b{font-size:1.9rem;line-height:1}
+.t span{font-family:var(--body);font-size:.7rem;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+.t[aria-pressed="true"]{background:var(--felt);border-color:var(--felt);color:var(--felt-ink);box-shadow:0 0 0 3px color-mix(in srgb,var(--felt) 30%,transparent)}
+.t[aria-pressed="true"] span{color:var(--felt-ink)}
+.t:disabled{background:var(--off);color:var(--off-ink);border-style:dashed;cursor:not-allowed}
+.t:disabled span{color:var(--red)}
+.note{font-size:.8rem;color:var(--muted);margin:10px 0 0}
+.opts{display:flex;flex-wrap:wrap;gap:8px}
+.o{appearance:none;border:2px solid var(--line);background:var(--surface);color:var(--fg);border-radius:999px;padding:9px 16px;font-family:var(--body);font-weight:700;font-size:.95rem;cursor:pointer;font-variant-numeric:tabular-nums}
+.o[aria-pressed="true"]{background:var(--fg);border-color:var(--fg);color:var(--bg)}
+.o .def{font-weight:600;font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;opacity:.7;margin-left:4px}
+.other{display:flex;align-items:center;gap:8px;margin-top:10px}
+.other input{width:110px;padding:9px 12px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);font:700 1rem var(--body);font-variant-numeric:tabular-nums}
+.other input:focus{outline:none;border-color:var(--felt)}
+.other label{font-size:.9rem;color:var(--muted)}
+button:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+footer{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px))}
+.fin{max-width:560px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.sum{flex:1;min-width:0;font-size:.9rem;color:var(--muted)}
+.sum strong{color:var(--fg)}
+.next{appearance:none;border:0;border-radius:10px;background:var(--felt);color:var(--felt-ink);font:700 1rem var(--display);letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;cursor:pointer}
+.next:disabled{background:var(--off);color:var(--off-ink);cursor:not-allowed}
+.pick{position:relative}
+.search{width:100%;padding:12px 14px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);font:600 1rem var(--body)}
+.search:focus{outline:none;border-color:var(--felt)}
+.list{list-style:none;margin:6px 0 0;padding:4px;border:1px solid var(--line);border-radius:10px;background:var(--surface);max-height:260px;overflow-y:auto}
+.list li{padding:10px 12px;border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;gap:10px}
+.list li:hover,.list li.act{background:color-mix(in srgb,var(--felt) 14%,transparent)}
+.list li small{color:var(--muted);font-size:.82rem;text-align:right}
+.list .empty{color:var(--muted);cursor:default}
+.list .empty:hover{background:none}
+mark{background:none;color:var(--felt);font-weight:700}
+.chosen{display:flex;align-items:center;gap:10px;padding:10px 12px;border:2px solid var(--felt);border-radius:10px;background:color-mix(in srgb,var(--felt) 10%,var(--surface))}
+.chosen div{flex:1;min-width:0}
+.chosen strong{display:block;font-size:1.05rem}
+.chosen small{color:var(--muted)}
+.chg{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 10px;font:600 .85rem var(--body);cursor:pointer}
+@media (max-width:380px){.t b{font-size:1.5rem}.brand{font-size:1.7rem}}
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <img class="escut" src="escut.png" alt="Escut del CB Monforte">
+    <div class="brand">CB MONFORTE<small>Nova partida</small></div>
+  </header>
+
+  <section>
+    <h2 class="label">Taula</h2>
+    <div class="tables" id="tables"></div>
+    <p class="note" id="tnote"></p>
+  </section>
+
+  <section>
+    <h2 class="label">Modalitat</h2>
+    <div class="opts" data-q="modalitat"></div>
+  </section>
+
+  <section>
+    <h2 class="label">Caramboles</h2>
+    <div class="opts" data-q="caramboles"></div>
+    <div class="other">
+      <label for="carOther">Altra distància</label>
+      <input id="carOther" type="number" inputmode="numeric" min="1" max="999" placeholder="ex. 60">
+    </div>
+  </section>
+
+  <section>
+    <h2 class="label">Entrades</h2>
+    <div class="opts" data-q="entrades"></div>
+  </section>
+
+  <section>
+    <h2 class="label">Competició</h2>
+    <div class="opts" data-q="competicio"></div>
+  </section>
+
+  <section>
+    <h2 class="label">Categoria</h2>
+    <div class="opts" data-q="categoria"></div>
+  </section>
+
+  <section>
+    <h2 class="label">Jugador 1</h2>
+    <div class="pick" data-p="jugador1"></div>
+  </section>
+
+  <section>
+    <h2 class="label">Jugador 2</h2>
+    <div class="pick" data-p="jugador2"></div>
+    <p class="note" id="jnote" hidden>No s'ha pogut carregar la llista de jugadors. Comprova la connexió.</p>
+  </section>
+</div>
+
+<footer><div class="fin">
+  <div class="sum" id="sum"></div>
+  <button class="next" id="next" disabled>Revisar →</button>
+</div></footer>
+
+<script>
+// Estat de les taules. De moment és un EXEMPLE: la Taula 3 surt ocupada.
+// Quan connectem amb monforte.wifibillar.com, això es llegirà d'allà.
+const OCUPADES = {3:"Partida creada"};
+
+const OPCIONS = {
+  modalitat:["3 Bandes","Banda","Lliure","Quadre 47/2","Quadre 71/2","Biathló","5 Quilles"],
+  caramboles:[20,25,30,35,40],
+  entrades:[50,40],
+  competicio:["Lliga","Campionat de Catalunya"],
+  categoria:["Honor","1a","2a","3a","4a","5a","6a"]
+};
+const state = {taula:null, modalitat:null, caramboles:null, entrades:50, competicio:null, categoria:null, jugador1:null, jugador2:null};
+
+let JUGADORS = [];
+fetch("jugadors.json?"+Date.now()).then(r=>r.json()).then(d=>{JUGADORS=d.map(j=>({nom:j.n,club:j.c,m:j.m}))}).catch(()=>{document.getElementById("jnote").hidden=false});
+const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+
+const tEl = document.getElementById("tables");
+for(let n=1;n<=4;n++){
+  const b=document.createElement("button");
+  b.className="t"; b.type="button"; b.id="taula"+n;
+  const occ=OCUPADES[n];
+  b.innerHTML=`TAULA<b>${n}</b><span>${occ?"Ocupada":"Lliure"}</span>`;
+  b.disabled=!!occ;
+  b.setAttribute("aria-pressed","false");
+  b.onclick=()=>{state.taula=n;render()};
+  tEl.appendChild(b);
+}
+const occN=Object.keys(OCUPADES);
+document.getElementById("tnote").textContent = occN.length
+  ? `Exemple: ${occN.map(n=>"Taula "+n).join(", ")} ja té una partida creada.`
+  : "";
+
+document.querySelectorAll(".opts").forEach(box=>{
+  const q=box.dataset.q;
+  OPCIONS[q].forEach(v=>{
+    const b=document.createElement("button");
+    b.className="o"; b.type="button"; b.dataset.v=v;
+    b.innerHTML = v + (q==="entrades"&&v===50?'<span class="def">per defecte</span>':"");
+    b.onclick=()=>{
+      state[q]=v;
+      if(q==="caramboles") document.getElementById("carOther").value="";
+      render();
+    };
+    box.appendChild(b);
+  });
+});
+
+const carOther=document.getElementById("carOther");
+carOther.addEventListener("input",()=>{
+  const v=parseInt(carOther.value,10);
+  state.caramboles = v>0 ? v : null;
+  render();
+});
+
+// Cercador de jugadors: busca mentre s'escriu (sense tenir en compte accents ni majúscules)
+function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
+function highlight(nom,q){
+  const n=norm(nom), i=n.indexOf(q);
+  if(!q||i<0) return esc(nom);
+  return esc(nom.slice(0,i))+"<mark>"+esc(nom.slice(i,i+q.length))+"</mark>"+esc(nom.slice(i+q.length));
+}
+function drawPick(box){
+  const key=box.dataset.p, other=key==="jugador1"?"jugador2":"jugador1";
+  const sel=state[key];
+  if(sel){
+    box.innerHTML=`<div class="chosen"><div><strong>${esc(sel.nom)}</strong><small>${esc(sel.club)}</small></div><button type="button" class="chg">Canviar</button></div>`;
+    box.querySelector(".chg").onclick=()=>{state[key]=null;drawPick(box);render();box.querySelector("input").focus()};
+    return;
+  }
+  box.innerHTML=`<input class="search" id="${key}-cerca" type="search" autocomplete="off" placeholder="Escriu nom o cognom…" aria-label="Cerca ${key==="jugador1"?"jugador 1":"jugador 2"}"><ul class="list" hidden></ul>`;
+  const inp=box.querySelector("input"), ul=box.querySelector("ul");
+  let res=[], act=0;
+  const choose=j=>{state[key]=j;drawPick(box);render()};
+  const update=()=>{
+    const q=norm(inp.value.trim());
+    if(q.length<2){ul.hidden=true;return}
+    const usat=state[other]?.nom;
+    res=JUGADORS.filter(j=>j.nom!==usat && norm(j.nom+" "+j.club).includes(q)).slice(0,8);
+    act=0;
+    ul.hidden=false;
+    ul.innerHTML=res.length
+      ? res.map((j,i)=>`<li data-i="${i}" class="${i===act?"act":""}"><span>${highlight(j.nom,q)}</span><small>${esc(j.club)}</small></li>`).join("")
+      : `<li class="empty">Cap jugador trobat</li>`;
+    ul.querySelectorAll("li[data-i]").forEach(li=>li.onmousedown=e=>{e.preventDefault();choose(res[+li.dataset.i])});
+  };
+  inp.addEventListener("input",update);
+  inp.addEventListener("keydown",e=>{
+    if(ul.hidden||!res.length) return;
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){
+      e.preventDefault();
+      act=(act+(e.key==="ArrowDown"?1:-1)+res.length)%res.length;
+      ul.querySelectorAll("li").forEach((li,i)=>li.classList.toggle("act",i===act));
+    } else if(e.key==="Enter"){e.preventDefault();choose(res[act])}
+  });
+  inp.addEventListener("blur",()=>setTimeout(()=>ul.hidden=true,150));
+}
+document.querySelectorAll(".pick").forEach(drawPick);
+
+function render(){
+  for(let n=1;n<=4;n++) document.getElementById("taula"+n).setAttribute("aria-pressed", state.taula===n?"true":"false");
+  document.querySelectorAll(".opts").forEach(box=>{
+    const q=box.dataset.q;
+    box.querySelectorAll(".o").forEach(b=>{
+      b.setAttribute("aria-pressed", String(b.dataset.v)===String(state[q])?"true":"false");
+    });
+  });
+  const parts=[
+    state.taula?`<strong>Taula ${state.taula}</strong>`:"Tria taula",
+    state.modalitat?`<strong>${state.modalitat}</strong>`:"modalitat",
+    state.caramboles?`<strong>${state.caramboles} car.</strong>`:"caramboles",
+    `<strong>${state.entrades} entr.</strong>`
+  ];
+  if(state.competicio) parts.push(`<strong>${state.competicio}${state.categoria?" "+state.categoria:""}</strong>`);
+  const falten=["taula","modalitat","caramboles","entrades","competicio","categoria","jugador1","jugador2"].filter(k=>!state[k]).length;
+  document.getElementById("sum").innerHTML=parts.join(" · ")+(falten?`<br>Falten ${falten} respostes`:"<br>Tot a punt");
+  document.getElementById("next").disabled=falten>0;
+}
+render();
+</script>
+
+</body>
+</html>
