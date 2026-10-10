@@ -139,8 +139,9 @@ mark{background:none;color:var(--felt);font-weight:700}
 </div></footer>
 
 <script>
-// Taules ocupades: encara no es llegeix del wifibillar (pendent).
-const OCUPADES = {};
+// Taules ocupades: les consulta l'intermediari, que llegeix monforte.wifibillar.com.
+// Quan l'intermediari estigui publicat, posa aquí la seva adreça.
+const INTERMEDIARI = "";
 
 const OPCIONS = {
   modalitat:["3 Bandes","Banda","Lliure","Quadre 47/2","Quadre 71/2","Biathló","5 Quilles"],
@@ -168,20 +169,38 @@ fetch(FONT_CSV+"?"+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()}).then(
 const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 
 const tEl = document.getElementById("tables");
+const tNote = document.getElementById("tnote");
 for(let n=1;n<=4;n++){
   const b=document.createElement("button");
   b.className="t"; b.type="button"; b.id="taula"+n;
-  const occ=OCUPADES[n];
-  b.innerHTML=`TAULA<b>${n}</b><span>${occ?"Ocupada":"Lliure"}</span>`;
-  b.disabled=!!occ;
+  b.innerHTML=`TAULA<b>${n}</b><span>…</span>`;
   b.setAttribute("aria-pressed","false");
   b.onclick=()=>{state.taula=n;render()};
   tEl.appendChild(b);
 }
-const occN=Object.keys(OCUPADES);
-document.getElementById("tnote").textContent = occN.length
-  ? `Exemple: ${occN.map(n=>"Taula "+n).join(", ")} ja té una partida creada.`
-  : "";
+function posaEstat(ocupades, comprovat){
+  for(let n=1;n<=4;n++){
+    const b=document.getElementById("taula"+n), occ=ocupades[n];
+    b.disabled=!!occ;
+    b.querySelector("span").textContent = !comprovat ? "Sense comprovar" : occ ? "Ocupada" : "Lliure";
+    b.title = occ && occ.text ? occ.text : "";
+    if(occ && state.taula===n) state.taula=null;
+  }
+  render();
+}
+function comprovaTaules(){
+  if(!INTERMEDIARI){ posaEstat({},false); tNote.textContent="Encara no es comprova el wifibillar: falta connectar l'intermediari."; return; }
+  tNote.textContent="Comprovant les taules al wifibillar…";
+  fetch(INTERMEDIARI+"?"+Date.now()).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+    const occ={};
+    (d.taules||[]).forEach(t=>{ if(t.ocupada) occ[t.taula]={text:[t.competicio,t.equips].filter(Boolean).join(" · ")}; });
+    posaEstat(occ,true);
+    const ns=Object.keys(occ);
+    tNote.textContent = ns.length ? "Amb partida creada: "+ns.map(n=>"Taula "+n).join(", ")+"." : "Totes les taules estan lliures.";
+  }).catch(()=>{ posaEstat({},false); tNote.textContent="No s'ha pogut comprovar el wifibillar. Revisa les taules abans de crear la partida."; });
+}
+comprovaTaules();
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) comprovaTaules(); });
 
 document.querySelectorAll(".opts").forEach(box=>{
   const q=box.dataset.q;
