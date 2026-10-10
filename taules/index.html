@@ -76,8 +76,29 @@ mark{background:none;color:var(--felt);font-weight:700}
 .chosen small{color:var(--muted)}
 .chg{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 10px;font:600 .85rem var(--body);cursor:pointer}
 @media (max-width:380px){.t b{font-size:1.5rem}.brand{font-size:1.7rem}}
+.wait{color:var(--muted);font-size:.9rem}
+.badge{display:inline-block;font:700 .66rem var(--body);letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:6px;margin-left:6px;vertical-align:middle;border:1px solid var(--line);color:var(--muted)}
+.badge.pool{border-color:var(--felt);color:var(--felt)}
+.badge.nou{border-color:var(--red);color:var(--red)}
+.cars{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+.cars label{display:flex;flex-direction:column;gap:4px;font-size:.82rem;color:var(--muted);min-width:0}
+.cars input,.rev input{padding:9px 12px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);font:700 1rem var(--body);font-variant-numeric:tabular-nums;width:100%}
+.cars input:focus,.rev input:focus{outline:none;border-color:var(--felt)}
+.rev{margin-top:20px;padding:16px;border:2px solid var(--felt);border-radius:12px;background:var(--surface)}
+.rev h2{font-family:var(--display);font-weight:800;letter-spacing:.06em;margin:0 0 10px;font-size:1.4rem}
+.rev dl{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;margin:0 0 12px}
+.rev dt{color:var(--muted);font-size:.85rem}
+.rev dd{margin:0;font-weight:600;min-width:0;overflow-wrap:anywhere}
+.nou-box{border-top:1px dashed var(--line);padding-top:10px;margin-top:10px;display:grid;gap:8px}
+.nou-box p{margin:0;font-size:.85rem;color:var(--muted)}
+.nou-box label{display:flex;flex-direction:column;gap:4px;font-size:.8rem;color:var(--muted)}
+.accions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+.sec{appearance:none;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--fg);font:700 1rem var(--display);letter-spacing:.08em;text-transform:uppercase;padding:12px 18px;cursor:pointer}
+.msg{margin-top:12px;padding:12px;border-radius:10px;font-weight:600}
+.msg.ok{background:color-mix(in srgb,var(--felt) 14%,var(--surface));color:var(--fg)}
+.msg.err{background:color-mix(in srgb,var(--red) 14%,var(--surface));color:var(--fg)}
+pre.sim{white-space:pre-wrap;font-size:.72rem;max-height:300px;overflow:auto;background:var(--bg);padding:8px;border-radius:8px}
 </style>
-
 </head>
 <body>
 <div class="wrap">
@@ -93,32 +114,18 @@ mark{background:none;color:var(--felt);font-weight:700}
   </section>
 
   <section>
+    <h2 class="label">Pool</h2>
+    <div class="opts" id="pools"><span class="wait">Carregant pools…</span></div>
+  </section>
+
+  <section id="secFase" hidden>
+    <h2 class="label">Fase</h2>
+    <div class="opts" id="fases"></div>
+  </section>
+
+  <section>
     <h2 class="label">Modalitat</h2>
-    <div class="opts" data-q="modalitat"></div>
-  </section>
-
-  <section>
-    <h2 class="label">Caramboles</h2>
-    <div class="opts" data-q="caramboles"></div>
-    <div class="other">
-      <label for="carOther">Altra distància</label>
-      <input id="carOther" type="number" inputmode="numeric" min="1" max="999" placeholder="ex. 60">
-    </div>
-  </section>
-
-  <section>
-    <h2 class="label">Entrades</h2>
-    <div class="opts" data-q="entrades"></div>
-  </section>
-
-  <section>
-    <h2 class="label">Competició</h2>
-    <div class="opts" data-q="competicio"></div>
-  </section>
-
-  <section>
-    <h2 class="label">Categoria</h2>
-    <div class="opts" data-q="categoria"></div>
+    <div class="opts" id="modalitats"><span class="wait">Tria primer la pool</span></div>
   </section>
 
   <section>
@@ -129,69 +136,74 @@ mark{background:none;color:var(--felt);font-weight:700}
   <section>
     <h2 class="label">Jugador 2</h2>
     <div class="pick" data-p="jugador2"></div>
-    <p class="note" id="jnote" hidden>No s'ha pogut carregar la llista de jugadors. Comprova la connexió.</p>
+    <p class="note" id="jnote"></p>
   </section>
+
+  <section>
+    <h2 class="label">Caramboles</h2>
+    <div class="opts" id="carOpts"></div>
+    <div class="other">
+      <label for="carOther">Altra distància</label>
+      <input id="carOther" type="number" inputmode="numeric" min="1" max="999" placeholder="ex. 60">
+    </div>
+    <div class="cars">
+      <label for="car1"><span id="car1lbl">Jugador 1</span><input id="car1" type="number" inputmode="numeric" min="1" max="999"></label>
+      <label for="car2"><span id="car2lbl">Jugador 2</span><input id="car2" type="number" inputmode="numeric" min="1" max="999"></label>
+    </div>
+    <p class="note" id="carNote"></p>
+  </section>
+
+  <section>
+    <h2 class="label">Entrades</h2>
+    <div class="opts" id="entOpts"></div>
+  </section>
+
+  <div class="rev" id="rev" hidden></div>
 </div>
 
 <footer><div class="fin">
   <div class="sum" id="sum"></div>
-  <button class="next" id="next" disabled>Revisar →</button>
+  <button class="next" id="next" type="button" disabled>Revisar →</button>
 </div></footer>
 
 <script>
-// Taules ocupades: les consulta l'intermediari, que llegeix monforte.wifibillar.com.
-// Quan l'intermediari estigui publicat, posa aquí la seva adreça.
 const INTERMEDIARI = "https://taules-monforte.puigis.workers.dev/";
+const FONT_CSV = "https://raw.githubusercontent.com/puigis/fcb-jugadors/main/data/jugadors.csv";
+const PROVA = location.hash === "#prova";   // amb #prova a l'adreça, només simula
+const MODALITATS_OK = ["1","2","3","4","5"]; // Lliure, Quadre 47/2, Quadre 71/2, Banda, 3 bandes
+const CAR_OPCIONS = [20,25,30,35,40];
 
-const OPCIONS = {
-  modalitat:["3 Bandes","Banda","Lliure","Quadre 47/2","Quadre 71/2","Biathló","5 Quilles"],
-  caramboles:[20,25,30,35,40],
-  entrades:[50,40],
-  competicio:["Lliga","Campionat de Catalunya"],
-  categoria:["Honor","1a","2a","3a","4a","5a","6a"]
-};
-const state = {taula:null, modalitat:null, caramboles:null, entrades:50, competicio:null, categoria:null, jugador1:null, jugador2:null};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const norm = s => String(s).normalize("NFD").replace(/[\u0300-\u036f]/g,"").toUpperCase().replace(/\s+/g," ").trim();
+const api = (q) => fetch(INTERMEDIARI + "?" + q + "&t=" + Date.now()).then(r => r.json()).then(d => { if (d && d.error) throw new Error(d.error); return d; });
 
-let JUGADORS = [];
-// Llista de jugadors: directament de fcb-jugadors (s'actualitza cada dilluns).
-// Si no s'hi pot accedir, fa servir la còpia local jugadors.json.
-const FONT_CSV="https://raw.githubusercontent.com/puigis/fcb-jugadors/main/data/jugadors.csv";
-const PETITES=new Set(["de","del","la","les","el","i","y","dos","da","das"]);
-function tc(s){return s.toLowerCase().split(" ").map((w,i)=>{w=w.split("-").map(p=>p.charAt(0).toUpperCase()+p.slice(1)).join("-");return i&&PETITES.has(w.toLowerCase())?w.toLowerCase():w}).join(" ")}
-function nomBonic(n){const i=n.indexOf(",");return i<0?tc(n.trim()):tc(n.slice(i+1).trim())+" "+tc(n.slice(0,i).trim())}
-function parseCSV(t){const rows=[];let r=[],f="",q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==","){r.push(f);f=""}else if(c=="\n"){r.push(f);rows.push(r);r=[];f=""}else if(c!="\r")f+=c}if(f||r.length){r.push(f);rows.push(r)}return rows}
-function ordena(l){return l.sort((a,b)=>(b.m-a.m)||a.nom.localeCompare(b.nom,"ca"))}
-fetch(FONT_CSV+"?"+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{
-  const [cap,...rs]=parseCSV(t);const k=Object.fromEntries(cap.map((h,i)=>[h,i]));
-  const l=rs.filter(r=>r[k.actiu]==="Si").map(r=>({nom:nomBonic(r[k.nom]),club:r[k.club],m:r[k.club].includes("MONFORTE")?1:0}));
-  if(!l.length)throw 0;JUGADORS=ordena(l);
-}).catch(()=>fetch("jugadors.json?"+Date.now()).then(r=>r.json()).then(d=>{JUGADORS=ordena(d.map(j=>({nom:j.n,club:j.c,m:j.m})))})).catch(()=>{document.getElementById("jnote").hidden=false});
-const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const state = { taula:null, pool:null, fase:null, modalitat:null, jugador1:null, jugador2:null, car1:"", car2:"", entrades:50 };
+let POOLS = [], FORM = null, WIFI = [], FCB = [];
 
-const tEl = document.getElementById("tables");
-const tNote = document.getElementById("tnote");
-for(let n=1;n<=4;n++){
+/* ---------- taules ---------- */
+const tNote = $("tnote");
+for (let n=1;n<=4;n++){
   const b=document.createElement("button");
   b.className="t"; b.type="button"; b.id="taula"+n;
   b.innerHTML=`TAULA<b>${n}</b><span>…</span>`;
   b.setAttribute("aria-pressed","false");
   b.onclick=()=>{state.taula=n;render()};
-  tEl.appendChild(b);
+  $("tables").appendChild(b);
 }
-function posaEstat(ocupades, comprovat){
-  for(let n=1;n<=4;n++){
-    const b=document.getElementById("taula"+n), occ=ocupades[n];
-    b.disabled=!!occ;
-    b.querySelector("span").textContent = !comprovat ? "Sense comprovar" : occ ? "Ocupada" : "Lliure";
-    b.title = occ && occ.text ? occ.text : "";
-    if(occ && state.taula===n) state.taula=null;
+function posaEstat(occ, comprovat){
+  for (let n=1;n<=4;n++){
+    const b=$("taula"+n), o=occ[n];
+    b.disabled=!!o;
+    b.querySelector("span").textContent = !comprovat ? "Sense comprovar" : o ? "Ocupada" : "Lliure";
+    b.title = o && o.text ? o.text : "";
+    if (o && state.taula===n) state.taula=null;
   }
   render();
 }
 function comprovaTaules(){
-  if(!INTERMEDIARI){ posaEstat({},false); tNote.textContent="Encara no es comprova el wifibillar: falta connectar l'intermediari."; return; }
   tNote.textContent="Comprovant les taules al wifibillar…";
-  fetch(INTERMEDIARI+"?"+Date.now()).then(r=>{if(!r.ok)throw 0;return r.json()}).then(d=>{
+  api("").then(d=>{
     const occ={};
     (d.taules||[]).forEach(t=>{ if(t.ocupada) occ[t.taula]={text:[t.competicio,t.equips].filter(Boolean).join(" · ")}; });
     posaEstat(occ,true);
@@ -199,96 +211,243 @@ function comprovaTaules(){
     tNote.textContent = ns.length ? "Amb partida creada: "+ns.map(n=>"Taula "+n).join(", ")+"." : "Totes les taules estan lliures.";
   }).catch(()=>{ posaEstat({},false); tNote.textContent="No s'ha pogut comprovar el wifibillar. Revisa les taules abans de crear la partida."; });
 }
-comprovaTaules();
-document.addEventListener("visibilitychange",()=>{ if(!document.hidden) comprovaTaules(); });
 
-document.querySelectorAll(".opts").forEach(box=>{
-  const q=box.dataset.q;
-  OPCIONS[q].forEach(v=>{
+/* ---------- botons d'opcions ---------- */
+function botons(cont, items, actiu, onTria){
+  cont.innerHTML="";
+  items.forEach(it=>{
     const b=document.createElement("button");
-    b.className="o"; b.type="button"; b.dataset.v=v;
-    b.innerHTML = v + (q==="entrades"&&v===50?'<span class="def">per defecte</span>':"");
-    b.onclick=()=>{
-      state[q]=v;
-      if(q==="caramboles") document.getElementById("carOther").value="";
-      render();
-    };
-    box.appendChild(b);
+    b.className="o"; b.type="button";
+    b.innerHTML=esc(it.nom)+(it.def?'<span class="def">per defecte</span>':"");
+    b.setAttribute("aria-pressed", String(it.id)===String(actiu) ? "true":"false");
+    b.onclick=()=>onTria(it.id);
+    cont.appendChild(b);
   });
-});
+}
 
-const carOther=document.getElementById("carOther");
-carOther.addEventListener("input",()=>{
-  const v=parseInt(carOther.value,10);
-  state.caramboles = v>0 ? v : null;
+/* ---------- pools i fases ---------- */
+function carDefecte(nomPool){
+  const n=norm(nomPool);
+  if (!/LLIGA/.test(n)) return null;
+  if (/HONOR/.test(n)) return 40;
+  if (/\b1(A|ª)\b|1A DIV|1ª/.test(n)) return 35;
+  if (/\b2(A|ª)\b|2A DIV|2ª/.test(n)) return 30;
+  if (/\b3(A|ª)\b|3A DIV/.test(n)) return 25;
+  if (/\b4(A|ª)\b|4A DIV/.test(n)) return 20;
+  return null;
+}
+const esManual = () => { const p=POOLS.find(p=>p.id===state.pool); return p && /MANUAL/i.test(p.nom); };
+function pintaPools(){ botons($("pools"), POOLS, state.pool, triaPool); }
+function triaPool(id){
+  state.pool=id; state.fase=null; FORM=null; state.modalitat=null;
+  state.jugador1=null; state.jugador2=null; state.car1=""; state.car2="";
+  pintaPools(); refaPicks();
+  $("modalitats").innerHTML='<span class="wait">Carregant…</span>';
+  api("accio=fases&pool="+id).then(fs=>{
+    if (state.pool!==id) return;
+    if (fs.length===1){ $("secFase").hidden=true; triaFase(fs[0].id); }
+    else { $("secFase").hidden=false; botons($("fases"), fs, state.fase, f=>{ triaFase(f); botons($("fases"), fs, f, ()=>{}); }); }
+  }).catch(e=>{ $("modalitats").innerHTML='<span class="wait">No s\'han pogut llegir les fases: '+esc(e.message)+'</span>'; });
   render();
-});
+}
+function triaFase(f){
+  state.fase=f;
+  api("accio=formulari&pool="+state.pool+"&fase="+f).then(d=>{
+    if (state.fase!==f) return;
+    FORM=d;
+    state.modalitat = MODALITATS_OK.includes(String(d.modalitat)) ? String(d.modalitat) : null;
+    if (d.entrades && !esManual()) state.entrades=+d.entrades;
+    const dc = carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"");
+    if (dc){ state.car1=dc; state.car2=dc; }
+    pintaModalitats(); pintaCars(); refaPicks(); render();
+  }).catch(e=>{ $("modalitats").innerHTML='<span class="wait">No s\'ha pogut llegir la pool: '+esc(e.message)+'</span>'; });
+}
+function pintaModalitats(){
+  const ms=(FORM?.modalitats||[]).filter(m=>MODALITATS_OK.includes(String(m.id)));
+  botons($("modalitats"), ms, state.modalitat, id=>{ state.modalitat=String(id); pintaModalitats(); render(); });
+}
 
-// Cercador de jugadors: busca mentre s'escriu (sense tenir en compte accents ni majúscules)
-function esc(s){return s.replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]))}
-function highlight(nom,q){
-  const n=norm(nom), i=n.indexOf(q);
-  if(!q||i<0) return esc(nom);
-  return esc(nom.slice(0,i))+"<mark>"+esc(nom.slice(i,i+q.length))+"</mark>"+esc(nom.slice(i+q.length));
+/* ---------- caramboles i entrades ---------- */
+function pintaCars(){
+  const iguals = String(state.car1)===String(state.car2) ? String(state.car1) : null;
+  botons($("carOpts"), CAR_OPCIONS.map(c=>({id:c,nom:c})), iguals, c=>{ state.car1=c; state.car2=c; $("carOther").value=""; pintaCars(); render(); });
+  if (document.activeElement!==$("car1")) $("car1").value=state.car1;
+  if (document.activeElement!==$("car2")) $("car2").value=state.car2;
+  const dc=carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"");
+  $("carNote").textContent = dc ? `Aquesta lliga es juga a ${dc} caramboles. Les pots canviar si cal.` : "";
+}
+$("carOther").addEventListener("input",()=>{ const v=parseInt($("carOther").value,10); if(v>0){state.car1=v;state.car2=v;} pintaCars(); render(); });
+$("car1").addEventListener("input",()=>{ state.car1=$("car1").value; pintaCars(); render(); });
+$("car2").addEventListener("input",()=>{ state.car2=$("car2").value; pintaCars(); render(); });
+function pintaEnt(){ botons($("entOpts"), [{id:50,nom:50,def:true},{id:40,nom:40}], state.entrades, e=>{ state.entrades=e; pintaEnt(); render(); }); }
+
+/* ---------- jugadors ---------- */
+// Wifibillar: "COGNOMS, NOM(nom marcador) [Grup: A]"
+function parteixWifi(n){
+  n=n.replace(/\s*\[Grup:[^\]]*\]\s*$/,"");
+  const i=n.indexOf("(");
+  if (i<0) return {alf:n.trim(), marc:""};
+  return {alf:n.slice(0,i).trim(), marc:n.slice(i+1).replace(/\)\s*$/,"").trim()};
+}
+const PETITES=new Set(["DE","DEL","LA","LES","EL","I","Y","DA","DOS","LOS"]);
+const tc = w => w.charAt(0)+w.slice(1).toLowerCase();
+// "PUIG LATRE, ISAAC" + "C.B.MONFORTE" -> "C.B.MONFORTE (I. Puig)"
+function marcadorNou(alf, club){
+  const [cog, nom=""] = alf.split(",").map(s=>s.trim());
+  const ws = cog.split(/\s+/); let c=[];
+  for (const w of ws){ c.push(w); if(!PETITES.has(w.toUpperCase())) break; }
+  const inicial = nom ? nom.charAt(0).toUpperCase()+". " : "";
+  return `${club} (${inicial}${c.map(tc).join(" ")})`;
+}
+function llistaJugadors(){
+  const pool = (FORM?.jugadors||[]);
+  const idsPool = new Set(pool.map(j=>j.id));
+  const out=[], vistos=new Set();
+  for (const j of pool){ const p=parteixWifi(j.nom); out.push({key:"w"+j.id, id:j.id, alf:p.alf, marc:p.marc, tipus:"pool"}); vistos.add(norm(p.alf)); }
+  for (const j of WIFI){ if(idsPool.has(j.id)) continue; const p=parteixWifi(j.nom); out.push({key:"w"+j.id, id:j.id, alf:p.alf, marc:p.marc, tipus:"wifi"}); vistos.add(norm(p.alf)); }
+  for (const j of FCB){ if(vistos.has(norm(j.alf))) continue; out.push({key:"f"+norm(j.alf), id:null, alf:j.alf, marc:marcadorNou(j.alf,j.club), club:j.club, tipus:"nou"}); }
+  return out;
+}
+const BADGE = {pool:'<span class="badge pool">a la pool</span>', wifi:'<span class="badge">al wifibillar</span>', nou:'<span class="badge nou">nou</span>'};
+function highlight(txt,q){
+  const n=norm(txt), i=n.indexOf(q);
+  if(!q||i<0) return esc(txt);
+  return esc(txt.slice(0,i))+"<mark>"+esc(txt.slice(i,i+q.length))+"</mark>"+esc(txt.slice(i+q.length));
 }
 function drawPick(box){
   const key=box.dataset.p, other=key==="jugador1"?"jugador2":"jugador1";
   const sel=state[key];
-  if(sel){
-    box.innerHTML=`<div class="chosen"><div><strong>${esc(sel.nom)}</strong><small>${esc(sel.club)}</small></div><button type="button" class="chg">Canviar</button></div>`;
-    box.querySelector(".chg").onclick=()=>{state[key]=null;drawPick(box);render();box.querySelector("input").focus()};
+  if (sel){
+    box.innerHTML=`<div class="chosen"><div><strong>${esc(sel.alf)}${BADGE[sel.tipus]}</strong><small>${esc(sel.marc)}</small></div><button type="button" class="chg">Canviar</button></div>`;
+    box.querySelector(".chg").onclick=()=>{state[key]=null;drawPick(box);render();box.querySelector("input")?.focus()};
     return;
   }
+  if (!FORM){ box.innerHTML='<p class="wait">Tria primer la pool.</p>'; return; }
   box.innerHTML=`<input class="search" id="${key}-cerca" type="search" autocomplete="off" placeholder="Escriu nom o cognom…" aria-label="Cerca ${key==="jugador1"?"jugador 1":"jugador 2"}"><ul class="list" hidden></ul>`;
   const inp=box.querySelector("input"), ul=box.querySelector("ul");
   let res=[], act=0;
-  const choose=j=>{state[key]=j;drawPick(box);render()};
+  const choose=j=>{state[key]=j;drawPick(box);carsJugador();render()};
   const update=()=>{
     const q=norm(inp.value.trim());
     if(q.length<2){ul.hidden=true;return}
-    const usat=state[other]?.nom;
-    res=JUGADORS.filter(j=>j.nom!==usat && norm(j.nom+" "+j.club).includes(q)).slice(0,8);
-    act=0;
-    ul.hidden=false;
+    const usat=state[other]?.key;
+    const ordre={pool:0,wifi:1,nou:2};
+    res=llistaJugadors().filter(j=>j.key!==usat && norm(j.alf+" "+j.marc).includes(q)).sort((a,b)=>ordre[a.tipus]-ordre[b.tipus]).slice(0,10);
+    act=0; ul.hidden=false;
     ul.innerHTML=res.length
-      ? res.map((j,i)=>`<li data-i="${i}" class="${i===act?"act":""}"><span>${highlight(j.nom,q)}</span><small>${esc(j.club)}</small></li>`).join("")
+      ? res.map((j,i)=>`<li data-i="${i}" class="${i===act?"act":""}"><span>${highlight(j.alf,q)}${BADGE[j.tipus]}</span><small>${esc(j.marc)}</small></li>`).join("")
       : `<li class="empty">Cap jugador trobat</li>`;
     ul.querySelectorAll("li[data-i]").forEach(li=>li.onmousedown=e=>{e.preventDefault();choose(res[+li.dataset.i])});
   };
   inp.addEventListener("input",update);
   inp.addEventListener("keydown",e=>{
     if(ul.hidden||!res.length) return;
-    if(e.key==="ArrowDown"||e.key==="ArrowUp"){
-      e.preventDefault();
-      act=(act+(e.key==="ArrowDown"?1:-1)+res.length)%res.length;
-      ul.querySelectorAll("li").forEach((li,i)=>li.classList.toggle("act",i===act));
-    } else if(e.key==="Enter"){e.preventDefault();choose(res[act])}
+    if(e.key==="ArrowDown"||e.key==="ArrowUp"){ e.preventDefault(); act=(act+(e.key==="ArrowDown"?1:-1)+res.length)%res.length; ul.querySelectorAll("li").forEach((li,i)=>li.classList.toggle("act",i===act)); }
+    else if(e.key==="Enter"){e.preventDefault();choose(res[act])}
   });
   inp.addEventListener("blur",()=>setTimeout(()=>ul.hidden=true,150));
 }
-document.querySelectorAll(".pick").forEach(drawPick);
-
-function render(){
-  for(let n=1;n<=4;n++) document.getElementById("taula"+n).setAttribute("aria-pressed", state.taula===n?"true":"false");
-  document.querySelectorAll(".opts").forEach(box=>{
-    const q=box.dataset.q;
-    box.querySelectorAll(".o").forEach(b=>{
-      b.setAttribute("aria-pressed", String(b.dataset.v)===String(state[q])?"true":"false");
-    });
+function refaPicks(){ document.querySelectorAll(".pick").forEach(drawPick); }
+// Si la pool no té caramboles fixades, demana al wifibillar les del jugador
+function carsJugador(){
+  if (carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"") || esManual()) return;
+  ["jugador1","jugador2"].forEach((k,i)=>{
+    const j=state[k]; if(!j||j.tipus!=="pool") return;
+    api(`accio=caramboles&pool=${state.pool}&fase=${state.fase}&jugador=${j.id}`).then(d=>{
+      if(d.caramboles && state[k]===j){ state[i?"car2":"car1"]=d.caramboles; pintaCars(); render(); }
+    }).catch(()=>{});
   });
+}
+
+/* ---------- resum, revisió i creació ---------- */
+const nomPool = () => (POOLS.find(p=>p.id===state.pool)||{}).nom||"";
+const nomModalitat = () => ((FORM?.modalitats||[]).find(m=>String(m.id)===String(state.modalitat))||{}).nom||"";
+function falten(){
+  return ["taula","pool","fase","modalitat","jugador1","jugador2"].filter(k=>!state[k]).length
+    + (+state.car1>0?0:1) + (+state.car2>0?0:1);
+}
+function render(){
+  for (let n=1;n<=4;n++) $("taula"+n).setAttribute("aria-pressed", state.taula===n?"true":"false");
+  $("car1lbl").textContent = state.jugador1 ? "Caramboles · "+state.jugador1.alf : "Jugador 1";
+  $("car2lbl").textContent = state.jugador2 ? "Caramboles · "+state.jugador2.alf : "Jugador 2";
   const parts=[
     state.taula?`<strong>Taula ${state.taula}</strong>`:"Tria taula",
-    state.modalitat?`<strong>${state.modalitat}</strong>`:"modalitat",
-    state.caramboles?`<strong>${state.caramboles} car.</strong>`:"caramboles",
+    state.pool?`<strong>${esc(nomPool())}</strong>`:"pool",
+    state.modalitat?`<strong>${esc(nomModalitat())}</strong>`:"modalitat",
     `<strong>${state.entrades} entr.</strong>`
   ];
-  if(state.competicio) parts.push(`<strong>${state.competicio}${state.categoria?" "+state.categoria:""}</strong>`);
-  const falten=["taula","modalitat","caramboles","entrades","competicio","categoria","jugador1","jugador2"].filter(k=>!state[k]).length;
-  document.getElementById("sum").innerHTML=parts.join(" · ")+(falten?`<br>Falten ${falten} respostes`:"<br>Tot a punt");
-  document.getElementById("next").disabled=falten>0;
+  const f=falten();
+  $("sum").innerHTML=parts.join(" · ")+(f?`<br>Falten ${f} respostes`:"<br>Tot a punt");
+  $("next").disabled=f>0;
+  if (f>0) $("rev").hidden=true;
 }
-render();
-</script>
+function revisio(){
+  const r=$("rev"); r.hidden=false;
+  const nous=[state.jugador1,state.jugador2].filter(j=>j.tipus==="nou");
+  const pasos=[];
+  if (nous.length) pasos.push(`Donar d'alta ${nous.length===1?"1 jugador nou":"2 jugadors nous"} al wifibillar`);
+  if ([state.jugador1,state.jugador2].some(j=>j.tipus!=="pool")) pasos.push("Assignar els jugadors a la pool");
+  pasos.push(`Crear la partida a la taula ${state.taula}`);
+  r.innerHTML=`<h2>Revisa la partida${PROVA?" (MODE PROVA)":""}</h2>
+  <dl>
+    <dt>Taula</dt><dd>${state.taula}</dd>
+    <dt>Pool</dt><dd>${esc(nomPool())}</dd>
+    <dt>Modalitat</dt><dd>${esc(nomModalitat())}</dd>
+    <dt>Jugador 1</dt><dd>${esc(state.jugador1.alf)} · ${state.car1} car.</dd>
+    <dt>Jugador 2</dt><dd>${esc(state.jugador2.alf)} · ${state.car2} car.</dd>
+    <dt>Entrades</dt><dd>${state.entrades}</dd>
+  </dl>
+  ${nous.map((j,i)=>`<div class="nou-box"><p>Jugador nou: es donarà d'alta així al wifibillar.</p>
+    <label for="nalf${i}">Nom alfabètic<input id="nalf${i}" value="${esc(j.alf)}"></label>
+    <label for="nmar${i}">Nom marcador<input id="nmar${i}" value="${esc(j.marc)}"></label></div>`).join("")}
+  <p class="note">En prémer el botó, TAULES farà: ${pasos.join(" → ")}.</p>
+  <div class="accions"><button class="next" id="crear" type="button">${PROVA?"Simular":"Crear partida"}</button><button class="sec" id="tornar" type="button">Tornar</button></div>
+  <div id="resultat"></div>`;
+  nous.forEach((j,i)=>{ $("nalf"+i).oninput=e=>j.alf=e.target.value; $("nmar"+i).oninput=e=>j.marc=e.target.value; });
+  $("tornar").onclick=()=>{ r.hidden=true; };
+  $("crear").onclick=crear;
+  r.scrollIntoView({behavior:"smooth",block:"start"});
+}
+$("next").onclick=revisio;
+function crear(){
+  const b=$("crear"), out=$("resultat");
+  const jug=j=>j.id?{id:j.id}:{nou:{alfabetic:j.alf.trim(),marcador:j.marc.trim()}};
+  const d={pool:state.pool,fase:state.fase,taula:state.taula,modalitat:state.modalitat,entrades:state.entrades,
+    caramboles:[+state.car1,+state.car2],jugadors:[jug(state.jugador1),jug(state.jugador2)]};
+  b.disabled=true; b.textContent=PROVA?"Simulant…":"Creant…"; out.innerHTML="";
+  const req = PROVA
+    ? fetch(INTERMEDIARI+"?accio=crear&simular=1&dades="+encodeURIComponent(JSON.stringify(d)))
+    : fetch(INTERMEDIARI+"?accio=crear",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(d)});
+  req.then(r=>r.json()).then(res=>{
+    if (res.error) throw new Error(res.error);
+    if (PROVA){ out.innerHTML=`<div class="msg ok">Simulació feta. No s'ha enviat res.</div><pre class="sim">${esc(JSON.stringify(res.registre,null,1))}</pre>`; b.disabled=false; b.textContent="Simular"; return; }
+    out.innerHTML=`<div class="msg ok">Partida creada a la taula ${state.taula}.</div>`;
+    b.textContent="Fet";
+    setTimeout(reinicia, 2500);
+  }).catch(e=>{
+    out.innerHTML=`<div class="msg err">${esc(e.message||"No s'ha pogut crear la partida")}</div>`;
+    b.disabled=false; b.textContent=PROVA?"Simular":"Tornar-ho a provar";
+    comprovaTaules();
+  });
+}
+function reinicia(){
+  Object.assign(state,{taula:null,jugador1:null,jugador2:null});
+  $("rev").hidden=true;
+  api("accio=jugadors").then(w=>{WIFI=w;}).catch(()=>{});
+  if (state.pool && state.fase) triaFase(state.fase);
+  comprovaTaules(); refaPicks(); render(); window.scrollTo({top:0,behavior:"smooth"});
+}
 
+/* ---------- càrrega inicial ---------- */
+function parseCSV(t){const rows=[];let r=[],f="",q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==","){r.push(f);f=""}else if(c=="\n"){r.push(f);rows.push(r);r=[];f=""}else if(c!="\r")f+=c}if(f||r.length){r.push(f);rows.push(r)}return rows}
+fetch(FONT_CSV+"?"+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{
+  const [cap,...rs]=parseCSV(t); const k=Object.fromEntries(cap.map((h,i)=>[h,i]));
+  FCB=rs.filter(r=>r[k.actiu]==="Si").map(r=>({alf:r[k.nom].trim(), club:r[k.club].trim()}));
+}).catch(()=>{ $("jnote").textContent="No s'ha pogut carregar la llista de la Federació: només es poden triar jugadors del wifibillar."; });
+api("accio=jugadors").then(w=>{WIFI=w;}).catch(()=>{});
+api("accio=pools").then(p=>{ POOLS=p; pintaPools(); }).catch(e=>{ $("pools").innerHTML='<span class="wait">No s\'han pogut llegir les pools del wifibillar.</span>'; });
+pintaCars(); pintaEnt(); refaPicks(); comprovaTaules();
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden) comprovaTaules(); });
+</script>
 </body>
 </html>
