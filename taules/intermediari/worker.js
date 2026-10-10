@@ -178,7 +178,8 @@ async function crearJugador(nou, simular, registre) {
   const abans = await totsJugadors();
   const existent = abans.find(j => alfDe(j.nom) === normNom(nou.alfabetic));
   if (existent) { registre.push(`Jugador ja existent: ${existent.nom} (${existent.id})`); return existent.id; }
-  const form = await pagina("mante_jugadors.php", [["clau_jugador", "A"], ["vinc", "3"]]);
+  // El formulari envia els dos desplegables (actius i no actius), com el navegador
+  const form = await pagina("mante_jugadors.php", [["clau_jugador", "A"], ["clau_jugadorno", "X"], ["vinc", "3"]]);
   const indexacio = valorInput(form, "indexacio");
   if (!/Afegeix/i.test(form) || !indexacio) throw new Error("No s'ha pogut obrir el formulari d'alta de jugador");
   const camps = [
@@ -289,7 +290,7 @@ async function veurePagina(params) {
   const vinc = params.get("vinc") || p.vinc[0];
   if (!p.vinc.includes(vinc)) return new Response("Pas no permès", { status: 400, headers: TEXT_H });
   const camps = [["vinc", vinc]];
-  for (const c of ["clau_pool", "fase", "clau_jugador"]) if (params.get(c)) camps.push([c, params.get(c)]);
+  for (const c of ["clau_pool", "fase", "clau_jugador", "clau_jugadorno"]) if (params.get(c)) camps.push([c, params.get(c)]);
   return new Response(await pagina(p.url, camps), { headers: TEXT_H });
 }
 
