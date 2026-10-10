@@ -75,6 +75,20 @@ mark{background:none;color:var(--felt);font-weight:700}
 .chosen strong{display:block;font-size:1.05rem}
 .chosen small{color:var(--muted)}
 .chg{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 10px;font:600 .85rem var(--body);cursor:pointer}
+.brand{white-space:nowrap;min-width:0}
+@media (max-width:430px){.brand{font-size:1.7rem} header .escut{height:70px}}
+.refresh{margin-left:auto;flex:none;width:48px;height:48px;border-radius:12px;border:2px solid var(--line);background:var(--surface);color:var(--fg);display:grid;place-items:center;cursor:pointer}
+.refresh svg{width:24px;height:24px}
+.refresh.gira svg{animation:gira .8s linear infinite}
+@keyframes gira{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.refresh.gira svg{animation:none}}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:16px;z-index:10}
+.modal[hidden]{display:none}
+.modal .caixa{background:var(--surface);color:var(--fg);border-radius:16px;padding:22px;max-width:380px;width:100%;box-shadow:0 20px 50px rgba(0,0,0,.35)}
+.modal h2{font-family:var(--display);font-weight:800;font-size:1.6rem;letter-spacing:.04em;margin:0 0 8px}
+.modal p{margin:0 0 18px;color:var(--muted)}
+.modal .accions{margin-top:0}
+.modal .accions button{flex:1}
 @media (max-width:380px){.t b{font-size:1.5rem}.brand{font-size:1.7rem}}
 .wait{color:var(--muted);font-size:.9rem}
 .badge{display:inline-block;font:700 .66rem var(--body);letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:6px;margin-left:6px;vertical-align:middle;border:1px solid var(--line);color:var(--muted)}
@@ -105,6 +119,9 @@ pre.sim{white-space:pre-wrap;font-size:.72rem;max-height:300px;overflow:auto;bac
   <header>
     <img class="escut" src="escut.png" alt="Escut del CB Monforte">
     <div class="brand">CB MONFORTE<small>Nova partida</small></div>
+    <button class="refresh" id="refresh" type="button" aria-label="Actualitzar l'estat de les taules" title="Actualitzar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg>
+    </button>
   </header>
 
   <section>
@@ -159,6 +176,14 @@ pre.sim{white-space:pre-wrap;font-size:.72rem;max-height:300px;overflow:auto;bac
   </section>
 
   <div class="rev" id="rev" hidden></div>
+</div>
+
+<div class="modal" id="ytModal" hidden role="dialog" aria-modal="true" aria-labelledby="ytTitol">
+  <div class="caixa">
+    <h2 id="ytTitol">Emissió a YouTube</h2>
+    <p id="ytText"></p>
+    <div class="accions"><button class="next" id="ytSi" type="button">Sí</button><button class="sec" id="ytNo" type="button">No</button></div>
+  </div>
 </div>
 
 <footer><div class="fin">
@@ -423,13 +448,39 @@ function crear(){
     if (PROVA){ out.innerHTML=`<div class="msg ok">Simulació feta. No s'ha enviat res.</div><pre class="sim">${esc(JSON.stringify(res.registre,null,1))}</pre>`; b.disabled=false; b.textContent="Simular"; return; }
     out.innerHTML=`<div class="msg ok">Partida creada a la taula ${state.taula}.</div>`;
     b.textContent="Fet";
-    setTimeout(reinicia, 2500);
+    preguntaYoutube(state.taula);
   }).catch(e=>{
     out.innerHTML=`<div class="msg err">${esc(e.message||"No s'ha pogut crear la partida")}</div>`;
     b.disabled=false; b.textContent=PROVA?"Simular":"Tornar-ho a provar";
     comprovaTaules();
   });
 }
+/* ---------- YouTube ---------- */
+function preguntaYoutube(taula){
+  const m=$("ytModal");
+  $("ytText").textContent=`Vols emetre a YouTube la partida de la taula ${taula}?`;
+  m.hidden=false; $("ytSi").focus();
+  const tanca=()=>{ m.hidden=true; reinicia(); };
+  $("ytNo").onclick=tanca;
+  $("ytSi").onclick=()=>{ activaYoutube(taula).finally(tanca); };
+}
+// Pendent: activar la càmera i l'emissió de la taula (quan sapiguem com està muntat)
+async function activaYoutube(taula){
+  $("ytText").textContent=`L'emissió automàtica de la taula ${taula} encara no està configurada.`;
+  await new Promise(r=>setTimeout(r,2000));
+}
+
+/* ---------- botó d'actualitzar ---------- */
+$("refresh").onclick=()=>{
+  const b=$("refresh"); b.classList.add("gira"); b.disabled=true;
+  comprovaTaules();
+  const fi=()=>{ b.classList.remove("gira"); b.disabled=false; };
+  Promise.allSettled([
+    api("accio=jugadors").then(w=>{WIFI=w;}),
+    state.pool&&state.fase ? api("accio=formulari&pool="+state.pool+"&fase="+state.fase).then(d=>{FORM=d;}) : null,
+  ]).then(()=>setTimeout(fi,400));
+};
+
 function reinicia(){
   Object.assign(state,{taula:null,jugador1:null,jugador2:null});
   $("rev").hidden=true;
