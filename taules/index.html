@@ -139,9 +139,8 @@ mark{background:none;color:var(--felt);font-weight:700}
 </div></footer>
 
 <script>
-// Estat de les taules. De moment és un EXEMPLE: la Taula 3 surt ocupada.
-// Quan connectem amb monforte.wifibillar.com, això es llegirà d'allà.
-const OCUPADES = {3:"Partida creada"};
+// Taules ocupades: encara no es llegeix del wifibillar (pendent).
+const OCUPADES = {};
 
 const OPCIONS = {
   modalitat:["3 Bandes","Banda","Lliure","Quadre 47/2","Quadre 71/2","Biathló","5 Quilles"],
@@ -153,7 +152,19 @@ const OPCIONS = {
 const state = {taula:null, modalitat:null, caramboles:null, entrades:50, competicio:null, categoria:null, jugador1:null, jugador2:null};
 
 let JUGADORS = [];
-fetch("jugadors.json?"+Date.now()).then(r=>r.json()).then(d=>{JUGADORS=d.map(j=>({nom:j.n,club:j.c,m:j.m}))}).catch(()=>{document.getElementById("jnote").hidden=false});
+// Llista de jugadors: directament de fcb-jugadors (s'actualitza cada dilluns).
+// Si no s'hi pot accedir, fa servir la còpia local jugadors.json.
+const FONT_CSV="https://raw.githubusercontent.com/puigis/fcb-jugadors/main/data/jugadors.csv";
+const PETITES=new Set(["de","del","la","les","el","i","y","dos","da","das"]);
+function tc(s){return s.toLowerCase().split(" ").map((w,i)=>{w=w.split("-").map(p=>p.charAt(0).toUpperCase()+p.slice(1)).join("-");return i&&PETITES.has(w.toLowerCase())?w.toLowerCase():w}).join(" ")}
+function nomBonic(n){const i=n.indexOf(",");return i<0?tc(n.trim()):tc(n.slice(i+1).trim())+" "+tc(n.slice(0,i).trim())}
+function parseCSV(t){const rows=[];let r=[],f="",q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c=='"'){if(t[i+1]=='"'){f+='"';i++}else q=false}else f+=c}else if(c=='"')q=true;else if(c==","){r.push(f);f=""}else if(c=="\n"){r.push(f);rows.push(r);r=[];f=""}else if(c!="\r")f+=c}if(f||r.length){r.push(f);rows.push(r)}return rows}
+function ordena(l){return l.sort((a,b)=>(b.m-a.m)||a.nom.localeCompare(b.nom,"ca"))}
+fetch(FONT_CSV+"?"+Date.now()).then(r=>{if(!r.ok)throw 0;return r.text()}).then(t=>{
+  const [cap,...rs]=parseCSV(t);const k=Object.fromEntries(cap.map((h,i)=>[h,i]));
+  const l=rs.filter(r=>r[k.actiu]==="Si").map(r=>({nom:nomBonic(r[k.nom]),club:r[k.club],m:r[k.club].includes("MONFORTE")?1:0}));
+  if(!l.length)throw 0;JUGADORS=ordena(l);
+}).catch(()=>fetch("jugadors.json?"+Date.now()).then(r=>r.json()).then(d=>{JUGADORS=ordena(d.map(j=>({nom:j.n,club:j.c,m:j.m})))})).catch(()=>{document.getElementById("jnote").hidden=false});
 const norm = s => s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
 
 const tEl = document.getElementById("tables");
