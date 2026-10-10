@@ -65,9 +65,39 @@ async function llegirTaula(n) {
   return t;
 }
 
+// Consulta de pàgines del wifibillar (NOMÉS LECTURA).
+// Només es permeten els passos de navegació dels formularis (triar pool, fase o jugador);
+// mai els que desen, assignen o esborren.
+const PAGINES = {
+  generar:  { url: "generar_partides12.php",         vinc: ["3", "4"] },
+  quilles:  { url: "generar_partides12_quilles.php", vinc: ["3", "4"] },
+  artistic: { url: "generar_partides12_art.php",     vinc: ["3", "4"] },
+  assignar: { url: "assignar_jugadors_fasepool.php", vinc: ["3"] },
+  jugadors: { url: "mante_jugadors.php",             vinc: ["3"] },
+};
+const CAMPS = ["clau_pool", "fase", "clau_jugador"];
+
+async function veurePagina(params) {
+  const p = PAGINES[params.get("veure")];
+  if (!p) return new Response("Pàgina no permesa", { status: 400, headers: CORS });
+  const vinc = params.get("vinc") || p.vinc[0];
+  if (!p.vinc.includes(vinc)) return new Response("Pas no permès", { status: 400, headers: CORS });
+  const cos = new URLSearchParams({ vinc });
+  for (const c of CAMPS) if (params.get(c)) cos.set(c, params.get(c));
+  const r = await fetch("http://monforte.wifibillar.com/" + p.url, {
+    method: "POST",
+    headers: { ...CAPCALERES, "Content-Type": "application/x-www-form-urlencoded" },
+    body: cos.toString(),
+  });
+  const html = latin1(await r.arrayBuffer());
+  return new Response("Estat: " + r.status + "\n\n" + html, { headers: { ...CORS, "Content-Type": "text/plain; charset=utf-8" } });
+}
+
 export default {
   async fetch(request) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
+    const params = new URL(request.url).searchParams;
+    if (params.get("veure")) return veurePagina(params);
     // Diagnosi: /?prova=3 mostra el que retorna el wifibillar per a la taula 3
     const prova = new URL(request.url).searchParams.get("prova");
     if (prova) {
