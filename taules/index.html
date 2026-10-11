@@ -262,9 +262,10 @@ function carDefecte(nomPool){
   return null;
 }
 const esManual = () => { const p=POOLS.find(p=>p.id===state.pool); return p && /MANUAL/i.test(p.nom); };
-// Ordre: primer les lligues (Honor, 1a, 2a, 3a, 4a), després la resta per ordre alfabètic
+// Ordre: primer les lligues catalanes (Honor, 1a, 3a, 4a i finals), després la resta per ordre alfabètic i al final la Lliga Nacional
 function ordrePool(p){
   const n=norm(p.nom);
+  if (/LLIGA NAC/.test(n)) return [2, 0, n];   // la Lliga Nacional, al final de tot
   if (!/LLIGA/.test(n)) return [1, 0, n];
   const div = /HONOR/.test(n) ? 0 : +((n.match(/([1-9])\s*(?:A|ª)\s*DIV/)||[])[1]||9);
   const final = /FINAL|PLAYOFF/.test(n) ? 1 : 0;
