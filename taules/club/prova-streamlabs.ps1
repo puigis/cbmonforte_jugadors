@@ -1,4 +1,4 @@
-﻿# Prova de connexió amb Streamlabs Desktop (només llegeix, no emet res)
+# Prova de connexió amb Streamlabs Desktop (només llegeix, no emet res)
 # Ús (PowerShell):  irm https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/main/taules/club/prova-streamlabs.ps1 | iex
 
 $port  = Read-Host "Port de Streamlabs (ex. 59653)"

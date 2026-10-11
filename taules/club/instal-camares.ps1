@@ -1,4 +1,4 @@
-﻿# Instal·la el control de càmeres de MARCADORS al PC del club
+# Instal·la el control de càmeres de MARCADORS al PC del club
 # Ús (PowerShell):  irm https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/main/taules/club/instal-camares.ps1 | iex
 $dir = "C:\MARCADORS"
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
