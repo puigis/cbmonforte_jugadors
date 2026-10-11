@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · Honor · Grup B",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-11T09:34+00:00",
+ "updated": "2026-10-11T14:10+00:00",
  "players": [
   {
    "id": "cardona-gallego-julian-alberto",
@@ -120,7 +120,7 @@
      "ent": 45,
      "sm": 6,
      "res": "P",
-     "mod": "5 quilles",
+     "mod": "Tres bandes",
      "rival": "Minguell Rosselló, Xavier",
      "car_rival": 40
     },

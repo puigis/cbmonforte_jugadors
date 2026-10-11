@@ -8722,16 +8722,16 @@ encontre_id,lliga_id,competicio,temporada,divisio,grup,grup_id,jornada,data,equi
 12440,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,1,2026-10-11,C.B. CANET,B.C. GRANOLLERS,1,7,0,3,Finalitzada
 ,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,1,2026-10-11,C.B. 2000 CERDANYOLA “B”,C.B. SANT FELIU,0,0,0,0,Oberta
 ,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,1,2026-10-11,"C.B. MONT-ROIG ""B""",C.B. LLIÇÀ,0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,1,2026-10-11,"C.B. VIC ""A""",C.B. 2000 CERDANYOLA “C”,0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,1,2026-10-11,C.B. VILANOVA,"S.B. CASAL CERVERA ""C""",0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,1,2026-10-11,"S.B. CASAL CERVERA ""A""","S.B. CASAL CERVERA ""B""",0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,1,2026-10-11,C.B. LLINARS,"S.B. FOMENT MOLINS ""A""",0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,1,2026-10-11,"C.B. SANTS ""A""",C.B. TARRAGONA,0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,1,2026-10-11,C.B. LLEIDA,"C.B. SANT ADRIÀ ""A""",0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,1a Divisió,Únic,342,1,2026-10-11,"S.B. FOMENT MOLINS ""B""","C.B. SANTS ""B""",0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,1a Divisió,Únic,342,1,2026-10-11,C.B PUNT D'ATAC,"C.B. 2000 CERDANYOLA ""A""",0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,1a Divisió,Únic,342,1,2026-10-11,"C.B. SANT ADRIÀ ""B""",S.B.P.E. CENTELLES,0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,1a Divisió,Únic,342,1,2026-10-11,"C.B. MONT-ROIG ""A""",C.B PRAT,0,0,0,0,Oberta
+12470,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,1,2026-10-11,"C.B. VIC ""A""",C.B. 2000 CERDANYOLA “C”,4,4,1,1,Finalitzada
+12471,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,1,2026-10-11,C.B. VILANOVA,"S.B. CASAL CERVERA ""C""",6,2,3,0,Finalitzada
+12327,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,1,2026-10-11,"S.B. CASAL CERVERA ""A""","S.B. CASAL CERVERA ""B""",6,2,3,0,Finalitzada
+12328,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,1,2026-10-11,C.B. LLINARS,"S.B. FOMENT MOLINS ""A""",6,2,3,0,Finalitzada
+12329,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,1,2026-10-11,"C.B. SANTS ""A""",C.B. TARRAGONA,0,0,0,0,Finalitzada
+12330,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,1,2026-10-11,C.B. LLEIDA,"C.B. SANT ADRIÀ ""A""",4,4,1,1,Finalitzada
+12383,39,Lliga Catalana 4 Modalitats,2026-27,1a Divisió,Únic,342,1,2026-10-11,"S.B. FOMENT MOLINS ""B""","C.B. SANTS ""B""",4,4,1,1,Finalitzada
+12384,39,Lliga Catalana 4 Modalitats,2026-27,1a Divisió,Únic,342,1,2026-10-11,C.B PUNT D'ATAC,"C.B. 2000 CERDANYOLA ""A""",2,6,0,3,Finalitzada
+12385,39,Lliga Catalana 4 Modalitats,2026-27,1a Divisió,Únic,342,1,2026-10-11,"C.B. SANT ADRIÀ ""B""",S.B.P.E. CENTELLES,8,0,3,0,Finalitzada
+12386,39,Lliga Catalana 4 Modalitats,2026-27,1a Divisió,Únic,342,1,2026-10-11,"C.B. MONT-ROIG ""A""",C.B PRAT,6,2,3,0,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,3,2026-10-17,"C.B. LLEIDA ""A""",B. C. OLESA,0,0,0,0,Oberta
 ,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,3,2026-10-17,"B.C. GRANOLLERS ""B""","C.B. MONFORTE ""A""",0,0,0,0,Oberta
 ,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,3,2026-10-17,"C.B. MONT-ROIG ""A""","C.B. SANT ADRIÀ ""A""",0,0,0,0,Oberta

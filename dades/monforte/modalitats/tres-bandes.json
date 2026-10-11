@@ -1,6 +1,6 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-10-11T09:34+00:00",
+ "updated": "2026-10-11T14:10+00:00",
  "jugadors": [
   {
    "id": "cardona-gallego-julian-alberto",
@@ -19,6 +19,26 @@
    "ranking": {
     "posicio": 70,
     "mitjana": 0.68478,
+    "data": "2026-10-02"
+   }
+  },
+  {
+   "id": "lopez-gallego-cristian",
+   "name": "López Gallego, Cristian",
+   "partides": 6,
+   "G": 3,
+   "E": 0,
+   "P": 3,
+   "caramboles": 167,
+   "entrades": 181,
+   "serie_major": 6,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.923,
+   "ranking": {
+    "posicio": 47,
+    "mitjana": 0.75084,
     "data": "2026-10-02"
    }
   },
@@ -59,26 +79,6 @@
    "ranking": {
     "posicio": 4,
     "mitjana": 1.34112,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "lopez-gallego-cristian",
-   "name": "López Gallego, Cristian",
-   "partides": 5,
-   "G": 3,
-   "E": 0,
-   "P": 2,
-   "caramboles": 133,
-   "entrades": 136,
-   "serie_major": 6,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.978,
-   "ranking": {
-    "posicio": 47,
-    "mitjana": 0.75084,
     "data": "2026-10-02"
    }
   },
@@ -659,6 +659,25 @@
    "car_rival": 9,
    "sm_rival": 3,
    "res": "G"
+  },
+  {
+   "data": "2026-10-10",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "2",
+   "pid": "lopez-gallego-cristian",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Minguell Rosselló, Xavier",
+   "equip_rival": "C.B. BARCELONA \"A\"",
+   "car": 34,
+   "sm": 6,
+   "ent": 45,
+   "car_rival": 40,
+   "sm_rival": 4,
+   "res": "P"
   },
   {
    "data": "2026-10-10",
