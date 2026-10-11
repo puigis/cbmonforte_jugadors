@@ -348,6 +348,8 @@ const PAGINES = {
 };
 async function veurePagina(params) {
   // Acta d'una taula, tal com la mostra el wifibillar
+  // Títols per a YouTube que prepara el wifibillar (ELABORACIÓ llistats → Taules youtube)
+  if (params.get("veure") === "youtube") return new Response(await pagina("youtube.php?refrescar=0"), { headers: TEXT_H });
   if (params.get("veure") === "acta") return new Response(await pagina("veurepartida.php?taula=" + (+params.get("taula") || 1)), { headers: TEXT_H });
   const p = PAGINES[params.get("veure")];
   if (!p) return new Response("Pàgina no permesa", { status: 400, headers: TEXT_H });
