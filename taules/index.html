@@ -403,13 +403,38 @@ function marcadorNou(alf, club){
   const inicial = nom ? nom.charAt(0).toUpperCase()+". " : "";
   return `${club} (${inicial}${c.map(tc).join(" ")})`;
 }
+// ---- Evitar duplicats: un jugador de la Federació NO surt com a "nou"
+// si ja existeix al wifibillar, encara que el nom estigui escrit una mica diferent
+// (accents, comes, una lletra de més, nom i cognoms en un altre ordre...).
+const PARTICULES = new Set(["DE","DEL","LA","LES","EL","I","Y","DA","DOS","LOS","LAS"]);
+function paraules(n){ return norm(n).replace(/[^A-Z ]/g," ").split(" ").filter(w=>w.length>1 && !PARTICULES.has(w)); }
+function lev(a,b){ if(Math.abs(a.length-b.length)>1) return 2; const d=[...Array(b.length+1).keys()];
+  for(let i=1;i<=a.length;i++){ let prev=d[0]; d[0]=i; for(let j=1;j<=b.length;j++){ const t=d[j]; d[j]=Math.min(d[j]+1,d[j-1]+1,prev+(a[i-1]===b[j-1]?0:1)); prev=t; } } return d[b.length]; }
+const iguals = (x,y) => x===y || (x.length>=5 && y.length>=5 && lev(x,y)<=1);
+function mateixJugador(a,b){
+  const A=paraules(a), B=paraules(b); if(!A.length||!B.length) return false;
+  const [curt,llarg] = A.length<=B.length ? [A,B] : [B,A];
+  const coincidencies = curt.filter(w=>llarg.some(v=>iguals(w,v))).length;
+  if (coincidencies>=3 || coincidencies===curt.length) return true;
+  // Mateixos dos cognoms i el nom comença igual (FCO./FRANCISCO, JONH/JOHN...)
+  if (a.includes(",") && b.includes(",")){
+    const [ca,na]=a.split(","), [cb,nb]=b.split(",");
+    const CA=paraules(ca), CB=paraules(cb), NA=paraules(na), NB=paraules(nb);
+    if (CA.length>=2 && CB.length>=2 && iguals(CA[0],CB[0]) && iguals(CA[1],CB[1]) && NA[0] && NB[0] && NA[0][0]===NB[0][0]) return true;
+  }
+  return false;
+}
 function llistaJugadors(){
   const pool = (FORM?.jugadors||[]);
   const idsPool = new Set(pool.map(j=>j.id));
-  const out=[], vistos=new Set();
-  for (const j of pool){ const p=parteixWifi(j.nom); out.push({key:"w"+j.id, id:j.id, alf:p.alf, marc:p.marc, tipus:"pool"}); vistos.add(norm(p.alf)); }
-  for (const j of WIFI){ if(idsPool.has(j.id)) continue; const p=parteixWifi(j.nom); out.push({key:"w"+j.id, id:j.id, alf:p.alf, marc:p.marc, tipus:"wifi"}); vistos.add(norm(p.alf)); }
-  for (const j of FCB){ if(vistos.has(norm(j.alf))) continue; out.push({key:"f"+norm(j.alf), id:null, alf:j.alf, marc:marcadorNou(j.alf,j.club), club:j.club, tipus:"nou"}); }
+  const out=[];
+  for (const j of pool){ const p=parteixWifi(j.nom); out.push({key:"w"+j.id, id:j.id, alf:p.alf, marc:p.marc, tipus:"pool"}); }
+  for (const j of WIFI){ if(idsPool.has(j.id)) continue; const p=parteixWifi(j.nom); out.push({key:"w"+j.id, id:j.id, alf:p.alf, marc:p.marc, tipus:"wifi"}); }
+  const existents = out.map(j=>j.alf);
+  for (const j of FCB){
+    if (existents.some(e=>mateixJugador(e,j.alf))) continue;   // ja és al wifibillar: no l'oferim com a nou
+    out.push({key:"f"+norm(j.alf), id:null, alf:j.alf, marc:marcadorNou(j.alf,j.club), club:j.club, tipus:"nou"});
+  }
   return out;
 }
 const BADGE = {pool:'<span class="badge pool">a la pool</span>', wifi:'<span class="badge">al wifibillar</span>', nou:'<span class="badge nou">nou</span>'};
