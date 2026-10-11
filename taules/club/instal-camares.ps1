@@ -7,7 +7,8 @@ New-Item -ItemType Directory -Force -Path $dir | Out-Null
 Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*camares.ps1*" } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
 $rev = if ($REV) { $REV } else { "main" }
 Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/club/camares.ps1" -OutFile "$dir\camares.ps1"
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/favicon.png" -OutFile "$dir\icona.png"
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/club/icona-camares.png" -OutFile "$dir\icona.png"
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/club/icona-camares.ico" -OutFile "$dir\icona.ico"
 
 # Accés directe a l'inici de Windows (s'engega sol en obrir la sessió)
 $ws = New-Object -ComObject WScript.Shell
@@ -18,6 +19,7 @@ foreach ($lloc in @([Environment]::GetFolderPath("Startup"), [Environment]::GetF
   $extra = if ($lloc -eq [Environment]::GetFolderPath("Startup")) { " -ObreBillars" } else { "" }
   $lnk.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`"$extra"
   $lnk.WorkingDirectory = $dir
+  $lnk.IconLocation = "$dir\icona.ico"
   $lnk.Save()
 }
 Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`""
