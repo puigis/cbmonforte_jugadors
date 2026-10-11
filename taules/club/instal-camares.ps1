@@ -4,18 +4,19 @@ $dir = "C:\MARCADORS"
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
 # Atura la versió anterior si està en marxa
-Get-Process powershell -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like "MARCADORS*" } | Stop-Process -Force
+Get-CimInstance Win32_Process -Filter "Name='powershell.exe'" -ErrorAction SilentlyContinue | Where-Object { $_.CommandLine -like "*camares.ps1*" } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
 $rev = if ($REV) { $REV } else { "main" }
 Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/club/camares.ps1" -OutFile "$dir\camares.ps1"
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/favicon.png" -OutFile "$dir\icona.png"
 
 # Accés directe a l'inici de Windows (s'engega sol en obrir la sessió)
 $ws = New-Object -ComObject WScript.Shell
 foreach ($lloc in @([Environment]::GetFolderPath("Startup"), [Environment]::GetFolderPath("Desktop"))) {
   $lnk = $ws.CreateShortcut((Join-Path $lloc "MARCADORS camares.lnk"))
   $lnk.TargetPath = "powershell.exe"
-  $lnk.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Minimized -File `"$dir\camares.ps1`""
+  $lnk.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`""
   $lnk.WorkingDirectory = $dir
   $lnk.Save()
 }
-Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -WindowStyle Minimized -File `"$dir\camares.ps1`""
-Write-Host "Fet. El control de càmeres ja està engegat i s'engegarà sol cada vegada que s'encengui el PC." -ForegroundColor Green
+Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`""
+Write-Host "Fet. El control de càmeres ja està engegat (icona a la safata, al costat del rellotge) i s'engegarà sol cada vegada que s'encengui el PC." -ForegroundColor Green
