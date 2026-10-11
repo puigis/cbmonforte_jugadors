@@ -283,7 +283,7 @@ const PAGINES = {
   artistic: { url: "generar_partides12_art.php",     vinc: ["3", "4"] },
   assignar: { url: "assignar_jugadors_fasepool.php", vinc: ["3"] },
   jugadors: { url: "mante_jugadors.php",             vinc: ["3"] },
-  eliminar: { url: "eliminar_partides.php",          vinc: ["4"] },   // només triar la pool: mai elimina
+  eliminar: { url: "eliminar_partides.php",          vinc: ["4", "3"] },   // només triar pool i fase: mai elimina
 };
 async function veurePagina(params) {
   // Acta d'una taula, tal com la mostra el wifibillar
