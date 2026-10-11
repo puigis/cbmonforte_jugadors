@@ -51,14 +51,14 @@ $estat = [hashtable]::Synchronized(@{ text = "Engegant..."; ok = $false; atura =
 # ---------- feina de fons: escoltar ordres ----------
 $feina = {
   param($CANAL, $LOG, $estat)
-  $ORDRES = "https://ntfy.sh/$CANAL-ordres"
-  $ESTAT  = "https://ntfy.sh/$CANAL-estat"
+  $URL_ORDRES = "https://ntfy.sh/$CANAL-ordres"
+  $URL_ESTAT  = "https://ntfy.sh/$CANAL-estat"
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   function Escriu($t) { $l = "{0:yyyy-MM-dd HH:mm:ss}  {1}" -f (Get-Date), $t; try { Add-Content -Path $LOG -Value $l -Encoding UTF8 } catch {} ; $estat.text = $t }
   $cams = @{ "1" = $false; "2" = $false; "3" = $false; "4" = $false }
   function PublicaEstat {
     $cos = @{ pc = "ok"; cams = $cams; t = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds() } | ConvertTo-Json -Compress
-    try { $wc = New-Object Net.WebClient; $wc.Headers.Add("Content-Type", "application/json"); $wc.UploadString($ESTAT, $cos) | Out-Null; $estat.ok = $true }
+    try { $wc = New-Object Net.WebClient; $wc.Headers.Add("Content-Type", "application/json"); $wc.UploadString($URL_ESTAT, $cos) | Out-Null; $estat.ok = $true }
     catch { $estat.ok = $false; Escriu "No s'ha pogut enviar l'estat: $($_.Exception.Message)" }
   }
   function Camera($taula, $on) {
@@ -88,7 +88,7 @@ $feina = {
   $ultim = Get-Date
   while (-not $estat.atura) {
     try {
-      $req = [Net.HttpWebRequest]::Create("$ORDRES/json?since=$since")
+      $req = [Net.HttpWebRequest]::Create("$URL_ORDRES/json?since=$since")
       $req.Timeout = 120000; $req.ReadWriteTimeout = 120000
       $resp = $req.GetResponse()
       $lector = New-Object IO.StreamReader($resp.GetResponseStream(), [Text.Encoding]::UTF8)
