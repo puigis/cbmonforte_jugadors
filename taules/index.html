@@ -577,20 +577,43 @@ function anular(n){
 }
 
 /* ---------- càmeres ---------- */
-let CAMS = {};
-try { CAMS = JSON.parse(localStorage.getItem("cams")||"{}"); } catch(e) {}
+// L'app envia l'ordre pel canal i el programa del PC del club prem les tecles de Streamlabs.
+const CANAL = "https://ntfy.sh/cbmonforte-610393230cc6f165";
+let CAMS = {}, PC_OK = false, ENVIANT = {};
 function pintaCams(){
   const c=$("cams"); c.innerHTML="";
   for (let n=1;n<=4;n++){
-    const on=!!CAMS[n], b=document.createElement("button");
+    const on=!!CAMS[n], env=ENVIANT[n], b=document.createElement("button");
     b.type="button"; b.className="cam"; b.setAttribute("aria-pressed", String(on));
+    b.disabled=!!env;
     b.setAttribute("aria-label", `Càmera taula ${n}: ${on?"en emissió, prem per aturar":"apagada, prem per emetre"}`);
-    b.innerHTML=`<span class="nom">CÀMERA</span><span class="num">${n}</span><span class="estat"><span class="punt"></span>${on?"En emissió":"Apagada"}</span>`;
-    b.onclick=()=>{ CAMS[n]=!CAMS[n]; try{localStorage.setItem("cams",JSON.stringify(CAMS));}catch(e){} pintaCams(); };
+    const txt = env ? (env.on?"Engegant…":"Aturant…") : on ? "En emissió" : "Apagada";
+    b.innerHTML=`<span class="nom">CÀMERA</span><span class="num">${n}</span><span class="estat"><span class="punt"></span>${txt}</span>`;
+    b.onclick=()=>canviaCam(n, !on);
     c.appendChild(b);
   }
+  $("camsNote").textContent = PC_OK ? "Connectat amb el PC del club." : "El PC del club no respon: comprova que està encès i que el programa «MARCADORS càmeres» està en marxa.";
 }
-pintaCams();
+function canviaCam(n, on){
+  ENVIANT[n]={on, t:Date.now()}; pintaCams();
+  fetch(CANAL+"-ordres",{method:"POST",body:JSON.stringify({taula:n,on})}).catch(()=>{});
+  setTimeout(()=>{ if(ENVIANT[n]){ delete ENVIANT[n]; pintaCams(); llegeixEstat(); } }, 15000);
+}
+function llegeixEstat(){
+  return fetch(CANAL+"-estat/json?poll=1&since=12h").then(r=>r.text()).then(t=>{
+    const ms=t.split("\n").filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(m=>m&&m.event==="message");
+    const ult=ms[ms.length-1]; if(!ult) { PC_OK=false; pintaCams(); return; }
+    const e=JSON.parse(ult.message);
+    PC_OK = (Date.now()/1000 - e.t) < 150;
+    for (let n=1;n<=4;n++){
+      CAMS[n]=!!e.cams[n];
+      if (ENVIANT[n] && CAMS[n]===ENVIANT[n].on) delete ENVIANT[n];
+    }
+    pintaCams();
+  }).catch(()=>{ PC_OK=false; pintaCams(); });
+}
+pintaCams(); llegeixEstat();
+setInterval(()=>{ if(!document.hidden) llegeixEstat(); }, 4000);
 
 function reinicia(){
   Object.assign(state,{taula:null,jugador1:null,jugador2:null});
