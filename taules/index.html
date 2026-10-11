@@ -552,7 +552,7 @@ function anular(n){
   fetch(url, PROVA?{}:{method:"POST"}).then(r=>r.json()).then(d=>{
     if (d.comencada){
       avisAnular("La partida ja ha començat",
-        `La partida de la taula ${n} ja té entrades anotades. S'ha d'anul·lar de manera manual des del mòbil.`,
+        "S’ha d’anul·lar de manera manual des del mòbil finalitzant partida.",
         [["Entesos","next",tancaAnular]], true);
     } else if (d.error){
       avisAnular("No s'ha pogut anul·lar", d.error, [["Tancar","next",tancaAnular]], true);
