@@ -14,7 +14,9 @@ $ws = New-Object -ComObject WScript.Shell
 foreach ($lloc in @([Environment]::GetFolderPath("Startup"), [Environment]::GetFolderPath("Desktop"))) {
   $lnk = $ws.CreateShortcut((Join-Path $lloc "MARCADORS camares.lnk"))
   $lnk.TargetPath = "powershell.exe"
-  $lnk.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`""
+  # A l'inici de Windows, a més, obre els 4 Streamlabs i els minimitza
+  $extra = if ($lloc -eq [Environment]::GetFolderPath("Startup")) { " -ObreBillars" } else { "" }
+  $lnk.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`"$extra"
   $lnk.WorkingDirectory = $dir
   $lnk.Save()
 }

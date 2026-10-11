@@ -16,6 +16,23 @@ Add-Type -AssemblyName System.Windows.Forms, System.Drawing
 Add-Type @"
 using System;
 using System.Runtime.InteropServices;
+public static class Finestres {
+  delegate bool EnumProc(IntPtr h, IntPtr l);
+  [DllImport("user32.dll")] static extern bool EnumWindows(EnumProc f, IntPtr l);
+  [DllImport("user32.dll", CharSet = CharSet.Unicode)] static extern int GetWindowText(IntPtr h, System.Text.StringBuilder s, int n);
+  [DllImport("user32.dll")] static extern bool IsWindowVisible(IntPtr h);
+  [DllImport("user32.dll")] static extern bool ShowWindow(IntPtr h, int c);
+  // Minimitza totes les finestres visibles que comencen pel text donat. Retorna quantes.
+  public static int Minimitza(string inici) {
+    int n = 0;
+    EnumWindows((h, l) => {
+      var sb = new System.Text.StringBuilder(256); GetWindowText(h, sb, 256);
+      if (IsWindowVisible(h) && sb.ToString().StartsWith(inici)) { ShowWindow(h, 6); n++; }
+      return true;
+    }, IntPtr.Zero);
+    return n;
+  }
+}
 public static class Tecles {
   [DllImport("user32.dll")] static extern void keybd_event(byte vk, byte scan, uint flags, UIntPtr extra);
   public static void Prem(byte[] mods, byte key) {
@@ -28,7 +45,8 @@ public static class Tecles {
 }
 "@
 
-$estat = [hashtable]::Synchronized(@{ text = "Engegant..."; ok = $false; atura = $false })
+# Els Streamlabs només s'obren sols quan el programa arrenca amb l'opció -ObreBillars (inici de Windows)
+$estat = [hashtable]::Synchronized(@{ text = "Engegant..."; ok = $false; atura = $false; obreBillars = ($args -contains "-ObreBillars") })
 
 # ---------- feina de fons: escoltar ordres ----------
 $feina = {
@@ -49,6 +67,19 @@ $feina = {
     if ($on) { [Tecles]::Prem([byte[]](0x11, 0x12), $num) } else { [Tecles]::Prem([byte[]](0x11, 0x12, 0x10), $num) }
     $cams["$taula"] = [bool]$on
     Escriu ("Càmera {0}: {1}" -f $taula, $(if ($on) { "INICIAR emissió" } else { "ATURAR emissió" }))
+  }
+
+  # En engegar el PC: obre els 4 Streamlabs (accessos directes BILLAR 1-4) i minimitza'ls
+  if ($estat.obreBillars) {
+    $estat.obreBillars = $false
+    $escriptoris = @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory"))
+    foreach ($n in 1..4) {
+      $lnk = $escriptoris | ForEach-Object { Join-Path $_ "BILLAR $n.lnk" } | Where-Object { Test-Path $_ } | Select-Object -First 1
+      if ($lnk) { Start-Process $lnk -WindowStyle Minimized; Escriu "Obrint BILLAR $n"; Start-Sleep -Seconds 15 }
+      else { Escriu "No trobo l'accés directe BILLAR $n a l'escriptori" }
+    }
+    foreach ($i in 1..6) { Start-Sleep -Seconds 10; [void][Finestres]::Minimitza("Streamlabs") }
+    Escriu "Streamlabs oberts i minimitzats"
   }
 
   Escriu "Engegat. Escoltant ordres de l'app MARCADORS"
