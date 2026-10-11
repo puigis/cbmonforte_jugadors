@@ -46,7 +46,7 @@ public static class Tecles {
 "@
 
 # Els Streamlabs només s'obren sols quan el programa arrenca amb l'opció -ObreBillars (inici de Windows)
-$estat = [hashtable]::Synchronized(@{ text = "Engegant..."; ok = $false; atura = $false; obreBillars = ($args -contains "-ObreBillars") })
+$estat = [hashtable]::Synchronized(@{ text = "Engegant..."; ok = $false; atura = $false; obreBillars = ($args -contains "-ObreBillars"); cua = [System.Collections.Queue]::Synchronized((New-Object System.Collections.Queue)) })
 
 # ---------- feina de fons: escoltar ordres ----------
 $feina = {
@@ -63,8 +63,9 @@ $feina = {
   }
   function Camera($taula, $on) {
     if ($taula -lt 1 -or $taula -gt 4) { return }
-    $num = [byte](0x30 + $taula)
-    if ($on) { [Tecles]::Prem([byte[]](0x11, 0x12), $num) } else { [Tecles]::Prem([byte[]](0x11, 0x12, 0x10), $num) }
+    $estat.cua.Enqueue(@($taula, [bool]$on))
+    $deadline = (Get-Date).AddSeconds(5)
+    while ($estat.cua.Count -gt 0 -and (Get-Date) -lt $deadline) { Start-Sleep -Milliseconds 100 }
     $cams["$taula"] = [bool]$on
     Escriu ("Càmera {0}: {1}" -f $taula, $(if ($on) { "INICIAR emissió" } else { "ATURAR emissió" }))
   }
@@ -139,6 +140,18 @@ $mSortir.add_Click({
 })
 $icona.ContextMenuStrip = $menu
 $icona.Visible = $true
+
+# Les tecles es premen des del fil principal (com una persona davant del PC)
+$teclat = New-Object System.Windows.Forms.Timer
+$teclat.Interval = 150
+$teclat.add_Tick({
+  while ($estat.cua.Count -gt 0) {
+    $o = $estat.cua.Dequeue(); $taula = [int]$o[0]; $on = [bool]$o[1]
+    $num = [byte](0x30 + $taula)
+    if ($on) { [Tecles]::Prem([byte[]](0x11, 0x12), $num) } else { [Tecles]::Prem([byte[]](0x11, 0x12, 0x10), $num) }
+  }
+})
+$teclat.Start()
 
 $timer = New-Object System.Windows.Forms.Timer
 $timer.Interval = 2000
