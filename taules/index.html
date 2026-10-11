@@ -586,9 +586,9 @@ function pintaCams(){
     const on=!!CAMS[n], env=ENVIANT[n], b=document.createElement("button");
     b.type="button"; b.className="cam"; b.setAttribute("aria-pressed", String(on));
     b.disabled=!!env;
-    b.setAttribute("aria-label", `Càmera taula ${n}: ${on?"en emissió, prem per aturar":"apagada, prem per emetre"}`);
-    const txt = env ? (env.on?"Engegant…":"Aturant…") : on ? "En emissió" : "Apagada";
-    b.innerHTML=`<span class="nom">CÀMERA</span><span class="num">${n}</span><span class="estat"><span class="punt"></span>${txt}</span>`;
+    b.setAttribute("aria-label", `Billar ${n}: ${on?"en emissió, prem per aturar":"apagat, prem per emetre"}`);
+    const txt = env ? (env.on?"Engegant…":"Aturant…") : on ? "En emissió" : "Apagat";
+    b.innerHTML=`<span class="nom">BILLAR</span><span class="num">${n}</span><span class="estat"><span class="punt"></span>${txt}</span>`;
     b.onclick=()=>canviaCam(n, !on);
     c.appendChild(b);
   }
