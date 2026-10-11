@@ -283,8 +283,11 @@ const PAGINES = {
   artistic: { url: "generar_partides12_art.php",     vinc: ["3", "4"] },
   assignar: { url: "assignar_jugadors_fasepool.php", vinc: ["3"] },
   jugadors: { url: "mante_jugadors.php",             vinc: ["3"] },
+  eliminar: { url: "eliminar_partides.php",          vinc: ["4"] },   // només triar la pool: mai elimina
 };
 async function veurePagina(params) {
+  // Acta d'una taula, tal com la mostra el wifibillar
+  if (params.get("veure") === "acta") return new Response(await pagina("veurepartida.php?taula=" + (+params.get("taula") || 1)), { headers: TEXT_H });
   const p = PAGINES[params.get("veure")];
   if (!p) return new Response("Pàgina no permesa", { status: 400, headers: TEXT_H });
   const vinc = params.get("vinc") || p.vinc[0];
