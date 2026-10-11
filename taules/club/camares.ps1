@@ -91,14 +91,19 @@ $feina = {
     Escriu "Streamlabs de BILLAR $taula a punt"
   }
 
+  # Quin Streamlabs (accés directe BILLAR N) grava cada taula.
+  # Al club, el Streamlabs "BILLAR 1" és la càmera de la taula 3 i el "BILLAR 3" la de la taula 1.
+  $STREAMLABS_DE_TAULA = @{ 1 = 3; 2 = 2; 3 = 1; 4 = 4 }
+
   function Camera($taula, $on) {
     if ($taula -lt 1 -or $taula -gt 4) { return }
-    if ($on) { AsseguraStreamlabs $taula }
-    $estat.cua.Enqueue(@($taula, [bool]$on))
+    $sl = $STREAMLABS_DE_TAULA[$taula]
+    if ($on) { AsseguraStreamlabs $sl }
+    $estat.cua.Enqueue(@($sl, [bool]$on))
     $deadline = (Get-Date).AddSeconds(5)
     while ($estat.cua.Count -gt 0 -and (Get-Date) -lt $deadline) { Start-Sleep -Milliseconds 100 }
     $cams["$taula"] = [bool]$on
-    Escriu ("Càmera {0}: {1}" -f $taula, $(if ($on) { "INICIAR emissió" } else { "ATURAR emissió" }))
+    Escriu ("Taula {0} (Streamlabs BILLAR {1}): {2}" -f $taula, $sl, $(if ($on) { "INICIAR emissió" } else { "ATURAR emissió" }))
   }
 
   # En engegar el PC: obre els 4 Streamlabs (accessos directes BILLAR 1-4) i minimitza'ls
