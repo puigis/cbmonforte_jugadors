@@ -643,7 +643,7 @@ function pintaCams(){
 function canviaCam(n, on){
   ENVIANT[n]={on, t:Date.now()}; pintaCams();
   fetch(CANAL+"-ordres",{method:"POST",body:JSON.stringify({taula:n,on})}).catch(()=>{});
-  setTimeout(()=>{ if(ENVIANT[n]){ delete ENVIANT[n]; pintaCams(); } }, 15000);
+  setTimeout(()=>{ if(ENVIANT[n]){ delete ENVIANT[n]; pintaCams(); } }, on ? 120000 : 20000);   // engegar pot trigar si cal obrir el Streamlabs
 }
 function aplicaEstat(e){
   PC_OK = (Date.now()/1000 - e.t) < 200;

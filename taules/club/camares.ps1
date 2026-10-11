@@ -61,8 +61,35 @@ $feina = {
     try { $wc = New-Object Net.WebClient; $wc.Headers.Add("Content-Type", "application/json"); $wc.UploadString($URL_ESTAT, $cos) | Out-Null; $estat.ok = $true }
     catch { $estat.ok = $false; Escriu "No s'ha pogut enviar l'estat: $($_.Exception.Message)" }
   }
+  # Usuaris de Windows que tenen un Streamlabs obert ("Billar 1", "Billar 2"...)
+  function StreamlabsOberts {
+    $u = @()
+    try {
+      Get-CimInstance Win32_Process -Filter "Name='Streamlabs OBS.exe'" -ErrorAction Stop | ForEach-Object {
+        $o = Invoke-CimMethod -InputObject $_ -MethodName GetOwner -ErrorAction SilentlyContinue
+        if ($o -and $o.User) { $u += $o.User.ToLower() }
+      }
+    } catch {}
+    return ($u | Select-Object -Unique)
+  }
+  # Si el Streamlabs del billar no està obert, l'obre i espera que estigui a punt
+  function AsseguraStreamlabs($taula) {
+    if ((StreamlabsOberts) -contains "billar $taula") { return }
+    $escriptoris = @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory"))
+    $lnk = $escriptoris | ForEach-Object { Join-Path $_ "BILLAR $taula.lnk" } | Where-Object { Test-Path $_ } | Select-Object -First 1
+    if (-not $lnk) { Escriu "No trobo l'accés directe BILLAR $taula a l'escriptori"; return }
+    Escriu "El Streamlabs de BILLAR $taula estava tancat: l'obro"
+    Start-Process $lnk -WindowStyle Minimized
+    $limit = (Get-Date).AddSeconds(60)
+    while (-not ((StreamlabsOberts) -contains "billar $taula") -and (Get-Date) -lt $limit) { Start-Sleep -Seconds 2 }
+    Start-Sleep -Seconds 30          # temps perquè carregui la càmera i el canal
+    [void][Finestres]::Minimitza("Streamlabs")
+    Escriu "Streamlabs de BILLAR $taula a punt"
+  }
+
   function Camera($taula, $on) {
     if ($taula -lt 1 -or $taula -gt 4) { return }
+    if ($on) { AsseguraStreamlabs $taula }
     $estat.cua.Enqueue(@($taula, [bool]$on))
     $deadline = (Get-Date).AddSeconds(5)
     while ($estat.cua.Count -gt 0 -and (Get-Date) -lt $deadline) { Start-Sleep -Milliseconds 100 }
