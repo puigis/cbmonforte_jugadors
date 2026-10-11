@@ -113,14 +113,32 @@ async function pagina(url, camps) {
 
 /* ---------- taules ocupades ---------- */
 
+// Nom de la competició que surt a l'acta (subratllat, o en un enllaç)
+function competicioActa(html) {
+  const u = html.match(/<u>([\s\S]*?)<\/u>/i);
+  if (u && netejar(u[1])) return netejar(u[1]);
+  return [...html.matchAll(/<a[^>]*>([\s\S]*?)<\/a>/gi)].map(m => netejar(m[1])).find(x => x && !/refrescar/i.test(x)) || null;
+}
+// La partida ha començat si hi ha alguna entrada anotada a l'acta.
+// Cada fila de l'acta és: ## | c1 | suma | ## | c1 | suma | ... ; el ## sempre porta el número d'entrada.
+function partidaComencada(html) {
+  for (const fila of html.matchAll(/<tr[^>]*>([\s\S]*?)<\/tr>/gi)) {
+    const cel = [...fila[1].matchAll(/<td[^>]*>([\s\S]*?)<\/td>/gi)].map(m => netejar(m[1]));
+    if (cel.length < 3 || !/^\d+$/.test(cel[0])) continue;   // només files d'entrades
+    for (let i = 0; i < cel.length; i++) if (i % 3 !== 0 && cel[i] !== "") return true;
+  }
+  return false;
+}
+
 async function llegirTaula(n) {
   const html = await pagina("veurepartida.php?taula=" + n);
   // Una taula ocupada mostra l'acta de la partida, que porta "TAULA: n"
   const ocupada = /TAULA:\s*\d/i.test(html);
   const t = { taula: n, ocupada };
   if (ocupada) {
-    const link = [...html.matchAll(/<a[^>]*>([\s\S]*?)<\/a>/gi)].map(m => netejar(m[1])).find(x => x && !/refrescar/i.test(x));
-    if (link) t.competicio = link;
+    const comp = competicioActa(html);
+    if (comp) t.competicio = comp;
+    t.comencada = partidaComencada(html);
     const cel = [...html.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].slice(0, 2).map(m => netejar(m[1]));
     if (cel.length === 2) t.equips = cel[0] + " – " + cel[1];
   }
@@ -275,6 +293,49 @@ async function crear(d, simular) {
   return { creada: true, taula: ara, registre };
 }
 
+/* ---------- anul·lar una partida que encara no ha començat ---------- */
+
+async function anular(taula, simular) {
+  taula = +taula;
+  if (!TAULES.includes(taula)) throw new Error("Taula incorrecta");
+  const acta = await pagina("veurepartida.php?taula=" + taula);
+  if (!/TAULA:\s*\d/i.test(acta)) throw new Error(`La taula ${taula} no té cap partida creada`);
+  if (partidaComencada(acta)) return { comencada: true };
+
+  // Pool de la partida: la que té el mateix nom que la competició de l'acta
+  const comp = normNom(competicioActa(acta) || "");
+  const totes = await pools();
+  const ordre = [...totes.filter(p => normNom(p.nom) === comp), ...totes.filter(p => normNom(p.nom) !== comp)];
+
+  // Busca la partida en joc a aquesta taula a la pàgina d'eliminar
+  const reTaula = new RegExp("\\[taula:\\s*" + taula + "\\]\\s*\\[En joc:\\s*S\\]", "i");
+  let trobada = null;
+  for (const p of ordre) {
+    const fasesPool = await fasesEliminar(p.id);
+    for (const f of fasesPool) {
+      const html = await pagina("eliminar_partides.php", [["clau_pool", p.id], ["fase", f], ["vinc", "3"]]);
+      const o = (opcions(html, "partida") || []).find(o => o.valor !== "X" && reTaula.test(o.text));
+      if (o) { trobada = { pool: p.id, fase: f, partida: o.valor, text: o.text }; break; }
+    }
+    if (trobada) break;
+  }
+  if (!trobada) throw new Error(`No he trobat la partida de la taula ${taula} a la llista d'eliminar del wifibillar`);
+
+  const camps = [["clau_pool", trobada.pool], ["fase", trobada.fase], ["partida", trobada.partida], ["vinc", "2"]];
+  if (simular) return { simulat: true, partida: trobada.text, camps };
+
+  // Torna a comprovar just abans d'eliminar, per si s'acaba d'anotar una entrada
+  if (partidaComencada(await pagina("veurepartida.php?taula=" + taula))) return { comencada: true };
+  await pagina("eliminar_partides.php", camps);
+  const ara = await llegirTaula(taula);
+  if (ara.ocupada) throw new Error(`He enviat l'anul·lació però la taula ${taula} encara surt ocupada. Revisa el wifibillar.`);
+  return { anulada: true, partida: trobada.text };
+}
+async function fasesEliminar(pool) {
+  const html = await pagina("eliminar_partides.php", [["clau_pool", pool], ["vinc", "4"]]);
+  return (opcions(html, "fase") || []).filter(o => o.valor !== "X").map(o => o.valor);
+}
+
 /* ---------- consulta de pàgines (només lectura, diagnosi) ---------- */
 
 const PAGINES = {
@@ -317,6 +378,10 @@ export default {
       }
       if (accio === "jugadors") return json(await totsJugadors());
       if (accio === "caramboles") return json({ caramboles: await caramboles(params.get("pool"), params.get("fase"), params.get("jugador")) });
+      if (accio === "anular") {
+        // Per GET només es permet simular: mai elimina res
+        return json(await anular(params.get("taula"), request.method !== "POST"));
+      }
       if (accio === "crear") {
         if (request.method === "POST") return json(await crear(await request.json(), false));
         // Per GET només es permet simular: mai escriu res
