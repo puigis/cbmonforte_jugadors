@@ -100,8 +100,9 @@ $feina = {
             try {
               $o = $m.message | ConvertFrom-Json
               if (-not $o.estat) { Camera ([int]$o.taula) ([bool]$o.on) }
-              PublicaEstat; $ultim = Get-Date
-            } catch { Escriu "Ordre no vàlida: $($m.message)" }
+            } catch { Escriu "Error amb l'ordre $($m.message): $($_.Exception.Message) [línia $($_.InvocationInfo.ScriptLineNumber)]" }
+            try { PublicaEstat } catch { Escriu "Error enviant l'estat: $($_.Exception.Message) [línia $($_.InvocationInfo.ScriptLineNumber)]" }
+            $ultim = Get-Date
           }
         }
         if (((Get-Date) - $ultim).TotalSeconds -ge 60) { PublicaEstat; $ultim = Get-Date }
