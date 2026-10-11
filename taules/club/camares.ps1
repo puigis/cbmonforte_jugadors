@@ -54,14 +54,13 @@ $estat = [hashtable]::Synchronized(@{ text = "Engegant..."; ok = $false; atura =
 # ---------- feina de fons: escoltar ordres ----------
 $feina = {
   param($CANAL, $LOG, $estat)
-  $URL_ORDRES = "https://ntfy.sh/$CANAL-ordres"
-  $URL_ESTAT  = "https://ntfy.sh/$CANAL-estat"
+  $URL = "https://taules-monforte.puigis.workers.dev/"
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   function Escriu($t) { $l = "{0:yyyy-MM-dd HH:mm:ss}  {1}" -f (Get-Date), $t; try { Add-Content -Path $LOG -Value $l -Encoding UTF8 } catch {} ; $estat.text = $t }
   $cams = @{ "1" = $false; "2" = $false; "3" = $false; "4" = $false }
   function PublicaEstat {
     $cos = @{ pc = "ok"; cams = $cams; t = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds() } | ConvertTo-Json -Compress
-    try { $wc = New-Object Net.WebClient; $wc.Headers.Add("Content-Type", "application/json"); $wc.UploadString($URL_ESTAT, $cos) | Out-Null; $estat.ok = $true }
+    try { $wc = New-Object Net.WebClient; $wc.Headers.Add("Content-Type", "application/json"); $wc.UploadString("$URL`?accio=estat&clau=$CANAL", $cos) | Out-Null; $estat.ok = $true }
     catch { $estat.ok = $false; Escriu "No s'ha pogut enviar l'estat: $($_.Exception.Message)" }
   }
   # Usuaris de Windows que tenen un Streamlabs obert ("Billar 1", "Billar 2"...)
@@ -108,6 +107,7 @@ $feina = {
     $escriptoris = @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory"))
     foreach ($n in 1..4) {
       $lnk = $escriptoris | ForEach-Object { Join-Path $_ "BILLAR $n.lnk" } | Where-Object { Test-Path $_ } | Select-Object -First 1
+      if ((StreamlabsOberts) -contains "billar $n") { Escriu "BILLAR $n ja està obert"; continue }
       if ($lnk) { Start-Process $lnk -WindowStyle Minimized; Escriu "Obrint BILLAR $n"; Start-Sleep -Seconds 15 }
       else { Escriu "No trobo l'accés directe BILLAR $n a l'escriptori" }
     }
@@ -116,36 +116,28 @@ $feina = {
   }
 
   Escriu "Engegat. Escoltant ordres de l'app MARCADORS"
-  $since = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds()
+  $des = [DateTimeOffset]::UtcNow.ToUnixTimeMilliseconds()   # ignora ordres velles
   PublicaEstat
   $ultim = Get-Date
+  $errors = 0
   while (-not $estat.atura) {
     try {
-      $req = [Net.HttpWebRequest]::Create("$URL_ORDRES/json?since=$since")
-      $req.Timeout = 120000; $req.ReadWriteTimeout = 120000
-      $resp = $req.GetResponse()
-      $lector = New-Object IO.StreamReader($resp.GetResponseStream(), [Text.Encoding]::UTF8)
-      while ((-not $estat.atura) -and (($linia = $lector.ReadLine()) -ne $null)) {
-        if ($linia.Trim()) {
-          $m = $linia | ConvertFrom-Json
-          if ($m.event -eq "message") {
-            $since = $m.id
-            try {
-              $o = $m.message | ConvertFrom-Json
-              if (-not $o.estat) { Camera ([int]$o.taula) ([bool]$o.on) }
-            } catch { Escriu "Error amb l'ordre $($m.message): $($_.Exception.Message) [línia $($_.InvocationInfo.ScriptLineNumber)]" }
-            try { PublicaEstat } catch { Escriu "Error enviant l'estat: $($_.Exception.Message) [línia $($_.InvocationInfo.ScriptLineNumber)]" }
-            $ultim = Get-Date
-          }
-        }
-        if (((Get-Date) - $ultim).TotalSeconds -ge 60) { PublicaEstat; $ultim = Get-Date }
+      $wc = New-Object Net.WebClient; $wc.Encoding = [Text.Encoding]::UTF8
+      $r = $wc.DownloadString("$URL`?accio=ordres&clau=$CANAL&des=$des") | ConvertFrom-Json
+      $errors = 0; $estat.ok = $true
+      foreach ($o in $r.ordres) {
+        $des = [int64]$o.id
+        try { Camera ([int]$o.taula) ([bool]$o.on) }
+        catch { Escriu "Error amb l'ordre: $($_.Exception.Message)" }
+        try { PublicaEstat } catch {}
+        $ultim = Get-Date
       }
-      $resp.Close()
     } catch {
-      $estat.ok = $false
-      Escriu "Connexió tallada, la torno a obrir... ($($_.Exception.Message))"
-      Start-Sleep -Seconds 10
+      $errors++; $estat.ok = $false
+      if ($errors -eq 1 -or $errors % 20 -eq 0) { Escriu "Sense connexió amb l'intermediari: $($_.Exception.Message)" }
     }
+    if (((Get-Date) - $ultim).TotalMinutes -ge 5) { PublicaEstat; $ultim = Get-Date }
+    Start-Sleep -Seconds 3
   }
 }
 

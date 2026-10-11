@@ -624,7 +624,7 @@ function anular(n){
 
 /* ---------- càmeres ---------- */
 // L'app envia l'ordre pel canal i el programa del PC del club prem les tecles de Streamlabs.
-const CANAL = "https://ntfy.sh/cbmonforte-610393230cc6f165";
+
 let CAMS = {}, PC_OK = false, ENVIANT = {};
 function pintaCams(){
   const c=$("cams"); c.innerHTML="";
@@ -642,29 +642,23 @@ function pintaCams(){
 }
 function canviaCam(n, on){
   ENVIANT[n]={on, t:Date.now()}; pintaCams();
-  fetch(CANAL+"-ordres",{method:"POST",body:JSON.stringify({taula:n,on})}).catch(()=>{});
+  fetch(INTERMEDIARI+"?accio=cam&taula="+n+"&on="+(on?1:0),{method:"POST"}).then(()=>setTimeout(llegeixEstat,3000)).catch(()=>{});
   setTimeout(()=>{ if(ENVIANT[n]){ delete ENVIANT[n]; pintaCams(); } }, on ? 120000 : 20000);   // engegar pot trigar si cal obrir el Streamlabs
 }
 function aplicaEstat(e){
-  PC_OK = (Date.now()/1000 - e.t) < 200;
+  PC_OK = (Date.now()/1000 - e.t) < 420;
   for (let n=1;n<=4;n++){
     CAMS[n]=!!(e.cams||{})[n];
     if (ENVIANT[n] && CAMS[n]===ENVIANT[n].on) delete ENVIANT[n];
   }
   pintaCams();
 }
-let ULTIM = null;
-// Connexió en directe amb el canal d'estat (una sola connexió oberta)
-function escoltaEstat(){
-  try {
-    const es = new EventSource(CANAL+"-estat/sse?since=3m");
-    es.onmessage = ev => { try { const m=JSON.parse(ev.data); if (m.event==="message"){ ULTIM=JSON.parse(m.message); aplicaEstat(ULTIM); } } catch(e){} };
-    es.onerror = () => { /* el navegador es reconnecta sol */ };
-  } catch(e) {}
+function llegeixEstat(){
+  return fetch(INTERMEDIARI+"?accio=estat&t="+Date.now()).then(r=>r.json()).then(e=>{ if(e && e.cams) aplicaEstat(e); else { PC_OK=false; pintaCams(); } })
+    .catch(()=>{ PC_OK=false; pintaCams(); });
 }
-// Comprova cada 30 s si el PC continua viu
-setInterval(()=>{ if (ULTIM) aplicaEstat(ULTIM); else { PC_OK=false; pintaCams(); } }, 30000);
-pintaCams(); escoltaEstat();
+setInterval(()=>{ if(!document.hidden) llegeixEstat(); }, 5000);
+pintaCams(); llegeixEstat();
 
 function reinicia(){
   Object.assign(state,{taula:null,jugador1:null,jugador2:null});

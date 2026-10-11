@@ -364,13 +364,45 @@ async function veurePagina(params) {
 
 const json = (o, status = 200) => new Response(JSON.stringify(o), { status, headers: JSON_H });
 
+/* ---------- càmeres: cua d'ordres i estat (Cloudflare KV, enllaç "CAMS") ---------- */
+// L'app hi deixa ordres; el programa del PC del club les recull i hi publica l'estat.
+const CLAU_PC = "cbmonforte-610393230cc6f165";   // només el programa del club pot publicar l'estat
+async function cameres(accio, request, params, env) {
+  const kv = env && env.CAMS;
+  if (!kv) return json({ error: "Falta l'enllaç CAMS (KV) a l'intermediari" }, 500);
+  if (accio === "cam" && request.method === "POST") {
+    const taula = +params.get("taula"), on = params.get("on") === "1";
+    if (!(taula >= 1 && taula <= 4)) return json({ error: "Taula incorrecta" }, 400);
+    const ordres = (await kv.get("ordres", "json")) || [];
+    const id = Date.now();
+    ordres.push({ id, taula, on });
+    await kv.put("ordres", JSON.stringify(ordres.filter(o => id - o.id < 10 * 60 * 1000).slice(-50)));
+    return json({ ok: true, id });
+  }
+  if (accio === "ordres") {             // el PC del club demana les ordres noves
+    if (params.get("clau") !== CLAU_PC) return json({ error: "No permès" }, 403);
+    const des = +params.get("des") || 0;
+    const ordres = ((await kv.get("ordres", "json")) || []).filter(o => o.id > des);
+    return json({ ara: Date.now(), ordres });
+  }
+  if (accio === "estat" && request.method === "POST") {   // el PC del club publica l'estat
+    if (params.get("clau") !== CLAU_PC) return json({ error: "No permès" }, 403);
+    const e = await request.json();
+    await kv.put("estat", JSON.stringify({ cams: e.cams || {}, t: Math.floor(Date.now() / 1000) }));
+    return json({ ok: true });
+  }
+  if (accio === "estat") return json((await kv.get("estat", "json")) || { cams: {}, t: 0 });
+  return json({ error: "Acció desconeguda" }, 400);
+}
+
 export default {
-  async fetch(request) {
+  async fetch(request, env) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
     const params = new URL(request.url).searchParams;
     try {
       if (params.get("veure")) return await veurePagina(params);
       const accio = params.get("accio");
+      if (["cam", "ordres", "estat"].includes(accio)) return await cameres(accio, request, params, env);
       if (!accio) return json({ actualitzat: new Date().toISOString(), taules: await taulesOcupades() });
       if (accio === "pools") return json(await pools());
       if (accio === "fases") return json(await fases(params.get("pool")));

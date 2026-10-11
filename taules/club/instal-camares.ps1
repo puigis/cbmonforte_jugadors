@@ -10,17 +10,23 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbm
 Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/club/icona-camares.png" -OutFile "$dir\icona.png"
 Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/club/icona-camares.ico" -OutFile "$dir\icona.ico"
 
-# Accés directe a l'inici de Windows (s'engega sol en obrir la sessió)
+# Tasca programada: s'engega en obrir la sessió, amb permisos d'administrador
+# (els necessita per saber quins Streamlabs de cada usuari "Billar N" estan oberts)
+$ps = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`" -ObreBillars"
+$accio = New-ScheduledTaskAction -Execute "powershell.exe" -Argument $ps -WorkingDirectory $dir
+$inici = New-ScheduledTaskTrigger -AtLogOn -User $env:USERNAME
+$conf  = New-ScheduledTaskSettingsSet -AllowStartIfOnBatteries -DontStopIfGoingOnBatteries -ExecutionTimeLimit ([TimeSpan]::Zero) -MultipleInstances IgnoreNew
+Register-ScheduledTask -TaskName "MARCADORS camares" -Action $accio -Trigger $inici -Settings $conf -RunLevel Highest -User $env:USERNAME -Force | Out-Null
+
+# Treu l'accés directe antic de l'inici (ara ho fa la tasca) i posa'n un a l'escriptori que engega la tasca
+Remove-Item (Join-Path ([Environment]::GetFolderPath("Startup")) "MARCADORS camares.lnk") -ErrorAction SilentlyContinue
 $ws = New-Object -ComObject WScript.Shell
-foreach ($lloc in @([Environment]::GetFolderPath("Startup"), [Environment]::GetFolderPath("Desktop"))) {
-  $lnk = $ws.CreateShortcut((Join-Path $lloc "MARCADORS camares.lnk"))
-  $lnk.TargetPath = "powershell.exe"
-  # A l'inici de Windows, a més, obre els 4 Streamlabs i els minimitza
-  $extra = if ($lloc -eq [Environment]::GetFolderPath("Startup")) { " -ObreBillars" } else { "" }
-  $lnk.Arguments = "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`"$extra"
-  $lnk.WorkingDirectory = $dir
-  $lnk.IconLocation = "$dir\icona.ico"
-  $lnk.Save()
-}
-Start-Process powershell.exe -ArgumentList "-NoProfile -ExecutionPolicy Bypass -WindowStyle Hidden -File `"$dir\camares.ps1`""
+$lnk = $ws.CreateShortcut((Join-Path ([Environment]::GetFolderPath("Desktop")) "MARCADORS camares.lnk"))
+$lnk.TargetPath = "schtasks.exe"
+$lnk.Arguments = '/run /tn "MARCADORS camares"'
+$lnk.IconLocation = "$dir\icona.ico"
+$lnk.WindowStyle = 7
+$lnk.Save()
+
+Start-ScheduledTask -TaskName "MARCADORS camares"
 Write-Host "Fet. El control de càmeres ja està engegat (icona a la safata, al costat del rellotge) i s'engegarà sol cada vegada que s'encengui el PC." -ForegroundColor Green
