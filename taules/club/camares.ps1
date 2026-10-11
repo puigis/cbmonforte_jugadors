@@ -35,12 +35,15 @@ public static class Finestres {
 }
 public static class Tecles {
   [DllImport("user32.dll")] static extern void keybd_event(byte vk, byte scan, uint flags, UIntPtr extra);
+  [DllImport("user32.dll")] static extern uint MapVirtualKey(uint code, uint type);
+  static void K(byte vk, bool amunt) { keybd_event(vk, (byte)MapVirtualKey(vk, 0), amunt ? 2u : 0u, UIntPtr.Zero); }
   public static void Prem(byte[] mods, byte key) {
-    foreach (var m in mods) keybd_event(m, 0, 0, UIntPtr.Zero);
-    keybd_event(key, 0, 0, UIntPtr.Zero);
-    System.Threading.Thread.Sleep(60);
-    keybd_event(key, 0, 2, UIntPtr.Zero);
-    for (int i = mods.Length - 1; i >= 0; i--) keybd_event(mods[i], 0, 2, UIntPtr.Zero);
+    foreach (var m in mods) { K(m, false); System.Threading.Thread.Sleep(40); }
+    K(key, false);
+    System.Threading.Thread.Sleep(250);
+    K(key, true);
+    System.Threading.Thread.Sleep(40);
+    for (int i = mods.Length - 1; i >= 0; i--) { K(mods[i], true); System.Threading.Thread.Sleep(20); }
   }
 }
 "@
@@ -74,7 +77,9 @@ $feina = {
   }
   # Si el Streamlabs del billar no està obert, l'obre i espera que estigui a punt
   function AsseguraStreamlabs($taula) {
-    if ((StreamlabsOberts) -contains "billar $taula") { return }
+    $oberts = StreamlabsOberts
+    Escriu ("Streamlabs oberts: " + $(if ($oberts) { ($oberts -join ", ") } else { "cap" }))
+    if ($oberts -contains "billar $taula") { return }
     $escriptoris = @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory"))
     $lnk = $escriptoris | ForEach-Object { Join-Path $_ "BILLAR $taula.lnk" } | Where-Object { Test-Path $_ } | Select-Object -First 1
     if (-not $lnk) { Escriu "No trobo l'accés directe BILLAR $taula a l'escriptori"; return }
