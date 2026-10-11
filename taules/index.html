@@ -597,23 +597,28 @@ function pintaCams(){
 function canviaCam(n, on){
   ENVIANT[n]={on, t:Date.now()}; pintaCams();
   fetch(CANAL+"-ordres",{method:"POST",body:JSON.stringify({taula:n,on})}).catch(()=>{});
-  setTimeout(()=>{ if(ENVIANT[n]){ delete ENVIANT[n]; pintaCams(); llegeixEstat(); } }, 15000);
+  setTimeout(()=>{ if(ENVIANT[n]){ delete ENVIANT[n]; pintaCams(); } }, 15000);
 }
-function llegeixEstat(){
-  return fetch(CANAL+"-estat/json?poll=1&since=12h").then(r=>r.text()).then(t=>{
-    const ms=t.split("\n").filter(Boolean).map(l=>{try{return JSON.parse(l)}catch(e){return null}}).filter(m=>m&&m.event==="message");
-    const ult=ms[ms.length-1]; if(!ult) { PC_OK=false; pintaCams(); return; }
-    const e=JSON.parse(ult.message);
-    PC_OK = (Date.now()/1000 - e.t) < 150;
-    for (let n=1;n<=4;n++){
-      CAMS[n]=!!e.cams[n];
-      if (ENVIANT[n] && CAMS[n]===ENVIANT[n].on) delete ENVIANT[n];
-    }
-    pintaCams();
-  }).catch(()=>{ PC_OK=false; pintaCams(); });
+function aplicaEstat(e){
+  PC_OK = (Date.now()/1000 - e.t) < 200;
+  for (let n=1;n<=4;n++){
+    CAMS[n]=!!(e.cams||{})[n];
+    if (ENVIANT[n] && CAMS[n]===ENVIANT[n].on) delete ENVIANT[n];
+  }
+  pintaCams();
 }
-pintaCams(); llegeixEstat();
-setInterval(()=>{ if(!document.hidden) llegeixEstat(); }, 4000);
+let ULTIM = null;
+// Connexió en directe amb el canal d'estat (una sola connexió oberta)
+function escoltaEstat(){
+  try {
+    const es = new EventSource(CANAL+"-estat/sse?since=3m");
+    es.onmessage = ev => { try { const m=JSON.parse(ev.data); if (m.event==="message"){ ULTIM=JSON.parse(m.message); aplicaEstat(ULTIM); } } catch(e){} };
+    es.onerror = () => { /* el navegador es reconnecta sol */ };
+  } catch(e) {}
+}
+// Comprova cada 30 s si el PC continua viu
+setInterval(()=>{ if (ULTIM) aplicaEstat(ULTIM); else { PC_OK=false; pintaCams(); } }, 30000);
+pintaCams(); escoltaEstat();
 
 function reinicia(){
   Object.assign(state,{taula:null,jugador1:null,jugador2:null});

@@ -51,23 +51,31 @@ $since = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds()   # ignora ordres velles
 PublicaEstat
 $ultimEstat = Get-Date
 
+# Connexió oberta permanentment amb el canal (una sola petició; el servidor
+# envia un senyal cada ~45 s per mantenir-la viva). Si es talla, es torna a obrir.
 while ($true) {
   try {
-    $r = Invoke-WebRequest -UseBasicParsing -Uri "$ORDRES/json?poll=1&since=$since" -TimeoutSec 20
-    $text = [Text.Encoding]::UTF8.GetString($r.RawContentStream.ToArray())
-    foreach ($linia in ($text -split "`n")) {
-      if (-not $linia.Trim()) { continue }
-      $m = $linia | ConvertFrom-Json
-      if ($m.id) { $since = $m.id }
-      if ($m.event -ne "message") { continue }
-      try {
-        $o = $m.message | ConvertFrom-Json
-        if ($o.estat) { PublicaEstat; continue }          # l'app demana l'estat
-        Camera ([int]$o.taula) ([bool]$o.on)
-        PublicaEstat; $ultimEstat = Get-Date
-      } catch { Escriu "Ordre no vàlida: $($m.message)" }
+    $req = [Net.HttpWebRequest]::Create("$ORDRES/json?since=$since")
+    $req.Timeout = 120000; $req.ReadWriteTimeout = 120000
+    $resp = $req.GetResponse()
+    $lector = New-Object IO.StreamReader($resp.GetResponseStream(), [Text.Encoding]::UTF8)
+    while (($linia = $lector.ReadLine()) -ne $null) {
+      if ($linia.Trim()) {
+        $m = $linia | ConvertFrom-Json
+        if ($m.event -eq "message") {
+          $since = $m.id
+          try {
+            $o = $m.message | ConvertFrom-Json
+            if (-not $o.estat) { Camera ([int]$o.taula) ([bool]$o.on) }
+            PublicaEstat; $ultimEstat = Get-Date
+          } catch { Escriu "Ordre no vàlida: $($m.message)" }
+        }
+      }
+      if (((Get-Date) - $ultimEstat).TotalSeconds -ge 60) { PublicaEstat; $ultimEstat = Get-Date }
     }
-  } catch { Escriu "Sense connexió, ho torno a provar... ($($_.Exception.Message))"; Start-Sleep -Seconds 5 }
-  if (((Get-Date) - $ultimEstat).TotalSeconds -ge 60) { PublicaEstat; $ultimEstat = Get-Date }
-  Start-Sleep -Seconds 2
+    $resp.Close()
+  } catch {
+    Escriu "Connexió tallada, la torno a obrir... ($($_.Exception.Message))"
+    Start-Sleep -Seconds 5
+  }
 }

@@ -3,7 +3,10 @@
 $dir = "C:\MARCADORS"
 New-Item -ItemType Directory -Force -Path $dir | Out-Null
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
-Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/main/taules/club/camares.ps1" -OutFile "$dir\camares.ps1"
+# Atura la versió anterior si està en marxa
+Get-Process powershell -ErrorAction SilentlyContinue | Where-Object { $_.MainWindowTitle -like "MARCADORS*" } | Stop-Process -Force
+$rev = if ($REV) { $REV } else { "main" }
+Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/$rev/taules/club/camares.ps1" -OutFile "$dir\camares.ps1"
 
 # Accés directe a l'inici de Windows (s'engega sol en obrir la sessió)
 $ws = New-Object -ComObject WScript.Shell
