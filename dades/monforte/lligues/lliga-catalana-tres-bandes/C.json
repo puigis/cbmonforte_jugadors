@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 1a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-09T07:31+00:00",
+ "updated": "2026-10-11T04:35+00:00",
  "players": [
   {
    "id": "castro-tellez-henry",
@@ -15,6 +15,14 @@
     "Tres bandes": "0.614"
    },
    "initial": "0.614"
+  },
+  {
+   "id": "chuecos-enriquez-luis",
+   "name": "Chuecos Enriquez, Luis",
+   "initials": {
+    "Tres bandes": "0.520"
+   },
+   "initial": "0.520"
   },
   {
    "id": "hernandez-giraldo-fabian-alberto",
@@ -39,6 +47,14 @@
     "Tres bandes": "0.525"
    },
    "initial": "0.525"
+  },
+  {
+   "id": "puig-latre-isaac",
+   "name": "Puig Latre, Isaac",
+   "initials": {
+    "Tres bandes": "0.483"
+   },
+   "initial": "0.483"
   }
  ],
  "matches": [
@@ -94,6 +110,59 @@
      "car_rival": 22
     }
    ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2026-10-10",
+   "rival": "C.B. 2000 CERDANYOLA “A”",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 25,
+     "ent": 31,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Muñoz Muñoz, Pere",
+     "car_rival": 35
+    },
+    {
+     "pid": "lozano-villegas-mauricio",
+     "car": 21,
+     "ent": 31,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Márquez Montes, José Miguel",
+     "car_rival": 35
+    },
+    {
+     "pid": "chuecos-enriquez-luis",
+     "car": 35,
+     "ent": 46,
+     "sm": 7,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Deibis Fernández, Yhojan",
+     "car_rival": 35
+    },
+    {
+     "pid": "puig-latre-isaac",
+     "car": 26,
+     "ent": 50,
+     "sm": 3,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Aguilera Torres, Juan Antonio",
+     "car_rival": 22
+    }
+   ]
   }
  ],
  "calendar": [
@@ -109,7 +178,7 @@
    "date": "2026-10-10",
    "rival": "C.B. 2000 CERDANYOLA “A”",
    "venue": "F",
-   "played": false
+   "played": true
   },
   {
    "jornada": "3",

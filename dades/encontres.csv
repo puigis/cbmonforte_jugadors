@@ -8671,55 +8671,55 @@ encontre_id,lliga_id,competicio,temporada,divisio,grup,grup_id,jornada,data,equi
 12273,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,1,2026-09-26,C.B. MATADEPERA,C.B. 2000 CERDANYOLA “C”,4,4,1,1,Finalitzada
 12274,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,1,2026-09-26,"C.B. BANYOLES ""C""","C.B. LLEIDA ""C""",4,4,1,1,Finalitzada
 11691,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,2,2026-10-10,"C.B. MONFORTE ""A""",B. C. OLESA,8,0,3,0,Finalitzada
-,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,2,2026-10-10,"C.B. SANT ADRIÀ ""A""","C.B. LLEIDA ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,2,2026-10-10,"C.B. MATARÓ ""A""","B.C. GRANOLLERS ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,2,2026-10-10,"C.B. SANT BOI ""A""","C.B. MONT-ROIG ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,2,2026-10-10,"C.B. SANTS ""B""",C.B. ALBA,0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,2,2026-10-10,C.B. 2000 CERDANYOLA “A”,"C.B. MONFORTE ""C""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,2,2026-10-10,"SBPE. CENTELLES ""A""","S.B. LA UNIÓ CORAL ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,2,2026-10-10,"C.B. PRAT ""A""","C.B. MONT-ROIG ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,2,2026-10-10,"S. C. CORAL COLÓN ""A""","C.B. LLIÇÀ ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,2,2026-10-10,"C.B. BLANES ""A""","SB FOMENT MOLINS ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,2,2026-10-10,"C.B. BANYOLES ""B""","C.B. LLEIDA ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,2,2026-10-10,"C.B. SANTS ""C""",C.B. 2000 CERDANYOLA “B”,0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP A,349,2,2026-10-10,"C.B. MONFORTE ""D""","C.B. SANT BOI ""C""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP A,349,2,2026-10-10,"B.C. GRANOLLERS ""C""","C.B. SANTS ""D""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP A,349,2,2026-10-10,S.B.GEiEG,"C.B. PRAT ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP A,349,2,2026-10-10,"C.B. LLIÇÀ ""B""","C.B. LLINARS ""C""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,2,2026-10-10,"S.B. LA UNIÓ CORAL ""B""","C.B. SANTS ""E""",0,0,0,0,Oberta
+11692,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,2,2026-10-10,"C.B. SANT ADRIÀ ""A""","C.B. LLEIDA ""A""",6,2,3,0,Finalitzada
+11693,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,2,2026-10-10,"C.B. MATARÓ ""A""","B.C. GRANOLLERS ""B""",8,0,3,0,Finalitzada
+11694,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,2,2026-10-10,"C.B. SANT BOI ""A""","C.B. MONT-ROIG ""A""",0,8,0,3,Finalitzada
+11771,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,2,2026-10-10,"C.B. SANTS ""B""",C.B. ALBA,0,8,0,3,Finalitzada
+11772,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,2,2026-10-10,C.B. 2000 CERDANYOLA “A”,"C.B. MONFORTE ""C""",5,3,3,0,Finalitzada
+11773,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,2,2026-10-10,"SBPE. CENTELLES ""A""","S.B. LA UNIÓ CORAL ""A""",0,8,0,3,Finalitzada
+11774,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,2,2026-10-10,"C.B. PRAT ""A""","C.B. MONT-ROIG ""B""",0,8,0,3,Finalitzada
+11883,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,2,2026-10-10,"S. C. CORAL COLÓN ""A""","C.B. LLIÇÀ ""A""",4,4,1,1,Finalitzada
+11884,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,2,2026-10-10,"C.B. BLANES ""A""","SB FOMENT MOLINS ""B""",5,3,3,0,Finalitzada
+11885,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,2,2026-10-10,"C.B. BANYOLES ""B""","C.B. LLEIDA ""B""",8,0,3,0,Finalitzada
+11886,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,2,2026-10-10,"C.B. SANTS ""C""",C.B. 2000 CERDANYOLA “B”,7,1,3,0,Finalitzada
+11995,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP A,349,2,2026-10-10,"C.B. MONFORTE ""D""","C.B. SANT BOI ""C""",6,2,3,0,Finalitzada
+11996,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP A,349,2,2026-10-10,"B.C. GRANOLLERS ""C""","C.B. SANTS ""D""",4,4,1,1,Finalitzada
+11997,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP A,349,2,2026-10-10,S.B.GEiEG,"C.B. PRAT ""B""",4,4,1,1,Finalitzada
+11998,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP A,349,2,2026-10-10,"C.B. LLIÇÀ ""B""","C.B. LLINARS ""C""",6,2,3,0,Finalitzada
+12107,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,2,2026-10-10,"S.B. LA UNIÓ CORAL ""B""","C.B. SANTS ""E""",8,0,3,0,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,2,2026-10-10,"C.B. SANT FELIU ""A""","C.B. SANT FELIU ""A""",0,0,0,0,Finalitzada
 12109,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,2,2026-10-10,"B.C. GRANOLLERS ""E""",C.B. VILANOVA,0,8,0,3,Finalitzada
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,2,2026-10-10,C.B PUNT D'ATAC,"C.B. SANT ADRIÀ ""E""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,2,2026-10-10,"C.B. BARCELONA ""A""","C.B. MONFORTE ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,2,2026-10-10,"C.B. SANT ADRIÀ ""B""","C.B. LLINARS ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,2,2026-10-10,"SB FOMENT MOLINS ""A""",C. B. MOLLET “A”,0,0,0,0,Oberta
+12110,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,2,2026-10-10,C.B PUNT D'ATAC,"C.B. SANT ADRIÀ ""E""",0,0,0,0,Finalitzada
+11715,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,2,2026-10-10,"C.B. BARCELONA ""A""","C.B. MONFORTE ""B""",4,4,1,1,Finalitzada
+11716,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,2,2026-10-10,"C.B. SANT ADRIÀ ""B""","C.B. LLINARS ""A""",4,4,1,1,Finalitzada
+11717,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,2,2026-10-10,"SB FOMENT MOLINS ""A""",C. B. MOLLET “A”,2,6,0,3,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,2,2026-10-10,S.B. CASAL CERVERA,"B.C. GRANOLLERS ""A""",0,0,0,0,Oberta
 11827,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,2,2026-10-10,"S.B. LA GRAN PENYA ""A""","C.B. MATARÓ ""B""",4,4,1,1,Finalitzada
-,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,2,2026-10-10,"C.B. CANET ""A""","C.B. SANTS ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,2,2026-10-10,"C.B. BANYOLES ""A""",C. B. MOLLET “B”,0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,2,2026-10-10,"C.B. SANT ADRIÀ ""C""","C.B. MANRESA ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,2,2026-10-10,"C.B. SANT BOI ""B""","C.B. BARCELONA ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,2,2026-10-10,C.B. TARRAGONA,C.B. PREMIÀ,0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,2,2026-10-10,"C.B. LLINARS ""B""","SB FOMENT MOLINS ""C""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,2,2026-10-10,"C.B. VIC ""A""","C.B. CARDONA ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,2,2026-10-10,"B.C. GRANOLLERS ""D""","S.B. LA GRAN PENYA ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,2,2026-10-10,"C.B. CANET ""B""","SBPE. CENTELLES ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,2,2026-10-10,"S.B.ESPLUGUES L'AVENÇ ""A""","C.B. SANT ADRIÀ ""D""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,2,2026-10-10,B. EL MASNOU,"C.B. MATARÓ ""C""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP B,352,2,2026-10-10,"C.B. LLINARS ""D""","C.B. MATARÓ ""D""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP B,352,2,2026-10-10,"C.B. BANYOLES ""D""",C.B.BORGES,0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP B,352,2,2026-10-10,"C.B. MONT-ROIG ""D""","C.B. SANT FELIU ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP B,352,2,2026-10-10,"C.B. MONFORTE ""E""","S.B. LA UNIÓ CORAL ""C""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP C,353,2,2026-10-10,"S. C. CORAL COLÓN ""B""","C.B. MANRESA ""B""",0,0,0,0,Oberta
+11828,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,2,2026-10-10,"C.B. CANET ""A""","C.B. SANTS ""A""",2,6,0,3,Finalitzada
+11829,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,2,2026-10-10,"C.B. BANYOLES ""A""",C. B. MOLLET “B”,6,2,3,0,Finalitzada
+11830,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,2,2026-10-10,"C.B. SANT ADRIÀ ""C""","C.B. MANRESA ""A""",6,2,3,0,Finalitzada
+11939,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,2,2026-10-10,"C.B. SANT BOI ""B""","C.B. BARCELONA ""B""",2,6,0,3,Finalitzada
+11940,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,2,2026-10-10,C.B. TARRAGONA,C.B. PREMIÀ,6,2,3,0,Finalitzada
+11941,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,2,2026-10-10,"C.B. LLINARS ""B""","SB FOMENT MOLINS ""C""",4,4,1,1,Finalitzada
+11942,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,2,2026-10-10,"C.B. VIC ""A""","C.B. CARDONA ""A""",8,0,3,0,Finalitzada
+12051,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,2,2026-10-10,"B.C. GRANOLLERS ""D""","S.B. LA GRAN PENYA ""B""",0,8,0,3,Finalitzada
+12052,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,2,2026-10-10,"C.B. CANET ""B""","SBPE. CENTELLES ""B""",8,0,3,0,Finalitzada
+12053,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,2,2026-10-10,"S.B.ESPLUGUES L'AVENÇ ""A""","C.B. SANT ADRIÀ ""D""",4,4,1,1,Finalitzada
+12054,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,2,2026-10-10,B. EL MASNOU,"C.B. MATARÓ ""C""",4,4,1,1,Finalitzada
+12163,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP B,352,2,2026-10-10,"C.B. LLINARS ""D""","C.B. MATARÓ ""D""",2,6,0,3,Finalitzada
+12164,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP B,352,2,2026-10-10,"C.B. BANYOLES ""D""",C.B.BORGES,0,8,0,3,Finalitzada
+12165,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP B,352,2,2026-10-10,"C.B. MONT-ROIG ""D""","C.B. SANT FELIU ""B""",6,2,3,0,Finalitzada
+12166,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP B,352,2,2026-10-10,"C.B. MONFORTE ""E""","S.B. LA UNIÓ CORAL ""C""",4,4,1,1,Finalitzada
+12219,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP C,353,2,2026-10-10,"S. C. CORAL COLÓN ""B""","C.B. MANRESA ""B""",4,4,1,1,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP C,353,2,2026-10-10,"S.B.ESPLUGUES L'AVENÇ ""B""","S.B.ESPLUGUES L'AVENÇ ""B""",0,0,0,0,Finalitzada
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP C,353,2,2026-10-10,"C.B. CARDONA ""B""","C.B. CANET ""C""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP C,353,2,2026-10-10,"C.B. MATARÓ ""E""","C.B. VIC ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,2,2026-10-10,"C.B. MONT-ROIG ""C""","C.B. BANYOLES ""C""",0,0,0,0,Oberta
+12221,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP C,353,2,2026-10-10,"C.B. CARDONA ""B""","C.B. CANET ""C""",6,2,3,0,Finalitzada
+12222,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP C,353,2,2026-10-10,"C.B. MATARÓ ""E""","C.B. VIC ""B""",0,8,0,3,Finalitzada
+12275,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,2,2026-10-10,"C.B. MONT-ROIG ""C""","C.B. BANYOLES ""C""",4,4,1,1,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,2,2026-10-10,C.B. 2000 CERDANYOLA “C”,C.B. 2000 CERDANYOLA “C”,0,0,0,0,Finalitzada
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,2,2026-10-10,"C.B. LLEIDA ""C""","C.B. BLANES ""B""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,2,2026-10-10,C.B. MATADEPERA,"S.B. LA GRAN PENYA ""C""",0,0,0,0,Oberta
+12277,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,2,2026-10-10,"C.B. LLEIDA ""C""","C.B. BLANES ""B""",2,6,0,3,Finalitzada
+12278,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,2,2026-10-10,C.B. MATADEPERA,"S.B. LA GRAN PENYA ""C""",4,4,1,1,Finalitzada
 12439,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,1,2026-10-11,S. C. CORAL COLÓN,"C.B. VIC ""B""",8,0,3,0,Finalitzada
-,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,1,2026-10-11,C.B. CANET,B.C. GRANOLLERS,0,0,0,0,Oberta
+12440,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,1,2026-10-11,C.B. CANET,B.C. GRANOLLERS,1,7,0,3,Finalitzada
 ,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,1,2026-10-11,C.B. 2000 CERDANYOLA “B”,C.B. SANT FELIU,0,0,0,0,Oberta
 ,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,1,2026-10-11,"C.B. MONT-ROIG ""B""",C.B. LLIÇÀ,0,0,0,0,Oberta
 ,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,1,2026-10-11,"C.B. VIC ""A""",C.B. 2000 CERDANYOLA “C”,0,0,0,0,Oberta
@@ -8753,7 +8753,7 @@ encontre_id,lliga_id,competicio,temporada,divisio,grup,grup_id,jornada,data,equi
 ,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,3,2026-10-17,C.B PUNT D'ATAC,C.B PUNT D'ATAC,0,0,0,0,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,3,2026-10-17,"C.B. SANT FELIU ""A""","S.B. LA UNIÓ CORAL ""B""",0,0,0,0,Oberta
 ,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,3,2026-10-17,"C.B. MONFORTE ""B""","SB FOMENT MOLINS ""A""",0,0,0,0,Oberta
-,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,3,2026-10-17,"C.B. SANT ADRIÀ ""B""",S.B. CASAL CERVERA,0,0,0,0,Oberta
+11720,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,3,2026-10-17,"C.B. SANT ADRIÀ ""B""",S.B. CASAL CERVERA,4,4,1,1,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,3,2026-10-17,"B.C. GRANOLLERS ""A""","C.B. BARCELONA ""A""",0,0,0,0,Oberta
 ,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,3,2026-10-17,"C.B. LLINARS ""A""",C. B. MOLLET “A”,0,0,0,0,Oberta
 ,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,3,2026-10-17,"C.B. MATARÓ ""B""","C.B. MANRESA ""A""",0,0,0,0,Oberta

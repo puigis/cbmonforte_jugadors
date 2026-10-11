@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 4a Divisió · Grup B",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-09T07:31+00:00",
+ "updated": "2026-10-11T04:35+00:00",
  "players": [
   {
    "id": "cervera-sans-gabriel",
@@ -33,12 +33,28 @@
    "initial": "0.318"
   },
   {
+   "id": "tirado-gutierrez-francisco",
+   "name": "Tirado Gutierrez, Francisco",
+   "initials": {
+    "Tres bandes": "0.274"
+   },
+   "initial": "0.274"
+  },
+  {
    "id": "tormo-calatayud-jorge",
    "name": "Tormo Calatayud, Jorge",
    "initials": {
     "Tres bandes": "0.360"
    },
    "initial": "0.360"
+  },
+  {
+   "id": "villate-malagon-brian-steven",
+   "name": "Villate Malagón, Brian Steven",
+   "initials": {
+    "Tres bandes": "0.346"
+   },
+   "initial": "0.346"
   }
  ],
  "matches": [
@@ -94,6 +110,59 @@
      "car_rival": 20
     }
    ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2026-10-10",
+   "rival": "S.B. LA UNIÓ CORAL \"C\"",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "cervera-sans-gabriel",
+     "car": 14,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Márquez Montes, Antonio",
+     "car_rival": 15
+    },
+    {
+     "pid": "villate-malagon-brian-steven",
+     "car": 8,
+     "ent": 31,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Angel Garzón, Leonardo",
+     "car_rival": 20
+    },
+    {
+     "pid": "rodriguez-sanchez-cesar",
+     "car": 14,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pretel Pérez, José",
+     "car_rival": 10
+    },
+    {
+     "pid": "tirado-gutierrez-francisco",
+     "car": 17,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Lozano Espinosa, Manuel",
+     "car_rival": 15
+    }
+   ]
   }
  ],
  "calendar": [
@@ -109,7 +178,7 @@
    "date": "2026-10-10",
    "rival": "S.B. LA UNIÓ CORAL \"C\"",
    "venue": "L",
-   "played": false
+   "played": true
   },
   {
    "jornada": "3",

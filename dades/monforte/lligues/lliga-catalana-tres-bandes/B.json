@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · Honor · Grup B",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-09T07:31+00:00",
+ "updated": "2026-10-11T04:35+00:00",
  "players": [
   {
    "id": "cardona-gallego-julian-alberto",
@@ -23,6 +23,14 @@
     "Tres bandes": "0.699"
    },
    "initial": "0.699"
+  },
+  {
+   "id": "fonellosa-casanovas-xavier",
+   "name": "Fonellosa Casanovas, Xavier",
+   "initials": {
+    "Tres bandes": "0.677"
+   },
+   "initial": "0.677"
   },
   {
    "id": "lopez-gallego-cristian",
@@ -94,6 +102,59 @@
      "car_rival": 40
     }
    ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2026-10-10",
+   "rival": "C.B. BARCELONA \"A\"",
+   "venue": "F",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "lopez-gallego-cristian",
+     "car": 34,
+     "ent": 45,
+     "sm": 6,
+     "res": "P",
+     "mod": "5 quilles",
+     "rival": "Minguell Rosselló, Xavier",
+     "car_rival": 40
+    },
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 40,
+     "ent": 37,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Limones Villalba, Jordi",
+     "car_rival": 36
+    },
+    {
+     "pid": "fonellosa-casanovas-xavier",
+     "car": 28,
+     "ent": 50,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Maymó Torné, Marc",
+     "car_rival": 30
+    },
+    {
+     "pid": "munoz-lopez-javier",
+     "car": 32,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gutiérrez Contreras, Arnold",
+     "car_rival": 31
+    }
+   ]
   }
  ],
  "calendar": [
@@ -109,7 +170,7 @@
    "date": "2026-10-10",
    "rival": "C.B. BARCELONA \"A\"",
    "venue": "F",
-   "played": false
+   "played": true
   },
   {
    "jornada": "3",

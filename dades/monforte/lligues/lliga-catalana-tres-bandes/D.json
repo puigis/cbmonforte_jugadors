@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 3a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-09T07:31+00:00",
+ "updated": "2026-10-11T04:35+00:00",
  "players": [
   {
    "id": "adell-casarramona-pere",
@@ -15,6 +15,30 @@
     "Tres bandes": "0.479"
    },
    "initial": "0.479"
+  },
+  {
+   "id": "barragan-de-la-cruz-luis",
+   "name": "Barragán De La Cruz, Luis",
+   "initials": {
+    "Tres bandes": "0.445"
+   },
+   "initial": "0.445"
+  },
+  {
+   "id": "campos-gonzalez-joma",
+   "name": "Campos González, Jºmª",
+   "initials": {
+    "Tres bandes": "0.420"
+   },
+   "initial": "0.420"
+  },
+  {
+   "id": "obando-quintero-carlos-ariel",
+   "name": "Obando Quintero, Carlos Ariel",
+   "initials": {
+    "Tres bandes": "0.397"
+   },
+   "initial": "0.397"
   },
   {
    "id": "rocha-vera-jeferson",
@@ -94,6 +118,59 @@
      "car_rival": 24
     }
    ]
+  },
+  {
+   "id": "j02",
+   "jornada": "2",
+   "date": "2026-10-10",
+   "rival": "C.B. SANT BOI \"C\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 20,
+     "ent": 44,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jou Mora, Ferràn",
+     "car_rival": 25
+    },
+    {
+     "pid": "barragan-de-la-cruz-luis",
+     "car": 18,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Santiago Romero, Juan",
+     "car_rival": 17
+    },
+    {
+     "pid": "campos-gonzalez-joma",
+     "car": 25,
+     "ent": 43,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Saez Rodriguez, José Manuel",
+     "car_rival": 19
+    },
+    {
+     "pid": "obando-quintero-carlos-ariel",
+     "car": 22,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gómez González, Josep",
+     "car_rival": 11
+    }
+   ]
   }
  ],
  "calendar": [
@@ -109,7 +186,7 @@
    "date": "2026-10-10",
    "rival": "C.B. SANT BOI \"C\"",
    "venue": "L",
-   "played": false
+   "played": true
   },
   {
    "jornada": "3",

@@ -1,0 +1,43 @@
+{
+ "modalitat": "5 quilles",
+ "updated": "2026-10-11T04:35+00:00",
+ "jugadors": [
+  {
+   "id": "lopez-gallego-cristian",
+   "name": "López Gallego, Cristian",
+   "partides": 1,
+   "G": 0,
+   "E": 0,
+   "P": 1,
+   "caramboles": 34,
+   "entrades": 45,
+   "serie_major": 6,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.756,
+   "ranking": null
+  }
+ ],
+ "partides": [
+  {
+   "data": "2026-10-10",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "2",
+   "pid": "lopez-gallego-cristian",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Minguell Rosselló, Xavier",
+   "equip_rival": "C.B. BARCELONA \"A\"",
+   "car": 34,
+   "sm": 6,
+   "ent": 45,
+   "car_rival": 40,
+   "sm_rival": 4,
+   "res": "P"
+  }
+ ]
+}
