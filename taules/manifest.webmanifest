@@ -1,6 +1,6 @@
 {
-  "name": "TAULES",
-  "short_name": "TAULES",
+  "name": "MARCADORS",
+  "short_name": "MARCADORS",
   "description": "Crear partides a les taules del CB Monforte",
   "start_url": "./",
   "scope": "./",
@@ -25,5 +25,6 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ]
+  ],
+  "id": "./"
 }
