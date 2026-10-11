@@ -92,6 +92,7 @@ mark{background:none;color:var(--felt);font-weight:700}
 .anular{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
 .anular>button{width:100%;appearance:none;border:2px solid var(--red);background:transparent;color:var(--red);border-radius:10px;padding:12px;font:700 1rem var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .anular .tables{margin-top:12px}
+.anular .t:disabled span{color:var(--off-ink)}
 .modal .caixa.err h2{color:var(--red)}
 .pagina>.wrap{padding-bottom:0}
 .cams{width:calc(100% - 32px);max-width:528px;margin:28px auto 120px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
@@ -320,7 +321,27 @@ function ordrePool(p){
 function ordenaPools(ps){
   return ps.slice().sort((a,b)=>{ const x=ordrePool(a), y=ordrePool(b); return x[0]-y[0] || x[1]-y[1] || x[2].localeCompare(y[2],"ca"); });
 }
-function pintaPools(){ botons($("pools"), ordenaPools(POOLS), state.pool, triaPool); }
+// De moment només es mostren: lliga de 3 bandes (divisions), prèvies i partida única
+function poolVisible(p){
+  const n=norm(p.nom);
+  if (/MANUAL/.test(n)) return true;
+  if (/PREVIA/.test(n)) return true;
+  return /LLIGA/.test(n) && !/FINAL|PLAYOFF/.test(n);
+}
+function nomVisible(p){ return /MANUAL/.test(norm(p.nom)) ? "Partida única" : p.nom; }
+function ordreVisible(p){
+  const n=norm(p.nom);
+  if (/LLIGA NAC/.test(n)) return 4;
+  if (/LLIGA/.test(n)) return 1;
+  if (/PREVIA/.test(n)) return 2;
+  return 3;   // partida única
+}
+function pintaPools(){
+  const llista = ordenaPools(POOLS.filter(poolVisible))
+    .sort((a,b)=>ordreVisible(a)-ordreVisible(b))
+    .map(p=>({id:p.id, nom:nomVisible(p)}));
+  botons($("pools"), llista, state.pool, triaPool);
+}
 function triaPool(id){
   state.pool=id; state.fase=null; FORM=null; state.modalitat=null;
   state.jugador1=null; state.jugador2=null; state.car1=""; state.car2="";
@@ -443,7 +464,7 @@ function carsJugador(){
 }
 
 /* ---------- resum, revisió i creació ---------- */
-const nomPool = () => (POOLS.find(p=>p.id===state.pool)||{}).nom||"";
+const nomPool = () => { const p=POOLS.find(p=>p.id===state.pool); return p ? nomVisible(p) : ""; };
 const nomModalitat = () => ((FORM?.modalitats||[]).find(m=>String(m.id)===String(state.modalitat))||{}).nom||"";
 function falten(){
   return ["taula","pool","fase","modalitat","jugador1","jugador2"].filter(k=>!state[k]).length
