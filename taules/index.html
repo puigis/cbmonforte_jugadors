@@ -93,6 +93,29 @@ mark{background:none;color:var(--felt);font-weight:700}
 .anular>button{width:100%;appearance:none;border:2px solid var(--red);background:transparent;color:var(--red);border-radius:10px;padding:12px;font:700 1rem var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
 .anular .tables{margin-top:12px}
 .modal .caixa.err h2{color:var(--red)}
+.pagina>.wrap{padding-bottom:0}
+.cams{width:calc(100% - 32px);max-width:528px;margin:28px auto 120px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
+.cams h2{margin-bottom:12px}
+.cams .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.cam{appearance:none;border:2px solid var(--line);background:var(--bg);color:var(--fg);border-radius:12px;padding:14px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--display);font-weight:700;letter-spacing:.05em}
+.cam .nom{font-size:1rem}
+.cam .num{font-size:2rem;line-height:1}
+.cam .estat{display:flex;align-items:center;gap:6px;font:700 .72rem var(--body);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.cam .punt{width:12px;height:12px;border-radius:50%;background:var(--off-ink)}
+.cam[aria-pressed="true"]{border-color:var(--red);background:color-mix(in srgb,var(--red) 12%,var(--surface));box-shadow:inset 0 2px 6px rgba(0,0,0,.25)}
+.cam[aria-pressed="true"] .estat{color:var(--red)}
+.cam[aria-pressed="true"] .punt{background:var(--red);box-shadow:0 0 0 0 color-mix(in srgb,var(--red) 60%,transparent);animation:batec 1.4s ease-out infinite}
+@keyframes batec{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
+@media (prefers-reduced-motion:reduce){.cam[aria-pressed="true"] .punt{animation:none}}
+/* Pantalla gran: les càmeres en una columna al costat */
+@media (min-width:1000px){
+  .pagina{display:grid;grid-template-columns:minmax(0,560px) 300px;gap:32px;justify-content:center;padding:0 16px}
+  .pagina .wrap{margin:0;padding-inline:0;max-width:none;padding-bottom:120px}
+  .pagina .cams{margin:24px 0 0;max-width:none;width:auto}
+  .pagina .cams{position:sticky;top:calc(16px + env(safe-area-inset-top,0px));align-self:start}
+  .cams .grid{grid-template-columns:1fr}
+  .fin{max-width:892px}
+}
 @media (max-width:380px){.t b{font-size:1.5rem}.brand{font-size:1.7rem}}
 .wait{color:var(--muted);font-size:.9rem}
 .badge{display:inline-block;font:700 .66rem var(--body);letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:6px;margin-left:6px;vertical-align:middle;border:1px solid var(--line);color:var(--muted)}
@@ -119,6 +142,7 @@ pre.sim{white-space:pre-wrap;font-size:.72rem;max-height:300px;overflow:auto;bac
 </style>
 </head>
 <body>
+<div class="pagina">
 <div class="wrap">
   <header>
     <img class="escut" src="escut.png" alt="Escut del CB Monforte">
@@ -190,19 +214,18 @@ pre.sim{white-space:pre-wrap;font-size:.72rem;max-height:300px;overflow:auto;bac
   </div>
 </div>
 
+<aside class="cams" aria-labelledby="camsTitol">
+  <h2 class="label" id="camsTitol">Càmeres YouTube</h2>
+  <div class="grid" id="cams"></div>
+  <p class="note" id="camsNote">Encara no està connectat amb el PC del club: de moment els botons només marquen l'estat.</p>
+</aside>
+</div>
+
 <div class="modal" id="anModal" hidden role="dialog" aria-modal="true" aria-labelledby="anTitol">
   <div class="caixa" id="anCaixa">
     <h2 id="anTitol"></h2>
     <p id="anText"></p>
     <div class="accions" id="anAccions"></div>
-  </div>
-</div>
-
-<div class="modal" id="ytModal" hidden role="dialog" aria-modal="true" aria-labelledby="ytTitol">
-  <div class="caixa">
-    <h2 id="ytTitol">Emissió a YouTube</h2>
-    <p id="ytText"></p>
-    <div class="accions"><button class="next" id="ytSi" type="button">Sí</button><button class="sec" id="ytNo" type="button">No</button></div>
   </div>
 </div>
 
@@ -483,28 +506,13 @@ function crear(){
     if (PROVA){ out.innerHTML=`<div class="msg ok">Simulació feta. No s'ha enviat res.</div><pre class="sim">${esc(JSON.stringify(res.registre,null,1))}</pre>`; b.disabled=false; b.textContent="Simular"; return; }
     out.innerHTML=`<div class="msg ok">Partida creada a la taula ${state.taula}.</div>`;
     b.textContent="Fet";
-    preguntaYoutube(state.taula);
+    setTimeout(reinicia, 2000);
   }).catch(e=>{
     out.innerHTML=`<div class="msg err">${esc(e.message||"No s'ha pogut crear la partida")}</div>`;
     b.disabled=false; b.textContent=PROVA?"Simular":"Tornar-ho a provar";
     comprovaTaules();
   });
 }
-/* ---------- YouTube ---------- */
-function preguntaYoutube(taula){
-  const m=$("ytModal");
-  $("ytText").textContent=`Vols emetre a YouTube la partida de la taula ${taula}?`;
-  m.hidden=false; $("ytSi").focus();
-  const tanca=()=>{ m.hidden=true; reinicia(); };
-  $("ytNo").onclick=tanca;
-  $("ytSi").onclick=()=>{ activaYoutube(taula).finally(tanca); };
-}
-// Pendent: activar la càmera i l'emissió de la taula (quan sapiguem com està muntat)
-async function activaYoutube(taula){
-  $("ytText").textContent=`L'emissió automàtica de la taula ${taula} encara no està configurada.`;
-  await new Promise(r=>setTimeout(r,2000));
-}
-
 /* ---------- botó d'actualitzar ---------- */
 $("refresh").onclick=()=>{
   const b=$("refresh"); b.classList.add("gira"); b.disabled=true;
@@ -567,6 +575,22 @@ function anular(n){
     avisAnular("No s'ha pogut anul·lar", "No s'ha pogut connectar amb el wifibillar. Torna-ho a provar.", [["Tancar","next",tancaAnular]], true);
   });
 }
+
+/* ---------- càmeres ---------- */
+let CAMS = {};
+try { CAMS = JSON.parse(localStorage.getItem("cams")||"{}"); } catch(e) {}
+function pintaCams(){
+  const c=$("cams"); c.innerHTML="";
+  for (let n=1;n<=4;n++){
+    const on=!!CAMS[n], b=document.createElement("button");
+    b.type="button"; b.className="cam"; b.setAttribute("aria-pressed", String(on));
+    b.setAttribute("aria-label", `Càmera taula ${n}: ${on?"en emissió, prem per aturar":"apagada, prem per emetre"}`);
+    b.innerHTML=`<span class="nom">CÀMERA</span><span class="num">${n}</span><span class="estat"><span class="punt"></span>${on?"En emissió":"Apagada"}</span>`;
+    b.onclick=()=>{ CAMS[n]=!CAMS[n]; try{localStorage.setItem("cams",JSON.stringify(CAMS));}catch(e){} pintaCams(); };
+    c.appendChild(b);
+  }
+}
+pintaCams();
 
 function reinicia(){
   Object.assign(state,{taula:null,jugador1:null,jugador2:null});
