@@ -323,7 +323,7 @@ function triaFase(f){
   }).catch(e=>{ $("modalitats").innerHTML='<span class="wait">No s\'ha pogut llegir la pool: '+esc(e.message)+'</span>'; });
 }
 function pintaModalitats(){
-  const ms=(FORM?.modalitats||[]).filter(m=>MODALITATS_OK.includes(String(m.id)));
+  const ms=(FORM?.modalitats||[]).filter(m=>MODALITATS_OK.includes(String(m.id))).sort((a,b)=>a.nom.localeCompare(b.nom,"ca",{numeric:true}));
   botons($("modalitats"), ms, state.modalitat, id=>{ state.modalitat=String(id); pintaModalitats(); render(); });
 }
 
