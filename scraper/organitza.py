@@ -184,6 +184,75 @@ def de_tipus(pagines, prefix):
             yield clau, ids, p
 
 
+def guanyador_per_caramboles(j):
+    """Aproximació quan falten els punts: més caramboles guanya, iguals és empat."""
+    if j["caramboles_local"] > j["caramboles_visitant"]:
+        return (2, 0)
+    if j["caramboles_local"] < j["caramboles_visitant"]:
+        return (0, 2)
+    return (1, 1)
+
+
+def reconcilia(jocs, ppl, ppv, tres_bandes):
+    """Corregeix els punts de les partides d'un encontre de lliga a tres bandes.
+
+    A la web de la Federació hi ha partides sense punts (0 / 0), amb punts impossibles (3 / 0) o
+    que no quadren amb els punts parcials oficials de l'encontre. Els punts parcials de l'encontre
+    són la referència: es busca la combinació de resultats (2-0, 1-1, 0-2) de les partides dubtoses
+    que hi quadra, i si n'hi ha més d'una es tria la que més s'assembla a les caramboles."""
+    if not jocs:
+        return
+    vàlid = lambda j: (j["punts_local"], j["punts_visitant"]) in ((2, 0), (1, 1), (0, 2))
+    if not tres_bandes:
+        for j in jocs:   # a 4 modalitats els parcials inclouen bonificacions: només s'omplen els buits
+            if not vàlid(j) and j["entrades"]:
+                j["punts_local"], j["punts_visitant"] = guanyador_per_caramboles(j)
+                j["punts_revisats"] = True
+        return
+    totals_ok = ppl is not None and ppv is not None and ppl + ppv == 2 * len(jocs)
+    if totals_ok and all(vàlid(j) for j in jocs) and \
+            sum(j["punts_local"] for j in jocs) == ppl and sum(j["punts_visitant"] for j in jocs) == ppv:
+        return
+    if not totals_ok:
+        for j in jocs:
+            if not vàlid(j) and j["entrades"]:
+                j["punts_local"], j["punts_visitant"] = guanyador_per_caramboles(j)
+                j["punts_revisats"] = True
+        return
+    from itertools import product
+    opcions = ((2, 0), (1, 1), (0, 2))
+
+    def busca(dubtoses):
+        millor, n_millor, empat = None, -1, False
+        for combo in product(opcions, repeat=len(dubtoses)):
+            res = {i: (j["punts_local"], j["punts_visitant"]) for i, j in enumerate(jocs)}
+            res.update(dict(zip(dubtoses, combo)))
+            if sum(r[0] for r in res.values()) != ppl or sum(r[1] for r in res.values()) != ppv:
+                continue
+            semblança = sum(res[i] == guanyador_per_caramboles(jocs[i]) for i in dubtoses)
+            if semblança > n_millor:
+                millor, n_millor, empat = res, semblança, False
+            elif semblança == n_millor:
+                empat = True
+        return millor, empat
+
+    # 1r: dubtoses = punts no vàlids o caramboles iguals; 2n: totes les partides
+    dubtoses = [i for i, j in enumerate(jocs) if not vàlid(j) or j["caramboles_local"] == j["caramboles_visitant"]]
+    millor, _ = busca(dubtoses) if dubtoses else (None, False)
+    if millor is None and len(jocs) <= 6:
+        millor, _ = busca(list(range(len(jocs))))
+    if millor is None:
+        for j in jocs:
+            if not vàlid(j):
+                j["punts_local"], j["punts_visitant"] = guanyador_per_caramboles(j)
+                j["punts_revisats"] = True
+        return
+    for i, j in enumerate(jocs):
+        if (j["punts_local"], j["punts_visitant"]) != millor[i]:
+            j["punts_local"], j["punts_visitant"] = millor[i]
+            j["punts_revisats"] = True
+
+
 # ---------------------------------------------------------------- lligues
 
 def processa_lligues(pagines):
@@ -240,6 +309,7 @@ def processa_lligues(pagines):
             pp = pagines.get(f"lligues/partides/{l}/{d}/{g}/{j}/{pid}")
             if not pp:
                 continue
+            jocs = []
             for taula in pp["taules"]:
                 if "Entrades" not in taula["capcaleres"]:
                     continue
@@ -254,12 +324,14 @@ def processa_lligues(pagines):
                     ptl, ptv = parell(c[7])
                     if carl is None or carv is None:
                         continue
-                    partides.append(dict(
+                    jocs.append(dict(
                         comuns, font="lliga", competicio_id=f"L{l}", fase=comuns["grup"], encontre_id=pid,
                         ordre=ordre, modalitat=modalitat(c[5]) if c[5] else lliga["modalitat"],
                         jugador_local=c[0], equip_local=eq_l, serie_major_local=sml, caramboles_local=carl,
                         jugador_visitant=c[1], equip_visitant=eq_v, serie_major_visitant=smv, caramboles_visitant=carv,
                         entrades=enter(c[4]), punts_local=ptl, punts_visitant=ptv, estat=c[6]))
+            reconcilia(jocs, ppl, ppv, lliga.get("modalitat") == "Tres bandes")
+            partides.extend(jocs)
 
     for _, (l, d, g), p in de_tipus(pagines, "lligues/classificacio/"):
         lliga = lligues.get(l, {"nom": "", "divisions": {}, "temporada": ""})
@@ -624,7 +696,7 @@ def main():
     camps_partida = ["data", "temporada", "font", "competicio_id", "competicio", "divisio", "fase", "jornada",
                      "encontre_id", "ordre", "modalitat", "jugador_local", "equip_local", "serie_major_local",
                      "caramboles_local", "jugador_visitant", "equip_visitant", "serie_major_visitant",
-                     "caramboles_visitant", "entrades", "punts_local", "punts_visitant", "estat"]
+                     "caramboles_visitant", "entrades", "punts_local", "punts_visitant", "punts_revisats", "estat"]
     escriu_csv("partides.csv", camps_partida, partides)
     escriu_csv("encontres.csv", ["encontre_id", "lliga_id", "competicio", "temporada", "divisio", "grup", "grup_id",
                                  "jornada", "data", "equip_local", "equip_visitant", "punts_parcials_local",

@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 1a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-11T04:35+00:00",
+ "updated": "2026-10-11T09:34+00:00",
  "players": [
   {
    "id": "castro-tellez-henry",
@@ -147,7 +147,7 @@
      "car": 35,
      "ent": 46,
      "sm": 7,
-     "res": "P",
+     "res": "E",
      "mod": "Tres bandes",
      "rival": "Deibis Fernández, Yhojan",
      "car_rival": 35
@@ -157,7 +157,7 @@
      "car": 26,
      "ent": 50,
      "sm": 3,
-     "res": "E",
+     "res": "G",
      "mod": "Tres bandes",
      "rival": "Aguilera Torres, Juan Antonio",
      "car_rival": 22

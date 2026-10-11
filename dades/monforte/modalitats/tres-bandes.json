@@ -1,6 +1,6 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-10-11T04:35+00:00",
+ "updated": "2026-10-11T09:34+00:00",
  "jugadors": [
   {
    "id": "cardona-gallego-julian-alberto",
@@ -327,8 +327,8 @@
    "name": "Chuecos Enriquez, Luis",
    "partides": 1,
    "G": 0,
-   "E": 0,
-   "P": 1,
+   "E": 1,
+   "P": 0,
    "caramboles": 35,
    "entrades": 46,
    "serie_major": 7,
@@ -466,8 +466,8 @@
    "id": "puig-latre-isaac",
    "name": "Puig Latre, Isaac",
    "partides": 1,
-   "G": 0,
-   "E": 1,
+   "G": 1,
+   "E": 0,
    "P": 0,
    "caramboles": 26,
    "entrades": 50,
@@ -772,7 +772,7 @@
    "ent": 46,
    "car_rival": 35,
    "sm_rival": 6,
-   "res": "P"
+   "res": "E"
   },
   {
    "data": "2026-10-10",
@@ -791,7 +791,7 @@
    "ent": 50,
    "car_rival": 22,
    "sm_rival": 4,
-   "res": "E"
+   "res": "G"
   },
   {
    "data": "2026-10-10",
