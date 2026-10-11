@@ -89,6 +89,10 @@ mark{background:none;color:var(--felt);font-weight:700}
 .modal p{margin:0 0 18px;color:var(--muted)}
 .modal .accions{margin-top:0}
 .modal .accions button{flex:1}
+.anular{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}
+.anular>button{width:100%;appearance:none;border:2px solid var(--red);background:transparent;color:var(--red);border-radius:10px;padding:12px;font:700 1rem var(--display);letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+.anular .tables{margin-top:12px}
+.modal .caixa.err h2{color:var(--red)}
 @media (max-width:380px){.t b{font-size:1.5rem}.brand{font-size:1.7rem}}
 .wait{color:var(--muted);font-size:.9rem}
 .badge{display:inline-block;font:700 .66rem var(--body);letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:6px;margin-left:6px;vertical-align:middle;border:1px solid var(--line);color:var(--muted)}
@@ -176,6 +180,22 @@ pre.sim{white-space:pre-wrap;font-size:.72rem;max-height:300px;overflow:auto;bac
   </section>
 
   <div class="rev" id="rev" hidden></div>
+
+  <div class="anular" hidden><!-- s'activarà quan l'intermediari sàpiga anul·lar partides -->
+    <button type="button" id="anularObre" aria-expanded="false" aria-controls="anularTaules">Anular inici partida</button>
+    <div id="anularPanell" hidden>
+      <p class="note">Tria la taula on vols anul·lar la partida. Només es pot fer si la partida encara no ha començat.</p>
+      <div class="tables" id="anularTaules"></div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="anModal" hidden role="dialog" aria-modal="true" aria-labelledby="anTitol">
+  <div class="caixa" id="anCaixa">
+    <h2 id="anTitol"></h2>
+    <p id="anText"></p>
+    <div class="accions" id="anAccions"></div>
+  </div>
 </div>
 
 <div class="modal" id="ytModal" hidden role="dialog" aria-modal="true" aria-labelledby="ytTitol">
@@ -216,7 +236,10 @@ for (let n=1;n<=4;n++){
   b.onclick=()=>{state.taula=n;render()};
   $("tables").appendChild(b);
 }
+let OCUPADES = {};
 function posaEstat(occ, comprovat){
+  OCUPADES = comprovat ? occ : {};
+  pintaAnular();
   for (let n=1;n<=4;n++){
     const b=$("taula"+n), o=occ[n];
     b.disabled=!!o;
@@ -492,6 +515,58 @@ $("refresh").onclick=()=>{
     state.pool&&state.fase ? api("accio=formulari&pool="+state.pool+"&fase="+state.fase).then(d=>{FORM=d;}) : null,
   ]).then(()=>setTimeout(fi,400));
 };
+
+/* ---------- anul·lar una partida ---------- */
+$("anularObre").onclick=()=>{
+  const p=$("anularPanell"), obre=p.hidden;
+  p.hidden=!obre; $("anularObre").setAttribute("aria-expanded", String(obre));
+  if (obre){ comprovaTaules(); p.scrollIntoView({behavior:"smooth",block:"center"}); }
+};
+function pintaAnular(){
+  const c=$("anularTaules"); c.innerHTML="";
+  for (let n=1;n<=4;n++){
+    const o=OCUPADES[n], b=document.createElement("button");
+    b.className="t"; b.type="button";
+    b.innerHTML=`TAULA<b>${n}</b><span>${o?"Amb partida":"Lliure"}</span>`;
+    b.disabled=!o; if (o && o.text) b.title=o.text;
+    b.onclick=()=>confirmaAnular(n);
+    c.appendChild(b);
+  }
+}
+function avisAnular(titol, text, botons, error){
+  $("anTitol").textContent=titol; $("anText").textContent=text;
+  $("anCaixa").classList.toggle("err", !!error);
+  const a=$("anAccions"); a.innerHTML="";
+  botons.forEach(([nom, cls, fn])=>{ const b=document.createElement("button"); b.type="button"; b.className=cls; b.textContent=nom; b.onclick=fn; a.appendChild(b); });
+  $("anModal").hidden=false; a.querySelector("button")?.focus();
+}
+const tancaAnular=()=>{ $("anModal").hidden=true; };
+function confirmaAnular(n){
+  const o=OCUPADES[n];
+  avisAnular(`Anul·lar la taula ${n}`, `Segur que vols anul·lar la partida de la taula ${n}?${o&&o.text?" ("+o.text+")":""}`,
+    [["Anul·lar","next",()=>anular(n)],["Tornar","sec",tancaAnular]]);
+}
+function anular(n){
+  avisAnular(`Anul·lant la taula ${n}…`, "Un moment, s'està comprovant la partida al wifibillar.", []);
+  const url = INTERMEDIARI+"?accio=anular&taula="+n+(PROVA?"&simular=1":"");
+  fetch(url, PROVA?{}:{method:"POST"}).then(r=>r.json()).then(d=>{
+    if (d.comencada){
+      avisAnular("La partida ja ha començat",
+        `La partida de la taula ${n} ja té entrades anotades. S'ha d'anul·lar de manera manual des del mòbil.`,
+        [["Entesos","next",tancaAnular]], true);
+    } else if (d.error){
+      avisAnular("No s'ha pogut anul·lar", d.error, [["Tancar","next",tancaAnular]], true);
+    } else if (PROVA){
+      avisAnular("Simulació feta", `S'anul·laria la partida de la taula ${n}. No s'ha enviat res.`, [["Tancar","next",tancaAnular]]);
+    } else {
+      avisAnular("Partida anul·lada", `La taula ${n} ja està lliure.`, [["Tancar","next",tancaAnular]]);
+      $("anularPanell").hidden=true; $("anularObre").setAttribute("aria-expanded","false");
+    }
+    comprovaTaules();
+  }).catch(()=>{
+    avisAnular("No s'ha pogut anul·lar", "No s'ha pogut connectar amb el wifibillar. Torna-ho a provar.", [["Tancar","next",tancaAnular]], true);
+  });
+}
 
 function reinicia(){
   Object.assign(state,{taula:null,jugador1:null,jugador2:null});
