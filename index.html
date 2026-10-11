@@ -3,11 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#1f6b3a">
+<meta name="theme-color" content="#123824">
 <title>CB Monforte</title>
 <link rel="manifest" href="manifest.json">
+<link rel="preload" as="image" href="logo-app.png">
 <link rel="icon" href="icon.png">
-<link rel="apple-touch-icon" href="icon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <style>
 :root{--bg:#f4f1ea;--card:#fff;--ink:#1c1c1a;--muted:#6b6a64;--felt:#1f6b3a;--felt2:#174f2b;--up:#15803d;--down:#b91c1c;--line:#e3dfd4;--chip:#eef3ee;--mon:#fdf6e3;--pend:#b45309}
@@ -64,8 +65,8 @@ input[type=search]{font:inherit;padding:9px;border:1px solid var(--line);border-
 .note{background:var(--mon);border-radius:10px;padding:10px 12px;font-size:13px;margin-bottom:12px}
 svg text{fill:var(--muted);font-size:10px}
 #splash{position:fixed;inset:0;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;
-  background:radial-gradient(900px 600px at 50% 0%,#1f6b3a,#0c2116);transition:opacity .6s ease}
-#splash img{width:min(62vw,300px);height:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,.45));animation:entra .9s ease-out both}
+  background:#123824;transition:opacity .6s ease}
+#splash img{width:min(62vw,300px);height:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,.45))}
 #splash .nom{color:#f3f1ea;text-align:center;animation:entra .9s .25s ease-out both}
 #splash .nom small{display:block;font-size:15px;letter-spacing:6px;color:#e3c46b;font-weight:700}
 #splash .nom b{display:block;font-size:34px;letter-spacing:2px;margin-top:4px}
