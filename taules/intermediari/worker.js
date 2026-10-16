@@ -215,6 +215,40 @@ async function crearJugador(nou, simular, registre) {
   return creat.id;
 }
 
+// Canvia el "nom marcador" d'un jugador que ja existeix (ex. 'C.B.MONFORTE "E" (B.Villate)' -> 'CB MONFORTE (B.Villate)').
+// Obre la seva fitxa, hi canvia només aquest camp i torna a enviar tota la resta tal com estava.
+// Si alguna cosa no quadra, no toca res i ho apunta al registre (la partida es crea igualment).
+async function canviaMarcador(id, marcador, simular, registre) {
+  marcador = String(marcador || "").trim();
+  if (!marcador || String(id).startsWith("NOU:")) return;
+  const form = await pagina("mante_jugadors.php", [["clau_jugador", id], ["clau_jugadorno", "X"], ["vinc", "3"]]);
+  const ins = inputs(form);
+  const val = n => (ins.find(i => i.nom === n) || {}).valor;
+  const actual = val("nom_jugador"), alf = val("nom_jugador_alfabetic");
+  if (actual == null || !alf || String(val("id_jugador")) !== String(id) || !val("indexacio")) {
+    registre.push(`No he pogut obrir la fitxa del jugador ${id} per canviar el nom del marcador (es queda com estava)`);
+    return;
+  }
+  if (actual.trim() === marcador) return;
+  const NO = new Set(["clau_jugador", "clau_jugadorno", "vinc"]);
+  const camps = [];
+  for (const i of ins) {
+    if (NO.has(i.nom) || ["submit", "button", "reset", "image", "file"].includes(i.tipus)) continue;
+    if ((i.tipus === "checkbox" || i.tipus === "radio") && !/\bchecked\b/i.test(i.tag)) continue;
+    camps.push([i.nom, i.nom === "nom_jugador" ? marcador : i.valor]);
+  }
+  for (const m of form.matchAll(/<select[^>]*name\s*=\s*['"]([^'"]+)['"]/gi)) {
+    if (NO.has(m[1]) || camps.some(c => c[0] === m[1])) continue;
+    camps.push([m[1], triat(opcions(form, m[1])) ?? ""]);
+  }
+  camps.push(["vinc", "2"]);
+  if (simular) { registre.push({ pas: "canviar nom marcador", jugador: alf, abans: actual, despres: marcador, camps }); return; }
+  await pagina("mante_jugadors.php", camps);
+  const ara = (await totsJugadors()).find(j => String(j.id) === String(id));
+  if (ara && ara.nom.includes(marcador)) registre.push(`Nom al marcador: ${actual} -> ${marcador}`);
+  else registre.push(`He intentat canviar el nom al marcador de ${alf} però no s'ha desat (es queda: ${actual})`);
+}
+
 // Assigna jugadors a la pool i fase, respectant tots els que ja hi són
 async function assignar(pool, fase, ids, simular, registre) {
   const html = await pagina("assignar_jugadors_fasepool.php", [["clau_pool", pool], ["vinc", "3"]]);
@@ -258,6 +292,13 @@ async function crear(d, simular) {
   // 1. Jugadors nous
   const ids = [];
   for (const j of d.jugadors) ids.push(j.id ? String(j.id) : await crearJugador(j.nou, simular, registre));
+
+  // 1b. Nom al marcador amb el format del club: "CB MONFORTE (I.Puig)"
+  for (const [k, j] of d.jugadors.entries()) {
+    if (!j.id || !j.marcador) continue;
+    try { await canviaMarcador(ids[k], j.marcador, simular, registre); }
+    catch (e) { registre.push("No s'ha pogut canviar el nom al marcador: " + (e.message || e)); }
+  }
 
   // 2. Assignar (només els que encara no hi són)
   let form = await formulariGenerar(pool, fase);

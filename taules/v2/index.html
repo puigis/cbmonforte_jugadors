@@ -364,13 +364,28 @@ function parteixWifi(n){
 }
 const PETITES=new Set(["DE","DEL","LA","LES","EL","I","Y","DA","DOS","LOS"]);
 const tc = w => w.charAt(0)+w.slice(1).toLowerCase();
-// "PUIG LATRE, ISAAC" + "C.B.MONFORTE" -> "C.B.MONFORTE (I. Puig)"
-function marcadorNou(alf, club){
+// Nom al marcador, sempre igual: club en majúscules sense lletra d'equip + inicial.cognom
+// "PUIG LATRE, ISAAC" + 'C.B.MONFORTE "E"' -> "CB MONFORTE (I.Puig)"
+function clubMarcador(club){
+  let c=(club||"").toUpperCase().replace(/\s*["“”'«»][A-Z]["“”'«»]\s*/g," ");   // treu la lletra d'equip "E"
+  c=c.replace(/^((?:[A-ZÀ-Ü]\.)+)\s*/, m=>m.replace(/[.\s]/g,"")+" ");          // C.B.MONFORTE -> CB MONFORTE
+  return c.replace(/\s+/g," ").trim();
+}
+function nomCurt(alf){
   const [cog, nom=""] = alf.split(",").map(s=>s.trim());
   const ws = cog.split(/\s+/); let c=[];
   for (const w of ws){ c.push(w); if(!PETITES.has(w.toUpperCase())) break; }
-  const inicial = nom ? nom.charAt(0).toUpperCase()+". " : "";
-  return `${club} (${inicial}${c.map(tc).join(" ")})`;
+  const inicial = nom ? nom.charAt(0).toUpperCase()+"." : "";
+  return inicial + c.map(tc).join(" ");
+}
+function marcadorNou(alf, club){ return `${clubMarcador(club)} (${nomCurt(alf)})`; }
+// Jugador que ja és al wifibillar: club del seu nom de marcador actual (o de la Federació)
+function marcadorEstandard(j){
+  if (j.tipus==="nou") return j.marc;
+  let club = j.marc.includes("(") ? j.marc.slice(0, j.marc.indexOf("(")).trim() : "";
+  if (!club){ const f=FCB.find(f=>mateixJugador(f.alf,j.alf)); if(f) club=f.club; }
+  if (!club && j.marc && !/[a-z]/.test(j.marc)) club=j.marc;    // el marcador només porta el club
+  return club ? marcadorNou(j.alf, club) : j.marc;
 }
 // ---- Evitar duplicats: un jugador de la Federació NO surt com a "nou"
 // si ja existeix al wifibillar, encara que el nom estigui escrit una mica diferent
@@ -424,7 +439,7 @@ function drawPick(box){
   box.innerHTML=`<input class="search" id="${key}-cerca" type="search" autocomplete="off" placeholder="Escriu nom o cognom…" aria-label="Cerca ${key==="jugador1"?"jugador 1":"jugador 2"}"><ul class="list" hidden></ul>`;
   const inp=box.querySelector("input"), ul=box.querySelector("ul");
   let res=[], act=0;
-  const choose=j=>{state[key]=j;drawPick(box);carsJugador();render()};
+  const choose=j=>{state[key]=j;j.marcFinal=marcadorEstandard(j);drawPick(box);carsJugador();render()};
   const update=()=>{
     const q=norm(inp.value.trim());
     if(q.length<2){ul.hidden=true;return}
@@ -495,6 +510,8 @@ function revisio(){
     <dt>Jugador 2</dt><dd>${esc(state.jugador2.alf)} · ${state.car2} car.</dd>
     <dt>Entrades</dt><dd>${state.entrades}</dd>
   </dl>
+  ${[state.jugador1,state.jugador2].filter(j=>j.tipus!=="nou").map((j,i)=>`<div class="nou-box"><p>${esc(j.alf)}: nom al marcador${j.marcFinal!==j.marc?" (s'actualitzarà al wifibillar)":""}.</p>
+    <label for="mfin${i}">Nom marcador<input id="mfin${i}" value="${esc(j.marcFinal||j.marc)}"></label></div>`).join("")}
   ${nous.map((j,i)=>`<div class="nou-box"><p>Jugador nou: es donarà d'alta així al wifibillar.</p>
     <label for="nalf${i}">Nom alfabètic<input id="nalf${i}" value="${esc(j.alf)}"></label>
     <label for="nmar${i}">Nom marcador<input id="nmar${i}" value="${esc(j.marc)}"></label></div>`).join("")}
@@ -502,6 +519,7 @@ function revisio(){
   <div class="accions"><button class="next" id="crear" type="button">${PROVA?"Simular":"Crear partida"}</button><button class="sec" id="tornar" type="button">Tornar</button></div>
   <div id="resultat"></div>`;
   nous.forEach((j,i)=>{ $("nalf"+i).oninput=e=>j.alf=e.target.value; $("nmar"+i).oninput=e=>j.marc=e.target.value; });
+  [state.jugador1,state.jugador2].filter(j=>j.tipus!=="nou").forEach((j,i)=>{ $("mfin"+i).oninput=e=>j.marcFinal=e.target.value; });
   $("tornar").onclick=()=>{ r.hidden=true; };
   $("crear").onclick=crear;
   r.scrollIntoView({behavior:"smooth",block:"start"});
@@ -509,7 +527,7 @@ function revisio(){
 $("next").onclick=revisio;
 function crear(){
   const b=$("crear"), out=$("resultat");
-  const jug=j=>j.id?{id:j.id}:{nou:{alfabetic:j.alf.trim(),marcador:j.marc.trim()}};
+  const jug=j=>j.id?{id:j.id, marcador:(j.marcFinal||"").trim()||undefined}:{nou:{alfabetic:j.alf.trim(),marcador:j.marc.trim()}};
   const d={pool:state.pool,fase:state.fase,taula:state.taula,modalitat:state.modalitat,entrades:state.entrades,
     caramboles:[+state.car1,+state.car2],jugadors:[jug(state.jugador1),jug(state.jugador2)]};
   b.disabled=true; b.textContent=PROVA?"Simulant…":"Creant…"; out.innerHTML="";
