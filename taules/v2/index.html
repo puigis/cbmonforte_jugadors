@@ -371,21 +371,28 @@ function clubMarcador(club){
   c=c.replace(/^((?:[A-ZÀ-Ü]\.)+)\s*/, m=>m.replace(/[.\s]/g,"")+" ");          // C.B.MONFORTE -> CB MONFORTE
   return c.replace(/\s+/g," ").trim();
 }
+// Sense coma ("HERNANDEZ F. IGNASI") no se sap quin és el nom: retorna null
 function nomCurt(alf){
+  if (!alf.includes(",")) return null;
   const [cog, nom=""] = alf.split(",").map(s=>s.trim());
   const ws = cog.split(/\s+/); let c=[];
   for (const w of ws){ c.push(w); if(!PETITES.has(w.toUpperCase())) break; }
   const inicial = nom ? nom.charAt(0).toUpperCase()+"." : "";
   return inicial + c.map(tc).join(" ");
 }
-function marcadorNou(alf, club){ return `${clubMarcador(club)} (${nomCurt(alf)})`; }
+function marcadorNou(alf, club, actual){
+  // Si el nom alfabètic no es pot llegir, es queda el jugador que ja hi ha al marcador ("I. Puig" -> "I.Puig")
+  const ja = (actual||"").includes("(") ? actual.slice(actual.indexOf("(")+1).replace(/\)\s*$/,"").trim().replace(/^([A-ZÀ-Ü])\.\s+/,"$1.") : "";
+  const jug = nomCurt(alf) || ja;
+  return jug ? `${clubMarcador(club)} (${jug})` : (actual || clubMarcador(club));
+}
 // Jugador que ja és al wifibillar: club del seu nom de marcador actual (o de la Federació)
 function marcadorEstandard(j){
   if (j.tipus==="nou") return j.marc;
   let club = j.marc.includes("(") ? j.marc.slice(0, j.marc.indexOf("(")).trim() : "";
   if (!club){ const f=FCB.find(f=>mateixJugador(f.alf,j.alf)); if(f) club=f.club; }
   if (!club && j.marc && !/[a-z]/.test(j.marc)) club=j.marc;    // el marcador només porta el club
-  return club ? marcadorNou(j.alf, club) : j.marc;
+  return club ? marcadorNou(j.alf, club, j.marc) : j.marc;
 }
 // ---- Evitar duplicats: un jugador de la Federació NO surt com a "nou"
 // si ja existeix al wifibillar, encara que el nom estigui escrit una mica diferent
