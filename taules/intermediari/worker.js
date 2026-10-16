@@ -221,6 +221,14 @@ async function crearJugador(nou, simular, registre) {
 async function canviaMarcador(id, marcador, simular, registre) {
   marcador = String(marcador || "").trim();
   if (!marcador || String(id).startsWith("NOU:")) return;
+  // Si el wifibillar no el desa a la primera (passa amb el segon jugador seguit), ho torna a provar
+  for (let intent = 1; intent <= 3; intent++) {
+    const r = await canviaMarcadorUnCop(id, marcador, simular, registre, intent === 3, intent > 1);
+    if (r !== "reintentar") return;
+    await new Promise(ok => setTimeout(ok, 1500 * intent));
+  }
+}
+async function canviaMarcadorUnCop(id, marcador, simular, registre, ultim, reintent) {
   const form = await pagina("mante_jugadors.php", [["clau_jugador", id], ["clau_jugadorno", "X"], ["vinc", "3"]]);
   const ins = inputs(form);
   const val = n => (ins.find(i => i.nom === n) || {}).valor;
@@ -229,7 +237,7 @@ async function canviaMarcador(id, marcador, simular, registre) {
     registre.push(`No he pogut obrir la fitxa del jugador ${id} per canviar el nom del marcador (es queda com estava)`);
     return;
   }
-  if (actual.trim() === marcador) return;
+  if (actual.trim() === marcador) { if (reintent) registre.push(`Nom al marcador: ${marcador}`); return "fet"; }
   const NO = new Set(["clau_jugador", "clau_jugadorno", "vinc"]);
   const camps = [];
   for (const i of ins) {
@@ -245,8 +253,9 @@ async function canviaMarcador(id, marcador, simular, registre) {
   if (simular) { registre.push({ pas: "canviar nom marcador", jugador: alf, abans: actual, despres: marcador, camps }); return; }
   await pagina("mante_jugadors.php", camps);
   const ara = (await totsJugadors()).find(j => String(j.id) === String(id));
-  if (ara && ara.nom.includes(marcador)) registre.push(`Nom al marcador: ${actual} -> ${marcador}`);
-  else registre.push(`He intentat canviar el nom al marcador de ${alf} però no s'ha desat (es queda: ${actual})`);
+  if (ara && ara.nom.includes(marcador)) { registre.push(`Nom al marcador: ${actual} -> ${marcador}`); return "fet"; }
+  if (!ultim) return "reintentar";
+  registre.push(`He intentat canviar el nom al marcador de ${alf} però no s'ha desat (es queda: ${actual})`);
 }
 
 // Assigna jugadors a la pool i fase, respectant tots els que ja hi són
