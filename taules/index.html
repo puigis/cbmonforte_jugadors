@@ -398,7 +398,7 @@ const tc = w => w.charAt(0)+w.slice(1).toLowerCase();
 // Nom al marcador, sempre igual: club en majúscules sense lletra d'equip + inicial.cognom
 // "PUIG LATRE, ISAAC" + 'C.B.MONFORTE "E"' -> "CB MONFORTE (I.Puig)"
 function clubMarcador(club){
-  let c=(club||"").toUpperCase().replace(/\s*["“”'«»][A-Z]["“”'«»]\s*/g," ");   // treu la lletra d'equip "E"
+  let c=(club||"").toUpperCase().replace(/\s*["“”'«»]\s*[A-Z]\s*["“”'«»]\s*/g," ");   // treu la lletra d'equip "E" (també " E")
   c=c.replace(/^((?:[A-ZÀ-Ü]\.)+)\s*/, m=>m.replace(/[.\s]/g,"")+" ");          // C.B.MONFORTE -> CB MONFORTE
   return c.replace(/\s+/g," ").trim();
 }
