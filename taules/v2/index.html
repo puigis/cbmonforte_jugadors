@@ -544,9 +544,12 @@ function crear(){
   req.then(r=>r.json()).then(res=>{
     if (res.error) throw new Error(res.error);
     if (PROVA){ out.innerHTML=`<div class="msg ok">Simulació feta. No s'ha enviat res.</div><pre class="sim">${esc(JSON.stringify(res.registre,null,1))}</pre>`; b.disabled=false; b.textContent="Simular"; return; }
-    out.innerHTML=`<div class="msg ok">Partida creada a la taula ${state.taula}.</div>`;
+    const notes=(res.registre||[]).filter(x=>typeof x==="string" && /marcador/i.test(x));
+    const avis=notes.some(x=>/no s'ha|no he pogut|no s'ha desat/i.test(x));
+    out.innerHTML=`<div class="msg ok">Partida creada a la taula ${state.taula}.</div>`+
+      (notes.length?`<div class="msg ${avis?"err":"ok"}">${notes.map(esc).join("<br>")}</div>`:"");
     b.textContent="Fet";
-    setTimeout(reinicia, 2000);
+    setTimeout(reinicia, notes.length ? 8000 : 2000);
   }).catch(e=>{
     out.innerHTML=`<div class="msg err">${esc(e.message||"No s'ha pogut crear la partida")}</div>`;
     b.disabled=false; b.textContent=PROVA?"Simular":"Tornar-ho a provar";
