@@ -74,18 +74,39 @@ $feina = {
     } catch {}
     return ($u | Select-Object -Unique)
   }
+  # Accés directe BILLAR N de l'escriptori
+  function AccesBillar($n) {
+    $escriptoris = @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory"))
+    return ($escriptoris | ForEach-Object { Join-Path $_ "BILLAR $n.lnk" } | Where-Object { Test-Path $_ } | Select-Object -First 1)
+  }
+  # Usuari de Windows amb què l'accés directe BILLAR N obre el Streamlabs (no sempre és "Billar N":
+  # al club els accessos directes i els usuaris estan creuats). Es llegeix del /user: de l'accés directe.
+  function UsuariBillar($n) {
+    $lnk = AccesBillar $n
+    if ($lnk) {
+      try {
+        $s = (New-Object -ComObject WScript.Shell).CreateShortcut($lnk)
+        $m = [regex]::Match(($s.TargetPath + " " + $s.Arguments), '/user:(?:"([^"]+)"|(\S+))', "IgnoreCase")
+        if ($m.Success) {
+          $u = if ($m.Groups[1].Success) { $m.Groups[1].Value } else { $m.Groups[2].Value }
+          return ($u -replace '^.*\\', '').Trim().ToLower()
+        }
+      } catch {}
+    }
+    return "billar $n"
+  }
   # Si el Streamlabs del billar no està obert, l'obre i espera que estigui a punt
   function AsseguraStreamlabs($taula) {
     $oberts = StreamlabsOberts
-    Escriu ("Streamlabs oberts: " + $(if ($oberts) { ($oberts -join ", ") } else { "cap" }))
-    if ($oberts -contains "billar $taula") { return }
-    $escriptoris = @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory"))
-    $lnk = $escriptoris | ForEach-Object { Join-Path $_ "BILLAR $taula.lnk" } | Where-Object { Test-Path $_ } | Select-Object -First 1
+    $usuari = UsuariBillar $taula
+    Escriu ("Streamlabs oberts: " + $(if ($oberts) { ($oberts -join ", ") } else { "cap" }) + " · BILLAR $taula = usuari '$usuari'")
+    if ($oberts -contains $usuari) { return }
+    $lnk = AccesBillar $taula
     if (-not $lnk) { Escriu "No trobo l'accés directe BILLAR $taula a l'escriptori"; return }
     Escriu "El Streamlabs de BILLAR $taula estava tancat: l'obro"
     Start-Process $lnk -WindowStyle Minimized
     $limit = (Get-Date).AddSeconds(60)
-    while (-not ((StreamlabsOberts) -contains "billar $taula") -and (Get-Date) -lt $limit) { Start-Sleep -Seconds 2 }
+    while (-not ((StreamlabsOberts) -contains $usuari) -and (Get-Date) -lt $limit) { Start-Sleep -Seconds 2 }
     Start-Sleep -Seconds 30          # temps perquè carregui la càmera i el canal
     [void][Finestres]::Minimitza("Streamlabs")
     Escriu "Streamlabs de BILLAR $taula a punt"
@@ -109,11 +130,11 @@ $feina = {
   # En engegar el PC: obre els 4 Streamlabs (accessos directes BILLAR 1-4) i minimitza'ls
   if ($estat.obreBillars) {
     $estat.obreBillars = $false
-    $escriptoris = @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory"))
     foreach ($n in 1..4) {
-      $lnk = $escriptoris | ForEach-Object { Join-Path $_ "BILLAR $n.lnk" } | Where-Object { Test-Path $_ } | Select-Object -First 1
-      if ((StreamlabsOberts) -contains "billar $n") { Escriu "BILLAR $n ja està obert"; continue }
-      if ($lnk) { Start-Process $lnk -WindowStyle Minimized; Escriu "Obrint BILLAR $n"; Start-Sleep -Seconds 15 }
+      $lnk = AccesBillar $n
+      $usuari = UsuariBillar $n
+      if ((StreamlabsOberts) -contains $usuari) { Escriu "BILLAR $n (usuari '$usuari') ja està obert"; continue }
+      if ($lnk) { Start-Process $lnk -WindowStyle Minimized; Escriu "Obrint BILLAR $n (usuari '$usuari')"; Start-Sleep -Seconds 15 }
       else { Escriu "No trobo l'accés directe BILLAR $n a l'escriptori" }
     }
     foreach ($i in 1..6) { Start-Sleep -Seconds 10; [void][Finestres]::Minimitza("Streamlabs") }
