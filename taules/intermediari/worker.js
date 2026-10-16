@@ -14,6 +14,8 @@
 //   POST /?accio=crear   (JSON)              -> crea jugadors si cal, assigna i genera la partida
 //   GET  /?accio=crear&simular=1&dades=JSON  -> mostra què enviaria, sense enviar res
 //   GET  /?veure=...                         -> consulta d'una pàgina (només lectura, per diagnosi)
+//   GET  /?accio=conv&j=N                    -> convocatòries dels equips A-E de la jornada N (app CONVOCATORIES)
+//   POST /?accio=conv&j=N  {equips:{B:{...}}} -> desa la convocatòria dels equips que s'envien
 
 const BASE = "http://monforte.wifibillar.com/";
 const TAULES = [1, 2, 3, 4];
@@ -395,6 +397,32 @@ async function cameres(accio, request, params, env) {
   return json({ error: "Acció desconeguda" }, 400);
 }
 
+/* ---------- convocatòries de lliga (app CONVOCATORIES, KV "CAMS", clau conv:jN) ---------- */
+async function convocatories(request, params, env) {
+  const kv = env && env.CAMS;
+  if (!kv) return json({ error: "Falta l'enllaç CAMS (KV) a l'intermediari" }, 500);
+  const j = parseInt(params.get("j"), 10);
+  if (!(j >= 1 && j <= 40)) return json({ error: "Jornada incorrecta" }, 400);
+  const clau = "conv:j" + j;
+  const equips = (await kv.get(clau, "json")) || {};
+  if (request.method !== "POST") return json({ j, equips });
+  const cos = await request.json();
+  const nous = (cos && cos.equips) || {};
+  for (const [t, e] of Object.entries(nous)) {
+    if (!["A", "B", "C", "D", "E"].includes(t) || !e || typeof e !== "object") return json({ error: "Equip incorrecte" }, 400);
+    const conv = Array.isArray(e.conv) ? e.conv.filter(x => typeof x === "string" && x.length < 80).slice(0, 12) : [];
+    equips[t] = {
+      conv: [...new Set(conv)],
+      perj: !!e.perj,
+      perjMsg: typeof e.perjMsg === "string" ? e.perjMsg.slice(0, 200) : "",
+      data: typeof e.data === "string" && /^\d{4}-\d{2}-\d{2}$/.test(e.data) ? e.data : null,
+      t: Date.now(),
+    };
+  }
+  await kv.put(clau, JSON.stringify(equips));
+  return json({ j, equips });
+}
+
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
@@ -403,6 +431,7 @@ export default {
       if (params.get("veure")) return await veurePagina(params);
       const accio = params.get("accio");
       if (["cam", "ordres", "estat"].includes(accio)) return await cameres(accio, request, params, env);
+      if (accio === "conv") return await convocatories(request, params, env);
       if (!accio) return json({ actualitzat: new Date().toISOString(), taules: await taulesOcupades() });
       if (accio === "pools") return json(await pools());
       if (accio === "fases") return json(await fases(params.get("pool")));

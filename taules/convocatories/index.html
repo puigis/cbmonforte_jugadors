@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>CONVOCATORIES</title>
+<meta name="theme-color" content="#153f96">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="CONVOCATORIES">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a club noticeboard. Felt-green poster for the jornada, then five team tiles; each team opens its own sheet. */
+:root{
+  --felt:#0e3b28; --felt-2:#145236; --lime:#d6ff2e; --red:#c4232e; --gold:#d8b23c;
+  --bg:#eef3ee; --card:#ffffff; --ink:#122219; --mute:#5b6d62; --line:#d3ddd5;
+  --ok:#1f7a45; --ok-bg:#e1f3e7; --bad:#c4232e; --bad-bg:#fde6e7; --warn-bg:#fff4d6; --warn:#8a5a00;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#08150f; --card:#11231a; --ink:#e7efe9; --mute:#93a89b; --line:#23392d;
+  --ok:#5fd18e; --ok-bg:#12301f; --bad:#ff6b73; --bad-bg:#3a1316; --warn-bg:#352a0c; --warn:#f3c45a; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08150f; --card:#11231a; --ink:#e7efe9; --mute:#93a89b; --line:#23392d;
+  --ok:#5fd18e; --ok-bg:#12301f; --bad:#ff6b73; --bad-bg:#3a1316; --warn-bg:#352a0c; --warn:#f3c45a; color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 48px}
+button,input{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+
+/* Poster */
+.poster{background:radial-gradient(120% 90% at 50% 0%,var(--felt-2),var(--felt));color:#fff;border-radius:18px;padding:20px 18px 18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;position:relative;overflow:hidden}
+.poster::after{content:"";position:absolute;inset:auto -40px -60px auto;width:180px;height:180px;border-radius:50%;border:2px solid rgba(214,255,46,.18)}
+.poster img{width:72px;height:auto;display:block}
+.eyebrow{font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--gold)}
+.jtitle{font-family:var(--display);font-weight:900;font-size:clamp(46px,13vw,76px);line-height:.9;color:var(--lime);margin:4px 0 6px;text-transform:uppercase}
+.jdate{font-weight:600;font-size:17px}
+.jnav{display:flex;gap:8px;margin-top:12px}
+.jnav button{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;border-radius:999px;padding:4px 12px;font-size:14px}
+.jnav button:disabled{opacity:.35;cursor:default}
+
+/* Team tiles */
+.tiles{display:grid;gap:10px;margin-top:16px}
+.tile{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px;text-align:left;width:100%}
+.tile:hover{border-color:var(--felt-2)}
+.letter{width:56px;height:56px;border-radius:12px;background:var(--felt);color:var(--lime);font-family:var(--display);font-weight:900;font-size:38px;display:grid;place-items:center}
+.tile.bad{border:2px solid var(--bad);background:var(--bad-bg)}
+.tile.bad .letter{background:var(--bad);color:#fff}
+.tmeta{min-width:0}
+.tname{font-weight:700}
+.tsub{color:var(--mute);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chip{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:4px 9px;border-radius:999px;white-space:nowrap;font-variant-numeric:tabular-nums}
+.chip.pend{background:var(--line);color:var(--ink)}
+.chip.ok{background:var(--ok-bg);color:var(--ok)}
+.chip.bad{background:var(--bad);color:#fff}
+.chip.home{background:var(--ok-bg);color:var(--ok)}
+.chip.away{background:var(--warn-bg);color:var(--warn)}
+
+/* Team sheet */
+.back{background:none;border:0;color:var(--mute);font-weight:600;padding:4px 0;margin-bottom:10px}
+.head{background:var(--felt);color:#fff;border-radius:18px;padding:16px 18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center}
+.head .big{font-family:var(--display);font-weight:900;font-size:64px;line-height:.85;color:var(--lime)}
+.head h2{margin:0;font-size:20px;text-wrap:balance}
+.head .eyebrow{color:var(--gold)}
+.alert{margin-top:12px;border-radius:12px;padding:12px 14px;background:var(--bad);color:#fff;font-weight:600}
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
+.lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.val{font-weight:700;margin-top:3px;overflow-wrap:anywhere}
+.box input[type=date]{width:100%;border:1px solid var(--line);border-radius:8px;padding:5px 6px;background:var(--bg);margin-top:3px;font-weight:600}
+.moved{font-size:12px;color:var(--warn);font-weight:600;margin-top:4px}
+@media (max-width:520px){.info{grid-template-columns:1fr 1fr}.info .rival{grid-column:1/-1}}
+h3{font-family:var(--display);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin:22px 0 8px;display:flex;align-items:baseline;gap:10px}
+h3 small{font-family:var(--body);font-size:14px;font-weight:600;color:var(--mute);text-transform:none;letter-spacing:0}
+.list{display:grid;gap:8px}
+.pl{display:grid;grid-template-columns:28px 1fr auto auto;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px}
+.pl .n{font-weight:600;min-width:0;overflow-wrap:anywhere}
+.pl .n span{display:block;font-size:13px;font-weight:500;color:var(--mute)}
+.pos{font-family:var(--display);font-weight:900;font-size:22px;color:var(--felt-2);text-align:center}
+.mj{font-variant-numeric:tabular-nums;font-weight:700;color:var(--mute);font-size:15px}
+.conv .pl{border-color:var(--felt-2);border-width:2px}
+.btn{border-radius:10px;border:1px solid var(--line);background:var(--bg);padding:7px 12px;font-weight:700;font-size:14px;white-space:nowrap}
+.btn.add{background:var(--felt);color:var(--lime);border-color:var(--felt)}
+.btn.rm{color:var(--bad)}
+.empty{color:var(--mute);background:var(--card);border:1px dashed var(--line);border-radius:12px;padding:14px;text-align:center}
+.squad{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px}
+.sq{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;display:grid;gap:8px;align-content:space-between}
+.sq .n{font-weight:600}
+.sq .row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.sq.on{opacity:.55}
+.tag{font-size:12px;font-weight:700;color:var(--warn)}
+.search{width:100%;border:1px solid var(--line);border-radius:12px;padding:11px 12px;background:var(--card)}
+.wa{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;background:#1fa855;color:#fff;text-decoration:none;font-weight:700;border-radius:12px;padding:13px}
+.note{font-size:13px;color:var(--mute);margin-top:6px;text-align:center}
+.banner{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:8px 12px;font-size:14px;font-weight:600;margin-bottom:12px}
+
+/* Dialog */
+.scrim{position:fixed;inset:0;background:rgba(5,15,10,.6);display:grid;place-items:center;padding:16px;z-index:20}
+.dlg{background:var(--card);color:var(--ink);border-radius:16px;max-width:420px;width:100%;padding:20px;border-top:6px solid var(--bad)}
+.dlg h4{margin:0 0 8px;font-size:20px}
+.dlg p{margin:0 0 14px}
+.dlg .acts{display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap}
+.dlg .yes{background:var(--bad);color:#fff;border-color:var(--bad)}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:12px 14px;border-radius:12px;max-width:min(440px,calc(100% - 32px));z-index:30;display:grid;gap:8px;font-weight:600}
+.toast a{color:var(--lime)}
+@media (prefers-reduced-motion:no-preference){.tile,.btn{transition:border-color .15s,transform .1s}.btn:active{transform:scale(.97)}}
+</style>
+</head>
+<body>
+
+<div class="wrap" id="app"></div>
+<div id="layer"></div>
+
+<script>
+const ESCUT="escut.png";
+const API="https://taules-monforte.puigis.workers.dev/";
+const D={"players": [{"id": "garcia-alarcon-ricardo", "n": "García Alarcón, Ricardo", "mj": 1.302, "eq": "A"}, {"id": "zuleta-giraldo-john-jairo", "n": "Zuleta Giraldo, John Jairo", "mj": 0.817, "eq": "A"}, {"id": "lozano-herrero-manuel", "n": "Lozano Herrero, Manuel", "mj": 0.751, "eq": "A"}, {"id": "juarez-de-alarcon-jorge", "n": "Juárez De Alarcón, Jorge", "mj": 0.717, "eq": "A"}, {"id": "lopez-gallego-cristian", "n": "López Gallego, Cristian", "mj": 0.705, "eq": "B"}, {"id": "cardona-gallego-julian-alberto", "n": "Cardona Gallego, Julián Alberto", "mj": 0.704, "eq": "B"}, {"id": "farina-villanueva-francisco", "n": "Fariña Villanueva, Francisco", "mj": 0.699, "eq": "B"}, {"id": "fonellosa-casanovas-xavier", "n": "Fonellosa Casanovas, Xavier", "mj": 0.677, "eq": "B"}, {"id": "munoz-lopez-javier", "n": "Muñoz López, Javier", "mj": 0.657, "eq": "B"}, {"id": "oliver-sinca-jordi", "n": "Oliver Sinca, Jordi", "mj": 0.651, "eq": "B"}, {"id": "castro-tellez-henry", "n": "Castro Téllez, Henry", "mj": 0.614, "eq": "C"}, {"id": "bonet-moreno-pau", "n": "Bonet Moreno, Pau", "mj": 0.595, "eq": "C"}, {"id": "lozano-villegas-mauricio", "n": "Lozano Villegas, Mauricio", "mj": 0.588, "eq": "C"}, {"id": "hernandez-giraldo-fabian-alberto", "n": "Hernandez Giraldo, Fabian Alberto", "mj": 0.565, "eq": "C"}, {"id": "mejia-arias-duvan", "n": "Mejia Arias, Duvan", "mj": 0.525, "eq": "C"}, {"id": "chuecos-enriquez-luis", "n": "Chuecos Enriquez, Luis", "mj": 0.52, "eq": "C"}, {"id": "garcia-zaldivar-ricardo", "n": "García Zaldivar, Ricardo", "mj": 0.51, "eq": "C"}, {"id": "puig-latre-isaac", "n": "Puig Latre, Isaac", "mj": 0.483, "eq": "C"}, {"id": "rocha-vera-jeferson", "n": "Rocha Vera, Jeferson", "mj": 0.48, "eq": "D"}, {"id": "adell-casarramona-pere", "n": "Adell Casarramona, Pere", "mj": 0.479, "eq": "D"}, {"id": "segura-mondria-francesc-xavier", "n": "Segura Mondriá, Francesc Xavier", "mj": 0.478, "eq": "D"}, {"id": "segura-gonzalvez-fernando", "n": "Segura Gonzálvez, Fernando", "mj": 0.451, "eq": "D"}, {"id": "cano-poirrier-lalanne-santiago", "n": "Cano Poirrier Lalanne, Santiago", "mj": 0.447, "eq": "D"}, {"id": "barragan-de-la-cruz-luis", "n": "Barragán De La Cruz, Luis", "mj": 0.445, "eq": "D"}, {"id": "campos-gonzalez-joma", "n": "Campos González, Jºmª", "mj": 0.42, "eq": "D"}, {"id": "obando-quintero-carlos-ariel", "n": "Obando Quintero, Carlos Ariel", "mj": 0.397, "eq": "D"}, {"id": "cervera-sans-gabriel", "n": "Cervera Sans, Gabriel", "mj": 0.386, "eq": "E"}, {"id": "tormo-calatayud-jorge", "n": "Tormo Calatayud, Jorge", "mj": 0.36, "eq": "E"}, {"id": "fernandez-nunez-manuel", "n": "Fernández Núñez, Manuel", "mj": 0.359, "eq": "E"}, {"id": "sanchez-trigueros-jaime", "n": "Sánchez Trigueros, Jaime", "mj": 0.356, "eq": "E"}, {"id": "villate-malagon-brian-steven", "n": "Villate Malagón, Brian Steven", "mj": 0.346, "eq": "E"}, {"id": "hernandez-falco-ignasi", "n": "Hernández Falco, Ignasi", "mj": 0.331, "eq": "E"}, {"id": "gili-bertral-joan", "n": "Gili Bertral, Joan", "mj": 0.321, "eq": "E"}, {"id": "rodriguez-sanchez-cesar", "n": "Rodríguez Sánchez, César", "mj": 0.318, "eq": "E"}, {"id": "tirado-gutierrez-francisco", "n": "Tirado Gutierrez, Francisco", "mj": 0.274, "eq": "E"}], "cal": {"A": [{"j": 1, "d": "2026-09-26", "r": "C.B. SANT ADRIÀ \"A\"", "v": "L"}, {"j": 2, "d": "2026-10-10", "r": "B. C. OLESA", "v": "L"}, {"j": 3, "d": "2026-10-17", "r": "B.C. GRANOLLERS \"B\"", "v": "F"}, {"j": 4, "d": "2026-11-07", "r": "C.B. MATARÓ \"A\"", "v": "F"}, {"j": 5, "d": "2026-11-21", "r": "C.B. SANT BOI \"A\"", "v": "L"}, {"j": 6, "d": "2026-12-19", "r": "C.B. MONT-ROIG \"A\"", "v": "F"}, {"j": 7, "d": "2027-01-02", "r": "C.B. LLEIDA \"A\"", "v": "L"}, {"j": 8, "d": "2027-01-09", "r": "C.B. SANT ADRIÀ \"A\"", "v": "F"}, {"j": 9, "d": "2027-01-30", "r": "B. C. OLESA", "v": "F"}, {"j": 10, "d": "2027-02-20", "r": "B.C. GRANOLLERS \"B\"", "v": "L"}, {"j": 11, "d": "2027-02-27", "r": "C.B. MATARÓ \"A\"", "v": "L"}, {"j": 12, "d": "2027-03-13", "r": "C.B. SANT BOI \"A\"", "v": "F"}, {"j": 13, "d": "2027-03-20", "r": "C.B. MONT-ROIG \"A\"", "v": "L"}, {"j": 14, "d": "2027-04-03", "r": "C.B. LLEIDA \"A\"", "v": "F"}], "B": [{"j": 1, "d": "2026-09-26", "r": "B.C. GRANOLLERS \"A\"", "v": "F"}, {"j": 2, "d": "2026-10-10", "r": "C.B. BARCELONA \"A\"", "v": "F"}, {"j": 3, "d": "2026-10-17", "r": "SB FOMENT MOLINS \"A\"", "v": "L"}, {"j": 4, "d": "2026-11-07", "r": "C. B. MOLLET \"A\"", "v": "L"}, {"j": 5, "d": "2026-11-21", "r": "C.B. SANT ADRIÀ \"B\"", "v": "F"}, {"j": 6, "d": "2026-12-19", "r": "C.B. LLINARS \"A\"", "v": "L"}, {"j": 7, "d": "2027-01-02", "r": "S.B. CASAL CERVERA", "v": "F"}, {"j": 8, "d": "2027-01-09", "r": "B.C. GRANOLLERS \"A\"", "v": "L"}, {"j": 9, "d": "2027-01-30", "r": "C.B. BARCELONA \"A\"", "v": "L"}, {"j": 10, "d": "2027-02-20", "r": "SB FOMENT MOLINS \"A\"", "v": "F"}, {"j": 11, "d": "2027-02-27", "r": "C. B. MOLLET \"A\"", "v": "F"}, {"j": 12, "d": "2027-03-13", "r": "C.B. SANT ADRIÀ \"B\"", "v": "L"}, {"j": 13, "d": "2027-03-20", "r": "C.B. LLINARS \"A\"", "v": "F"}, {"j": 14, "d": "2027-04-03", "r": "S.B. CASAL CERVERA", "v": "L"}], "C": [{"j": 1, "d": "2026-09-26", "r": "C.B. ALBA", "v": "L"}, {"j": 2, "d": "2026-10-10", "r": "C.B. 2000 CERDANYOLA \"A\"", "v": "F"}, {"j": 3, "d": "2026-10-17", "r": "SBPE. CENTELLES \"A\"", "v": "L"}, {"j": 4, "d": "2026-11-07", "r": "C.B. MONT-ROIG \"B\"", "v": "F"}, {"j": 5, "d": "2026-11-21", "r": "C.B. PRAT \"A\"", "v": "L"}, {"j": 6, "d": "2026-12-19", "r": "S.B. LA UNIÓ CORAL \"A\"", "v": "L"}, {"j": 7, "d": "2027-01-02", "r": "C.B. SANTS \"B\"", "v": "F"}, {"j": 8, "d": "2027-01-09", "r": "C.B. ALBA", "v": "F"}, {"j": 9, "d": "2027-01-30", "r": "C.B. 2000 CERDANYOLA \"A\"", "v": "L"}, {"j": 10, "d": "2027-02-20", "r": "SBPE. CENTELLES \"A\"", "v": "F"}, {"j": 11, "d": "2027-02-27", "r": "C.B. MONT-ROIG \"B\"", "v": "L"}, {"j": 12, "d": "2027-03-13", "r": "C.B. PRAT \"A\"", "v": "F"}, {"j": 13, "d": "2027-03-20", "r": "S.B. LA UNIÓ CORAL \"A\"", "v": "F"}, {"j": 14, "d": "2027-04-03", "r": "C.B. SANTS \"B\"", "v": "L"}], "D": [{"j": 1, "d": "2026-09-26", "r": "B.C. GRANOLLERS \"C\"", "v": "F"}, {"j": 2, "d": "2026-10-10", "r": "C.B. SANT BOI \"C\"", "v": "L"}, {"j": 3, "d": "2026-10-17", "r": "C.B. SANTS \"D\"", "v": "F"}, {"j": 4, "d": "2026-11-07", "r": "S.B.GEiEG", "v": "L"}, {"j": 5, "d": "2026-11-21", "r": "C.B. LLINARS \"C\"", "v": "F"}, {"j": 6, "d": "2026-12-19", "r": "C.B. LLIÇÀ \"B\"", "v": "L"}, {"j": 7, "d": "2027-01-02", "r": "C.B. PRAT \"B\"", "v": "L"}, {"j": 8, "d": "2027-01-09", "r": "B.C. GRANOLLERS \"C\"", "v": "L"}, {"j": 9, "d": "2027-01-30", "r": "C.B. SANT BOI \"C\"", "v": "F"}, {"j": 10, "d": "2027-02-20", "r": "C.B. SANTS \"D\"", "v": "L"}, {"j": 11, "d": "2027-02-27", "r": "S.B.GEiEG", "v": "F"}, {"j": 12, "d": "2027-03-13", "r": "C.B. LLINARS \"C\"", "v": "L"}, {"j": 13, "d": "2027-03-20", "r": "C.B. LLIÇÀ \"B\"", "v": "F"}, {"j": 14, "d": "2027-04-03", "r": "C.B. PRAT \"B\"", "v": "F"}], "E": [{"j": 1, "d": "2026-09-26", "r": "C.B. MONT-ROIG \"D\"", "v": "F"}, {"j": 2, "d": "2026-10-10", "r": "S.B. LA UNIÓ CORAL \"C\"", "v": "L"}, {"j": 3, "d": "2026-10-17", "r": "C.B. LLINARS \"D\"", "v": "L"}, {"j": 4, "d": "2026-11-07", "r": "C.B. MATARÓ \"D\"", "v": "L"}, {"j": 5, "d": "2026-11-21", "r": "C.B. SANT FELIU \"B\"", "v": "F"}, {"j": 6, "d": "2026-12-19", "r": "C.B.BORGES", "v": "F"}, {"j": 7, "d": "2027-01-02", "r": "C.B. BANYOLES \"D\"", "v": "L"}, {"j": 8, "d": "2027-01-09", "r": "C.B. MONT-ROIG \"D\"", "v": "L"}, {"j": 9, "d": "2027-01-30", "r": "S.B. LA UNIÓ CORAL \"C\"", "v": "F"}, {"j": 10, "d": "2027-02-20", "r": "C.B. LLINARS \"D\"", "v": "F"}, {"j": 11, "d": "2027-02-27", "r": "C.B. MATARÓ \"D\"", "v": "F"}, {"j": 12, "d": "2027-03-13", "r": "C.B. SANT FELIU \"B\"", "v": "L"}, {"j": 13, "d": "2027-03-20", "r": "C.B.BORGES", "v": "L"}, {"j": 14, "d": "2027-04-03", "r": "C.B. BANYOLES \"D\"", "v": "F"}]}, "div": {"A": "Honor", "C": "1A Divisió", "D": "3A Divisió", "B": "Honor", "E": "4A Divisió"}};
+const TEAMS=["A","B","C","D","E"];
+const DIV={A:"Honor · Grup A",B:"Honor · Grup B",C:"1a Divisió · Grup A",D:"3a Divisió · Grup A",E:"4a Divisió · Grup B"};
+const MIN=4;
+const P={};D.players.forEach(p=>P[p.id]=p);
+const MESOS=["gener","febrer","març","abril","maig","juny","juliol","agost","setembre","octubre","novembre","desembre"];
+const DIES=["diumenge","dilluns","dimarts","dimecres","dijous","divendres","dissabte"];
+const fmt=d=>{const x=new Date(d+"T12:00:00");return `${DIES[x.getDay()]} ${x.getDate()} de ${MESOS[x.getMonth()]}`;};
+const short=n=>{const [c,nm]=n.split(", ");return (nm||"")+" "+(c||"").split(" ")[0];};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const rivalName=r=>r.replace(/^C\.\s?B\.\s?|^B\.\s?C\.\s?|^S\.\s?B\.\s?|^SBPE\.\s?|^C\.B\./,"").trim();
+
+// Next jornada: first one after tomorrow
+const ymd=d=>d.toISOString().slice(0,10);
+const tomorrow=ymd(new Date(Date.now()+864e5));
+const JS=D.cal.A.map(m=>m.j);
+let J=(D.cal.A.find(m=>m.d>tomorrow)||D.cal.A[D.cal.A.length-1]).j;
+const FIRST_J=J;
+
+let view="home";              // "home" or a team letter
+let st={};                    // st[team] = {data, conv:[], perj:bool, perjMsg}
+let err="",q="",busy=false;
+
+const match=(t,j=J)=>D.cal[t].find(m=>m.j===j);
+const doc=t=>st[t]||{conv:[],perj:false};
+const dateOf=t=>doc(t).data||match(t).d;
+const sorted=ids=>[...ids].sort((a,b)=>P[b].mj-P[a].mj);
+const whereConv=(id,except)=>TEAMS.find(t=>t!==except&&doc(t).conv.includes(id));
+
+async function call(method,body){
+  const r=await fetch(API+"?accio=conv&j="+J,{method,cache:"no-store",headers:body?{"Content-Type":"application/json"}:{},body:body?JSON.stringify(body):undefined});
+  const o=await r.json();
+  if(o.error) throw new Error(o.error==="Acció desconeguda"?"Falta actualitzar l'intermediari amb el codi de les convocatòries.":o.error);
+  return o.equips||{};
+}
+async function load(){
+  if(busy) return;
+  const j=J;
+  try{const e=await call("GET");if(j!==J)return;st=e;err="";}
+  catch(e){err="No es poden llegir les convocatòries. "+(e.message||"Comprova la connexió.");}
+  render();
+}
+// ch = {A:{...}, C:{...}}: teams that change together are saved in one go
+async function saveMany(ch){
+  Object.assign(st,ch);render();busy=true;
+  try{st=await call("POST",{equips:ch});err="";}
+  catch(e){toast("No s'ha pogut desar. "+esc(e.message||"Torna-ho a provar."));busy=false;await load();return false;}
+  busy=false;render();return true;
+}
+const save=(t,obj)=>saveMany({[t]:obj});
+
+/* ---------- views ---------- */
+function render(){
+  const a=document.getElementById("app");
+  const f=document.activeElement&&document.activeElement.id==="q",pos=f?document.activeElement.selectionStart:0;
+  a.innerHTML=view==="home"?home():team(view);
+  bind();
+  if(f){const n=document.getElementById("q");if(n){n.focus();n.setSelectionRange(pos,pos);}}
+}
+
+function status(t){
+  const d=doc(t),n=d.conv.length;
+  if(d.perj&&n<MIN) return {cls:"bad",txt:`Incompleta ${n}/${MIN}`};
+  if(n>=MIN) return {cls:"ok",txt:`Completa ${n}/${MIN}`};
+  return {cls:"pend",txt:`${n}/${MIN}`};
+}
+
+function home(){
+  const i=JS.indexOf(J);
+  return `${err?`<div class="banner">${esc(err)}</div>`:""}
+  <section class="poster">
+    <img src="${ESCUT}" alt="Escut del CB Monforte">
+    <div>
+      <div class="eyebrow">Lliga Catalana 3 Bandes · CB Monforte</div>
+      <div class="jtitle">Jornada ${J}</div>
+      <div class="jdate">${fmt(match("A").d)}</div>
+      <div class="jnav">
+        <button data-j="${JS[i-1]}" ${i<=0?"disabled":""} aria-label="Jornada anterior">‹ J${JS[i-1]??""}</button>
+        ${J!==FIRST_J?`<button data-j="${FIRST_J}">Propera</button>`:""}
+        <button data-j="${JS[i+1]}" ${i>=JS.length-1?"disabled":""} aria-label="Jornada següent">J${JS[i+1]??""} ›</button>
+      </div>
+    </div>
+  </section>
+  <div class="tiles">${TEAMS.map(t=>{
+    const m=match(t),s=status(t),moved=doc(t).data&&doc(t).data!==m.d;
+    return `<button class="tile ${s.cls==="bad"?"bad":""}" data-team="${t}">
+      <div class="letter">${t}</div>
+      <div class="tmeta"><div class="tname">${m.v==="L"?"Monforte "+t+" – "+esc(rivalName(m.r)):esc(rivalName(m.r))+" – Monforte "+t}</div>
+      <div class="tsub">${DIV[t]} · ${m.v==="L"?"A casa":"Fora"}${moved?" · Data canviada: "+fmt(dateOf(t)):""}</div></div>
+      <span class="chip ${s.cls}">${s.txt}</span></button>`;}).join("")}
+  </div>`;
+}
+
+function team(t){
+  const m=match(t),d=doc(t),conv=sorted(d.conv);
+  const squad=D.players.filter(p=>p.eq===t);
+  const others=q.trim().length>=2?D.players.filter(p=>p.eq!==t&&!d.conv.includes(p.id)&&p.n.toLowerCase().normalize("NFD").replace(/\p{M}/gu,"").includes(q.toLowerCase().normalize("NFD").replace(/\p{M}/gu,""))):[];
+  const moved=d.data&&d.data!==m.d;
+  return `${err?`<div class="banner">${esc(err)}</div>`:""}
+  <button class="back" data-home>‹ Totes les convocatòries</button>
+  <section class="head"><div class="big">${t}</div>
+    <div><div class="eyebrow">Jornada ${J} · ${DIV[t]}</div><h2>C.B. Monforte "${t}"</h2></div></section>
+  ${d.perj&&d.conv.length<MIN?`<div class="alert">Convocatòria incompleta. ${esc(d.perjMsg||"S'ha tret un jugador per convocar-lo en un altre equip.")}</div>`:""}
+  <div class="info">
+    <div class="box"><div class="lab">Data</div>
+      <input type="date" id="data-${t}" value="${dateOf(t)}" aria-label="Data de l'encontre">
+      ${moved?`<div class="moved">Data oficial: ${fmt(m.d)}</div>`:""}</div>
+    <div class="box"><div class="lab">On</div><div class="val"><span class="chip ${m.v==="L"?"home":"away"}">${m.v==="L"?"A casa":"Fora"}</span></div></div>
+    <div class="box rival"><div class="lab">Rival</div><div class="val">${esc(m.r)}</div></div>
+  </div>
+
+  <h3>Convocats <small>${d.conv.length}/${MIN} · ordenats per promig</small></h3>
+  <div class="list conv">${conv.length?conv.map((id,i)=>{const p=P[id];return `
+    <div class="pl"><div class="pos">${i+1}</div><div class="n">${esc(p.n)}${p.eq!==t?`<span>Ve de l'equip ${p.eq}</span>`:""}</div>
+    <div class="mj">${p.mj.toFixed(3)}</div><button class="btn rm" data-rm="${id}" aria-label="Treure ${esc(p.n)}">Treure</button></div>`;}).join("")
+    :`<div class="empty">Encara no hi ha ningú convocat. Toca <b>Convocar</b> a la plantilla de sota.</div>`}</div>
+
+  <h3>Plantilla ${t} <small>${squad.length} jugadors</small></h3>
+  <div class="squad">${squad.map(p=>{const on=d.conv.includes(p.id),el=whereConv(p.id,t);return `
+    <div class="sq ${on?"on":""}"><div class="n">${esc(p.n)}</div>
+    <div class="row"><span class="mj">${p.mj.toFixed(3)}</span>
+    ${on?`<span class="tag">Convocat</span>`:`${el?`<span class="tag">Al ${el}</span>`:""}<button class="btn add" data-add="${p.id}">Convocar</button>`}</div></div>`;}).join("")}</div>
+
+  <h3>Jugador d'un altre equip</h3>
+  <input class="search" id="q" placeholder="Escriu 2 lletres del nom o cognom" value="${esc(q)}" autocomplete="off">
+  <div class="list" style="margin-top:8px">${others.map(p=>{const el=whereConv(p.id,t);return `
+    <div class="pl"><div class="pos">${p.eq}</div><div class="n">${esc(p.n)}${el?`<span>Ja convocat a l'equip ${el}</span>`:""}</div>
+    <div class="mj">${p.mj.toFixed(3)}</div><button class="btn add" data-add="${p.id}">Convocar</button></div>`;}).join("")}</div>
+
+  <a class="wa" href="${waLink(t)}" target="_blank" rel="noopener">Enviar convocatòria per WhatsApp</a>
+  <div class="note">S'obre el WhatsApp amb el missatge escrit; tu tries el grup o la persona.</div>`;
+}
+
+function waText(t){
+  const m=match(t),d=doc(t);
+  const l=sorted(d.conv).map((id,i)=>`${i+1}. ${P[id].n}`).join("\n")||"(pendent)";
+  return `*CB MONFORTE "${t}" · JORNADA ${J}*\n${fmt(dateOf(t))}\n${m.v==="L"?"A casa":"Fora"} contra ${m.r}\n\n*Convocats:*\n${l}`;
+}
+const waLink=t=>"https://wa.me/?text="+encodeURIComponent(waText(t));
+
+/* ---------- actions ---------- */
+function addPlayer(t,id){
+  const from=whereConv(id,t);
+  if(!from) return doAdd(t,id);
+  const p=P[id],mf=match(from);
+  modal(`<h4>${esc(short(p.n))} ja està convocat</h4>
+    <p>Està a la convocatòria de l'<b>equip ${from}</b> (${fmt(dateOf(from))}, contra ${esc(rivalName(mf.r))}). Un jugador no pot estar convocat a dos equips.</p>
+    <p>Si continues, es treu de l'equip ${from} i aquella convocatòria quedarà <b>incompleta</b>. N'estàs segur?</p>
+    <div class="acts"><button class="btn" data-close>No, deixa-ho</button><button class="btn yes" data-yes>Sí, convoca'l a l'${t}</button></div>`,
+    async()=>{
+      const o=doc(from);
+      const conv=o.conv.filter(x=>x!==id);
+      const ok=await saveMany({[from]:{...o,conv,perj:conv.length<MIN,perjMsg:`${short(p.n)} s'ha passat a l'equip ${t}. Falta ${MIN-conv.length>1?MIN-conv.length+" jugadors":"un jugador"}.`},[t]:added(t,id)});
+      if(!ok) return;
+      const msg=`*Avís convocatòria J${J}*\n${p.n} s'ha convocat a l'equip ${t} i s'ha tret de l'equip ${from}. La convocatòria del ${from} ha quedat incompleta.`;
+      toast(`${esc(short(p.n))} passa de l'${from} a l'${t}. <a href="https://wa.me/?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener">Avisar el capità del ${from} per WhatsApp</a>`,9000);
+    });
+}
+function added(t,id){
+  const d=doc(t),conv=d.conv.includes(id)?d.conv:[...d.conv,id],ok=conv.length>=MIN;
+  return {...d,conv,perj:ok?false:!!d.perj,perjMsg:ok?"":(d.perjMsg||"")};
+}
+const doAdd=(t,id)=>save(t,added(t,id));
+function rmPlayer(t,id){const d=doc(t);save(t,{...d,conv:d.conv.filter(x=>x!==id)});}
+function setDate(t,v){const d=doc(t),m=match(t);if(!v)return;save(t,{...d,conv:d.conv,data:v===m.d?null:v});}
+
+/* ---------- ui helpers ---------- */
+let onYes=null;
+function modal(html,yes){onYes=yes;const L=document.getElementById("layer");
+  L.innerHTML=`<div class="scrim" data-close><div class="dlg" role="alertdialog" aria-modal="true">${html}</div></div>`;
+  L.querySelector("[data-yes]").focus();
+  L.querySelectorAll("[data-close]").forEach(el=>el.addEventListener("click",e=>{if(e.target===el)closeModal();}));
+  L.querySelector("[data-yes]").addEventListener("click",()=>{const f=onYes;closeModal();f&&f();});
+}
+function closeModal(){document.getElementById("layer").innerHTML="";onYes=null;}
+let tt;
+function toast(html,ms=4500){let el=document.querySelector(".toast");if(!el){el=document.createElement("div");el.className="toast";el.setAttribute("role","status");document.body.appendChild(el);}
+  el.innerHTML=html;clearTimeout(tt);tt=setTimeout(()=>el.remove(),ms);}
+
+function bind(){
+  const a=document.getElementById("app");
+  a.querySelectorAll("[data-team]").forEach(b=>b.onclick=()=>{view=b.dataset.team;q="";render();scrollTo(0,0);});
+  a.querySelectorAll("[data-j]").forEach(b=>b.onclick=()=>{J=+b.dataset.j;st={};render();load();});
+  const h=a.querySelector("[data-home]");if(h)h.onclick=()=>{view="home";render();scrollTo(0,0);};
+  a.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>addPlayer(view,b.dataset.add));
+  a.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>rmPlayer(view,b.dataset.rm));
+  const di=a.querySelector("input[type=date]");if(di)di.onchange=()=>setDate(view,di.value);
+  const qi=a.querySelector("#q");if(qi){qi.oninput=()=>{q=qi.value;render();};}
+}
+document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+
+render();
+load();
+setInterval(()=>{if(!document.hidden)load();},20000);
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)load();});
+</script>
+</body>
+</html>
