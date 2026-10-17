@@ -3,7 +3,8 @@ Reel (vídeo vertical 9:16) dels resultats de la Lliga 3 Bandes, amb música.
 
 Fa servir la mateixa plantilla que el cartell (scraper/cartell_lliga/plantilla.html)
 en "mode Reel": els resultats van apareixent un a un i el segell AJORNAT "pica".
-Cada setmana sona una cançó diferent de scraper/cartell_lliga/musica/ (en rotació).
+Cada setmana sona una cançó diferent de scraper/cartell_lliga/musica/ (en rotació);
+les de musica/especials.json només sonen la jornada que tenen assignada.
 
 Sortida: imatges/reel-lliga-AAAA-MM-DD.mp4  (1080 x 1920, 30 fps, ~12 s)
 
@@ -29,16 +30,27 @@ FPS = 30
 DURADA = 12.0
 
 
-def tria_canco(dia, forcada=None):
+def tria_canco(dia, forcada=None, dies=7):
+    """Cançó de la setmana: la reservada per a aquella jornada (musica/especials.json)
+    o, si no n'hi ha, una de les altres en rotació segons el número de setmana."""
     cancons = sorted(MUSICA.glob("*.mp3"))
     if not cancons:
         return None
+    per_prefix = lambda pre: next((c for c in cancons if c.name.startswith(pre)), None)
     if forcada:
-        for c in cancons:
-            if c.name.startswith(forcada):
-                return c
-    setmana = datetime.date.fromisoformat(dia).isocalendar()[1]
-    return cancons[setmana % len(cancons)]
+        return per_prefix(forcada) or cancons[0]
+    especials = {}
+    fitxer = MUSICA / "especials.json"
+    if fitxer.exists():
+        especials = {k: v for k, v in json.loads(fitxer.read_text(encoding="utf-8")).items() if not k.startswith("_")}
+    ref = datetime.date.fromisoformat(dia)
+    inici = ref - datetime.timedelta(days=dies - 1)
+    for data, pre in especials.items():
+        if inici <= datetime.date.fromisoformat(data) <= ref and per_prefix(pre):
+            return per_prefix(pre)
+    reservades = set(especials.values())
+    normals = [c for c in cancons if not any(c.name.startswith(r) for r in reservades)] or cancons
+    return normals[ref.isocalendar()[1] % len(normals)]
 
 
 def fotogrames(dades, carpeta):
@@ -76,7 +88,7 @@ def main():
         print("Aquesta setmana no hi ha partits de lliga: no es genera el Reel.")
         return
     dia = ref or datetime.date.today().isoformat()
-    canco = tria_canco(dia, os.environ.get("CANCO"))
+    canco = tria_canco(dia, os.environ.get("CANCO"), dies)
     SORTIDA.mkdir(exist_ok=True)
     sortida = SORTIDA / f"reel-lliga-{dia}.mp4"
     carpeta = Path(tempfile.mkdtemp(prefix="reel-"))
