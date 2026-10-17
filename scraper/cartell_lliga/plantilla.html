@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Resultats Lliga 3 Bandes</title>
+<style>
+  /* lletres incloses al repo perquè el cartell surti igual a qualsevol ordinador */
+  @font-face{font-family:"Inter Display";font-weight:900;src:url(fonts/InterDisplay-Black.otf)}
+  @font-face{font-family:"Inter Display";font-weight:800;src:url(fonts/InterDisplay-ExtraBold.otf)}
+  @font-face{font-family:"Inter";font-weight:600;src:url(fonts/Inter-SemiBold.otf)}
+  @font-face{font-family:"Inter";font-weight:700;src:url(fonts/Inter-Bold.otf)}
+  @font-face{font-family:"Inter";font-weight:800;src:url(fonts/Inter-ExtraBold.otf)}
+  :root{
+    --verd-fosc:#06261a;
+    --verd:#0d4a30;
+    --verd-clar:#1a6b45;
+    --vermell:#c8102e;
+    --llima:#c8ff1a;
+    --blanc:#f4f7f2;
+    --gris:#9fb5a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1350px;overflow:hidden}
+  body{
+    font-family:"Inter","DejaVu Sans",sans-serif;
+    color:var(--blanc);
+    background:
+      radial-gradient(ellipse 900px 600px at 50% 18%, rgba(40,140,90,.45), transparent 70%),
+      radial-gradient(ellipse 1200px 700px at 50% 110%, rgba(0,0,0,.55), transparent 70%),
+      linear-gradient(180deg,#0b3a26 0%,var(--verd-fosc) 100%);
+    position:relative;
+  }
+  /* textura de drap */
+  body::before{
+    content:"";position:absolute;inset:0;
+    background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 6px);
+    pointer-events:none;
+  }
+  /* franges diagonals de marca */
+  .franja{position:absolute;width:1600px;height:26px;left:-260px;transform:rotate(-8deg)}
+  .franja.v{background:var(--vermell);top:-40px}
+  .franja.l{background:var(--llima);top:-6px;height:8px}
+  .franja.v2{background:var(--vermell);bottom:-34px;top:auto;transform:rotate(-8deg)}
+  .franja.l2{background:var(--llima);bottom:-4px;top:auto;height:8px}
+
+  header{position:relative;text-align:center;padding-top:48px}
+  .escut{height:205px;filter:drop-shadow(0 10px 24px rgba(0,0,0,.55))}
+  .titol{
+    margin-top:14px;
+    font-family:"Inter Display","Inter",sans-serif;font-weight:900;
+    font-size:68px;letter-spacing:2px;line-height:1;text-transform:uppercase;
+  }
+  .titol span{color:var(--llima)}
+  .subtitol{
+    margin-top:10px;display:inline-flex;align-items:center;gap:18px;
+    font-weight:700;font-size:26px;letter-spacing:6px;text-transform:uppercase;color:var(--gris);
+  }
+  .subtitol i{width:46px;height:3px;background:var(--vermell);display:block}
+
+  main{position:relative;margin:40px 56px 0;display:flex;flex-direction:column;gap:18px}
+  .partit{
+    position:relative;
+    background:linear-gradient(90deg,rgba(255,255,255,.07),rgba(255,255,255,.035));
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:18px;
+    padding:12px 22px 14px;
+    overflow:hidden;
+  }
+  .partit::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--res)}
+  .cap{
+    display:flex;justify-content:space-between;align-items:center;
+    font-size:17px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gris);
+    margin-bottom:6px;padding-left:6px;
+  }
+  .cap b{color:var(--blanc)}
+  .xip{
+    font-size:15px;font-weight:800;letter-spacing:2px;padding:5px 12px;border-radius:30px;
+    background:var(--res);color:var(--res-text);
+  }
+  .fila{display:grid;grid-template-columns:minmax(0,1fr) 190px minmax(0,1fr);align-items:center;gap:14px;padding-left:6px}
+  .equip{
+    font-family:"Inter Display","Inter",sans-serif;
+    font-weight:800;font-size:31px;line-height:1.05;text-transform:uppercase;
+  }
+  .equip .nom{display:block;white-space:nowrap}
+  .equip.local{text-align:left}
+  .equip.visitant{text-align:right}
+  .equip.monforte{color:var(--llima)}
+  .equip small{display:block;font-size:15px;font-weight:600;letter-spacing:3px;color:var(--gris);margin-top:4px}
+  .marcador{
+    display:flex;justify-content:center;align-items:center;gap:10px;
+    background:var(--verd-fosc);border:2px solid rgba(255,255,255,.12);border-radius:14px;
+    height:76px;
+    font-family:"Inter Display","Inter",sans-serif;font-weight:900;font-size:52px;
+  }
+  .marcador .sep{color:var(--gris);font-size:38px;font-weight:700}
+  .marcador .guanya{color:var(--llima)}
+  .marcador .perd{color:rgba(244,247,242,.45)}
+
+  .victoria{--res:var(--llima);--res-text:#0b2a1c}
+  .empat{--res:#e8ecea;--res-text:#0b2a1c}
+  .derrota{--res:var(--vermell);--res-text:#fff}
+
+  footer{
+    position:absolute;left:0;right:0;bottom:64px;text-align:center;
+    font-weight:800;font-size:20px;letter-spacing:8px;text-transform:uppercase;color:var(--blanc);
+  }
+  footer span{color:var(--llima)}
+</style>
+</head>
+<body>
+  <div class="franja v"></div><div class="franja l"></div>
+
+  <header>
+    <img class="escut" src="escut.png" alt="">
+    <h1 class="titol">Lliga <span>3 Bandes</span></h1>
+    <div class="subtitol"><i></i><span id="jornada"></span><i></i></div>
+  </header>
+
+  <main id="partits"></main>
+
+  <footer>CB <span>Monforte</span></footer>
+  <div class="franja v2"></div><div class="franja l2"></div>
+
+<script>
+  const D = window.DADES;
+  document.getElementById('jornada').textContent = D.jornada + ' · ' + D.data;
+  const esMonforte = n => /monforte/i.test(n);
+  // el guanyador en llima si és el Monforte, en blanc si és el rival; el perdedor esmorteït
+  const cls = (a, b, mon) => a > b ? (mon ? 'guanya' : '') : a < b ? 'perd' : '';
+  const html = D.partits.map(p => {
+    const casa = p.casa;                       // true = Monforte juga a casa
+    const nomM = 'CB Monforte ' + p.equip;
+    const local = casa ? nomM : p.rival;
+    const visit = casa ? p.rival : nomM;
+    const gl = casa ? p.monforte : p.contrari;
+    const gv = casa ? p.contrari : p.monforte;
+    const res = p.monforte > p.contrari ? 'victoria' : p.monforte < p.contrari ? 'derrota' : 'empat';
+    const txt = {victoria:'Victòria',empat:'Empat',derrota:'Derrota'}[res];
+    return `
+    <section class="partit ${res}">
+      <div class="cap"><span>Equip <b>${p.equip}</b> · ${p.divisio}</span><span class="xip">${txt}</span></div>
+      <div class="fila">
+        <div class="equip local ${esMonforte(local)?'monforte':''}"><span class="nom">${local}</span><small>Local</small></div>
+        <div class="marcador"><span class="${cls(gl,gv,casa)}">${gl}</span><span class="sep">–</span><span class="${cls(gv,gl,!casa)}">${gv}</span></div>
+        <div class="equip visitant ${esMonforte(visit)?'monforte':''}"><span class="nom">${visit}</span><small>Visitant</small></div>
+      </div>
+    </section>`;
+  }).join('');
+  document.getElementById('partits').innerHTML = html;
+  // encongeix els noms que no caben en una línia
+  document.querySelectorAll('.equip').forEach(eq => {
+    const nom = eq.querySelector('.nom'); let mida = 31;
+    while (nom.scrollWidth > eq.clientWidth && mida > 18) { mida -= 1; nom.style.fontSize = mida + 'px'; }
+  });
+</script>
+</body>
+</html>
