@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Classificació Lliga 3 Bandes</title>
+<style>
+  @font-face{font-family:"Inter Display";font-weight:900;src:url(fonts/InterDisplay-Black.otf)}
+  @font-face{font-family:"Inter Display";font-weight:800;src:url(fonts/InterDisplay-ExtraBold.otf)}
+  @font-face{font-family:"Inter";font-weight:600;src:url(fonts/Inter-SemiBold.otf)}
+  @font-face{font-family:"Inter";font-weight:700;src:url(fonts/Inter-Bold.otf)}
+  @font-face{font-family:"Inter";font-weight:800;src:url(fonts/Inter-ExtraBold.otf)}
+  :root{
+    --verd-fosc:#06261a;
+    --vermell:#c8102e;
+    --llima:#c8ff1a;
+    --blanc:#f4f7f2;
+    --gris:#9fb5a8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1350px;overflow:hidden}
+  body{
+    font-family:"Inter",sans-serif;color:var(--blanc);position:relative;
+    background:
+      radial-gradient(ellipse 900px 600px at 50% 14%, rgba(40,140,90,.45), transparent 70%),
+      radial-gradient(ellipse 1200px 700px at 50% 110%, rgba(0,0,0,.55), transparent 70%),
+      linear-gradient(180deg,#0b3a26 0%,var(--verd-fosc) 100%);
+  }
+  body::before{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 6px);
+  }
+  .franja{position:absolute;width:1600px;height:26px;left:-260px;transform:rotate(-8deg)}
+  .franja.v{background:var(--vermell);top:-40px}
+  .franja.l{background:var(--llima);top:-6px;height:8px}
+  .franja.v2{background:var(--vermell);bottom:-34px}
+  .franja.l2{background:var(--llima);bottom:-4px;height:8px}
+
+  header{position:relative;display:flex;align-items:center;gap:30px;padding:70px 64px 0}
+  .escut{height:150px;filter:drop-shadow(0 8px 20px rgba(0,0,0,.55))}
+  .titol{font-family:"Inter Display",sans-serif;font-weight:900;font-size:62px;line-height:.95;text-transform:uppercase}
+  .titol span{color:var(--llima)}
+  .sub{margin-top:12px;font-weight:700;font-size:21px;letter-spacing:4px;white-space:nowrap;text-transform:uppercase;color:var(--gris)}
+
+  .equip-cap{
+    position:relative;margin:40px 64px 0;
+    display:flex;align-items:center;justify-content:space-between;
+    padding:22px 30px;border-radius:20px;
+    background:linear-gradient(90deg,rgba(200,255,26,.16),rgba(200,255,26,.04));
+    border:1px solid rgba(200,255,26,.35);
+  }
+  .equip-cap .lletra{
+    font-family:"Inter Display",sans-serif;font-weight:900;font-size:44px;text-transform:uppercase;line-height:1;
+  }
+  .equip-cap .lletra b{color:var(--llima)}
+  .equip-cap .div{margin-top:8px;font-weight:700;font-size:19px;letter-spacing:4px;text-transform:uppercase;color:var(--gris)}
+  .posicio{text-align:right;line-height:1}
+  .posicio .num{font-family:"Inter Display",sans-serif;font-weight:900;font-size:76px;color:var(--llima)}
+  .posicio .num sup{font-size:34px;vertical-align:top;position:relative;top:8px;margin-left:2px}
+  .posicio small{display:block;font-weight:700;font-size:15px;letter-spacing:4px;text-transform:uppercase;color:var(--gris);margin-top:2px}
+
+  table{
+    position:relative;margin:28px 64px 0;width:calc(100% - 128px);
+    border-collapse:separate;border-spacing:0 8px;table-layout:fixed;
+  }
+  th:nth-child(1){width:86px} th:nth-child(3){width:80px} th:nth-child(4){width:90px} th:nth-child(5){width:120px}
+  th{
+    font-weight:700;font-size:16px;letter-spacing:4px;text-transform:uppercase;color:var(--gris);
+    padding:0 14px 2px;text-align:center;
+  }
+  th.eq{text-align:left}
+  td{
+    background:rgba(255,255,255,.055);height:74px;padding:0 14px;text-align:center;
+    font-family:"Inter Display",sans-serif;font-weight:800;font-size:30px;
+  }
+  td:first-child{border-radius:14px 0 0 14px}
+  td:last-child{border-radius:0 14px 14px 0}
+  td.eq{text-align:left;font-size:27px;text-transform:uppercase;white-space:nowrap;overflow:hidden}
+  td.eq .nom{display:inline-block}
+  td.pm{color:var(--blanc);font-size:34px}
+  td.n{color:rgba(244,247,242,.75)}
+  .pos{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:46px;height:46px;border-radius:12px;background:rgba(255,255,255,.08);font-size:26px;
+  }
+  tr.mon td{background:var(--llima);color:#0b2a1c}
+  tr.mon td.n{color:#0b2a1c}
+  tr.mon .pos{background:#0b2a1c;color:var(--llima)}
+
+  .llegenda{
+    position:absolute;left:64px;right:64px;bottom:112px;
+    display:flex;justify-content:center;gap:34px;
+    font-weight:600;font-size:17px;letter-spacing:2px;color:var(--gris);text-transform:uppercase;
+  }
+  .llegenda b{color:var(--blanc)}
+  footer{
+    position:absolute;left:0;right:0;bottom:64px;text-align:center;
+    font-weight:800;font-size:20px;letter-spacing:8px;text-transform:uppercase;
+  }
+  footer span{color:var(--llima)}
+</style>
+</head>
+<body>
+  <div class="franja v"></div><div class="franja l"></div>
+
+  <header>
+    <img class="escut" src="escut.png" alt="">
+    <div>
+      <h1 class="titol">Classificació<br><span>Lliga 3 Bandes</span></h1>
+      <div class="sub" id="sub"></div>
+    </div>
+  </header>
+
+  <section class="equip-cap">
+    <div>
+      <div class="lletra">CB Monforte <b id="lletra"></b></div>
+      <div class="div" id="div"></div>
+    </div>
+    <div class="posicio"><div class="num" id="pos"></div><small>Posició</small></div>
+  </section>
+
+  <table>
+    <thead><tr><th>Pos</th><th class="eq">Equip</th><th>J</th><th>PP</th><th>Punts</th></tr></thead>
+    <tbody id="files"></tbody>
+  </table>
+
+  <div class="llegenda"><span><b>J</b> Jugats</span><span><b>PP</b> Punts de partida</span><span><b>Punts</b> Punts de match</span></div>
+  <footer>CB <span>Monforte</span></footer>
+  <div class="franja v2"></div><div class="franja l2"></div>
+
+<script>
+  const D = window.DADES;
+  const ordinal = n => n === 1 ? 'r' : n === 2 ? 'n' : n === 3 ? 'r' : n === 4 ? 't' : 'è';
+  document.getElementById('sub').textContent = D.jornada + ' · ' + D.data;
+  document.getElementById('lletra').textContent = D.equip;
+  document.getElementById('div').textContent = D.divisio;
+  const mon = D.files.find(f => f.mon);
+  document.getElementById('pos').innerHTML = mon ? `${mon.pos}<sup>${ordinal(mon.pos)}</sup>` : '–';
+  document.getElementById('files').innerHTML = D.files.map(f => `
+    <tr class="${f.mon ? 'mon' : ''}">
+      <td><span class="pos">${f.pos}</span></td>
+      <td class="eq"><span class="nom">${f.equip}</span></td>
+      <td class="n">${f.j}</td>
+      <td class="n">${f.pp}</td>
+      <td class="pm">${f.pm}</td>
+    </tr>`).join('');
+  // encongeix els noms llargs perquè càpiguen en una línia
+  document.querySelectorAll('td.eq').forEach(td => {
+    const nom = td.querySelector('.nom'); let mida = 27;
+    const max = td.clientWidth - 28;
+    while (nom.offsetWidth > max && mida > 16) { mida -= 1; nom.style.fontSize = mida + 'px'; }
+  });
+</script>
+</body>
+</html>

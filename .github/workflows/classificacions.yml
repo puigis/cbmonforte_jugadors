@@ -1,0 +1,91 @@
+name: Classificacions de lliga (dilluns)
+
+on:
+  schedule:
+    # Dilluns a les 12:00 hora de Madrid. GitHub només entén l'hora UTC, per això es programa
+    # a les 10:00 i a les 11:00 UTC i el primer pas deixa passar només la que són les 12 a Madrid.
+    - cron: "0 10 * * 1"
+    - cron: "0 11 * * 1"
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "Dia que surt al nom dels fitxers AAAA-MM-DD (buit = avui)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: descarrega
+  cancel-in-progress: false
+
+jobs:
+  classificacions:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: Comprova que són les 12 h a Madrid
+        id: hora
+        run: |
+          # Estiu (+0200): val la de les 10 UTC. Hivern (+0100): val la de les 11 UTC.
+          ZONA=$(TZ=Europe/Madrid date +%z)
+          PROG="${{ github.event.schedule }}"
+          echo "Zona horària de Madrid: $ZONA · programació: $PROG"
+          if [ "${{ github.event_name }}" != "schedule" ] \
+             || { [ "$ZONA" = "+0200" ] && [ "$PROG" = "0 10 * * 1" ]; } \
+             || { [ "$ZONA" = "+0100" ] && [ "$PROG" = "0 11 * * 1" ]; }; then
+            echo "segueix=si" >> "$GITHUB_OUTPUT"
+          else
+            echo "segueix=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.hora.outputs.segueix == 'si'
+
+      - uses: actions/setup-python@v5
+        if: steps.hora.outputs.segueix == 'si'
+        with:
+          python-version: "3.12"
+
+      - name: Instal·la dependències
+        if: steps.hora.outputs.segueix == 'si'
+        run: |
+          pip install -r scraper/requirements.txt playwright
+          python -m playwright install --with-deps chromium
+          sudo apt-get install -y fonts-inter ffmpeg || true
+
+      - name: Descarrega els resultats d'aquesta temporada
+        if: steps.hora.outputs.segueix == 'si'
+        env:
+          RAPID: "1"
+          MAX_MINUTS: "60"
+        run: python scraper/descarrega.py
+
+      - name: Organitza les dades
+        if: steps.hora.outputs.segueix == 'si'
+        run: |
+          python scraper/organitza.py
+          python scraper/app_dades.py
+
+      - name: Genera les classificacions (una imatge per equip)
+        if: steps.hora.outputs.segueix == 'si'
+        env:
+          DATA: ${{ inputs.data }}
+        run: python scraper/classificacions_lliga.py
+
+      # PENDENT: publicar la imatge automàticament a les xarxes socials (per decidir quines)
+
+      - name: Desa els canvis al repositori
+        if: steps.hora.outputs.segueix == 'si'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add dades/ imatges/
+          if git diff --cached --quiet; then
+            echo "No hi ha canvis."
+          else
+            git commit -m "Classificacions de lliga $(date -u +'%Y-%m-%d')"
+            git pull --rebase
+            git push
+          fi

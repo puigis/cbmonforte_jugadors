@@ -6,7 +6,8 @@ i genera imatges/lliga-AAAA-MM-DD.png (1080 x 1350, vertical d'Instagram).
 Si aquella setmana no ha jugat cap equip, no genera res.
 
 L'equip que juga a casa surt a l'esquerra; el que juga fora, a la dreta.
-Un equip que no ha jugat (descansa) no surt al cartell.
+Un equip que no tenia partit (descansa) no surt al cartell. Si tenia partit al
+calendari però no hi ha resultat, surt amb el segell AJORNAT.
 
 Opcions (variables d'entorn):
   DATA=2026-10-11   Dia de referència (per defecte avui).
@@ -37,10 +38,11 @@ def data_llarga(iso):
 
 
 def nom_club(nom):
-    """C.B. 2000 CERDANYOLA “A” -> CB 2000 CERDANYOLA "A" """
+    """C.B. 2000 CERDANYOLA “A” -> CB 2000 CERDANYOLA "A";  S.B.P.E. CENTELLES -> SBPE CENTELLES"""
     n = nom.replace("“", '"').replace("”", '"')
-    n = re.sub(r"\b([A-Z])\.\s?(?=[A-Z]\.)", r"\1", n)   # C.B. -> CB.
-    n = re.sub(r"\b([A-Z]{2})\.", r"\1", n)                # CB. -> CB
+    n = re.sub(r"(?<![A-ZÀ-Ú])((?:[A-Z]\.\s?){2,})",
+               lambda m: m.group(1).replace(".", "").replace(" ", "") + " ", n)
+    n = re.sub(r"\b([A-Z]{2,5})\.(?=\s)", r"\1", n)   # SBPE. CENTELLES -> SBPE CENTELLES
     n = re.sub(r"\s+", " ", n).strip()
     return n.upper()
 
@@ -59,22 +61,31 @@ def divisio(competicio):
 def converteix(equips_path, ref=None, dies=7):
     ref = datetime.date.fromisoformat(ref) if ref else datetime.date.today()
     inici = ref - datetime.timedelta(days=dies - 1)
+    dins = lambda d: inici <= datetime.date.fromisoformat(d) <= ref
     app = json.load(open(equips_path, encoding="utf-8"))
     partits, jornades, dates = [], Counter(), Counter()
     for e in app["equips"]:
         lletra = re.search(r'"(\w)"', e["equip"].replace("“", '"').replace("”", '"')).group(1)
-        jugats = [m for m in e["matches"]
-                  if m.get("punts_match") and inici <= datetime.date.fromisoformat(m["date"]) <= ref]
-        if not jugats:
-            continue
-        m = max(jugats, key=lambda x: x["date"])
-        pm, pr = m["punts_match"]
-        partits.append({"equip": lletra, "divisio": divisio(e["competicio"]),
-                        "casa": m["venue"] == "L", "rival": nom_club(m["rival"]),
-                        "monforte": pm, "contrari": pr})
+        base = {"equip": lletra, "divisio": divisio(e["competicio"])}
+        jugats = [m for m in e["matches"] if m.get("punts_match") and dins(m["date"])]
+        if jugats:
+            m = max(jugats, key=lambda x: x["date"])
+            pm, pr = m["punts_match"]
+            partits.append({**base, "casa": m["venue"] == "L", "rival": nom_club(m["rival"]),
+                            "monforte": pm, "contrari": pr})
+        else:
+            # programat aquesta setmana al calendari però sense resultat -> ajornat
+            prog = [c for c in e.get("calendar", []) if not c.get("played") and dins(c["date"])]
+            if not prog:
+                continue                       # descansa: no surt al cartell
+            m = max(prog, key=lambda x: x["date"])
+            partits.append({**base, "casa": m["venue"] == "L", "rival": nom_club(m["rival"]),
+                            "ajornat": True})
         jornades[m["jornada"]] += 1
         dates[m["date"]] += 1
-    if not partits:
+    # Si no hi ha cap resultat, o no hi ha partits o la Federació encara no els ha publicat:
+    # millor no generar res que un cartell ple d'ajornats.
+    if not any(not p.get("ajornat") for p in partits):
         return None
     partits.sort(key=lambda p: p["equip"])
     return {"jornada": f"Jornada {jornades.most_common(1)[0][0]}",

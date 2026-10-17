@@ -100,6 +100,22 @@
   .victoria{--res:var(--llima);--res-text:#0b2a1c}
   .empat{--res:#e8ecea;--res-text:#0b2a1c}
   .derrota{--res:var(--vermell);--res-text:#fff}
+  .ajornat{--res:rgba(255,255,255,.28);--res-text:#fff}
+
+  /* segell AJORNAT al lloc del marcador */
+  .marcador.buit{position:relative;overflow:visible;color:rgba(244,247,242,.14)}
+  .segell{
+    position:absolute;left:50%;top:50%;
+    transform:translate(-50%,-50%) rotate(-9deg);
+    padding:7px 16px 6px;
+    border:5px solid #ff3355;outline:2px solid #ff3355;outline-offset:4px;
+    border-radius:8px;
+    color:#ff3355;background:rgba(6,38,26,.85);
+    font-family:"Inter Display","Inter",sans-serif;font-weight:900;font-size:38px;letter-spacing:5px;
+    text-transform:uppercase;white-space:nowrap;
+    filter:url(#tinta);
+    text-shadow:0 0 1px #ff3355;
+  }
 
   footer{
     position:absolute;left:0;right:0;bottom:64px;text-align:center;
@@ -109,6 +125,16 @@
 </style>
 </head>
 <body>
+  <!-- textura de tinta per al segell -->
+  <svg width="0" height="0" style="position:absolute">
+    <filter id="tinta">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="soroll"/>
+      <feColorMatrix in="soroll" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -1.1 1.45" result="forats"/>
+      <feComposite in="SourceGraphic" in2="forats" operator="in" result="gastat"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="2" seed="3" result="ones"/>
+      <feDisplacementMap in="gastat" in2="ones" scale="3"/>
+    </filter>
+  </svg>
   <div class="franja v"></div><div class="franja l"></div>
 
   <header>
@@ -135,14 +161,18 @@
     const visit = casa ? p.rival : nomM;
     const gl = casa ? p.monforte : p.contrari;
     const gv = casa ? p.contrari : p.monforte;
-    const res = p.monforte > p.contrari ? 'victoria' : p.monforte < p.contrari ? 'derrota' : 'empat';
-    const txt = {victoria:'Victòria',empat:'Empat',derrota:'Derrota'}[res];
+    const res = p.ajornat ? 'ajornat'
+              : p.monforte > p.contrari ? 'victoria' : p.monforte < p.contrari ? 'derrota' : 'empat';
+    const txt = {victoria:'Victòria',empat:'Empat',derrota:'Derrota',ajornat:''}[res];
+    const marcador = p.ajornat
+      ? `<div class="marcador buit"><div class="segell">Ajornat</div></div>`
+      : `<div class="marcador"><span class="${cls(gl,gv,casa)}">${gl}</span><span class="sep">–</span><span class="${cls(gv,gl,!casa)}">${gv}</span></div>`;
     return `
     <section class="partit ${res}">
-      <div class="cap"><span>Equip <b>${p.equip}</b> · ${p.divisio}</span><span class="xip">${txt}</span></div>
+      <div class="cap"><span>Equip <b>${p.equip}</b> · ${p.divisio}</span>${txt ? `<span class="xip">${txt}</span>` : ''}</div>
       <div class="fila">
         <div class="equip local ${esMonforte(local)?'monforte':''}"><span class="nom">${local}</span><small>Local</small></div>
-        <div class="marcador"><span class="${cls(gl,gv,casa)}">${gl}</span><span class="sep">–</span><span class="${cls(gv,gl,!casa)}">${gv}</span></div>
+        ${marcador}
         <div class="equip visitant ${esMonforte(visit)?'monforte':''}"><span class="nom">${visit}</span><small>Visitant</small></div>
       </div>
     </section>`;
