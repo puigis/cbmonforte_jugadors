@@ -55,6 +55,7 @@ def main():
         return
     from playwright.sync_api import sync_playwright
     SORTIDA.mkdir(exist_ok=True)
+    (SORTIDA / f"classificacio-{dia}.json").write_text(json.dumps(equips, ensure_ascii=False, indent=2), encoding="utf-8")
     with sync_playwright() as p:
         nav = p.chromium.launch()
         for d in equips:

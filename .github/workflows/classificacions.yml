@@ -2,10 +2,11 @@ name: Classificacions de lliga (dilluns)
 
 on:
   schedule:
-    # Dilluns a les 12:00 hora de Madrid. GitHub només entén l'hora UTC, per això es programa
-    # a les 10:00 i a les 11:00 UTC i el primer pas deixa passar només la que són les 12 a Madrid.
-    - cron: "0 10 * * 1"
-    - cron: "0 11 * * 1"
+    # Dilluns a les 10:00 hora de Madrid. GitHub només entén l'hora UTC, per això es programa
+    # a les 8:00 i a les 9:00 UTC i el primer pas deixa passar només la que són les 10 a Madrid.
+    # (La publicació a les xarxes es fa cap a les 12 h, des d'una tasca programada a part.)
+    - cron: "0 8 * * 1"
+    - cron: "0 9 * * 1"
   workflow_dispatch:
     inputs:
       data:
@@ -25,16 +26,16 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
-      - name: Comprova que són les 12 h a Madrid
+      - name: Comprova que són les 10 h a Madrid
         id: hora
         run: |
-          # Estiu (+0200): val la de les 10 UTC. Hivern (+0100): val la de les 11 UTC.
+          # Estiu (+0200): val la de les 8 UTC. Hivern (+0100): val la de les 9 UTC.
           ZONA=$(TZ=Europe/Madrid date +%z)
           PROG="${{ github.event.schedule }}"
           echo "Zona horària de Madrid: $ZONA · programació: $PROG"
           if [ "${{ github.event_name }}" != "schedule" ] \
-             || { [ "$ZONA" = "+0200" ] && [ "$PROG" = "0 10 * * 1" ]; } \
-             || { [ "$ZONA" = "+0100" ] && [ "$PROG" = "0 11 * * 1" ]; }; then
+             || { [ "$ZONA" = "+0200" ] && [ "$PROG" = "0 8 * * 1" ]; } \
+             || { [ "$ZONA" = "+0100" ] && [ "$PROG" = "0 9 * * 1" ]; }; then
             echo "segueix=si" >> "$GITHUB_OUTPUT"
           else
             echo "segueix=no" >> "$GITHUB_OUTPUT"
@@ -74,7 +75,6 @@ jobs:
           DATA: ${{ inputs.data }}
         run: python scraper/classificacions_lliga.py
 
-      # PENDENT: publicar la imatge automàticament a les xarxes socials (per decidir quines)
 
       - name: Desa els canvis al repositori
         if: steps.hora.outputs.segueix == 'si'

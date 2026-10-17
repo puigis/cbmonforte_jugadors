@@ -117,6 +117,7 @@ def main():
     SORTIDA.mkdir(exist_ok=True)
     sortida = SORTIDA / f"lliga-{dia}.png"
     genera_png(dades, sortida)
+    (SORTIDA / f"lliga-{dia}.json").write_text(json.dumps(dades, ensure_ascii=False, indent=2), encoding="utf-8")
     print(json.dumps(dades, ensure_ascii=False, indent=2))
     print(f"Cartell desat a {sortida.relative_to(ARREL)}")
 
