@@ -74,6 +74,12 @@ jobs:
           DATA: ${{ inputs.data }}
         run: python scraper/cartell_lliga.py
 
+      - name: Genera el Reel amb música (vídeo vertical)
+        if: steps.hora.outputs.segueix == 'si'
+        env:
+          DATA: ${{ inputs.data }}
+        run: python scraper/reel_lliga.py
+
       # PENDENT: publicar la imatge automàticament a les xarxes socials (per decidir quines)
 
       - name: Desa els canvis al repositori

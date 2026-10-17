@@ -122,6 +122,44 @@
     font-weight:800;font-size:20px;letter-spacing:8px;text-transform:uppercase;color:var(--blanc);
   }
   footer span{color:var(--llima)}
+
+  /* ============ MODE REEL (vídeo vertical 9:16) ============ */
+  html.reel,html.reel body{width:1080px;height:1920px}
+  html.reel header{padding-top:160px}
+  html.reel .escut{height:280px}
+  html.reel .titol{font-size:92px;margin-top:18px}
+  html.reel .subtitol{font-size:28px;margin-top:14px}
+  html.reel main{margin:52px 40px 0;gap:26px}
+  html.reel .partit{padding:22px 28px 24px;border-radius:22px}
+  html.reel .partit::before{width:9px}
+  html.reel .cap{font-size:20px;margin-bottom:12px}
+  html.reel .xip{font-size:17px;padding:6px 14px}
+  html.reel .fila{grid-template-columns:minmax(0,1fr) 210px minmax(0,1fr)}
+  html.reel .equip{font-size:37px}
+  html.reel .equip small{font-size:17px}
+  html.reel .marcador{height:92px;font-size:64px}
+  html.reel .segell{font-size:42px}
+  html.reel footer{bottom:210px;font-size:24px}
+  /* Les animacions es creen aturades: el generador de vídeo les avança fotograma a fotograma */
+  html.reel *{animation-play-state:paused !important;animation-fill-mode:both !important}
+  html.reel .escut{animation:apareix-escut .8s cubic-bezier(.2,1.4,.4,1) 0s}
+  html.reel .titol{animation:puja .6s cubic-bezier(.2,.9,.3,1) .35s}
+  html.reel .subtitol{animation:puja .6s cubic-bezier(.2,.9,.3,1) .6s}
+  html.reel .partit{animation:entra .55s cubic-bezier(.2,.9,.3,1) calc(1.3s + var(--i) * .9s)}
+  html.reel .marcador > span{display:inline-block;animation:pop .45s cubic-bezier(.2,1.6,.4,1) calc(1.6s + var(--i) * .9s)}
+  html.reel .xip{animation:pop .4s cubic-bezier(.2,1.6,.4,1) calc(1.8s + var(--i) * .9s)}
+  html.reel .segell{animation:segell .35s cubic-bezier(.5,0,.8,.4) calc(1.75s + var(--i) * .9s)}
+  html.reel .partit.ajornat{animation-name:entra,tremola;animation-duration:.55s,.3s;
+    animation-delay:calc(1.3s + var(--i) * .9s),calc(2.1s + var(--i) * .9s)}
+  html.reel footer{animation:puja .6s ease-out 6.2s}
+  @keyframes apareix-escut{from{opacity:0;transform:scale(.55) rotate(-12deg)}to{opacity:1;transform:none}}
+  @keyframes puja{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+  @keyframes entra{from{opacity:0;transform:translateX(-120px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+  @keyframes segell{
+    from{opacity:0;transform:translate(-50%,-50%) rotate(-24deg) scale(3)}
+    to{opacity:1;transform:translate(-50%,-50%) rotate(-9deg) scale(1)}}
+  @keyframes tremola{0%,100%{translate:0 0}25%{translate:-7px 3px}50%{translate:6px -3px}75%{translate:-4px 2px}}
 </style>
 </head>
 <body>
@@ -149,12 +187,13 @@
   <div class="franja v2"></div><div class="franja l2"></div>
 
 <script>
+  if (window.REEL) document.documentElement.classList.add('reel');
   const D = window.DADES;
   document.getElementById('jornada').textContent = D.jornada + ' · ' + D.data;
   const esMonforte = n => /monforte/i.test(n);
   // el guanyador en llima si és el Monforte, en blanc si és el rival; el perdedor esmorteït
   const cls = (a, b, mon) => a > b ? (mon ? 'guanya' : '') : a < b ? 'perd' : '';
-  const html = D.partits.map(p => {
+  const html = D.partits.map((p, i) => {
     const casa = p.casa;                       // true = Monforte juga a casa
     const nomM = 'CB Monforte ' + p.equip;
     const local = casa ? nomM : p.rival;
@@ -168,7 +207,7 @@
       ? `<div class="marcador buit"><div class="segell">Ajornat</div></div>`
       : `<div class="marcador"><span class="${cls(gl,gv,casa)}">${gl}</span><span class="sep">–</span><span class="${cls(gv,gl,!casa)}">${gv}</span></div>`;
     return `
-    <section class="partit ${res}">
+    <section class="partit ${res}" style="--i:${i}">
       <div class="cap"><span>Equip <b>${p.equip}</b> · ${p.divisio}</span>${txt ? `<span class="xip">${txt}</span>` : ''}</div>
       <div class="fila">
         <div class="equip local ${esMonforte(local)?'monforte':''}"><span class="nom">${local}</span><small>Local</small></div>
@@ -180,7 +219,7 @@
   document.getElementById('partits').innerHTML = html;
   // encongeix els noms que no caben en una línia
   document.querySelectorAll('.equip').forEach(eq => {
-    const nom = eq.querySelector('.nom'); let mida = 31;
+    const nom = eq.querySelector('.nom'); let mida = parseFloat(getComputedStyle(nom).fontSize);
     while (nom.scrollWidth > eq.clientWidth && mida > 18) { mida -= 1; nom.style.fontSize = mida + 'px'; }
   });
 </script>
