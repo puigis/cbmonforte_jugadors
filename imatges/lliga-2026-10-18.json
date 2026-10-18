@@ -1,0 +1,44 @@
+{
+  "jornada": "Jornada 3",
+  "data": "17 d'octubre de 2026",
+  "partits": [
+    {
+      "equip": "A",
+      "divisio": "Divisió d'Honor · Grup A",
+      "casa": false,
+      "rival": "BC GRANOLLERS \"B\"",
+      "monforte": 3,
+      "contrari": 0
+    },
+    {
+      "equip": "B",
+      "divisio": "Divisió d'Honor · Grup B",
+      "casa": true,
+      "rival": "SB FOMENT MOLINS \"A\"",
+      "ajornat": true
+    },
+    {
+      "equip": "C",
+      "divisio": "Primera Divisió · Grup A",
+      "casa": true,
+      "rival": "SBPE CENTELLES \"A\"",
+      "ajornat": true
+    },
+    {
+      "equip": "D",
+      "divisio": "Tercera Divisió · Grup A",
+      "casa": false,
+      "rival": "CB SANTS \"D\"",
+      "monforte": 0,
+      "contrari": 3
+    },
+    {
+      "equip": "E",
+      "divisio": "Quarta Divisió · Grup B",
+      "casa": true,
+      "rival": "CB LLINARS \"D\"",
+      "monforte": 3,
+      "contrari": 0
+    }
+  ]
+}
