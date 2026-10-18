@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 3a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-11T14:10+00:00",
+ "updated": "2026-10-18T04:46+00:00",
  "players": [
   {
    "id": "adell-casarramona-pere",
@@ -33,12 +33,28 @@
    "initial": "0.420"
   },
   {
+   "id": "cano-poirrier-lalanne-santiago",
+   "name": "Cano Poirrier Lalanne, Santiago",
+   "initials": {
+    "Tres bandes": "0.447"
+   },
+   "initial": "0.447"
+  },
+  {
    "id": "obando-quintero-carlos-ariel",
    "name": "Obando Quintero, Carlos Ariel",
    "initials": {
     "Tres bandes": "0.397"
    },
    "initial": "0.397"
+  },
+  {
+   "id": "puig-latre-isaac",
+   "name": "Puig Latre, Isaac",
+   "initials": {
+    "Tres bandes": "0.483"
+   },
+   "initial": "0.483"
   },
   {
    "id": "rocha-vera-jeferson",
@@ -131,7 +147,7 @@
    ],
    "results": [
     {
-     "pid": "segura-mondria-francesc-xavier",
+     "pid": "segura-gonzalvez-fernando",
      "car": 20,
      "ent": 44,
      "sm": 3,
@@ -171,6 +187,59 @@
      "car_rival": 11
     }
    ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2026-10-17",
+   "rival": "C.B. SANTS \"D\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "puig-latre-isaac",
+     "car": 19,
+     "ent": 40,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Armengol Bertran, Jordi",
+     "car_rival": 25
+    },
+    {
+     "pid": "rocha-vera-jeferson",
+     "car": 22,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "León Puig, Esteban",
+     "car_rival": 18
+    },
+    {
+     "pid": "cano-poirrier-lalanne-santiago",
+     "car": 21,
+     "ent": 50,
+     "sm": 4,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "García Aguado, Miguel",
+     "car_rival": 21
+    },
+    {
+     "pid": "barragan-de-la-cruz-luis",
+     "car": 18,
+     "ent": 50,
+     "sm": 2,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Cabrerizo Más, Victor",
+     "car_rival": 20
+    }
+   ]
   }
  ],
  "calendar": [
@@ -193,7 +262,7 @@
    "date": "2026-10-17",
    "rival": "C.B. SANTS \"D\"",
    "venue": "F",
-   "played": false
+   "played": true
   },
   {
    "jornada": "4",

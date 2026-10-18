@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-11T14:10+00:00",
+ "updated": "2026-10-18T04:46+00:00",
  "temporada": "2026-27",
  "equips": [
   {
@@ -46,8 +46,8 @@
  "modalitats": [
   {
    "modalitat": "Tres bandes",
-   "jugadors": 29,
-   "partides": 65,
+   "jugadors": 31,
+   "partides": 80,
    "fitxer": "monforte/modalitats/tres-bandes.json"
   }
  ],

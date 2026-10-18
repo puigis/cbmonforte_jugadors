@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · Honor · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-11T14:10+00:00",
+ "updated": "2026-10-18T04:46+00:00",
  "players": [
   {
    "id": "garcia-alarcon-ricardo",
@@ -31,6 +31,14 @@
     "Tres bandes": "0.751"
    },
    "initial": "0.751"
+  },
+  {
+   "id": "munoz-lopez-javier",
+   "name": "Muñoz López, Javier",
+   "initials": {
+    "Tres bandes": "0.657"
+   },
+   "initial": "0.657"
   },
   {
    "id": "oliver-sinca-jordi",
@@ -155,6 +163,59 @@
      "car_rival": 9
     }
    ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2026-10-17",
+   "rival": "B.C. GRANOLLERS \"B\"",
+   "venue": "F",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 32,
+     "ent": 46,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Hernández Parra, Antoni",
+     "car_rival": 40
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 40,
+     "ent": 42,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Mas Canadell, César",
+     "car_rival": 38
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 37,
+     "ent": 50,
+     "sm": 4,
+     "res": "E",
+     "mod": "Tres bandes",
+     "rival": "Navarro Carmona, Joan Ant.",
+     "car_rival": 37
+    },
+    {
+     "pid": "munoz-lopez-javier",
+     "car": 32,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Martín Vílchez, Josep",
+     "car_rival": 29
+    }
+   ]
   }
  ],
  "calendar": [
@@ -177,7 +238,7 @@
    "date": "2026-10-17",
    "rival": "B.C. GRANOLLERS \"B\"",
    "venue": "F",
-   "played": false
+   "played": true
   },
   {
    "jornada": "4",
