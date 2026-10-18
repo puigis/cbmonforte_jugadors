@@ -41,7 +41,7 @@ def dades_equips():
             "divisio": divisio(e["competicio"]),
             "jornada": jornada,
             "data": data,
-            "files": [{"pos": f["pos"], "equip": "CB MONFORTE " + lletra(e["equip"]) if f.get("mon") else nom_club(f["equip"]),
+            "files": [{"pos": f["pos"], "equip": f'CB MONFORTE "{lletra(e["equip"])}"' if f.get("mon") else nom_club(f["equip"]),
                        "j": f["j"], "pp": f["pp"], "pm": f["pm"], "mon": bool(f.get("mon"))} for f in files],
         })
     return sorted(sortida, key=lambda x: x["equip"])

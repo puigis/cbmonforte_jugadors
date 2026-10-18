@@ -107,11 +107,11 @@
   .segell{
     position:absolute;left:50%;top:50%;
     transform:translate(-50%,-50%) rotate(-9deg);
-    padding:7px 16px 6px;
-    border:5px solid #ff3355;outline:2px solid #ff3355;outline-offset:4px;
+    padding:6px 12px 5px;
+    border:4px solid #ff3355;outline:2px solid #ff3355;outline-offset:3px;
     border-radius:8px;
     color:#ff3355;background:rgba(6,38,26,.85);
-    font-family:"Inter Display","Inter",sans-serif;font-weight:900;font-size:38px;letter-spacing:5px;
+    font-family:"Inter Display","Inter",sans-serif;font-weight:900;font-size:30px;letter-spacing:3px;
     text-transform:uppercase;white-space:nowrap;
     filter:url(#tinta);
     text-shadow:0 0 1px #ff3355;
@@ -138,7 +138,7 @@
   html.reel .equip{font-size:37px}
   html.reel .equip small{font-size:17px}
   html.reel .marcador{height:92px;font-size:64px}
-  html.reel .segell{font-size:42px}
+  html.reel .segell{font-size:34px}
   html.reel footer{bottom:210px;font-size:24px}
   /* Les animacions es creen aturades: el generador de vídeo les avança fotograma a fotograma */
   html.reel *{animation-play-state:paused !important;animation-fill-mode:both !important}
@@ -195,7 +195,7 @@
   const cls = (a, b, mon) => a > b ? (mon ? 'guanya' : '') : a < b ? 'perd' : '';
   const html = D.partits.map((p, i) => {
     const casa = p.casa;                       // true = Monforte juga a casa
-    const nomM = 'CB Monforte ' + p.equip;
+    const nomM = 'CB Monforte "' + p.equip + '"';
     const local = casa ? nomM : p.rival;
     const visit = casa ? p.rival : nomM;
     const gl = casa ? p.monforte : p.contrari;
