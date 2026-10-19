@@ -1,0 +1,362 @@
+[
+  {
+    "equip": "A",
+    "divisio": "Divisió d'Honor · Grup A",
+    "jornada": "Jornada 3",
+    "data": "17 d'octubre de 2026",
+    "files": [
+      {
+        "pos": 1,
+        "equip": "CB MATARÓ \"A\"",
+        "j": 3,
+        "pp": 21,
+        "pm": 9,
+        "mon": false
+      },
+      {
+        "pos": 2,
+        "equip": "CB MONFORTE \"A\"",
+        "j": 3,
+        "pp": 15,
+        "pm": 6,
+        "mon": true
+      },
+      {
+        "pos": 3,
+        "equip": "CB MONT-ROIG \"A\"",
+        "j": 2,
+        "pp": 14,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 4,
+        "equip": "CB SANT ADRIÀ \"A\"",
+        "j": 2,
+        "pp": 12,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 5,
+        "equip": "CB LLEIDA \"A\"",
+        "j": 3,
+        "pp": 11,
+        "pm": 3,
+        "mon": false
+      },
+      {
+        "pos": 6,
+        "equip": "BC GRANOLLERS \"B\"",
+        "j": 3,
+        "pp": 11,
+        "pm": 3,
+        "mon": false
+      },
+      {
+        "pos": 7,
+        "equip": "BC OLESA",
+        "j": 3,
+        "pp": 4,
+        "pm": 0,
+        "mon": false
+      },
+      {
+        "pos": 8,
+        "equip": "CB SANT BOI \"A\"",
+        "j": 3,
+        "pp": 0,
+        "pm": 0,
+        "mon": false
+      }
+    ]
+  },
+  {
+    "equip": "B",
+    "divisio": "Divisió d'Honor · Grup B",
+    "jornada": "Jornada 2",
+    "data": "10 d'octubre de 2026",
+    "files": [
+      {
+        "pos": 1,
+        "equip": "CB MOLLET \"A\"",
+        "j": 3,
+        "pp": 21,
+        "pm": 9,
+        "mon": false
+      },
+      {
+        "pos": 2,
+        "equip": "BC GRANOLLERS \"A\"",
+        "j": 2,
+        "pp": 16,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 3,
+        "equip": "CB BARCELONA \"A\"",
+        "j": 3,
+        "pp": 11,
+        "pm": 4,
+        "mon": false
+      },
+      {
+        "pos": 4,
+        "equip": "CB LLINARS \"A\"",
+        "j": 3,
+        "pp": 11,
+        "pm": 4,
+        "mon": false
+      },
+      {
+        "pos": 5,
+        "equip": "CB SANT ADRIÀ \"B\"",
+        "j": 3,
+        "pp": 9,
+        "pm": 2,
+        "mon": false
+      },
+      {
+        "pos": 6,
+        "equip": "CB MONFORTE \"B\"",
+        "j": 2,
+        "pp": 4,
+        "pm": 1,
+        "mon": true
+      },
+      {
+        "pos": 7,
+        "equip": "SB CASAL CERVERA",
+        "j": 2,
+        "pp": 4,
+        "pm": 1,
+        "mon": false
+      },
+      {
+        "pos": 8,
+        "equip": "SB FOMENT MOLINS \"A\"",
+        "j": 2,
+        "pp": 4,
+        "pm": 0,
+        "mon": false
+      }
+    ]
+  },
+  {
+    "equip": "C",
+    "divisio": "Primera Divisió · Grup A",
+    "jornada": "Jornada 2",
+    "data": "10 d'octubre de 2026",
+    "files": [
+      {
+        "pos": 1,
+        "equip": "CB MONT-ROIG \"B\"",
+        "j": 3,
+        "pp": 22,
+        "pm": 8,
+        "mon": false
+      },
+      {
+        "pos": 2,
+        "equip": "CB 2000 CERDANYOLA \"A\"",
+        "j": 3,
+        "pp": 15,
+        "pm": 7,
+        "mon": false
+      },
+      {
+        "pos": 3,
+        "equip": "CB ALBA",
+        "j": 3,
+        "pp": 15,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 4,
+        "equip": "SB LA UNIÓ CORAL \"A\"",
+        "j": 3,
+        "pp": 14,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 5,
+        "equip": "CB MONFORTE \"C\"",
+        "j": 2,
+        "pp": 10,
+        "pm": 3,
+        "mon": true
+      },
+      {
+        "pos": 6,
+        "equip": "CB PRAT \"A\"",
+        "j": 3,
+        "pp": 6,
+        "pm": 1,
+        "mon": false
+      },
+      {
+        "pos": 7,
+        "equip": "CB SANTS \"B\"",
+        "j": 3,
+        "pp": 4,
+        "pm": 0,
+        "mon": false
+      },
+      {
+        "pos": 8,
+        "equip": "SBPE CENTELLES \"A\"",
+        "j": 2,
+        "pp": 2,
+        "pm": 0,
+        "mon": false
+      }
+    ]
+  },
+  {
+    "equip": "D",
+    "divisio": "Tercera Divisió · Grup A",
+    "jornada": "Jornada 3",
+    "data": "17 d'octubre de 2026",
+    "files": [
+      {
+        "pos": 1,
+        "equip": "SB GEIEG",
+        "j": 3,
+        "pp": 18,
+        "pm": 7,
+        "mon": false
+      },
+      {
+        "pos": 2,
+        "equip": "CB LLINARS \"C\"",
+        "j": 3,
+        "pp": 13,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 3,
+        "equip": "CB MONFORTE \"D\"",
+        "j": 3,
+        "pp": 13,
+        "pm": 4,
+        "mon": true
+      },
+      {
+        "pos": 4,
+        "equip": "CB LLIÇÀ \"B\"",
+        "j": 3,
+        "pp": 12,
+        "pm": 4,
+        "mon": false
+      },
+      {
+        "pos": 5,
+        "equip": "CB SANTS \"D\"",
+        "j": 3,
+        "pp": 9,
+        "pm": 4,
+        "mon": false
+      },
+      {
+        "pos": 6,
+        "equip": "BC GRANOLLERS \"C\"",
+        "j": 3,
+        "pp": 12,
+        "pm": 3,
+        "mon": false
+      },
+      {
+        "pos": 7,
+        "equip": "CB PRAT \"B\"",
+        "j": 3,
+        "pp": 10,
+        "pm": 2,
+        "mon": false
+      },
+      {
+        "pos": 8,
+        "equip": "CB SANT BOI \"C\"",
+        "j": 3,
+        "pp": 9,
+        "pm": 1,
+        "mon": false
+      }
+    ]
+  },
+  {
+    "equip": "E",
+    "divisio": "Quarta Divisió · Grup B",
+    "jornada": "Jornada 3",
+    "data": "17 d'octubre de 2026",
+    "files": [
+      {
+        "pos": 1,
+        "equip": "CB MONFORTE \"E\"",
+        "j": 3,
+        "pp": 15,
+        "pm": 7,
+        "mon": true
+      },
+      {
+        "pos": 2,
+        "equip": "CB MONT-ROIG \"D\"",
+        "j": 3,
+        "pp": 15,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 3,
+        "equip": "CB BORGES",
+        "j": 2,
+        "pp": 14,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 4,
+        "equip": "CB MATARÓ \"D\"",
+        "j": 2,
+        "pp": 12,
+        "pm": 6,
+        "mon": false
+      },
+      {
+        "pos": 5,
+        "equip": "CB SANT FELIU \"B\"",
+        "j": 3,
+        "pp": 12,
+        "pm": 2,
+        "mon": false
+      },
+      {
+        "pos": 6,
+        "equip": "CB LLINARS \"D\"",
+        "j": 3,
+        "pp": 8,
+        "pm": 1,
+        "mon": false
+      },
+      {
+        "pos": 7,
+        "equip": "SB LA UNIÓ CORAL \"C\"",
+        "j": 3,
+        "pp": 8,
+        "pm": 1,
+        "mon": false
+      },
+      {
+        "pos": 8,
+        "equip": "CB BANYOLES \"D\"",
+        "j": 3,
+        "pp": 4,
+        "pm": 0,
+        "mon": false
+      }
+    ]
+  }
+]

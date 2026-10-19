@@ -8737,7 +8737,7 @@ encontre_id,lliga_id,competicio,temporada,divisio,grup,grup_id,jornada,data,equi
 ,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,3,2026-10-17,"C.B. MONT-ROIG ""A""","C.B. SANT ADRIÀ ""A""",0,0,0,0,Oberta
 11666,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP A,343,3,2026-10-17,"C.B. SANT BOI ""A""","C.B. MATARÓ ""A""",0,8,0,3,Finalitzada
 11775,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,3,2026-10-17,C.B. ALBA,"C.B. PRAT ""A""",6,2,3,0,Finalitzada
-11776,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,3,2026-10-17,"C.B. MONT-ROIG ""B""","S.B. LA UNIÓ CORAL ""A""",8,0,2,0,Finalitzada
+11776,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,3,2026-10-17,"C.B. MONT-ROIG ""B""","S.B. LA UNIÓ CORAL ""A""",8,0,3,0,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,3,2026-10-17,"C.B. MONFORTE ""C""","SBPE. CENTELLES ""A""",0,0,0,0,Oberta
 11778,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP A,345,3,2026-10-17,"C.B. SANTS ""B""",C.B. 2000 CERDANYOLA “A”,2,6,0,3,Finalitzada
 11887,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP A,347,3,2026-10-17,"C.B. LLIÇÀ ""A""","C.B. SANTS ""C""",6,2,3,0,Finalitzada
@@ -8762,7 +8762,7 @@ encontre_id,lliga_id,competicio,temporada,divisio,grup,grup_id,jornada,data,equi
 11834,38,Lliga Catalana Tres Bandes,2026-27,1a DIVISIÓ,GRUP B,346,3,2026-10-17,"C.B. SANTS ""A""","S.B. LA GRAN PENYA ""A""",4,4,1,1,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,3,2026-10-17,"C.B. BARCELONA ""B""","C.B. VIC ""A""",0,0,0,0,Oberta
 11944,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,3,2026-10-17,"SB FOMENT MOLINS ""C""","C.B. CARDONA ""A""",0,8,0,3,Finalitzada
-,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,3,2026-10-17,C.B. PREMIÀ,"C.B. LLINARS ""B""",0,0,0,0,Oberta
+11945,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,3,2026-10-17,C.B. PREMIÀ,"C.B. LLINARS ""B""",2,2,1,1,Finalitzada
 11946,38,Lliga Catalana Tres Bandes,2026-27,2a DIVISIÓ,GRUP B,348,3,2026-10-17,C.B. TARRAGONA,"C.B. SANT BOI ""B""",2,6,0,3,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,3,2026-10-17,"S.B. LA GRAN PENYA ""B""",B. EL MASNOU,0,0,0,0,Oberta
 12056,38,Lliga Catalana Tres Bandes,2026-27,3a DIVISIÓ,GRUP B,350,3,2026-10-17,"C.B. MATARÓ ""C""","S.B.ESPLUGUES L'AVENÇ ""A""",6,2,3,0,Finalitzada
