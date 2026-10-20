@@ -90,7 +90,7 @@ table.std{width:100%;border-collapse:collapse;font-size:15px}
 .match{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:8px}
 .match.edit:hover{border-color:var(--felt-2)}
 .mtop{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--mute);font-weight:600;letter-spacing:.04em}
-.mrow{display:grid;grid-template-columns:1fr repeat(3,46px);gap:4px;align-items:center;margin-top:6px}
+.mrow{display:grid;grid-template-columns:1fr 40px 46px 60px;gap:4px;align-items:center;margin-top:6px}
 .mrow.h{margin-top:8px;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
 .mrow.h span{text-align:right}
 .mrow .v{text-align:right;font-variant-numeric:tabular-nums}
@@ -120,7 +120,7 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 .dlg{padding:16px}
 .dlg h3{margin:0 0 2px;font-size:18px}
 .dlg .s{color:var(--mute);font-size:13px;margin-bottom:10px}
-.grid{display:grid;grid-template-columns:1fr 64px 64px 56px;gap:6px;align-items:center}
+.grid{display:grid;grid-template-columns:1fr 60px 70px 52px;gap:6px;align-items:center}
 .grid .hd{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);text-align:center}
 .grid input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 4px;text-align:center;background:var(--bg);font-weight:700;font-variant-numeric:tabular-nums}
 .grid .tt{text-align:center;font-weight:700;font-size:18px}
@@ -136,7 +136,7 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 .btn.g{background:var(--line)}
 .btn.d{background:none;color:var(--red);margin-right:auto;padding-left:0}
 .toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:600;font-size:14px;z-index:20;max-width:90vw}
-@media (max-width:420px){.std .hide{display:none}.mrow{grid-template-columns:1fr repeat(3,40px)}}
+@media (max-width:420px){.std .hide{display:none}.mrow{grid-template-columns:1fr 36px 42px 58px}}
 </style>
 </head>
 <body>
@@ -169,18 +169,20 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
 const API = "https://taules-monforte.puigis.workers.dev/";
 const URL_APP = "https://taules-monforte.vercel.app/biatlo/";
 
-// Regla de puntuació: total de la partida = caramboles × VAL_CAR + punts de quilles.
-const VAL_CAR = 10;
-// Punts de partida
-const PUNTS = { guanya: 2, empata: 1, perd: 0 };
-// Criteris de desempat (en ordre). Es poden reordenar quan es confirmi el reglament.
-const CRITERIS = ["punts", "directe", "diferencia", "fets", "ranquing"];
+// Reglament FCB de Biatló (actualització 01/06/2024):
+//  - Art. 1.4: primer es juga a 3 bandes; les caramboles × 5 són la sortida de la partida de 5 quilles.
+//  - Guanya qui arriba primer a la distància de quilles (150 grups, 200 eliminatòries). Sense contra sortida: no hi ha empats.
+//  - Art. 3: guanyador 2 punts de matx, perdedor 0.
+//  - Art. 4: classificació per punts de matx, punts de quilles, mitjana de quilles (pròpies / contrari) i mitjana de 3 bandes.
+// A l'app s'anota, per a cada jugador, les caramboles i els punts finals del marcador de quilles (que ja inclouen caramboles × 5).
+const X_CAR = 5;
+const PUNTS = { guanya: 2, perd: 0 };
+const CRITERIS = ["punts", "quilles", "mitQ", "mit3b"];
 const NOM_CRITERI = {
-  punts: "Punts de partida (guanyada 2, empat 1)",
-  directe: "Resultat entre els jugadors empatats (si són dos)",
-  diferencia: "Diferència de punts de biatló (fets − rebuts)",
-  fets: "Punts de biatló fets",
-  ranquing: "Posició al rànquing inicial",
+  punts: "Punts de matx (guanyada 2, perduda 0)",
+  quilles: "Punts de quilles",
+  mitQ: "Mitjana de quilles (punts de quilles propis ÷ punts del contrari)",
+  mit3b: "Mitjana de tres bandes (caramboles ÷ entrades)",
 };
 
 const J = { // posició al rànquing inicial -> jugador
@@ -229,9 +231,10 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":
 const nom = n => J[n][0];
 const club = n => J[n][1];
 const mon = n => /Monforte/.test(club(n));
+const dec = x => x.toFixed(3).replace(".", ",");
 
 /* ===== Càlcul ===== */
-const total = (c, q) => (c || 0) * VAL_CAR + (q || 0);
+const total = (c, q) => q || 0;   // el marcador final de quilles
 // Resultat d'una partida: null si no jugada; {t1,t2,w} amb w = 1, 2 o 0 (empat)
 function res(id) {
   const r = R[id]; if (!r) return null;
@@ -263,33 +266,22 @@ function statsGrup(G) {
     a.serie = Math.max(a.serie, r.s1||0); b.serie = Math.max(b.serie, r.s2||0);
     if (r.w === 1) { a.pg++; a.pts += PUNTS.guanya; b.pts += PUNTS.perd; }
     else if (r.w === 2) { b.pg++; b.pts += PUNTS.guanya; a.pts += PUNTS.perd; }
-    else { a.pe++; b.pe++; a.pts += PUNTS.empata; b.pts += PUNTS.empata; }
   }
   const llista = Object.values(S);
-  llista.forEach(s => s.dif = s.fets - s.reb);
-  // Resultat directe entre dos jugadors
-  const directe = (x, y) => {
-    for (const m of ms) {
-      const r = res(m.id); if (!r || !r.w) continue;
-      if (m.p1 === x && m.p2 === y) return r.w === 1 ? -1 : 1;
-      if (m.p1 === y && m.p2 === x) return r.w === 1 ? 1 : -1;
-    }
-    return 0;
-  };
-  llista.sort((x, y) => compara(x, y, llista, directe));
+  llista.forEach(s => { s.mitQ = s.reb ? s.fets / s.reb : (s.fets ? 99 : 0); s.mit3b = s.ent ? s.car / s.ent : 0; });
+  llista.sort(compara);
   return { llista, ms, fet: ms.every(m => res(m.id) && m.p1 && m.p2) };
 }
-function compara(x, y, llista, directe) {
+function compara(x, y) {
   for (const c of CRITERIS) {
     let d = 0;
     if (c === "punts") d = y.pts - x.pts;
-    else if (c === "directe") { if (directe && llista.filter(s => s.pts === x.pts).length === 2) d = directe(x.n, y.n); }
-    else if (c === "diferencia") d = y.dif - x.dif;
-    else if (c === "fets") d = y.fets - x.fets;
-    else if (c === "ranquing") d = x.n - y.n;
+    else if (c === "quilles") d = y.fets - x.fets;
+    else if (c === "mitQ") d = y.mitQ - x.mitQ;
+    else if (c === "mit3b") d = y.mit3b - x.mit3b;
     if (d) return d;
   }
-  return 0;
+  return x.n - y.n;   // tot igual: es manté l'ordre del rànquing inicial (el reglament no diu res més)
 }
 // Classificats per als quarts: 7 primers + millor segon, ordenats de l'1 al 8
 function classificats() {
@@ -297,8 +289,8 @@ function classificats() {
   const fets = st.every(s => s.fet);
   const primers = st.map(s => ({ ...s.llista[0], g:s.G.g, lloc:1 }));
   const segons = st.map(s => ({ ...s.llista[1], g:s.G.g, lloc:2 }));
-  primers.sort((x, y) => compara(x, y, [], null));
-  segons.sort((x, y) => compara(x, y, [], null));
+  primers.sort(compara);
+  segons.sort(compara);
   return { fets, seeds: [...primers, segons[0]], millorSegon: segons[0], st };
 }
 function jugadorsKO(m, cl) {
@@ -324,11 +316,10 @@ function filaPartida(m, r, dist) {
   const pot = admin && m.p1 && m.p2;
   return `<button class="match ${pot ? "edit" : ""}" ${pot ? `data-id="${m.id}"` : "disabled"}>
     <div class="mtop"><span>${esc(m.top)}</span><span>${r ? (r.e ? r.e + " entrades" : "") : (pot ? "Toca per anotar" : "")}</span></div>
-    <div class="mrow h"><span></span><span>Car.</span><span>Quill.</span><span>Total</span></div>
-    <div class="mrow ${cls(1)} ${m.p1 && mon(m.p1) ? "mon" : ""}"><span class="pn">${n1}</span><span class="v">${v(r && r.c1)}</span><span class="v">${v(r && r.q1)}</span><span class="v t">${v(r && r.t1)}</span></div>
-    <div class="mrow ${cls(2)} ${m.p2 && mon(m.p2) ? "mon" : ""}"><span class="pn">${n2}</span><span class="v">${v(r && r.c2)}</span><span class="v">${v(r && r.q2)}</span><span class="v t">${v(r && r.t2)}</span></div>
+    <div class="mrow h"><span></span><span>Car.</span><span>Sort.</span><span>Quilles</span></div>
+    <div class="mrow ${cls(1)} ${m.p1 && mon(m.p1) ? "mon" : ""}"><span class="pn">${n1}</span><span class="v">${v(r && r.c1)}</span><span class="v">${v(r && r.c1 * X_CAR)}</span><span class="v t">${v(r && r.t1)}</span></div>
+    <div class="mrow ${cls(2)} ${m.p2 && mon(m.p2) ? "mon" : ""}"><span class="pn">${n2}</span><span class="v">${v(r && r.c2)}</span><span class="v">${v(r && r.c2 * X_CAR)}</span><span class="v t">${v(r && r.t2)}</span></div>
     ${r && (r.s1 || r.s2) ? `<div class="extra">Sèrie major: ${r.s1 || "–"} / ${r.s2 || "–"}</div>` : ""}
-    ${r && !r.w ? `<div class="extra">Empat</div>` : ""}
   </button>`;
 }
 
@@ -342,19 +333,19 @@ function pintaGrups() {
       <div class="ghead"><div class="gl">${G.g}</div>
         <div><div class="gname">Grup ${G.g}</div><div class="gsub">Dissabte 14 · ${G.h[0]} h · Billar ${G.b}${fet ? " · Acabat" : ""}</div></div>
         <a class="wa" href="${waGrup(G)}" target="_blank" rel="noopener">${ICO_WA}Enviar</a></div>
-      <table class="std"><thead><tr><th></th><th>Jugador</th><th>PJ</th><th>Pts</th><th class="hide">Dif.</th><th>Fets</th><th class="hide">Prom.</th></tr></thead><tbody>
+      <table class="std"><thead><tr><th></th><th>Jugador</th><th>PJ</th><th>Pts</th><th>Quilles</th><th class="hide">M. quill.</th><th class="hide">M. 3B</th></tr></thead><tbody>
       ${llista.map((s, i) => `<tr class="${i === 0 && fet ? "q" : ""} ${mon(s.n) ? "mon" : ""}">
         <td class="pos">${i + 1}</td>
         <td class="pl"><div class="pn">${esc(nom(s.n))}${fet && i === 0 ? '<span class="tag q">Quarts</span>' : ""}${fet && i === 1 && mill ? '<span class="tag b">Millor 2n</span>' : ""}</div><div class="pc">${esc(club(s.n))}</div></td>
-        <td class="num">${s.pj}</td><td class="num pts">${s.pts}</td><td class="num hide">${s.dif > 0 ? "+" : ""}${s.dif}</td><td class="num">${s.fets}</td>
-        <td class="num hide">${s.ent ? (s.car / s.ent).toFixed(3).replace(".", ",") : "–"}</td></tr>`).join("")}
+        <td class="num">${s.pj}</td><td class="num pts">${s.pts}</td><td class="num">${s.fets}</td>
+        <td class="num hide">${s.pj ? dec(s.mitQ) : "–"}</td><td class="num hide">${s.ent ? dec(s.mit3b) : "–"}</td></tr>`).join("")}
       </tbody></table>
       <div class="sheet"><h4>Full de resultats · ${DIST_GRUP}</h4>
         ${ms.map((m, i) => filaPartida({ ...m, top: `${i + 1}a partida · ${m.h} h · Billar ${G.b}` }, m.p1 && m.p2 ? res(m.id) : null)).join("")}
       </div></section>`;
   }
   h += `<div class="card rules"><b>Com es classifica</b><ol>${CRITERIS.map(c => `<li>${NOM_CRITERI[c]}</li>`).join("")}</ol>
-    <div class="note">Total de la partida = caramboles × ${VAL_CAR} + punts de quilles. Passen a quarts els 7 primers de grup i el millor segon.</div></div>`;
+    <div class="note">Reglament FCB de Biatló: primer es juga a 3 bandes i les caramboles × ${X_CAR} són la sortida de la partida de 5 quilles. Guanya qui arriba primer a 150 punts (200 a les eliminatòries). Passen a quarts els 7 primers de grup i el millor segon.</div></div>`;
   $("#vGrups").innerHTML = h;
 }
 
@@ -362,7 +353,7 @@ function pintaQuadre() {
   const cl = classificats();
   let h = `<div class="card"><div class="row"><h3>Classificats</h3><a class="wa" href="${waQuadre()}" target="_blank" rel="noopener">${ICO_WA}Enviar</a></div>`;
   if (!cl.fets) h += `<div class="note">Es completa quan s'acabin tots els grups (dissabte a la nit).</div>`;
-  else h += cl.seeds.map((s, i) => `<div class="seed ${mon(s.n) ? "mon" : ""}"><span class="n">${i + 1}</span><span><div class="pn">${esc(nom(s.n))}</div><div class="pc">${esc(club(s.n))}</div></span><span class="o">${s.lloc === 1 ? "1r" : "Millor 2n"} grup ${s.g}<br>${s.pts} pts · ${s.dif > 0 ? "+" : ""}${s.dif}</span></div>`).join("");
+  else h += cl.seeds.map((s, i) => `<div class="seed ${mon(s.n) ? "mon" : ""}"><span class="n">${i + 1}</span><span><div class="pn">${esc(nom(s.n))}</div><div class="pc">${esc(club(s.n))}</div></span><span class="o">${s.lloc === 1 ? "1r" : "Millor 2n"} grup ${s.g}<br>${s.pts} pts · ${s.fets} quilles</span></div>`).join("");
   h += `</div>`;
   for (const ronda of ["Quarts", "Semifinals", "Final"]) {
     const ms = KO.filter(k => k.r === ronda);
@@ -388,14 +379,14 @@ function pinta() {
 }
 
 /* ===== WhatsApp ===== */
-function linia(r, a, b) { return `${nom(a)} ${r.t1} – ${r.t2} ${nom(b)}` + (r.t1 === r.t2 && r.w ? ` (guanya ${nom(r.w === 1 ? a : b)})` : ""); }
+function linia(r, a, b) { return `${nom(a)} ${r.t1} – ${r.t2} ${nom(b)}` + ""; }
 function waGrup(G) {
   const { llista, ms, fet } = statsGrup(G);
   let t = `🎱 *Campionat de Catalunya de Biatló* · CB Monforte\n*GRUP ${G.g}* · Dissabte 14 · Billar ${G.b}\n\n`;
   const jug = ms.filter(m => m.p1 && m.p2 && res(m.id));
-  if (jug.length) t += "*Resultats*\n" + jug.map(m => { const r = res(m.id); return `${m.h} · ${linia(r, m.p1, m.p2)} (${r.c1}+${r.q1} / ${r.c2}+${r.q2})`; }).join("\n") + "\n\n";
+  if (jug.length) t += "*Resultats*\n" + jug.map(m => { const r = res(m.id); return `${m.h} · ${linia(r, m.p1, m.p2)} (3B: ${r.c1}–${r.c2})`; }).join("\n") + "\n\n";
   else t += `Horaris: ${G.h.join(", ")} h\n\n`;
-  t += `*Classificació${fet ? " final" : ""}*\n` + llista.map((s, i) => `${i + 1}. ${nom(s.n)} · ${s.pts} pts · ${s.dif > 0 ? "+" : ""}${s.dif}`).join("\n");
+  t += `*Classificació${fet ? " final" : ""}*\n` + llista.map((s, i) => `${i + 1}. ${nom(s.n)} · ${s.pts} pts · ${s.fets} quilles`).join("\n");
   t += `\n\nResultats en directe 👉 ${URL_APP}#${G.g}`;
   return "https://wa.me/?text=" + encodeURIComponent(t);
 }
@@ -450,23 +441,29 @@ function trobaPartida(id) {
   return { id, p1, p2, dist: DIST_KO, titol: m.id === "F" ? "Final" : m.r + " " + m.id.slice(1) };
 }
 function obre(id) {
-  const m = trobaPartida(id), r = R[id] || {};
+  const m = trobaPartida(id), r = R[id] || {}, ko = id[0] !== "G", meta = ko ? 200 : 150;
   const inp = (k, v) => `<input type="number" inputmode="numeric" min="0" max="999" name="${k}" value="${v ?? ""}">`;
   $("#frm").innerHTML = `<h3>${esc(m.titol)}</h3><div class="s">${esc(m.dist)}</div>
-    <div class="grid"><span></span><span class="hd">Car.</span><span class="hd">Quilles</span><span class="hd">Total</span>
+    <div class="grid"><span></span><span class="hd">Car. 3B</span><span class="hd">Quilles final</span><span class="hd">Sortida</span>
       <span class="nm">${esc(nom(m.p1))}</span>${inp("c1", r.c1)}${inp("q1", r.q1)}<span class="tt" id="t1">–</span>
       <span class="nm">${esc(nom(m.p2))}</span>${inp("c2", r.c2)}${inp("q2", r.q2)}<span class="tt" id="t2">–</span></div>
-    <div class="f2"><label>Entrades${inp("e", r.e)}</label><label>Sèrie ${esc(nom(m.p1).split(" ")[0])}${inp("s1", r.s1)}</label><label>Sèrie ${esc(nom(m.p2).split(" ")[0])}${inp("s2", r.s2)}</label></div>
-    <div class="tie" id="tie" hidden>Empat a punts. Qui guanya?<select name="g"><option value="0">Empat (1 punt cadascú)</option><option value="1">${esc(nom(m.p1))}</option><option value="2">${esc(nom(m.p2))}</option></select></div>
+    <div class="s" style="margin-top:8px">Quilles final = marcador en acabar la partida (comença amb caramboles × ${X_CAR}). Guanya qui arriba a ${meta}.</div>
+    <div class="f2"><label>Entrades 3B${inp("e", r.e)}</label><label>Sèrie ${esc(nom(m.p1).split(" ")[0])}${inp("s1", r.s1)}</label><label>Sèrie ${esc(nom(m.p2).split(" ")[0])}${inp("s2", r.s2)}</label></div>
+    <div class="tie" id="avis" hidden></div>
+    <div class="tie" id="tie" hidden>Els dos tenen els mateixos punts. Qui ha guanyat?<select name="g"><option value="1">${esc(nom(m.p1))}</option><option value="2">${esc(nom(m.p2))}</option></select></div>
     <div class="acts">${R[id] ? '<button class="btn d" value="del">Esborrar</button>' : ""}<button class="btn g" value="no">Cancel·lar</button><button class="btn p" value="ok">Desar</button></div>`;
   const f = $("#frm");
   if (r.g) f.g.value = r.g;
-  const ko = id[0] !== "G";
-  if (ko) f.g.options[0].remove();
   const calc = () => {
-    const t1 = total(+f.c1.value, +f.q1.value), t2 = total(+f.c2.value, +f.q2.value);
-    $("#t1").textContent = t1; $("#t2").textContent = t2;
-    $("#tie").hidden = !(t1 === t2 && (f.c1.value || f.q1.value));
+    const c1 = +f.c1.value || 0, c2 = +f.c2.value || 0, q1 = +f.q1.value || 0, q2 = +f.q2.value || 0;
+    $("#t1").textContent = c1 * X_CAR; $("#t2").textContent = c2 * X_CAR;
+    const fet = f.q1.value !== "" && f.q2.value !== "";
+    $("#tie").hidden = !(fet && q1 === q2);
+    const av = [];
+    if (fet && Math.max(q1, q2) < meta) av.push(`Cap dels dos arriba a ${meta}.`);
+    if (f.q1.value !== "" && q1 < c1 * X_CAR) av.push(`${nom(m.p1)}: les quilles no poden ser menys que la sortida (${c1 * X_CAR}).`);
+    if (f.q2.value !== "" && q2 < c2 * X_CAR) av.push(`${nom(m.p2)}: les quilles no poden ser menys que la sortida (${c2 * X_CAR}).`);
+    $("#avis").hidden = !av.length; $("#avis").textContent = av.join(" ");
   };
   f.oninput = calc; calc();
   const dlg = $("#dlg");
@@ -475,8 +472,7 @@ function obre(id) {
     if (v === "del") { if (await desa(id, null)) toast("Resultat esborrat"); }
     if (v !== "ok") return;
     const n = k => Math.max(0, parseInt(f[k].value, 10) || 0);
-    const d = { c1:n("c1"), q1:n("q1"), c2:n("c2"), q2:n("q2"), e:n("e"), s1:n("s1"), s2:n("s2"), g: total(n("c1"), n("q1")) === total(n("c2"), n("q2")) ? +f.g.value : 0 };
-    if (ko && total(d.c1, d.q1) === total(d.c2, d.q2) && !d.g) d.g = 1;
+    const d = { c1:n("c1"), q1:n("q1"), c2:n("c2"), q2:n("q2"), e:n("e"), s1:n("s1"), s2:n("s2"), g: n("q1") === n("q2") ? +f.g.value : 0 };
     if (await desa(id, d)) toast("Desat ✓");
   };
   dlg.returnValue = ""; dlg.showModal();
