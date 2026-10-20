@@ -155,7 +155,7 @@ dialog::backdrop{background:rgba(0,0,0,.5)}
     <button role="tab" id="tQuadre" aria-selected="false">Eliminatòries</button>
   </nav>
   <div class="banner" id="banner" hidden></div>
-  <div class="status"><span id="upd">Carregant…</span><button id="bAdm">Anotar resultats</button></div>
+  <div class="status"><span id="upd">Carregant…</span><button id="bAdm" hidden>Entrar</button></div>
 
   <main id="vGrups"></main>
   <main id="vQuadre" hidden></main>
@@ -222,9 +222,12 @@ const qs = new URLSearchParams(location.search);
 const PROVA = location.hash.includes("prova");
 let R = {};            // resultats: id -> {c1,q1,c2,q2,e,s1,s2,g,t}
 let local = PROVA;     // sense intermediari: es desa al mòbil
-let pin = null;
-try { pin = localStorage.getItem("biatlo-pin"); } catch (e) {}
-let admin = qs.has("admin") && !!pin;
+// Versió d'administrador: només amb ?admin (o /biatlo/admin/). Per a la resta, només lectura.
+const MODE_ADMIN = qs.has("admin") || PROVA;
+let token = null, adminNom = "";
+try { token = localStorage.getItem("biatlo-token"); adminNom = localStorage.getItem("biatlo-nom") || ""; } catch (e) {}
+let admin = false;
+const potAnotar = () => MODE_ADMIN && (local || !!token);
 
 const $ = s => document.querySelector(s);
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
@@ -373,9 +376,11 @@ function pintaQuadre() {
 }
 
 function pinta() {
+  admin = potAnotar();
   pintaGrups(); pintaQuadre();
-  $("#bAdm").textContent = admin ? "Anotant ✓" : "Anotar resultats";
-  $("#bAdm").classList.toggle("adm", admin);
+  const b = $("#bAdm"); b.hidden = !MODE_ADMIN;
+  b.textContent = admin ? (local ? "Mode prova · anotant" : `${adminNom || "Administrador"} · Sortir`) : "Entrar per anotar";
+  b.classList.toggle("adm", admin);
 }
 
 /* ===== WhatsApp ===== */
@@ -427,9 +432,9 @@ async function desa(id, dades) {
     try { localStorage.setItem("biatlo-local", JSON.stringify(R)); } catch (e) {}
     pinta(); return true;
   }
-  const r = await fetch(API + "?accio=biatlo", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ pin, id, dades }) });
+  const r = await fetch(API + "?accio=biatlo", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ token, id, dades }) });
   const d = await r.json().catch(() => ({}));
-  if (r.status === 403) { try { localStorage.removeItem("biatlo-pin"); } catch (e) {} pin = null; admin = false; pinta(); toast("Codi incorrecte"); return false; }
+  if (r.status === 401) { oblida(); pinta(); toast("La sessió ha caducat. Torna a entrar."); entrar(); return false; }
   if (!r.ok || d.error) { toast("No s'ha pogut desar: " + (d.error || r.status)); return false; }
   R = d.resultats || R; pinta(); return true;
 }
@@ -453,6 +458,7 @@ function obre(id) {
     <div class="tie" id="tie" hidden>Els dos tenen els mateixos punts. Qui ha guanyat?<select name="g"><option value="1">${esc(nom(m.p1))}</option><option value="2">${esc(nom(m.p2))}</option></select></div>
     <div class="acts">${R[id] ? '<button class="btn d" value="del">Esborrar</button>' : ""}<button class="btn g" value="no">Cancel·lar</button><button class="btn p" value="ok">Desar</button></div>`;
   const f = $("#frm");
+  f.onsubmit = null;
   if (r.g) f.g.value = r.g;
   const calc = () => {
     const c1 = +f.c1.value || 0, c2 = +f.c2.value || 0, q1 = +f.q1.value || 0, q2 = +f.q2.value || 0;
@@ -487,14 +493,35 @@ function vista(v) {
 $("#tGrups").onclick = () => { history.replaceState(null, "", location.pathname + location.search + (PROVA ? "#prova" : "")); vista("grups"); scrollTo(0, 0); };
 $("#tQuadre").onclick = () => { history.replaceState(null, "", "#quadre" + (PROVA ? "-prova" : "")); vista("quadre"); scrollTo(0, 0); };
 document.addEventListener("click", e => { const b = e.target.closest(".match.edit"); if (b && admin) obre(b.dataset.id); });
-$("#bAdm").onclick = () => {
-  if (admin) { admin = false; pinta(); return; }
-  if (!pin && !local) {
-    const p = prompt("Codi per anotar resultats:"); if (!p) return;
-    pin = p.trim(); try { localStorage.setItem("biatlo-pin", pin); } catch (e) {}
+$("#bAdm").onclick = async () => {
+  if (admin && !local) {
+    fetch(API + "?accio=biatlo-sortir", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ token }) }).catch(() => {});
+    oblida(); pinta(); toast("Has sortit"); return;
   }
-  admin = true; pinta(); toast("Toca una partida per anotar-la");
+  if (!admin) entrar();
 };
+function oblida() { token = null; adminNom = ""; try { localStorage.removeItem("biatlo-token"); localStorage.removeItem("biatlo-nom"); } catch (e) {} }
+function entrar() {
+  $("#frm").innerHTML = `<h3>Entrar com a administrador</h3><div class="s">Només els administradors poden anotar resultats.</div>
+    <div class="f2" style="grid-template-columns:1fr"><label>Usuari<input name="u" autocomplete="username" autocapitalize="off" style="text-align:left"></label>
+    <label>Contrasenya<input name="c" type="password" autocomplete="current-password" style="text-align:left"></label></div>
+    <div class="tie" id="err" hidden></div>
+    <div class="acts"><button class="btn g" value="no">Cancel·lar</button><button class="btn p" value="ok">Entrar</button></div>`;
+  const f = $("#frm"), dlg = $("#dlg");
+  f.onsubmit = async e => {
+    if (e.submitter && e.submitter.value === "no") return;
+    e.preventDefault();
+    try {
+      const r = await fetch(API + "?accio=biatlo-entrar", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ usuari: f.u.value, contrasenya: f.c.value }) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || "No s'ha pogut entrar");
+      token = d.token; adminNom = d.nom;
+      try { localStorage.setItem("biatlo-token", token); localStorage.setItem("biatlo-nom", adminNom); } catch (e) {}
+      dlg.close("in"); pinta(); toast("Hola, " + adminNom.split(" ")[0] + ". Toca una partida per anotar-la.");
+    } catch (er) { $("#err").hidden = false; $("#err").textContent = er.message === "Failed to fetch" ? "No hi ha connexió amb el servidor." : er.message; }
+  };
+  dlg.onclose = null; dlg.returnValue = ""; dlg.showModal(); f.u.focus();
+}
 function toast(t) { const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 3000); }
 
 function inicial() {

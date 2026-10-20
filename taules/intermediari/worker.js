@@ -17,7 +17,9 @@
 //   GET  /?accio=conv&j=N                    -> convocatòries dels equips A-E de la jornada N (app CONVOCATORIES)
 //   POST /?accio=conv&j=N  {equips:{B:{...}}} -> desa la convocatòria dels equips que s'envien
 //   GET  /?accio=biatlo                      -> resultats del Campionat de Catalunya de Biatló (app BIATLO)
-//   POST /?accio=biatlo {pin,id,dades|null}  -> desa (o esborra) el resultat d'una partida
+//   POST /?accio=biatlo-entrar {usuari,contrasenya} -> token d'administrador (30 dies)
+//   POST /?accio=biatlo {token,id,dades|null} -> desa (o esborra) el resultat d'una partida (només administradors)
+//   POST /?accio=biatlo-sortir {token}       -> tanca la sessió
 
 const BASE = "http://monforte.wifibillar.com/";
 const TAULES = [1, 2, 3, 4];
@@ -476,22 +478,54 @@ async function convocatories(request, params, env) {
 }
 
 /* ---------- Campionat de Catalunya de Biatló (app BIATLO, KV "CAMS", clau biatlo:2026) ---------- */
-const PIN_BIATLO = "1415";   // codi per anotar resultats a l'app (canvia'l si vols)
-async function biatlo(request, env) {
+// Administradors: només ells poden anotar resultats. Les contrasenyes no es guarden: només el seu hash (PBKDF2-SHA256).
+// Per canviar-ne una, demana a Claude un hash nou.
+const ADMINS_BIATLO = {
+  isaacpuig:  { nom: "Isaac Puig",        sal: "45f2da5272921d9f67f43b35ed91abed", hash: "90cf0dc67406432f268717b67fa96623012883157cf71bb59d2b30f8f8f90ddf" },
+  jonhzuleta: { nom: "John Jairo Zuleta", sal: "1258a391afcdaf8fae321ac20e1c506e", hash: "5009b6baf6e7570c68f7a9739a5b505dc58f3b5b9181cb570f03784a43956815" },
+};
+const hexBytes = h => new Uint8Array(h.match(/../g).map(x => parseInt(x, 16)));
+const bytesHex = b => [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join("");
+async function pbkdf2(pass, salHex) {
+  const k = await crypto.subtle.importKey("raw", new TextEncoder().encode(pass), "PBKDF2", false, ["deriveBits"]);
+  return bytesHex(await crypto.subtle.deriveBits({ name: "PBKDF2", hash: "SHA-256", salt: hexBytes(salHex), iterations: 100000 }, k, 256));
+}
+async function usuariDelToken(kv, token) {
+  if (!token || !/^[0-9a-f]{48}$/.test(token)) return null;
+  return await kv.get("biatlo:tok:" + token);
+}
+async function biatlo(request, params, env) {
   const kv = env && env.CAMS;
   if (!kv) return json({ error: "Falta l'enllaç CAMS (KV) a l'intermediari" }, 500);
+  const accio = params.get("accio");
+  if (accio === "biatlo-entrar" && request.method === "POST") {
+    const cos = await request.json().catch(() => ({}));
+    const u = String(cos.usuari || "").trim().toLowerCase().replace(/\s+/g, "");
+    const a = ADMINS_BIATLO[u];
+    await new Promise(r => setTimeout(r, 400));   // frena els intents a cegues
+    if (!a || (await pbkdf2(String(cos.contrasenya || ""), a.sal)) !== a.hash) return json({ error: "Usuari o contrasenya incorrectes" }, 403);
+    const token = bytesHex(crypto.getRandomValues(new Uint8Array(24)));
+    await kv.put("biatlo:tok:" + token, a.nom, { expirationTtl: 60 * 60 * 24 * 30 });
+    return json({ token, nom: a.nom });
+  }
+  if (accio === "biatlo-sortir" && request.method === "POST") {
+    const cos = await request.json().catch(() => ({}));
+    if (cos.token && /^[0-9a-f]{48}$/.test(cos.token)) await kv.delete("biatlo:tok:" + cos.token);
+    return json({ ok: true });
+  }
   const clau = "biatlo:2026";
   const res = (await kv.get(clau, "json")) || {};
   if (request.method !== "POST") return json({ resultats: res });
   const cos = await request.json();
-  if (!cos || String(cos.pin) !== PIN_BIATLO) return json({ error: "Codi incorrecte" }, 403);
+  const qui = await usuariDelToken(kv, cos && cos.token);
+  if (!qui) return json({ error: "Cal entrar com a administrador" }, 401);
   const id = String(cos.id || "");
   if (!/^(G[A-G][123]|Q[1-4]|S[12]|F)$/.test(id)) return json({ error: "Partida incorrecta" }, 400);
   if (cos.dades === null) { delete res[id]; }
   else {
     const d = cos.dades || {}, n = v => Math.max(0, Math.min(999, parseInt(v, 10) || 0));
     res[id] = { c1: n(d.c1), q1: n(d.q1), c2: n(d.c2), q2: n(d.q2), e: n(d.e),
-      s1: n(d.s1), s2: n(d.s2), g: d.g === 1 || d.g === 2 ? d.g : 0, t: Date.now() };
+      s1: n(d.s1), s2: n(d.s2), g: d.g === 1 || d.g === 2 ? d.g : 0, t: Date.now(), per: qui };
   }
   await kv.put(clau, JSON.stringify(res));
   return json({ resultats: res });
@@ -506,7 +540,7 @@ export default {
       const accio = params.get("accio");
       if (["cam", "ordres", "estat"].includes(accio)) return await cameres(accio, request, params, env);
       if (accio === "conv") return await convocatories(request, params, env);
-      if (accio === "biatlo") return await biatlo(request, env);
+      if (accio && accio.startsWith("biatlo")) return await biatlo(request, params, env);
       if (!accio) return json({ actualitzat: new Date().toISOString(), taules: await taulesOcupades() });
       if (accio === "pools") return json(await pools());
       if (accio === "fases") return json(await fases(params.get("pool")));
