@@ -62,7 +62,7 @@ button{cursor:pointer}
 .chips a{flex:0 0 auto;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;text-decoration:none;font-family:var(--display);font-weight:900;font-size:26px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
 .chips a.done{background:var(--felt);color:var(--lime);border-color:var(--felt)}
 .group{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-top:14px;overflow:hidden;scroll-margin-top:70px}
-.ghead{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.ghead{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
 .gl{width:46px;height:46px;border-radius:11px;background:var(--felt);color:var(--lime);font-family:var(--display);font-weight:900;font-size:32px;display:grid;place-items:center}
 .gname{font-weight:700}
 .gsub{color:var(--mute);font-size:13px}
@@ -334,8 +334,7 @@ function pintaGrups() {
     const mill = cl.fets && cl.millorSegon.g === G.g;
     h += `<section class="group" id="${G.g}">
       <div class="ghead"><div class="gl">${G.g}</div>
-        <div><div class="gname">Grup ${G.g}</div><div class="gsub">Dissabte 14 · ${G.h[0]} h · Billar ${G.b}${fet ? " · Acabat" : ""}</div></div>
-        <a class="wa" href="${waGrup(G)}" target="_blank" rel="noopener">${ICO_WA}Enviar</a></div>
+        <div><div class="gname">Grup ${G.g}</div><div class="gsub">Dissabte 14 · ${G.h[0]} h · Billar ${G.b}${fet ? " · Acabat" : ""}</div></div></div>
       <table class="std"><thead><tr><th></th><th>Jugador</th><th>PJ</th><th>Pts</th><th>Quilles</th><th class="hide">M. quill.</th><th class="hide">M. 3B</th></tr></thead><tbody>
       ${llista.map((s, i) => `<tr class="${i === 0 && fet ? "q" : ""} ${mon(s.n) ? "mon" : ""}">
         <td class="pos">${i + 1}</td>
@@ -354,7 +353,7 @@ function pintaGrups() {
 
 function pintaQuadre() {
   const cl = classificats();
-  let h = `<div class="card"><div class="row"><h3>Classificats</h3><a class="wa" href="${waQuadre()}" target="_blank" rel="noopener">${ICO_WA}Enviar</a></div>`;
+  let h = `<div class="card"><div class="row"><h3>Classificats</h3></div>`;
   if (!cl.fets) h += `<div class="note">Es completa quan s'acabin tots els grups (dissabte a la nit).</div>`;
   else h += cl.seeds.map((s, i) => `<div class="seed ${mon(s.n) ? "mon" : ""}"><span class="n">${i + 1}</span><span><div class="pn">${esc(nom(s.n))}</div><div class="pc">${esc(club(s.n))}</div></span><span class="o">${s.lloc === 1 ? "1r" : "Millor 2n"} grup ${s.g}<br>${s.pts} pts · ${s.fets} quilles</span></div>`).join("");
   h += `</div>`;
