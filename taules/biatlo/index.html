@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>BIATLÓ · Campionat de Catalunya</title>
+<meta name="description" content="Resultats, classificacions i quadre del Campionat de Catalunya de Biatló 2026 al CB Monforte">
+<meta name="theme-color" content="#0e3b28">
+<meta property="og:title" content="Campionat de Catalunya de Biatló · CB Monforte">
+<meta property="og:description" content="Resultats en directe dels grups i de les eliminatòries · 14 i 15 de novembre">
+<meta property="og:image" content="https://taules-monforte.vercel.app/biatlo/og.jpg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="escut.png">
+<link rel="apple-touch-icon" href="escut.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="BIATLÓ">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+:root{
+  --felt:#0e3b28; --felt-2:#145236; --lime:#d6ff2e; --red:#c4232e; --gold:#d8b23c;
+  --bg:#eef3ee; --card:#ffffff; --ink:#122219; --mute:#5b6d62; --line:#d3ddd5; --soft:#f4f8f4;
+  --ok:#1f7a45; --ok-bg:#e1f3e7; --warn-bg:#fff4d6; --warn:#8a5a00; --mon:#c4232e;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#08150f; --card:#11231a; --ink:#e7efe9; --mute:#93a89b; --line:#23392d; --soft:#0d1d15;
+  --ok:#5fd18e; --ok-bg:#12301f; --warn-bg:#352a0c; --warn:#f3c45a; --mon:#ff6b73; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08150f; --card:#11231a; --ink:#e7efe9; --mute:#93a89b; --line:#23392d; --soft:#0d1d15;
+  --ok:#5fd18e; --ok-bg:#12301f; --warn-bg:#352a0c; --warn:#f3c45a; --mon:#ff6b73; color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding:16px max(16px,env(safe-area-inset-left,0px)) 56px}
+button,input,select{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+.num{font-variant-numeric:tabular-nums}
+
+/* Capçalera */
+.poster{background:radial-gradient(120% 90% at 50% 0%,var(--felt-2),var(--felt));color:#fff;border-radius:18px;padding:18px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;position:relative;overflow:hidden}
+.poster::before{content:"";position:absolute;left:0;right:0;bottom:0;height:6px;background:repeating-linear-gradient(90deg,#f6d21f 0 22px,#c4232e 22px 44px)}
+.poster img{width:70px;display:block}
+.eyebrow{font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:12px;color:var(--gold)}
+.title{font-family:var(--display);font-weight:900;font-size:clamp(44px,12vw,72px);line-height:.88;color:var(--lime);margin:4px 0 6px;text-transform:uppercase}
+.sub{font-weight:600;font-size:16px;color:rgba(255,255,255,.88)}
+
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:5px;margin:14px 0 4px;position:sticky;top:6px;z-index:5}
+.tabs button{border:0;background:none;border-radius:10px;padding:10px 6px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;font-size:14px;color:var(--mute)}
+.tabs button[aria-selected="true"]{background:var(--felt);color:var(--lime)}
+
+.banner{margin:12px 0 0;border-radius:12px;padding:10px 14px;background:var(--warn-bg);color:var(--warn);font-weight:600;font-size:14px}
+.status{display:flex;justify-content:space-between;align-items:center;gap:10px;color:var(--mute);font-size:13px;margin:10px 2px 4px}
+.status button{background:none;border:1px solid var(--line);border-radius:999px;padding:4px 12px;font-weight:600;font-size:13px}
+.status .adm{color:var(--ok);border-color:var(--ok)}
+
+/* Grups */
+.chips{display:flex;gap:6px;overflow-x:auto;padding:6px 0 4px;scrollbar-width:none}
+.chips a{flex:0 0 auto;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;text-decoration:none;font-family:var(--display);font-weight:900;font-size:26px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
+.chips a.done{background:var(--felt);color:var(--lime);border-color:var(--felt)}
+.group{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-top:14px;overflow:hidden;scroll-margin-top:70px}
+.ghead{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.gl{width:46px;height:46px;border-radius:11px;background:var(--felt);color:var(--lime);font-family:var(--display);font-weight:900;font-size:32px;display:grid;place-items:center}
+.gname{font-weight:700}
+.gsub{color:var(--mute);font-size:13px}
+.wa{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;background:#25d366;color:#06301a;font-weight:700;font-size:13px;padding:8px 12px;text-decoration:none;white-space:nowrap}
+.wa svg{width:16px;height:16px}
+
+table.std{width:100%;border-collapse:collapse;font-size:15px}
+.std th{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);text-align:right;padding:8px 6px;border-bottom:1px solid var(--line)}
+.std th:nth-child(2){text-align:left}
+.std td{padding:9px 6px;border-bottom:1px solid var(--line);text-align:right}
+.std tr:last-child td{border-bottom:0}
+.std td.pos{width:34px;text-align:center;font-family:var(--display);font-weight:900;font-size:22px;color:var(--mute)}
+.std tr.q td.pos{color:var(--ok)}
+.std td.pl{text-align:left}
+.pn{font-weight:700;line-height:1.15}
+.pc{font-size:12px;color:var(--mute)}
+.mon .pn{color:var(--mon)}
+.std td.pts{font-weight:700;font-size:17px}
+.tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:2px 6px;border-radius:999px;margin-left:4px;vertical-align:2px}
+.tag.q{background:var(--ok-bg);color:var(--ok)}
+.tag.b{background:var(--warn-bg);color:var(--warn)}
+
+.sheet{border-top:1px solid var(--line);background:var(--soft);padding:6px 10px 12px}
+.sheet h4{margin:8px 4px 6px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.match{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-top:8px}
+.match.edit:hover{border-color:var(--felt-2)}
+.mtop{display:flex;justify-content:space-between;gap:8px;font-size:12px;color:var(--mute);font-weight:600;letter-spacing:.04em}
+.mrow{display:grid;grid-template-columns:1fr repeat(3,46px);gap:4px;align-items:center;margin-top:6px}
+.mrow.h{margin-top:8px;font-size:10px;font-weight:700;letter-spacing:.08em;color:var(--mute);text-transform:uppercase}
+.mrow.h span{text-align:right}
+.mrow .v{text-align:right;font-variant-numeric:tabular-nums}
+.mrow .t{font-weight:700;font-size:17px}
+.mrow.win .pn::after{content:" ✓";color:var(--ok)}
+.mrow.lose{opacity:.7}
+.extra{margin-top:6px;font-size:12px;color:var(--mute)}
+.pend{font-size:13px;color:var(--mute);margin-top:6px;font-style:italic}
+
+/* Eliminatòries */
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px 14px;margin-top:14px}
+.card h3{margin:0 0 8px;font-family:var(--display);font-weight:900;font-size:26px;text-transform:uppercase;letter-spacing:.02em}
+.card .row{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.seed{display:grid;grid-template-columns:34px 1fr auto;gap:8px;align-items:center;padding:7px 0;border-top:1px solid var(--line)}
+.seed:first-of-type{border-top:0}
+.seed .n{font-family:var(--display);font-weight:900;font-size:22px;color:var(--ok);text-align:center}
+.seed .o{font-size:12px;color:var(--mute);text-align:right}
+.round h4{margin:16px 2px 0;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.final .match{border:2px solid var(--gold)}
+.note{font-size:13px;color:var(--mute);margin-top:10px}
+.rules{font-size:13px;color:var(--mute)}
+.rules ol{margin:6px 0 0;padding-left:20px}
+
+/* Diàleg */
+dialog{border:0;border-radius:18px;padding:0;width:min(440px,calc(100vw - 24px));background:var(--card);color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.5)}
+.dlg{padding:16px}
+.dlg h3{margin:0 0 2px;font-size:18px}
+.dlg .s{color:var(--mute);font-size:13px;margin-bottom:10px}
+.grid{display:grid;grid-template-columns:1fr 64px 64px 56px;gap:6px;align-items:center}
+.grid .hd{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);text-align:center}
+.grid input{width:100%;border:1px solid var(--line);border-radius:9px;padding:9px 4px;text-align:center;background:var(--bg);font-weight:700;font-variant-numeric:tabular-nums}
+.grid .tt{text-align:center;font-weight:700;font-size:18px}
+.grid .nm{font-weight:700;font-size:14px;line-height:1.15}
+.f2{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.f2 label{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.f2 input{width:100%;border:1px solid var(--line);border-radius:9px;padding:8px;margin-top:3px;background:var(--bg);text-align:center;font-weight:700}
+.tie{margin-top:10px;background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:8px 10px;font-size:14px;font-weight:600}
+.tie select{margin-top:6px;width:100%;padding:8px;border-radius:8px;border:1px solid var(--line);background:var(--card);color:var(--ink)}
+.acts{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+.btn{border:0;border-radius:10px;padding:10px 16px;font-weight:700}
+.btn.p{background:var(--felt);color:var(--lime)}
+.btn.g{background:var(--line)}
+.btn.d{background:none;color:var(--red);margin-right:auto;padding-left:0}
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;font-weight:600;font-size:14px;z-index:20;max-width:90vw}
+@media (max-width:420px){.std .hide{display:none}.mrow{grid-template-columns:1fr repeat(3,40px)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="poster">
+    <img src="escut.png" alt="CB Monforte">
+    <div>
+      <div class="eyebrow">Campionat de Catalunya · Individual</div>
+      <div class="title">Biatló</div>
+      <div class="sub">14 i 15 de novembre de 2026 · CB Monforte</div>
+    </div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tGrups" aria-selected="true">Grups</button>
+    <button role="tab" id="tQuadre" aria-selected="false">Eliminatòries</button>
+  </nav>
+  <div class="banner" id="banner" hidden></div>
+  <div class="status"><span id="upd">Carregant…</span><button id="bAdm">Anotar resultats</button></div>
+
+  <main id="vGrups"></main>
+  <main id="vQuadre" hidden></main>
+</div>
+
+<dialog id="dlg"><form class="dlg" method="dialog" id="frm"></form></dialog>
+<div class="toast" id="toast" hidden></div>
+
+<script>
+/* ===== Dades fixes del campionat (documents de la FCB: grups, horaris i organigrama) ===== */
+const API = "https://taules-monforte.puigis.workers.dev/";
+const URL_APP = "https://taules-monforte.vercel.app/biatlo/";
+
+// Regla de puntuació: total de la partida = caramboles × VAL_CAR + punts de quilles.
+const VAL_CAR = 10;
+// Punts de partida
+const PUNTS = { guanya: 2, empata: 1, perd: 0 };
+// Criteris de desempat (en ordre). Es poden reordenar quan es confirmi el reglament.
+const CRITERIS = ["punts", "directe", "diferencia", "fets", "ranquing"];
+const NOM_CRITERI = {
+  punts: "Punts de partida (guanyada 2, empat 1)",
+  directe: "Resultat entre els jugadors empatats (si són dos)",
+  diferencia: "Diferència de punts de biatló (fets − rebuts)",
+  fets: "Punts de biatló fets",
+  ranquing: "Posició al rànquing inicial",
+};
+
+const J = { // posició al rànquing inicial -> jugador
+  1:["Pau Bonet","C.B. Monforte"], 2:["Àngel Viladomat","C.B. Alba"], 3:["Lluís Gómez","S.B.F. Molins de Rei"],
+  4:["Lino Brizzi","S.B.F. Molins de Rei"], 5:["Josep Torrent","C.B. Alba"], 6:["Jordi Santamaría","C.B. Alba"],
+  7:["Héctor Fabio Suárez","C.B. Sant Adrià"], 8:["Joel Sánchez","C.B. Mataró"], 9:["F. Xavier Segura","C.B. Monforte"],
+  10:["Isaac Puig","C.B. Monforte"], 11:["Carlos Rojo","C.B. Alba"], 12:["Duvan Mejía","C.B. Monforte"],
+  13:["Pere Adell","C.B. Monforte"], 14:["Alberto Daude","Unió Coral"], 15:["David Bosqued","C.B. Sant Adrià"],
+  16:["Miguel Sánchez","S.B.F. Molins de Rei"], 17:["Ricardo García","C.B. Monforte"], 18:["Juan Merino","C.B. Sant Adrià"],
+  19:["Fernando Segura","C.B. Monforte"], 20:["Brian Villate","C.B. Monforte"], 21:["John Jairo Zuleta","C.B. Monforte"],
+};
+// p: jugadors (1, 2, 3 del grup); obre: qui juga la 1a partida; fix: qui espera; hores i billar (dissabte 14)
+const GRUPS = [
+  {g:"A", p:[1,14,21], obre:[0,2], fix:1, h:["16:00","17:30","19:00"], b:1},
+  {g:"B", p:[2,13,20], obre:[1,2], fix:0, h:["16:00","17:30","19:00"], b:2},
+  {g:"C", p:[3,12,19], obre:[1,2], fix:0, h:["16:00","17:30","19:00"], b:3},
+  {g:"D", p:[4,11,18], obre:[0,2], fix:1, h:["16:00","17:30","19:00"], b:4},
+  {g:"E", p:[5,10,17], obre:[1,2], fix:0, h:["9:30","11:00","12:30"], b:1},
+  {g:"F", p:[6,9,16],  obre:[1,2], fix:0, h:["9:30","11:00","12:30"], b:2},
+  {g:"G", p:[7,8,15],  obre:[0,2], fix:1, h:["9:30","11:00","12:30"], b:3},
+];
+// Eliminatòries (diumenge 15). a/b: posició 1-8 de la fase final o guanyador d'una partida
+const KO = [
+  {id:"Q1", r:"Quarts", h:"10:00", b:3, a:{s:1}, bb:{s:8}},
+  {id:"Q2", r:"Quarts", h:"10:00", b:4, a:{s:2}, bb:{s:7}},
+  {id:"Q3", r:"Quarts", h:"10:00", b:1, a:{s:3}, bb:{s:6}},
+  {id:"Q4", r:"Quarts", h:"10:00", b:2, a:{s:4}, bb:{s:5}},
+  {id:"S1", r:"Semifinals", h:"12:00", b:1, a:{w:"Q2"}, bb:{w:"Q3"}},
+  {id:"S2", r:"Semifinals", h:"12:00", b:2, a:{w:"Q1"}, bb:{w:"Q4"}},
+  {id:"F",  r:"Final", h:"16:00", b:1, a:{w:"S2"}, bb:{w:"S1"}},
+];
+const DIST_GRUP = "15 caramboles / 30 entrades + 150 punts de quilles";
+const DIST_KO = "20 caramboles / 40 entrades + 200 punts de quilles";
+
+/* ===== Estat ===== */
+const qs = new URLSearchParams(location.search);
+const PROVA = location.hash.includes("prova");
+let R = {};            // resultats: id -> {c1,q1,c2,q2,e,s1,s2,g,t}
+let local = PROVA;     // sense intermediari: es desa al mòbil
+let pin = null;
+try { pin = localStorage.getItem("biatlo-pin"); } catch (e) {}
+let admin = qs.has("admin") && !!pin;
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const nom = n => J[n][0];
+const club = n => J[n][1];
+const mon = n => /Monforte/.test(club(n));
+
+/* ===== Càlcul ===== */
+const total = (c, q) => (c || 0) * VAL_CAR + (q || 0);
+// Resultat d'una partida: null si no jugada; {t1,t2,w} amb w = 1, 2 o 0 (empat)
+function res(id) {
+  const r = R[id]; if (!r) return null;
+  const t1 = total(r.c1, r.q1), t2 = total(r.c2, r.q2);
+  let w = t1 > t2 ? 1 : t2 > t1 ? 2 : (r.g || 0);
+  return { ...r, t1, t2, w };
+}
+// Jugadors de cada partida del grup (null si encara depèn d'un resultat)
+function partidesGrup(G) {
+  const [i, k] = G.obre, f = G.p[G.fix], a = G.p[i], c = G.p[k];
+  const r1 = res("G" + G.g + "1");
+  let gan = null, per = null;
+  if (r1 && r1.w) { gan = r1.w === 1 ? a : c; per = r1.w === 1 ? c : a; }
+  return [
+    { id:"G"+G.g+"1", p1:a, p2:c, h:G.h[0], txt:null },
+    { id:"G"+G.g+"2", p1:f, p2:per, h:G.h[1], txt:"Perdedor 1a partida" },
+    { id:"G"+G.g+"3", p1:f, p2:gan, h:G.h[2], txt:"Guanyador 1a partida" },
+  ];
+}
+function statsGrup(G) {
+  const S = {}; G.p.forEach(n => S[n] = { n, pj:0, pg:0, pe:0, pts:0, fets:0, reb:0, car:0, ent:0, q:0, serie:0 });
+  const ms = partidesGrup(G);
+  for (const m of ms) {
+    const r = res(m.id); if (!r || !m.p1 || !m.p2) continue;
+    const a = S[m.p1], b = S[m.p2];
+    a.pj++; b.pj++;
+    a.fets += r.t1; a.reb += r.t2; b.fets += r.t2; b.reb += r.t1;
+    a.car += r.c1||0; b.car += r.c2||0; a.ent += r.e||0; b.ent += r.e||0; a.q += r.q1||0; b.q += r.q2||0;
+    a.serie = Math.max(a.serie, r.s1||0); b.serie = Math.max(b.serie, r.s2||0);
+    if (r.w === 1) { a.pg++; a.pts += PUNTS.guanya; b.pts += PUNTS.perd; }
+    else if (r.w === 2) { b.pg++; b.pts += PUNTS.guanya; a.pts += PUNTS.perd; }
+    else { a.pe++; b.pe++; a.pts += PUNTS.empata; b.pts += PUNTS.empata; }
+  }
+  const llista = Object.values(S);
+  llista.forEach(s => s.dif = s.fets - s.reb);
+  // Resultat directe entre dos jugadors
+  const directe = (x, y) => {
+    for (const m of ms) {
+      const r = res(m.id); if (!r || !r.w) continue;
+      if (m.p1 === x && m.p2 === y) return r.w === 1 ? -1 : 1;
+      if (m.p1 === y && m.p2 === x) return r.w === 1 ? 1 : -1;
+    }
+    return 0;
+  };
+  llista.sort((x, y) => compara(x, y, llista, directe));
+  return { llista, ms, fet: ms.every(m => res(m.id) && m.p1 && m.p2) };
+}
+function compara(x, y, llista, directe) {
+  for (const c of CRITERIS) {
+    let d = 0;
+    if (c === "punts") d = y.pts - x.pts;
+    else if (c === "directe") { if (directe && llista.filter(s => s.pts === x.pts).length === 2) d = directe(x.n, y.n); }
+    else if (c === "diferencia") d = y.dif - x.dif;
+    else if (c === "fets") d = y.fets - x.fets;
+    else if (c === "ranquing") d = x.n - y.n;
+    if (d) return d;
+  }
+  return 0;
+}
+// Classificats per als quarts: 7 primers + millor segon, ordenats de l'1 al 8
+function classificats() {
+  const st = GRUPS.map(G => ({ G, ...statsGrup(G) }));
+  const fets = st.every(s => s.fet);
+  const primers = st.map(s => ({ ...s.llista[0], g:s.G.g, lloc:1 }));
+  const segons = st.map(s => ({ ...s.llista[1], g:s.G.g, lloc:2 }));
+  primers.sort((x, y) => compara(x, y, [], null));
+  segons.sort((x, y) => compara(x, y, [], null));
+  return { fets, seeds: [...primers, segons[0]], millorSegon: segons[0], st };
+}
+function jugadorsKO(m, cl) {
+  const qui = s => {
+    if (s.s) return cl.fets ? cl.seeds[s.s - 1].n : null;
+    const r = res(s.w), mm = KO.find(k => k.id === s.w);
+    if (!r || !r.w) return null;
+    const [p1, p2] = jugadorsKO(mm, cl);
+    return r.w === 1 ? p1 : p2;
+  };
+  return [qui(m.a), qui(m.bb)];
+}
+const etiquetaKO = s => s.s ? s.s + "è fase final" : "Guanyador " + ({Q:"quarts",S:"semi"}[s.w[0]]) + " " + s.w.slice(1);
+
+/* ===== Pintar ===== */
+const ICO_WA = '<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.5 14.1c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-3.3-.8-2.8-1.1-4.5-3.9-4.7-4.1-.1-.2-1.1-1.5-1.1-2.9s.7-2.1 1-2.4c.3-.3.6-.3.8-.3h.6c.2 0 .4 0 .6.5l.9 2.1c.1.2.1.4 0 .5l-.4.6-.4.4c-.1.1-.3.3-.1.6.2.3.8 1.3 1.6 2.1 1.1 1 2 1.3 2.3 1.4.3.1.5.1.6-.1l.9-1c.2-.3.4-.2.6-.1l2 .9c.3.1.5.2.5.3.1.2.1.7-.1 1.4z"/></svg>';
+
+function filaPartida(m, r, dist) {
+  const n1 = m.p1 ? esc(nom(m.p1)) : `<span class="pend">${esc(m.txt || "Pendent")}</span>`;
+  const n2 = m.p2 ? esc(nom(m.p2)) : `<span class="pend">${esc(m.txt2 || m.txt || "Pendent")}</span>`;
+  const cls = (k) => r && r.w ? (r.w === k ? "win" : "lose") : "";
+  const v = (x) => r ? x : "–";
+  const pot = admin && m.p1 && m.p2;
+  return `<button class="match ${pot ? "edit" : ""}" ${pot ? `data-id="${m.id}"` : "disabled"}>
+    <div class="mtop"><span>${esc(m.top)}</span><span>${r ? (r.e ? r.e + " entrades" : "") : (pot ? "Toca per anotar" : "")}</span></div>
+    <div class="mrow h"><span></span><span>Car.</span><span>Quill.</span><span>Total</span></div>
+    <div class="mrow ${cls(1)} ${m.p1 && mon(m.p1) ? "mon" : ""}"><span class="pn">${n1}</span><span class="v">${v(r && r.c1)}</span><span class="v">${v(r && r.q1)}</span><span class="v t">${v(r && r.t1)}</span></div>
+    <div class="mrow ${cls(2)} ${m.p2 && mon(m.p2) ? "mon" : ""}"><span class="pn">${n2}</span><span class="v">${v(r && r.c2)}</span><span class="v">${v(r && r.q2)}</span><span class="v t">${v(r && r.t2)}</span></div>
+    ${r && (r.s1 || r.s2) ? `<div class="extra">Sèrie major: ${r.s1 || "–"} / ${r.s2 || "–"}</div>` : ""}
+    ${r && !r.w ? `<div class="extra">Empat</div>` : ""}
+  </button>`;
+}
+
+function pintaGrups() {
+  const cl = classificats();
+  let h = `<nav class="chips" aria-label="Grups">${GRUPS.map(G => `<a href="#${G.g}" class="${statsGrup(G).fet ? "done" : ""}">${G.g}</a>`).join("")}</nav>`;
+  for (const G of GRUPS) {
+    const { llista, ms, fet } = statsGrup(G);
+    const mill = cl.fets && cl.millorSegon.g === G.g;
+    h += `<section class="group" id="${G.g}">
+      <div class="ghead"><div class="gl">${G.g}</div>
+        <div><div class="gname">Grup ${G.g}</div><div class="gsub">Dissabte 14 · ${G.h[0]} h · Billar ${G.b}${fet ? " · Acabat" : ""}</div></div>
+        <a class="wa" href="${waGrup(G)}" target="_blank" rel="noopener">${ICO_WA}Enviar</a></div>
+      <table class="std"><thead><tr><th></th><th>Jugador</th><th>PJ</th><th>Pts</th><th class="hide">Dif.</th><th>Fets</th><th class="hide">Prom.</th></tr></thead><tbody>
+      ${llista.map((s, i) => `<tr class="${i === 0 && fet ? "q" : ""} ${mon(s.n) ? "mon" : ""}">
+        <td class="pos">${i + 1}</td>
+        <td class="pl"><div class="pn">${esc(nom(s.n))}${fet && i === 0 ? '<span class="tag q">Quarts</span>' : ""}${fet && i === 1 && mill ? '<span class="tag b">Millor 2n</span>' : ""}</div><div class="pc">${esc(club(s.n))}</div></td>
+        <td class="num">${s.pj}</td><td class="num pts">${s.pts}</td><td class="num hide">${s.dif > 0 ? "+" : ""}${s.dif}</td><td class="num">${s.fets}</td>
+        <td class="num hide">${s.ent ? (s.car / s.ent).toFixed(3).replace(".", ",") : "–"}</td></tr>`).join("")}
+      </tbody></table>
+      <div class="sheet"><h4>Full de resultats · ${DIST_GRUP}</h4>
+        ${ms.map((m, i) => filaPartida({ ...m, top: `${i + 1}a partida · ${m.h} h · Billar ${G.b}` }, m.p1 && m.p2 ? res(m.id) : null)).join("")}
+      </div></section>`;
+  }
+  h += `<div class="card rules"><b>Com es classifica</b><ol>${CRITERIS.map(c => `<li>${NOM_CRITERI[c]}</li>`).join("")}</ol>
+    <div class="note">Total de la partida = caramboles × ${VAL_CAR} + punts de quilles. Passen a quarts els 7 primers de grup i el millor segon.</div></div>`;
+  $("#vGrups").innerHTML = h;
+}
+
+function pintaQuadre() {
+  const cl = classificats();
+  let h = `<div class="card"><div class="row"><h3>Classificats</h3><a class="wa" href="${waQuadre()}" target="_blank" rel="noopener">${ICO_WA}Enviar</a></div>`;
+  if (!cl.fets) h += `<div class="note">Es completa quan s'acabin tots els grups (dissabte a la nit).</div>`;
+  else h += cl.seeds.map((s, i) => `<div class="seed ${mon(s.n) ? "mon" : ""}"><span class="n">${i + 1}</span><span><div class="pn">${esc(nom(s.n))}</div><div class="pc">${esc(club(s.n))}</div></span><span class="o">${s.lloc === 1 ? "1r" : "Millor 2n"} grup ${s.g}<br>${s.pts} pts · ${s.dif > 0 ? "+" : ""}${s.dif}</span></div>`).join("");
+  h += `</div>`;
+  for (const ronda of ["Quarts", "Semifinals", "Final"]) {
+    const ms = KO.filter(k => k.r === ronda);
+    h += `<section class="round ${ronda === "Final" ? "final" : ""}"><h4>${ronda === "Quarts" ? "Quarts de final" : ronda} · diumenge 15 · ${ms[0].h} h</h4>`;
+    for (const m of ms) {
+      const [p1, p2] = jugadorsKO(m, cl);
+      const r = p1 && p2 ? res(m.id) : null;
+      h += filaPartida({ id:m.id, p1, p2, txt:etiquetaKO(m.a), txt2:etiquetaKO(m.bb), top:`${m.id === "F" ? "GRAN FINAL" : m.id} · Billar ${m.b}` }, r);
+    }
+    h += `</section>`;
+  }
+  const f = res("F"); const cl2 = cl;
+  if (f && f.w) { const [a, b] = jugadorsKO(KO[6], cl2); const c = f.w === 1 ? a : b;
+    h = `<div class="card" style="border:2px solid var(--gold);text-align:center"><div class="eyebrow" style="color:var(--warn)">Campió de Catalunya de Biatló 2026</div><h3 style="font-size:40px;margin:6px 0 0">${esc(nom(c))}</h3><div class="pc">${esc(club(c))}</div></div>` + h; }
+  h += `<p class="note">Distàncies: ${DIST_KO}.</p>`;
+  $("#vQuadre").innerHTML = h;
+}
+
+function pinta() {
+  pintaGrups(); pintaQuadre();
+  $("#bAdm").textContent = admin ? "Anotant ✓" : "Anotar resultats";
+  $("#bAdm").classList.toggle("adm", admin);
+}
+
+/* ===== WhatsApp ===== */
+function linia(r, a, b) { return `${nom(a)} ${r.t1} – ${r.t2} ${nom(b)}` + (r.t1 === r.t2 && r.w ? ` (guanya ${nom(r.w === 1 ? a : b)})` : ""); }
+function waGrup(G) {
+  const { llista, ms, fet } = statsGrup(G);
+  let t = `🎱 *Campionat de Catalunya de Biatló* · CB Monforte\n*GRUP ${G.g}* · Dissabte 14 · Billar ${G.b}\n\n`;
+  const jug = ms.filter(m => m.p1 && m.p2 && res(m.id));
+  if (jug.length) t += "*Resultats*\n" + jug.map(m => { const r = res(m.id); return `${m.h} · ${linia(r, m.p1, m.p2)} (${r.c1}+${r.q1} / ${r.c2}+${r.q2})`; }).join("\n") + "\n\n";
+  else t += `Horaris: ${G.h.join(", ")} h\n\n`;
+  t += `*Classificació${fet ? " final" : ""}*\n` + llista.map((s, i) => `${i + 1}. ${nom(s.n)} · ${s.pts} pts · ${s.dif > 0 ? "+" : ""}${s.dif}`).join("\n");
+  t += `\n\nResultats en directe 👉 ${URL_APP}#${G.g}`;
+  return "https://wa.me/?text=" + encodeURIComponent(t);
+}
+function waQuadre() {
+  const cl = classificats();
+  let t = `🏆 *Campionat de Catalunya de Biatló* · CB Monforte\n*ELIMINATÒRIES* · Diumenge 15\n\n`;
+  for (const m of KO) {
+    const [p1, p2] = jugadorsKO(m, cl), r = p1 && p2 ? res(m.id) : null;
+    const nomR = { Q:"Quarts", S:"Semi", F:"FINAL" }[m.id[0]];
+    t += `${nomR} ${m.h} · ` + (r ? linia(r, p1, p2) : `${p1 ? nom(p1) : etiquetaKO(m.a)} – ${p2 ? nom(p2) : etiquetaKO(m.bb)}`) + "\n";
+  }
+  t += `\nQuadre en directe 👉 ${URL_APP}#quadre`;
+  return "https://wa.me/?text=" + encodeURIComponent(t);
+}
+
+/* ===== Dades: intermediari o mòbil ===== */
+async function carrega() {
+  if (!local) {
+    try {
+      const r = await fetch(API + "?accio=biatlo", { cache:"no-store" });
+      const d = await r.json();
+      if (!r.ok || d.error) throw new Error(d.error || r.status);
+      R = d.resultats || {};
+      $("#upd").textContent = "Actualitzat a les " + new Date().toLocaleTimeString("ca", { hour:"2-digit", minute:"2-digit" });
+      $("#banner").hidden = true;
+      pinta(); return;
+    } catch (e) { local = true; }
+  }
+  try { R = JSON.parse(localStorage.getItem("biatlo-local") || "{}"); } catch (e) { R = {}; }
+  $("#banner").hidden = false;
+  $("#banner").textContent = PROVA ? "Mode prova: els resultats només es desen en aquest mòbil." : "No s'ha pogut connectar amb el servidor. Els resultats que anotis ara només es desaran en aquest mòbil.";
+  $("#upd").textContent = "Sense connexió";
+  pinta();
+}
+async function desa(id, dades) {
+  if (local) {
+    if (dades) R[id] = { ...dades, t: Date.now() }; else delete R[id];
+    try { localStorage.setItem("biatlo-local", JSON.stringify(R)); } catch (e) {}
+    pinta(); return true;
+  }
+  const r = await fetch(API + "?accio=biatlo", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ pin, id, dades }) });
+  const d = await r.json().catch(() => ({}));
+  if (r.status === 403) { try { localStorage.removeItem("biatlo-pin"); } catch (e) {} pin = null; admin = false; pinta(); toast("Codi incorrecte"); return false; }
+  if (!r.ok || d.error) { toast("No s'ha pogut desar: " + (d.error || r.status)); return false; }
+  R = d.resultats || R; pinta(); return true;
+}
+
+/* ===== Anotar ===== */
+function trobaPartida(id) {
+  if (id[0] === "G") { const G = GRUPS.find(g => g.g === id[1]); const m = partidesGrup(G)[+id[2] - 1]; return { ...m, dist: DIST_GRUP, titol: `Grup ${G.g} · ${id[2]}a partida` }; }
+  const m = KO.find(k => k.id === id), [p1, p2] = jugadorsKO(m, classificats());
+  return { id, p1, p2, dist: DIST_KO, titol: m.id === "F" ? "Final" : m.r + " " + m.id.slice(1) };
+}
+function obre(id) {
+  const m = trobaPartida(id), r = R[id] || {};
+  const inp = (k, v) => `<input type="number" inputmode="numeric" min="0" max="999" name="${k}" value="${v ?? ""}">`;
+  $("#frm").innerHTML = `<h3>${esc(m.titol)}</h3><div class="s">${esc(m.dist)}</div>
+    <div class="grid"><span></span><span class="hd">Car.</span><span class="hd">Quilles</span><span class="hd">Total</span>
+      <span class="nm">${esc(nom(m.p1))}</span>${inp("c1", r.c1)}${inp("q1", r.q1)}<span class="tt" id="t1">–</span>
+      <span class="nm">${esc(nom(m.p2))}</span>${inp("c2", r.c2)}${inp("q2", r.q2)}<span class="tt" id="t2">–</span></div>
+    <div class="f2"><label>Entrades${inp("e", r.e)}</label><label>Sèrie ${esc(nom(m.p1).split(" ")[0])}${inp("s1", r.s1)}</label><label>Sèrie ${esc(nom(m.p2).split(" ")[0])}${inp("s2", r.s2)}</label></div>
+    <div class="tie" id="tie" hidden>Empat a punts. Qui guanya?<select name="g"><option value="0">Empat (1 punt cadascú)</option><option value="1">${esc(nom(m.p1))}</option><option value="2">${esc(nom(m.p2))}</option></select></div>
+    <div class="acts">${R[id] ? '<button class="btn d" value="del">Esborrar</button>' : ""}<button class="btn g" value="no">Cancel·lar</button><button class="btn p" value="ok">Desar</button></div>`;
+  const f = $("#frm");
+  if (r.g) f.g.value = r.g;
+  const ko = id[0] !== "G";
+  if (ko) f.g.options[0].remove();
+  const calc = () => {
+    const t1 = total(+f.c1.value, +f.q1.value), t2 = total(+f.c2.value, +f.q2.value);
+    $("#t1").textContent = t1; $("#t2").textContent = t2;
+    $("#tie").hidden = !(t1 === t2 && (f.c1.value || f.q1.value));
+  };
+  f.oninput = calc; calc();
+  const dlg = $("#dlg");
+  dlg.onclose = async () => {
+    const v = dlg.returnValue;
+    if (v === "del") { if (await desa(id, null)) toast("Resultat esborrat"); }
+    if (v !== "ok") return;
+    const n = k => Math.max(0, parseInt(f[k].value, 10) || 0);
+    const d = { c1:n("c1"), q1:n("q1"), c2:n("c2"), q2:n("q2"), e:n("e"), s1:n("s1"), s2:n("s2"), g: total(n("c1"), n("q1")) === total(n("c2"), n("q2")) ? +f.g.value : 0 };
+    if (ko && total(d.c1, d.q1) === total(d.c2, d.q2) && !d.g) d.g = 1;
+    if (await desa(id, d)) toast("Desat ✓");
+  };
+  dlg.returnValue = ""; dlg.showModal();
+}
+
+/* ===== Navegació i esdeveniments ===== */
+function vista(v) {
+  const q = v === "quadre";
+  $("#vGrups").hidden = q; $("#vQuadre").hidden = !q;
+  $("#tGrups").setAttribute("aria-selected", !q); $("#tQuadre").setAttribute("aria-selected", q);
+}
+$("#tGrups").onclick = () => { history.replaceState(null, "", location.pathname + location.search + (PROVA ? "#prova" : "")); vista("grups"); scrollTo(0, 0); };
+$("#tQuadre").onclick = () => { history.replaceState(null, "", "#quadre" + (PROVA ? "-prova" : "")); vista("quadre"); scrollTo(0, 0); };
+document.addEventListener("click", e => { const b = e.target.closest(".match.edit"); if (b && admin) obre(b.dataset.id); });
+$("#bAdm").onclick = () => {
+  if (admin) { admin = false; pinta(); return; }
+  if (!pin && !local) {
+    const p = prompt("Codi per anotar resultats:"); if (!p) return;
+    pin = p.trim(); try { localStorage.setItem("biatlo-pin", pin); } catch (e) {}
+  }
+  admin = true; pinta(); toast("Toca una partida per anotar-la");
+};
+function toast(t) { const el = $("#toast"); el.textContent = t; el.hidden = false; clearTimeout(toast.t); toast.t = setTimeout(() => el.hidden = true, 3000); }
+
+function inicial() {
+  const h = location.hash.replace("#", "").replace("-prova", "");
+  if (h.startsWith("quadre")) vista("quadre");
+  else { vista("grups"); if (/^[A-G]$/.test(h)) setTimeout(() => document.getElementById(h)?.scrollIntoView(), 50); }
+}
+carrega().then(inicial);
+setInterval(() => { if (!local && !$("#dlg").open) carrega(); }, 30000);
+</script>
+</body>
+</html>

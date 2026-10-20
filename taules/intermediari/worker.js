@@ -16,6 +16,8 @@
 //   GET  /?veure=...                         -> consulta d'una pàgina (només lectura, per diagnosi)
 //   GET  /?accio=conv&j=N                    -> convocatòries dels equips A-E de la jornada N (app CONVOCATORIES)
 //   POST /?accio=conv&j=N  {equips:{B:{...}}} -> desa la convocatòria dels equips que s'envien
+//   GET  /?accio=biatlo                      -> resultats del Campionat de Catalunya de Biatló (app BIATLO)
+//   POST /?accio=biatlo {pin,id,dades|null}  -> desa (o esborra) el resultat d'una partida
 
 const BASE = "http://monforte.wifibillar.com/";
 const TAULES = [1, 2, 3, 4];
@@ -473,6 +475,28 @@ async function convocatories(request, params, env) {
   return json({ j, equips });
 }
 
+/* ---------- Campionat de Catalunya de Biatló (app BIATLO, KV "CAMS", clau biatlo:2026) ---------- */
+const PIN_BIATLO = "1415";   // codi per anotar resultats a l'app (canvia'l si vols)
+async function biatlo(request, env) {
+  const kv = env && env.CAMS;
+  if (!kv) return json({ error: "Falta l'enllaç CAMS (KV) a l'intermediari" }, 500);
+  const clau = "biatlo:2026";
+  const res = (await kv.get(clau, "json")) || {};
+  if (request.method !== "POST") return json({ resultats: res });
+  const cos = await request.json();
+  if (!cos || String(cos.pin) !== PIN_BIATLO) return json({ error: "Codi incorrecte" }, 403);
+  const id = String(cos.id || "");
+  if (!/^(G[A-G][123]|Q[1-4]|S[12]|F)$/.test(id)) return json({ error: "Partida incorrecta" }, 400);
+  if (cos.dades === null) { delete res[id]; }
+  else {
+    const d = cos.dades || {}, n = v => Math.max(0, Math.min(999, parseInt(v, 10) || 0));
+    res[id] = { c1: n(d.c1), q1: n(d.q1), c2: n(d.c2), q2: n(d.q2), e: n(d.e),
+      s1: n(d.s1), s2: n(d.s2), g: d.g === 1 || d.g === 2 ? d.g : 0, t: Date.now() };
+  }
+  await kv.put(clau, JSON.stringify(res));
+  return json({ resultats: res });
+}
+
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
@@ -482,6 +506,7 @@ export default {
       const accio = params.get("accio");
       if (["cam", "ordres", "estat"].includes(accio)) return await cameres(accio, request, params, env);
       if (accio === "conv") return await convocatories(request, params, env);
+      if (accio === "biatlo") return await biatlo(request, env);
       if (!accio) return json({ actualitzat: new Date().toISOString(), taules: await taulesOcupades() });
       if (accio === "pools") return json(await pools());
       if (accio === "fases") return json(await fases(params.get("pool")));
