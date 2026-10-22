@@ -97,9 +97,16 @@
     font-weight:800;font-size:20px;letter-spacing:8px;text-transform:uppercase;
   }
   footer span{color:var(--llima)}
+
+  /* foto del tauler fet a mà del club, de fons, difuminada i molt subtil */
+  .fons-tauler{position:absolute;inset:-40px;background-size:cover;background-position:center 40%;
+    filter:blur(6px) saturate(.75);opacity:.26;pointer-events:none}
+  .fons-tauler::after{content:"";position:absolute;inset:0;
+    background:linear-gradient(180deg,rgba(6,38,26,.15),rgba(6,38,26,.55))}
 </style>
 </head>
 <body>
+  <div class="fons-tauler" id="fonsTauler"></div>
   <div class="franja v"></div><div class="franja l"></div>
 
   <header>
@@ -129,6 +136,11 @@
 
 <script>
   const D = window.DADES;
+  { // fons: columna d'aquest equip al tauler del club (si n'hi ha foto)
+    const img = new Image(), url = `tauler/${D.equip}.jpg`;
+    img.onload = () => { document.getElementById('fonsTauler').style.backgroundImage = `url(${url})`; };
+    img.src = url;
+  }
   const ordinal = n => n === 1 ? 'r' : n === 2 ? 'n' : n === 3 ? 'r' : n === 4 ? 't' : 'è';
   document.getElementById('sub').textContent = D.jornada + ' · ' + D.data;
   document.getElementById('lletra').textContent = '"' + D.equip + '"';
