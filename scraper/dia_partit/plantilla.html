@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<title>Dia de partit</title>
+<style>
+  @font-face{font-family:"Inter Display";font-weight:900;src:url(../cartell_lliga/fonts/InterDisplay-Black.otf)}
+  @font-face{font-family:"Inter Display";font-weight:800;src:url(../cartell_lliga/fonts/InterDisplay-ExtraBold.otf)}
+  @font-face{font-family:"Inter";font-weight:600;src:url(../cartell_lliga/fonts/Inter-SemiBold.otf)}
+  @font-face{font-family:"Inter";font-weight:700;src:url(../cartell_lliga/fonts/Inter-Bold.otf)}
+  @font-face{font-family:"Inter";font-weight:800;src:url(../cartell_lliga/fonts/Inter-ExtraBold.otf)}
+  :root{--verd-fosc:#06261a;--vermell:#c8102e;--llima:#c8ff1a;--blanc:#f4f7f2;--gris:#9fb5a8}
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{width:1080px;height:1920px;overflow:hidden}
+  body{font-family:"Inter",sans-serif;color:var(--blanc);position:relative;
+    background:radial-gradient(ellipse 900px 900px at 70% 55%, rgba(40,140,90,.35), transparent 70%),
+      linear-gradient(180deg,#0b3a26 0%,var(--verd-fosc) 100%)}
+  body::before{content:"";position:absolute;inset:0;pointer-events:none;
+    background-image:repeating-linear-gradient(45deg,rgba(255,255,255,.018) 0 2px,transparent 2px 6px)}
+
+  header{position:absolute;left:0;right:0;top:0;height:420px;padding:170px 60px 0;border-bottom:5px solid var(--llima)}
+  header h1{font-family:"Inter Display",sans-serif;font-weight:900;font-size:122px;line-height:.9;letter-spacing:-1px;text-transform:uppercase}
+  header h1 em{font-style:normal;color:var(--llima)}
+  header .sub{margin-top:20px;font-weight:700;font-size:25px;letter-spacing:6px;text-transform:uppercase;color:var(--gris)}
+  header .sub b{color:var(--blanc)}
+  .franja{position:absolute;right:-90px;top:110px;width:260px;height:22px;background:var(--vermell);transform:rotate(-8deg)}
+  .franja.l{top:138px;height:8px;background:var(--llima);width:220px}
+
+  .cos{position:absolute;top:425px;bottom:0;left:0;right:0;display:grid;grid-template-columns:330px minmax(0,1fr)}
+  .esq{background:linear-gradient(180deg,#0e4a31,#072a1d);border-right:2px solid rgba(200,255,26,.35);
+    display:flex;flex-direction:column;align-items:center;padding-top:380px}
+  .esq img{width:270px;filter:drop-shadow(0 16px 30px rgba(0,0,0,.6))}
+  .esq .club{margin-top:26px;font-weight:800;font-size:22px;letter-spacing:8px;text-transform:uppercase}
+  .esq .club span{color:var(--llima)}
+
+  .dreta{padding:120px 50px 0 50px;overflow:hidden}
+  .div{font-weight:700;font-size:20px;letter-spacing:3px;line-height:1.6;text-transform:uppercase;color:var(--gris)}
+  .div b{color:var(--blanc)}
+  .eq{font-family:"Inter Display",sans-serif;font-weight:900;font-size:64px;line-height:1;text-transform:uppercase;white-space:nowrap}
+  .eq.mon{color:var(--llima);margin-top:30px}
+  .vs{margin:18px 0;font-family:"Inter Display",sans-serif;font-weight:900;font-size:40px;color:var(--vermell);letter-spacing:4px}
+  .hora{margin-top:60px;display:flex;align-items:center;gap:22px}
+  .hora b{font-family:"Inter Display",sans-serif;font-weight:900;font-size:96px;line-height:1;padding:6px 22px 10px;
+    border-radius:16px;background:var(--llima);color:#0b2a1c}
+  .hora span{font-weight:800;font-size:23px;letter-spacing:4px;text-transform:uppercase;line-height:1.5}
+  .hora span i{font-style:normal;color:var(--gris);display:block}
+  .juguen{margin-top:90px}
+  .juguen h2{font-weight:800;font-size:22px;letter-spacing:6px;text-transform:uppercase;color:var(--gris);margin-bottom:18px}
+  .juguen li{list-style:none;display:flex;align-items:center;gap:18px;padding:22px 24px;margin-bottom:16px;border-radius:14px;
+    background:linear-gradient(90deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border-left:6px solid var(--llima);
+    font-family:"Inter Display",sans-serif;font-weight:800;font-size:40px;text-transform:uppercase;white-space:nowrap}
+  .juguen li small{font-family:"Inter",sans-serif;font-weight:800;font-size:22px;color:var(--llima);width:30px}
+
+  /* ===== animacions (només per al Reel) ===== */
+  html.reel *{animation-play-state:paused !important;animation-fill-mode:both !important}
+  html.reel header h1{animation:cop .7s cubic-bezier(.2,1.5,.4,1) .1s}
+  html.reel header .sub{animation:puja .5s ease-out .6s}
+  html.reel .esq img{animation:gira .9s cubic-bezier(.2,1.3,.4,1) .5s}
+  html.reel .div{animation:puja .5s ease-out 1.0s}
+  html.reel .eq.mon{animation:entra .55s cubic-bezier(.2,.9,.3,1) 1.3s}
+  html.reel .vs{animation:pop .4s cubic-bezier(.2,1.8,.4,1) 1.75s}
+  html.reel .eq.riv{animation:entra .55s cubic-bezier(.2,.9,.3,1) 2.0s}
+  html.reel .hora{animation:pop .5s cubic-bezier(.2,1.6,.4,1) 2.7s}
+  html.reel .juguen h2{animation:puja .4s ease-out 3.4s}
+  html.reel .juguen li{animation:entra .45s cubic-bezier(.2,.9,.3,1) calc(3.7s + var(--i) * .3s)}
+  @keyframes cop{from{opacity:0;transform:scale(1.7)}to{opacity:1;transform:none}}
+  @keyframes puja{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+  @keyframes entra{from{opacity:0;transform:translateX(160px)}to{opacity:1;transform:none}}
+  @keyframes pop{from{opacity:0;transform:scale(.3)}to{opacity:1;transform:none}}
+  @keyframes gira{from{opacity:0;transform:scale(.5) rotate(-25deg)}to{opacity:1;transform:none}}
+
+  /* diversos partits el mateix dia */
+  .llista{display:flex;flex-direction:column;gap:26px}
+  .targeta{position:relative;padding:24px 26px 26px 32px;border-radius:18px;
+    background:linear-gradient(90deg,rgba(255,255,255,.09),rgba(255,255,255,.03));border:1px solid rgba(255,255,255,.1)}
+  .targeta::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;border-radius:18px 0 0 18px;background:var(--llima)}
+  .targeta .div{font-size:17px}
+  .targeta .eq{font-size:40px;margin-top:10px}
+  .targeta .eq.mon{margin-top:10px}
+  .targeta .vs{font-size:24px;margin:4px 0}
+  .targeta .peu{margin-top:16px;display:flex;align-items:center;gap:16px}
+  .targeta .peu b{font-family:"Inter Display",sans-serif;font-weight:900;font-size:40px;padding:2px 14px 4px;border-radius:10px;background:var(--llima);color:#0b2a1c}
+  .targeta .peu span{font-weight:700;font-size:19px;letter-spacing:2px;color:var(--gris);line-height:1.35}
+  html.reel .targeta{animation:entra .55s cubic-bezier(.2,.9,.3,1) calc(1.2s + var(--i) * .7s)}
+</style>
+</head>
+<body>
+  <header>
+    <div class="franja"></div><div class="franja l"></div>
+    <h1>#Dia<em>De</em>Partit</h1>
+    <div class="sub" id="sub"></div>
+  </header>
+  <div class="cos">
+    <div class="esq">
+      <img src="escut.png" alt="">
+      <div class="club">CB <span>Monforte</span></div>
+    </div>
+    <div class="dreta" id="dreta"></div>
+  </div>
+<script>
+  if (window.REEL) document.documentElement.classList.add('reel');
+  const D = window.DADES;                    // {sub, dia, partits:[{equip,divisio,rival,hora,jugadors}]}
+  document.getElementById('sub').innerHTML = D.sub;
+  const esc = t => String(t).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const mon = p => `CB Monforte "${p.equip}"`;
+  const dreta = document.getElementById('dreta');
+  if (D.partits.length === 1) {
+    const p = D.partits[0];
+    dreta.innerHTML = `
+      <div class="div">${p.divisio}</div>
+      <div class="eq mon">${esc(mon(p))}</div>
+      <div class="vs">VS</div>
+      <div class="eq riv">${esc(p.rival)}</div>
+      <div class="hora">${p.hora ? `<b>${p.hora}</b>` : ''}<span>A casa<i>${D.dia}</i></span></div>
+      ${p.jugadors && p.jugadors.length ? `<div class="juguen"><h2>Juguen</h2><ul>${
+        p.jugadors.map((j, i) => `<li style="--i:${i}"><small>${i + 1}</small>${esc(j)}</li>`).join('')}</ul></div>` : ''}`;
+  } else {
+    dreta.style.paddingTop = '70px';
+    dreta.innerHTML = `<div class="llista">${D.partits.map((p, i) => `
+      <div class="targeta" style="--i:${i}">
+        <div class="div">${p.divisio}</div>
+        <div class="eq mon">${esc(mon(p))}</div>
+        <div class="vs">VS</div>
+        <div class="eq riv">${esc(p.rival)}</div>
+        <div class="peu">${p.hora ? `<b>${p.hora}</b>` : ''}<span>${p.jugadors && p.jugadors.length ? esc(p.jugadors.join(' · ')) : 'A casa · ' + D.dia}</span></div>
+      </div>`).join('')}</div>`;
+  }
+  document.querySelectorAll('.eq').forEach(eq => {
+    let m = parseFloat(getComputedStyle(eq).fontSize);
+    while (eq.scrollWidth > eq.clientWidth && m > 24) { m--; eq.style.fontSize = m + 'px'; }
+  });
+</script>
+</body>
+</html>

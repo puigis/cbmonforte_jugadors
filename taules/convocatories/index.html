@@ -71,11 +71,11 @@ button{cursor:pointer}
 .head h2{margin:0;font-size:20px;text-wrap:balance}
 .head .eyebrow{color:var(--gold)}
 .alert{margin-top:12px;border-radius:12px;padding:12px 14px;background:var(--bad);color:#fff;font-weight:600}
-.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-top:12px}
+.info{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.6fr);gap:10px;margin-top:12px}
 .box{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-width:0}
 .lab{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
 .val{font-weight:700;margin-top:3px;overflow-wrap:anywhere}
-.box input[type=date]{width:100%;border:1px solid var(--line);border-radius:8px;padding:5px 6px;background:var(--bg);margin-top:3px;font-weight:600}
+.box input[type=date],.box input[type=time]{width:100%;border:1px solid var(--line);border-radius:8px;padding:5px 6px;background:var(--bg);margin-top:3px;font-weight:600}
 .moved{font-size:12px;color:var(--warn);font-weight:600;margin-top:4px}
 @media (max-width:520px){.info{grid-template-columns:1fr 1fr}.info .rival{grid-column:1/-1}}
 h3{font-family:var(--display);font-weight:700;font-size:24px;text-transform:uppercase;letter-spacing:.02em;margin:22px 0 8px;display:flex;align-items:baseline;gap:10px}
@@ -210,7 +210,7 @@ function home(){
     return `<button class="tile ${s.cls==="bad"?"bad":""}" data-team="${t}">
       <div class="letter">${t}</div>
       <div class="tmeta"><div class="tname">${m.v==="L"?"Monforte "+t+" – "+esc(rivalName(m.r)):esc(rivalName(m.r))+" – Monforte "+t}</div>
-      <div class="tsub">${DIV[t]} · ${m.v==="L"?"A casa":"Fora"}${moved?" · Data canviada: "+fmt(dateOf(t)):""}</div></div>
+      <div class="tsub">${DIV[t]} · ${m.v==="L"?"A casa":"Fora"}${doc(t).hora?" · "+doc(t).hora+" h":""}${moved?" · Data canviada: "+fmt(dateOf(t)):""}</div></div>
       <span class="chip ${s.cls}">${s.txt}</span></button>`;}).join("")}
   </div>`;
 }
@@ -229,6 +229,8 @@ function team(t){
     <div class="box"><div class="lab">Data</div>
       <input type="date" id="data-${t}" value="${dateOf(t)}" aria-label="Data de l'encontre">
       ${moved?`<div class="moved">Data oficial: ${fmt(m.d)}</div>`:""}</div>
+    <div class="box"><div class="lab">Hora</div>
+      <input type="time" id="hora-${t}" value="${d.hora||""}" step="300" aria-label="Hora de l'encontre"></div>
     <div class="box"><div class="lab">On</div><div class="val"><span class="chip ${m.v==="L"?"home":"away"}">${m.v==="L"?"A casa":"Fora"}</span></div></div>
     <div class="box rival"><div class="lab">Rival</div><div class="val">${esc(m.r)}</div></div>
   </div>
@@ -258,7 +260,7 @@ function team(t){
 function waText(t){
   const m=match(t),d=doc(t);
   const l=sorted(d.conv).map((id,i)=>`${i+1}. ${P[id].n}`).join("\n")||"(pendent)";
-  return `*CB MONFORTE "${t}" · JORNADA ${J}*\n${fmt(dateOf(t))}\n${m.v==="L"?"A casa":"Fora"} contra ${m.r}\n\n*Convocats:*\n${l}`;
+  return `*CB MONFORTE "${t}" · JORNADA ${J}*\n${fmt(dateOf(t))}${d.hora?" · "+d.hora+" h":""}\n${m.v==="L"?"A casa":"Fora"} contra ${m.r}\n\n*Convocats:*\n${l}`;
 }
 const waLink=t=>"https://wa.me/?text="+encodeURIComponent(waText(t));
 
@@ -286,6 +288,7 @@ function added(t,id){
 }
 const doAdd=(t,id)=>save(t,added(t,id));
 function rmPlayer(t,id){const d=doc(t);save(t,{...d,conv:d.conv.filter(x=>x!==id)});}
+function setHora(t,v){const d=doc(t);if((d.hora||"")===v)return;save(t,{...d,conv:d.conv,hora:v||null});}
 function setDate(t,v){const d=doc(t),m=match(t);if(!v)return;save(t,{...d,conv:d.conv,data:v===m.d?null:v});}
 
 /* ---------- ui helpers ---------- */
@@ -309,6 +312,7 @@ function bind(){
   a.querySelectorAll("[data-add]").forEach(b=>b.onclick=()=>addPlayer(view,b.dataset.add));
   a.querySelectorAll("[data-rm]").forEach(b=>b.onclick=()=>rmPlayer(view,b.dataset.rm));
   const di=a.querySelector("input[type=date]");if(di)di.onchange=()=>setDate(view,di.value);
+  const hi=a.querySelector("input[type=time]");if(hi)hi.onchange=()=>setHora(view,hi.value);
   const qi=a.querySelector("#q");if(qi){qi.oninput=()=>{q=qi.value;render();};}
 }
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});

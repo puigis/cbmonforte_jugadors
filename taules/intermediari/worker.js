@@ -470,6 +470,7 @@ async function convocatories(request, params, env) {
       perj: !!e.perj,
       perjMsg: typeof e.perjMsg === "string" ? e.perjMsg.slice(0, 200) : "",
       data: typeof e.data === "string" && /^\d{4}-\d{2}-\d{2}$/.test(e.data) ? e.data : null,
+      hora: typeof e.hora === "string" && /^([01]\d|2[0-3]):[0-5]\d$/.test(e.hora) ? e.hora : null,
       t: Date.now(),
     };
   }

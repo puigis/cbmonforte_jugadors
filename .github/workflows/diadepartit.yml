@@ -1,0 +1,74 @@
+name: Dia de partit (cada dia)
+
+on:
+  schedule:
+    # Cada dia a les 8:00 hora de Madrid (8 UTC a l'hivern, 6 UTC a l'estiu: el primer pas deixa passar la bona).
+    # La història i el Reel es publiquen a les 10 h des d'una tasca programada a part (Metricool).
+    - cron: "0 6 * * *"
+    - cron: "0 7 * * *"
+  workflow_dispatch:
+    inputs:
+      data:
+        description: "Dia AAAA-MM-DD (buit = avui)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+concurrency:
+  group: descarrega
+  cancel-in-progress: false
+
+jobs:
+  diadepartit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Comprova que són les 8 h a Madrid
+        id: hora
+        run: |
+          ZONA=$(TZ=Europe/Madrid date +%z)
+          PROG="${{ github.event.schedule }}"
+          if [ "${{ github.event_name }}" != "schedule" ] \
+             || { [ "$ZONA" = "+0200" ] && [ "$PROG" = "0 6 * * *" ]; } \
+             || { [ "$ZONA" = "+0100" ] && [ "$PROG" = "0 7 * * *" ]; }; then
+            echo "segueix=si" >> "$GITHUB_OUTPUT"
+          else
+            echo "segueix=no" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/checkout@v4
+        if: steps.hora.outputs.segueix == 'si'
+
+      - uses: actions/setup-python@v5
+        if: steps.hora.outputs.segueix == 'si'
+        with:
+          python-version: "3.12"
+
+      - name: Instal·la dependències
+        if: steps.hora.outputs.segueix == 'si'
+        run: |
+          pip install -r scraper/requirements.txt playwright
+          python -m playwright install --with-deps chromium
+          sudo apt-get install -y ffmpeg || true
+
+      - name: Genera la història i el Reel si avui hi ha partit a casa
+        if: steps.hora.outputs.segueix == 'si'
+        env:
+          DATA: ${{ inputs.data }}
+        run: python scraper/dia_partit.py
+
+      - name: Desa els canvis al repositori
+        if: steps.hora.outputs.segueix == 'si'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add imatges/
+          if git diff --cached --quiet; then
+            echo "Avui no hi ha partit a casa."
+          else
+            git commit -m "Dia de partit $(TZ=Europe/Madrid date +'%Y-%m-%d')"
+            git pull --rebase
+            git push
+          fi

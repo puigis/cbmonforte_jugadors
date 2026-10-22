@@ -83,11 +83,13 @@ def munta_video(carpeta, canco, sortida):
 def main():
     ref = os.environ.get("DATA") or None
     dies = int(os.environ.get("DIES") or 7)
-    dades = converteix(EQUIPS, ref, dies)
+    dia = ref or datetime.date.today().isoformat()
+    cartell = SORTIDA / f"lliga-{dia}.json"
+    # mateixes dades que el cartell d'aquest dia (inclosos els partits ajornats recuperats)
+    dades = json.loads(cartell.read_text(encoding="utf-8")) if cartell.exists() else converteix(EQUIPS, ref, dies)
     if dades is None:
         print("Aquesta setmana no hi ha partits de lliga: no es genera el Reel.")
         return
-    dia = ref or datetime.date.today().isoformat()
     canco = tria_canco(dia, os.environ.get("CANCO"), dies)
     SORTIDA.mkdir(exist_ok=True)
     sortida = SORTIDA / f"reel-lliga-{dia}.mp4"

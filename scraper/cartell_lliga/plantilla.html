@@ -160,6 +160,33 @@
     from{opacity:0;transform:translate(-50%,-50%) rotate(-24deg) scale(3)}
     to{opacity:1;transform:translate(-50%,-50%) rotate(-9deg) scale(1)}}
   @keyframes tremola{0%,100%{translate:0 0}25%{translate:-7px 3px}50%{translate:6px -3px}75%{translate:-4px 2px}}
+
+  /* partit ajornat que es recupera en un cartell posterior */
+  .cap .nota{font-style:normal;color:var(--llima)}
+  /* més de 5 partits (algun ajornat recuperat): tot una mica més compacte */
+  body.compacte header{padding-top:34px}
+  body.compacte .escut{height:150px}
+  body.compacte .titol{font-size:58px;margin-top:10px}
+  body.compacte main{margin-top:26px;gap:10px}
+  body.compacte .partit{padding:9px 22px 10px}
+  body.compacte .cap{font-size:15px;margin-bottom:4px}
+  body.compacte .marcador{height:64px;font-size:44px}
+  body.compacte .equip{font-size:28px}
+  html.reel body.compacte header{padding-top:150px}
+  html.reel body.compacte .escut{height:220px}
+  html.reel body.compacte main{gap:18px}
+  html.reel body.compacte .partit{padding:16px 26px 18px}
+  html.reel body.compacte .marcador{height:84px;font-size:58px}
+  html.reel body.compacte .equip{font-size:34px}
+
+  /* un o dos partits: files més grans i centrades */
+  body.pocs main{position:absolute;left:56px;right:56px;top:50%;margin:0;transform:translateY(-25%);gap:26px}
+  body.pocs .partit{padding:22px 28px 26px}
+  body.pocs .cap{font-size:20px;margin-bottom:12px}
+  body.pocs .equip{font-size:40px}
+  body.pocs .marcador{height:104px;font-size:72px}
+  body.pocs .fila{grid-template-columns:minmax(0,1fr) 230px minmax(0,1fr)}
+  html.reel body.pocs main{transform:translateY(-35%)}
 </style>
 </head>
 <body>
@@ -208,7 +235,7 @@
       : `<div class="marcador"><span class="${cls(gl,gv,casa)}">${gl}</span><span class="sep">–</span><span class="${cls(gv,gl,!casa)}">${gv}</span></div>`;
     return `
     <section class="partit ${res}" style="--i:${i}">
-      <div class="cap"><span>Equip <b>${p.equip}</b> · ${p.divisio}</span>${txt ? `<span class="xip">${txt}</span>` : ''}</div>
+      <div class="cap"><span>Equip <b>${p.equip}</b> · ${p.nota ? `<em class="nota">${p.nota}</em>` : p.divisio}</span>${txt ? `<span class="xip">${txt}</span>` : ''}</div>
       <div class="fila">
         <div class="equip local ${esMonforte(local)?'monforte':''}"><span class="nom">${local}</span><small>Local</small></div>
         ${marcador}
@@ -216,6 +243,8 @@
       </div>
     </section>`;
   }).join('');
+  if (D.partits.length > 5) document.body.classList.add('compacte');
+  if (D.partits.length <= 2) document.body.classList.add('pocs');
   document.getElementById('partits').innerHTML = html;
   // encongeix els noms que no caben en una línia
   document.querySelectorAll('.equip').forEach(eq => {
