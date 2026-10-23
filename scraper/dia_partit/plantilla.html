@@ -106,6 +106,7 @@
   const dreta = document.getElementById('dreta');
   if (D.partits.length === 1) {
     const p = D.partits[0];
+    if (!(p.jugadors && p.jugadors.length)) dreta.style.paddingTop = '330px';   // sense noms: centrat
     dreta.innerHTML = `
       <div class="div">${p.divisio}</div>
       <div class="eq mon">${esc(mon(p))}</div>
