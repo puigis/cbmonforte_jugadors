@@ -13,7 +13,9 @@
 //   GET  /?accio=caramboles&pool=N&fase=F&jugador=J -> caramboles que proposa el wifibillar
 //   POST /?accio=crear   (JSON)              -> crea jugadors si cal, assigna i genera la partida
 //   GET  /?accio=crear&simular=1&dades=JSON  -> mostra què enviaria, sense enviar res
-//   GET  /?veure=...                         -> consulta d'una pàgina (només lectura, per diagnosi)
+//   POST /?accio=foto {id,url}               -> canvia la foto (fotourl) d'un jugador del Monforte (enllaç de Drive)
+//   GET  /?accio=foto&id=N&url=...           -> simula el canvi de foto, sense escriure res
+//   GET  /?veure=...                       -> consulta d'una pàgina (només lectura, per diagnosi)
 //   GET  /?accio=conv&j=N                    -> convocatòries dels equips A-E de la jornada N (app CONVOCATORIES)
 //   POST /?accio=conv&j=N  {equips:{B:{...}}} -> desa la convocatòria dels equips que s'envien
 //   GET  /?accio=biatlo                      -> resultats del Campionat de Catalunya de Biatló (app BIATLO)
@@ -260,6 +262,45 @@ async function canviaMarcadorUnCop(id, marcador, simular, registre, ultim, reint
   if (ara && ara.nom.includes(marcador)) { registre.push(`Nom al marcador: ${actual} -> ${marcador}`); return "fet"; }
   if (!ultim) return "reintentar";
   registre.push(`He intentat canviar el nom al marcador de ${alf} però no s'ha desat (es queda: ${actual})`);
+}
+
+// Canvia la foto (camp "fotourl") de la fitxa d'un jugador del Monforte.
+// Només accepta enllaços de Google Drive. Obre la fitxa, canvia només aquest camp i torna a enviar la resta tal com estava.
+// Guarda l'enllaç anterior al KV (foto:ID) per poder-lo recuperar.
+async function canviaFoto(d, env) {
+  const id = String(d.id || "").trim(), url = String(d.url || "").trim();
+  if (!/^\d+$/.test(id)) throw new Error("Falta l'identificador del jugador");
+  if (!/^https:\/\/(drive|lh\d)\.google(usercontent)?\.com\/[\w\-/?=&.%]+$/.test(url)) throw new Error("L'enllaç ha de ser de Google Drive");
+  const form = await pagina("mante_jugadors.php", [["clau_jugador", id], ["clau_jugadorno", "X"], ["vinc", "3"]]);
+  const ins = inputs(form);
+  const val = n => (ins.find(i => i.nom === n) || {}).valor;
+  const alf = val("nom_jugador_alfabetic"), marcador = val("nom_jugador") || "";
+  if (!alf || String(val("id_jugador")) !== id || !val("indexacio")) throw new Error("No he pogut obrir la fitxa del jugador " + id);
+  if (!/MONFORTE/i.test(marcador)) throw new Error("Aquest jugador no és del Monforte: " + alf);
+  const abans = val("fotourl") ?? "";
+  if (abans.trim() === url) return { jugador: alf, fet: true, abans, ara: url, nota: "Ja tenia aquesta foto" };
+  const NO = new Set(["clau_jugador", "clau_jugadorno", "vinc"]);
+  const camps = [];
+  for (const i of ins) {
+    if (NO.has(i.nom) || ["submit", "button", "reset", "image", "file"].includes(i.tipus)) continue;
+    if ((i.tipus === "checkbox" || i.tipus === "radio") && !/\bchecked\b/i.test(i.tag)) continue;
+    camps.push([i.nom, i.nom === "fotourl" ? url : i.valor]);
+  }
+  if (!camps.some(c => c[0] === "fotourl")) throw new Error("La fitxa no té el camp de la foto");
+  for (const m of form.matchAll(/<select[^>]*name\s*=\s*['"]([^'"]+)['"]/gi)) {
+    if (NO.has(m[1]) || camps.some(c => c[0] === m[1])) continue;
+    camps.push([m[1], triat(opcions(form, m[1])) ?? ""]);
+  }
+  camps.push(["vinc", "2"]);
+  if (d.simular) return { jugador: alf, simulat: true, abans, ara: url };
+  if (env && env.CAMS) await env.CAMS.put("foto:" + id, JSON.stringify({ abans, ara: url, quan: new Date().toISOString() }));
+  for (let intent = 1; intent <= 3; intent++) {
+    await pagina("mante_jugadors.php", camps);
+    const despres = await pagina("mante_jugadors.php", [["clau_jugador", id], ["clau_jugadorno", "X"], ["vinc", "3"]]);
+    if ((valorInput(despres, "fotourl") || "").trim() === url) return { jugador: alf, fet: true, abans, ara: url };
+    await new Promise(ok => setTimeout(ok, 1500 * intent));
+  }
+  throw new Error("He enviat la foto nova de " + alf + " però el wifibillar no l'ha desada");
 }
 
 // Assigna jugadors a la pool i fase, respectant tots els que ja hi són
@@ -550,6 +591,11 @@ export default {
         return json({ lliures: f.lliures, jugadors: f.jugadors, modalitats: f.modalitats, modalitat: f.modalitat, entrades: f.entrades });
       }
       if (accio === "jugadors") return json(await totsJugadors());
+      if (accio === "foto") {
+        // Per GET només es permet simular: mai escriu res
+        if (request.method === "POST") return json(await canviaFoto(await request.json(), env));
+        return json(await canviaFoto({ id: params.get("id"), url: params.get("url"), simular: true }, env));
+      }
       if (accio === "caramboles") return json({ caramboles: await caramboles(params.get("pool"), params.get("fase"), params.get("jugador")) });
       if (accio === "anular") {
         // Per GET només es permet simular: mai elimina res
