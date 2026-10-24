@@ -377,7 +377,10 @@ function nomCurt(alf){
   const [cog, nom=""] = alf.split(",").map(s=>s.trim());
   const ws = cog.split(/\s+/); let c=[];
   for (const w of ws){ c.push(w); if(!PETITES.has(w.toUpperCase())) break; }
-  const inicial = nom ? nom.charAt(0).toUpperCase()+"." : "";
+  // Salta abreviatures del nom ("FCO. JAVIER" -> J, no F)
+  const ns = nom.split(/\s+/).filter(Boolean);
+  const pila = ns.find(w=>!/\.$/.test(w) && !["FCO","FCA","FDO"].includes(w.toUpperCase())) || ns[0] || "";
+  const inicial = pila ? pila.charAt(0).toUpperCase()+"." : "";
   return inicial + c.map(tc).join(" ");
 }
 function marcadorNou(alf, club, actual){
@@ -438,7 +441,7 @@ function drawPick(box){
   const key=box.dataset.p, other=key==="jugador1"?"jugador2":"jugador1";
   const sel=state[key];
   if (sel){
-    box.innerHTML=`<div class="chosen"><div><strong>${esc(sel.alf)}${BADGE[sel.tipus]}</strong><small>${esc(sel.marc)}</small></div><button type="button" class="chg">Canviar</button></div>`;
+    box.innerHTML=`<div class="chosen"><div><strong>${esc(sel.alf)}${BADGE[sel.tipus]}</strong><small>${esc(sel.marcFinal||sel.marc)}</small></div><button type="button" class="chg">Canviar</button></div>`;
     box.querySelector(".chg").onclick=()=>{state[key]=null;drawPick(box);render();box.querySelector("input")?.focus()};
     return;
   }
