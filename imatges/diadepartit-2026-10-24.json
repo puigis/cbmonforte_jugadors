@@ -7,8 +7,13 @@
       "divisio": "Equip <b>C</b> · Primera Divisió · Grup A<br>Jornada 3 (ajornada)",
       "jornada": "3",
       "rival": "SBPE CENTELLES \"A\"",
-      "hora": "16:00",
-      "jugadors": []
+      "hora": "",
+      "jugadors": [
+        "Henry Castro",
+        "Pau Bonet",
+        "Fabian Hernandez",
+        "Duvan Mejia"
+      ]
     }
   ]
 }
