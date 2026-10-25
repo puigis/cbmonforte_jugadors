@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 1a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-19T08:35+00:00",
+ "updated": "2026-10-25T04:48+00:00",
  "players": [
   {
    "id": "castro-tellez-henry",
@@ -55,6 +55,14 @@
     "Tres bandes": "0.483"
    },
    "initial": "0.483"
+  },
+  {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "initials": {
+    "Tres bandes": "0.478"
+   },
+   "initial": "0.478"
   }
  ],
  "matches": [
@@ -163,6 +171,59 @@
      "car_rival": 22
     }
    ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2026-10-17",
+   "rival": "SBPE. CENTELLES \"A\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 40,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ramis Bardem, Jordi",
+     "car_rival": 27
+    },
+    {
+     "pid": "mejia-arias-duvan",
+     "car": 26,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Lara, Manuel",
+     "car_rival": 24
+    },
+    {
+     "pid": "chuecos-enriquez-luis",
+     "car": 35,
+     "ent": 40,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Bautista Vicente, Miquel",
+     "car_rival": 27
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 18,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Jiménez Martínez, Jesús",
+     "car_rival": 12
+    }
+   ]
   }
  ],
  "calendar": [
@@ -185,7 +246,7 @@
    "date": "2026-10-17",
    "rival": "SBPE. CENTELLES \"A\"",
    "venue": "L",
-   "played": false
+   "played": true
   },
   {
    "jornada": "4",

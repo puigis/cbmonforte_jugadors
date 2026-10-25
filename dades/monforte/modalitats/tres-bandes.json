@@ -1,21 +1,21 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-10-19T08:35+00:00",
+ "updated": "2026-10-25T04:48+00:00",
  "jugadors": [
   {
    "id": "lopez-gallego-cristian",
    "name": "López Gallego, Cristian",
-   "partides": 9,
+   "partides": 10,
    "G": 4,
    "E": 0,
-   "P": 5,
-   "caramboles": 253,
-   "entrades": 312,
+   "P": 6,
+   "caramboles": 276,
+   "entrades": 362,
    "serie_major": 6,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.811,
+   "mitjana": 0.762,
    "ranking": {
     "posicio": 47,
     "mitjana": 0.75084,
@@ -103,6 +103,26 @@
    }
   },
   {
+   "id": "lozano-villegas-mauricio",
+   "name": "Lozano Villegas, Mauricio",
+   "partides": 5,
+   "G": 1,
+   "E": 2,
+   "P": 2,
+   "caramboles": 147,
+   "entrades": 207,
+   "serie_major": 7,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.71,
+   "ranking": {
+    "posicio": 108,
+    "mitjana": 0.60156,
+    "data": "2026-10-02"
+   }
+  },
+  {
    "id": "munoz-lopez-javier",
    "name": "Muñoz López, Javier",
    "partides": 5,
@@ -123,22 +143,42 @@
    }
   },
   {
-   "id": "lozano-villegas-mauricio",
-   "name": "Lozano Villegas, Mauricio",
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
    "partides": 4,
-   "G": 0,
-   "E": 2,
-   "P": 2,
-   "caramboles": 107,
-   "entrades": 162,
-   "serie_major": 7,
+   "G": 1,
+   "E": 0,
+   "P": 3,
+   "caramboles": 125,
+   "entrades": 186,
+   "serie_major": 6,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.66,
+   "mitjana": 0.672,
    "ranking": {
-    "posicio": 108,
-    "mitjana": 0.60156,
+    "posicio": 78,
+    "mitjana": 0.66767,
+    "data": "2026-10-02"
+   }
+  },
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "partides": 3,
+   "G": 2,
+   "E": 0,
+   "P": 1,
+   "caramboles": 95,
+   "entrades": 120,
+   "serie_major": 6,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.792,
+   "ranking": {
+    "posicio": 96,
+    "mitjana": 0.61932,
     "data": "2026-10-02"
    }
   },
@@ -183,26 +223,6 @@
    }
   },
   {
-   "id": "oliver-sinca-jordi",
-   "name": "Oliver Sinca, Jordi",
-   "partides": 3,
-   "G": 0,
-   "E": 0,
-   "P": 3,
-   "caramboles": 85,
-   "entrades": 136,
-   "serie_major": 6,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.625,
-   "ranking": {
-    "posicio": 78,
-    "mitjana": 0.66767,
-    "data": "2026-10-02"
-   }
-  },
-  {
    "id": "barragan-de-la-cruz-luis",
    "name": "Barragán De La Cruz, Luis",
    "partides": 2,
@@ -223,22 +243,42 @@
    }
   },
   {
-   "id": "castro-tellez-henry",
-   "name": "Castro Téllez, Henry",
+   "id": "chuecos-enriquez-luis",
+   "name": "Chuecos Enriquez, Luis",
    "partides": 2,
    "G": 1,
+   "E": 1,
+   "P": 0,
+   "caramboles": 70,
+   "entrades": 86,
+   "serie_major": 7,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.814,
+   "ranking": {
+    "posicio": 187,
+    "mitjana": 0.51977,
+    "data": "2026-10-02"
+   }
+  },
+  {
+   "id": "hernandez-giraldo-fabian-alberto",
+   "name": "Hernandez Giraldo, Fabian Alberto",
+   "partides": 2,
+   "G": 2,
    "E": 0,
-   "P": 1,
-   "caramboles": 60,
-   "entrades": 80,
+   "P": 0,
+   "caramboles": 70,
+   "entrades": 98,
    "serie_major": 5,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.75,
+   "mitjana": 0.714,
    "ranking": {
-    "posicio": 96,
-    "mitjana": 0.61932,
+    "posicio": 408,
+    "mitjana": 0.72917,
     "data": "2026-10-02"
    }
   },
@@ -259,6 +299,26 @@
    "ranking": {
     "posicio": 56,
     "mitjana": 0.71725,
+    "data": "2026-10-02"
+   }
+  },
+  {
+   "id": "mejia-arias-duvan",
+   "name": "Mejia Arias, Duvan",
+   "partides": 2,
+   "G": 2,
+   "E": 0,
+   "P": 0,
+   "caramboles": 52,
+   "entrades": 100,
+   "serie_major": 4,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.52,
+   "ranking": {
+    "posicio": 437,
+    "mitjana": 0.52381,
     "data": "2026-10-02"
    }
   },
@@ -297,7 +357,7 @@
    ],
    "mitjana": 0.473,
    "ranking": {
-    "posicio": 448,
+    "posicio": 447,
     "mitjana": 0.48921,
     "data": "2026-10-02"
    }
@@ -317,7 +377,7 @@
    ],
    "mitjana": 0.368,
    "ranking": {
-    "posicio": 359,
+    "posicio": 358,
     "mitjana": 0.32766,
     "data": "2026-10-02"
    }
@@ -343,6 +403,26 @@
    }
   },
   {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "partides": 2,
+   "G": 1,
+   "E": 0,
+   "P": 1,
+   "caramboles": 43,
+   "entrades": 97,
+   "serie_major": 3,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.443,
+   "ranking": {
+    "posicio": 220,
+    "mitjana": 0.47889,
+    "data": "2026-10-02"
+   }
+  },
+  {
    "id": "tormo-calatayud-jorge",
    "name": "Tormo Calatayud, Jorge",
    "partides": 2,
@@ -357,7 +437,7 @@
    ],
    "mitjana": 0.58,
    "ranking": {
-    "posicio": 329,
+    "posicio": 328,
     "mitjana": 0.37483,
     "data": "2026-10-02"
    }
@@ -377,7 +457,7 @@
    ],
    "mitjana": 0.272,
    "ranking": {
-    "posicio": 528,
+    "posicio": 527,
     "mitjana": 0.34615,
     "data": "2026-10-02"
    }
@@ -443,26 +523,6 @@
    }
   },
   {
-   "id": "chuecos-enriquez-luis",
-   "name": "Chuecos Enriquez, Luis",
-   "partides": 1,
-   "G": 0,
-   "E": 1,
-   "P": 0,
-   "caramboles": 35,
-   "entrades": 46,
-   "serie_major": 7,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.761,
-   "ranking": {
-    "posicio": 187,
-    "mitjana": 0.51977,
-    "data": "2026-10-02"
-   }
-  },
-  {
    "id": "fernandez-nunez-manuel",
    "name": "Fernández Núñez, Manuel",
    "partides": 1,
@@ -477,7 +537,7 @@
    ],
    "mitjana": 0.38,
    "ranking": {
-    "posicio": 342,
+    "posicio": 341,
     "mitjana": 0.35865,
     "data": "2026-10-02"
    }
@@ -517,48 +577,8 @@
    ],
    "mitjana": 0.444,
    "ranking": {
-    "posicio": 361,
+    "posicio": 360,
     "mitjana": 0.32558,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "hernandez-giraldo-fabian-alberto",
-   "name": "Hernandez Giraldo, Fabian Alberto",
-   "partides": 1,
-   "G": 1,
-   "E": 0,
-   "P": 0,
-   "caramboles": 35,
-   "entrades": 48,
-   "serie_major": 5,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.729,
-   "ranking": {
-    "posicio": 409,
-    "mitjana": 0.72917,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "mejia-arias-duvan",
-   "name": "Mejia Arias, Duvan",
-   "partides": 1,
-   "G": 1,
-   "E": 0,
-   "P": 0,
-   "caramboles": 26,
-   "entrades": 50,
-   "serie_major": 3,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.52,
-   "ranking": {
-    "posicio": 438,
-    "mitjana": 0.52381,
     "data": "2026-10-02"
    }
   },
@@ -577,28 +597,8 @@
    ],
    "mitjana": 0.44,
    "ranking": {
-    "posicio": 496,
+    "posicio": 495,
     "mitjana": 0.39706,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "segura-mondria-francesc-xavier",
-   "name": "Segura Mondriá, Francesc Xavier",
-   "partides": 1,
-   "G": 1,
-   "E": 0,
-   "P": 0,
-   "caramboles": 25,
-   "entrades": 47,
-   "serie_major": 3,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.532,
-   "ranking": {
-    "posicio": 220,
-    "mitjana": 0.47889,
     "data": "2026-10-02"
    }
   },
@@ -617,7 +617,7 @@
    ],
    "mitjana": 0.34,
    "ranking": {
-    "posicio": 393,
+    "posicio": 392,
     "mitjana": 0.27432,
     "data": "2026-10-02"
    }
@@ -756,6 +756,158 @@
    "car_rival": 29,
    "sm_rival": 4,
    "res": "G"
+  },
+  {
+   "data": "2026-10-17",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "3",
+   "pid": "lopez-gallego-cristian",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Perales Sanz, Joan",
+   "equip_rival": "SB FOMENT MOLINS \"A\"",
+   "car": 23,
+   "sm": 5,
+   "ent": 50,
+   "car_rival": 26,
+   "sm_rival": 4,
+   "res": "P"
+  },
+  {
+   "data": "2026-10-17",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "3",
+   "pid": "oliver-sinca-jordi",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Sánchez Barrera, Miguel",
+   "equip_rival": "SB FOMENT MOLINS \"A\"",
+   "car": 40,
+   "sm": 5,
+   "ent": 50,
+   "car_rival": 28,
+   "sm_rival": 3,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-17",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "3",
+   "pid": "lozano-villegas-mauricio",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Fontanet Belles, Joan Carles",
+   "equip_rival": "SB FOMENT MOLINS \"A\"",
+   "car": 40,
+   "sm": 7,
+   "ent": 45,
+   "car_rival": 32,
+   "sm_rival": 4,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-17",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "3",
+   "pid": "hernandez-giraldo-fabian-alberto",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Gómez Morán, Lluis",
+   "equip_rival": "SB FOMENT MOLINS \"A\"",
+   "car": 35,
+   "sm": 5,
+   "ent": 50,
+   "car_rival": 23,
+   "sm_rival": 3,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-17",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "1a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "3",
+   "pid": "castro-tellez-henry",
+   "equip": "C.B. MONFORTE \"C\"",
+   "rival": "Ramis Bardem, Jordi",
+   "equip_rival": "SBPE. CENTELLES \"A\"",
+   "car": 35,
+   "sm": 6,
+   "ent": 40,
+   "car_rival": 27,
+   "sm_rival": 5,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-17",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "1a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "3",
+   "pid": "mejia-arias-duvan",
+   "equip": "C.B. MONFORTE \"C\"",
+   "rival": "Jiménez Lara, Manuel",
+   "equip_rival": "SBPE. CENTELLES \"A\"",
+   "car": 26,
+   "sm": 4,
+   "ent": 50,
+   "car_rival": 24,
+   "sm_rival": 3,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-17",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "1a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "3",
+   "pid": "chuecos-enriquez-luis",
+   "equip": "C.B. MONFORTE \"C\"",
+   "rival": "Bautista Vicente, Miquel",
+   "equip_rival": "SBPE. CENTELLES \"A\"",
+   "car": 35,
+   "sm": 6,
+   "ent": 40,
+   "car_rival": 27,
+   "sm_rival": 5,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-17",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "1a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "3",
+   "pid": "segura-mondria-francesc-xavier",
+   "equip": "C.B. MONFORTE \"C\"",
+   "rival": "Jiménez Martínez, Jesús",
+   "equip_rival": "SBPE. CENTELLES \"A\"",
+   "car": 18,
+   "sm": 3,
+   "ent": 50,
+   "car_rival": 12,
+   "sm_rival": 2,
+   "res": "P"
   },
   {
    "data": "2026-10-17",

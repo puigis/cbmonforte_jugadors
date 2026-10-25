@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · Honor · Grup B",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-19T08:35+00:00",
+ "updated": "2026-10-25T04:48+00:00",
  "players": [
   {
    "id": "cardona-gallego-julian-alberto",
@@ -33,6 +33,22 @@
    "initial": "0.677"
   },
   {
+   "id": "hernandez-giraldo-fabian-alberto",
+   "name": "Hernandez Giraldo, Fabian Alberto",
+   "initials": {
+    "Tres bandes": "0.565"
+   },
+   "initial": "0.565"
+  },
+  {
+   "id": "lozano-villegas-mauricio",
+   "name": "Lozano Villegas, Mauricio",
+   "initials": {
+    "Tres bandes": "0.588"
+   },
+   "initial": "0.588"
+  },
+  {
    "id": "lopez-gallego-cristian",
    "name": "López Gallego, Cristian",
    "initials": {
@@ -47,6 +63,14 @@
     "Tres bandes": "0.657"
    },
    "initial": "0.657"
+  },
+  {
+   "id": "oliver-sinca-jordi",
+   "name": "Oliver Sinca, Jordi",
+   "initials": {
+    "Tres bandes": "0.651"
+   },
+   "initial": "0.651"
   }
  ],
  "matches": [
@@ -155,6 +179,59 @@
      "car_rival": 31
     }
    ]
+  },
+  {
+   "id": "j03",
+   "jornada": "3",
+   "date": "2026-10-17",
+   "rival": "SB FOMENT MOLINS \"A\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "lopez-gallego-cristian",
+     "car": 23,
+     "ent": 50,
+     "sm": 5,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Perales Sanz, Joan",
+     "car_rival": 26
+    },
+    {
+     "pid": "oliver-sinca-jordi",
+     "car": 40,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Barrera, Miguel",
+     "car_rival": 28
+    },
+    {
+     "pid": "lozano-villegas-mauricio",
+     "car": 40,
+     "ent": 45,
+     "sm": 7,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Fontanet Belles, Joan Carles",
+     "car_rival": 32
+    },
+    {
+     "pid": "hernandez-giraldo-fabian-alberto",
+     "car": 35,
+     "ent": 50,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gómez Morán, Lluis",
+     "car_rival": 23
+    }
+   ]
   }
  ],
  "calendar": [
@@ -177,7 +254,7 @@
    "date": "2026-10-17",
    "rival": "SB FOMENT MOLINS \"A\"",
    "venue": "L",
-   "played": false
+   "played": true
   },
   {
    "jornada": "4",
