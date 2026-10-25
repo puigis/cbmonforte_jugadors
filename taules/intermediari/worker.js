@@ -573,11 +573,105 @@ async function biatlo(request, params, env) {
   return json({ resultats: res });
 }
 
+/* ---------- YouTube: títol automàtic del directe de cada taula ---------- */
+// Cada canal dona permís una vegada (/yt/connecta?taula=N&clau=...). Es desa el permís a KV "yt:N".
+// Quan la taula emet, el PC del club crida ?accio=yt_titol&taula=N&clau=... i es posa el títol amb les dades de l'acta.
+// Cal definir a Cloudflare (Settings → Variables and Secrets): GOOGLE_CLIENT_ID i GOOGLE_CLIENT_SECRET.
+const YT_SCOPE = "https://www.googleapis.com/auth/youtube";
+const ytRedirect = request => new URL("/yt/callback", request.url).toString();
+const html = (cos, status = 200) => new Response(`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MARCADORS · YouTube</title><body style="font:18px system-ui,sans-serif;max-width:560px;margin:40px auto;padding:0 16px;line-height:1.5">${cos}</body>`,
+  { status, headers: { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" } });
+const escH = s => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+async function ytToken(env, taula) {
+  const d = await env.CAMS.get("yt:" + taula, "json");
+  if (!d || !d.refresh) throw new Error(`La taula ${taula} no té cap canal de YouTube connectat`);
+  const r = await fetch("https://oauth2.googleapis.com/token", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({ client_id: env.GOOGLE_CLIENT_ID, client_secret: env.GOOGLE_CLIENT_SECRET, refresh_token: d.refresh, grant_type: "refresh_token" }) });
+  const t = await r.json();
+  if (!t.access_token) throw new Error("Google no ha renovat el permís de la taula " + taula + ": " + (t.error_description || t.error || r.status) + ". Torna a connectar el canal.");
+  return { token: t.access_token, canal: d.canal };
+}
+async function ytApi(token, cami, opts = {}) {
+  const r = await fetch("https://www.googleapis.com/youtube/v3/" + cami, { ...opts, headers: { Authorization: "Bearer " + token, "Content-Type": "application/json", ...(opts.headers || {}) } });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error("YouTube: " + ((j.error && j.error.message) || r.status));
+  return j;
+}
+// Títol a partir de l'acta: "Lliga Catalana 3 bandes 4a divisió · Taula 1 · CB MONFORTE (B.Villate) vs CB MONFORTE (J.Gili)"
+async function titolTaula(taula) {
+  const acta = await pagina("veurepartida.php?taula=" + taula);
+  if (!/TAULA:\s*\d/i.test(acta)) return null;
+  const comp = competicioActa(acta) || "";
+  const cel = [...acta.matchAll(/<t[dh][^>]*>([\s\S]*?)<\/t[dh]>/gi)].slice(0, 2).map(m => netejar(m[1]).replace(/\s*\(\d+\)\s*$/, ""));
+  let t = [comp, "Taula " + taula, cel.length === 2 ? cel[0] + " vs " + cel[1] : ""].filter(Boolean).join(" · ");
+  t = t.replace(/[<>]/g, "");
+  return t.length > 100 ? t.slice(0, 99) + "…" : t;
+}
+async function ytTitol(env, taula, forcat) {
+  const titol = (forcat || "").trim() || await titolTaula(taula);
+  if (!titol) return { pendent: true, motiu: `La taula ${taula} no té cap partida creada` };
+  const { token, canal } = await ytToken(env, taula);
+  const emissions = (await ytApi(token, "liveBroadcasts?part=snippet,status&broadcastStatus=active&broadcastType=all&maxResults=5")).items || [];
+  if (!emissions.length) return { pendent: true, motiu: `El canal ${canal} encara no té cap directe en marxa` };
+  const b = emissions.sort((x, y) => String(y.snippet.actualStartTime || "").localeCompare(String(x.snippet.actualStartTime || "")))[0];
+  const v = ((await ytApi(token, "videos?part=snippet&id=" + b.id)).items || [])[0];
+  if (!v) return { pendent: true, motiu: "YouTube encara no mostra el vídeo del directe" };
+  if (v.snippet.title === titol) return { ok: true, canal, titol, video: b.id, ja: true };
+  const sn = { title: titol, categoryId: v.snippet.categoryId || "17", description: v.snippet.description || "" };
+  if (v.snippet.tags) sn.tags = v.snippet.tags;
+  if (v.snippet.defaultLanguage) sn.defaultLanguage = v.snippet.defaultLanguage;
+  await ytApi(token, "videos?part=snippet", { method: "PUT", body: JSON.stringify({ id: b.id, snippet: sn }) });
+  return { ok: true, canal, titol, video: b.id };
+}
+async function youtube(cami, request, params, env) {
+  if (!env.CAMS) return json({ error: "Falta l'enllaç CAMS (KV) a l'intermediari" }, 500);
+  if (!env.GOOGLE_CLIENT_ID || !env.GOOGLE_CLIENT_SECRET) return html("<h2>Falta configurar Google</h2><p>Cal posar GOOGLE_CLIENT_ID i GOOGLE_CLIENT_SECRET a Cloudflare (Settings → Variables and Secrets).</p>", 500);
+  if (cami === "/yt/connecta") {
+    const taula = +params.get("taula");
+    if (params.get("clau") !== CLAU_PC) return html("<h2>Enllaç no vàlid</h2>", 403);
+    if (!(taula >= 1 && taula <= 4)) return html("<h2>Taula incorrecta</h2>", 400);
+    const estat = crypto.randomUUID();
+    await env.CAMS.put("ytestat:" + estat, String(taula), { expirationTtl: 900 });
+    const u = new URL("https://accounts.google.com/o/oauth2/v2/auth");
+    for (const [k, v] of Object.entries({ client_id: env.GOOGLE_CLIENT_ID, redirect_uri: ytRedirect(request), response_type: "code", scope: YT_SCOPE,
+      access_type: "offline", prompt: "consent select_account", include_granted_scopes: "true", state: estat })) u.searchParams.set(k, v);
+    return Response.redirect(u.toString(), 302);
+  }
+  if (cami === "/yt/callback") {
+    if (params.get("error")) return html(`<h2>No s'ha connectat</h2><p>Google ha respost: ${escH(params.get("error"))}</p>`, 400);
+    const taula = await env.CAMS.get("ytestat:" + params.get("state"));
+    if (!taula) return html("<h2>L'enllaç ha caducat</h2><p>Torna a obrir l'enllaç de connexió de la taula.</p>", 400);
+    await env.CAMS.delete("ytestat:" + params.get("state"));
+    const r = await fetch("https://oauth2.googleapis.com/token", { method: "POST", headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: new URLSearchParams({ code: params.get("code") || "", client_id: env.GOOGLE_CLIENT_ID, client_secret: env.GOOGLE_CLIENT_SECRET, redirect_uri: ytRedirect(request), grant_type: "authorization_code" }) });
+    const t = await r.json();
+    if (!t.refresh_token) return html(`<h2>No s'ha connectat</h2><p>Google no ha donat permís permanent (${escH(t.error_description || t.error || "sense refresh_token")}). Torna-ho a provar.</p>`, 400);
+    const ch = ((await ytApi(t.access_token, "channels?part=snippet&mine=true")).items || [])[0];
+    const canal = ch ? ch.snippet.title : "(canal desconegut)";
+    await env.CAMS.put("yt:" + taula, JSON.stringify({ refresh: t.refresh_token, canal, id: ch ? ch.id : null, t: Date.now() }));
+    return html(`<h2>✅ Taula ${taula} connectada</h2><p>Canal de YouTube: <b>${escH(canal)}</b></p><p>Si no és el canal d'aquesta taula, torna a obrir l'enllaç i tria'n un altre.</p>`);
+  }
+  return json({ error: "Ruta desconeguda" }, 404);
+}
+
 export default {
   async fetch(request, env) {
     if (request.method === "OPTIONS") return new Response(null, { headers: CORS });
     const params = new URL(request.url).searchParams;
     try {
+      const cami = new URL(request.url).pathname;
+      if (cami.startsWith("/yt/")) return await youtube(cami, request, params, env);
+      if (params.get("accio") === "yt_estat") {
+        const out = {};
+        for (const n of TAULES) { const d = env.CAMS && await env.CAMS.get("yt:" + n, "json"); out[n] = d ? d.canal : null; }
+        return json(out);
+      }
+      if (params.get("accio") === "yt_titol") {
+        if (params.get("clau") !== CLAU_PC) return json({ error: "No permès" }, 403);
+        return json(await ytTitol(env, +params.get("taula"), params.get("titol")));
+      }
       if (params.get("veure")) return await veurePagina(params);
       const accio = params.get("accio");
       if (["cam", "ordres", "estat"].includes(accio)) return await cameres(accio, request, params, env);
