@@ -1,4 +1,4 @@
-﻿# MARCADORS - troba sol el port i el token de cada Streamlabs i en prova la connexió (només llegeix, no emet res)
+# MARCADORS - troba sol el port i el token de cada Streamlabs i en prova la connexió (només llegeix, no emet res)
 # Ús (PowerShell com a administrador):
 #   irm https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/main/taules/club/connexio-streamlabs.ps1 | iex
 # Desa el resultat a C:\MARCADORS\streamlabs.json perquè el programa de càmeres el pugui fer servir.
@@ -61,12 +61,19 @@ foreach ($perfil in Get-ChildItem "C:\Users" -Directory -ErrorAction SilentlyCon
   $usuari = $perfil.Name
   $icona = $acces[$usuari.ToLower()]; if (-not $icona) { $icona = "(sense accés directe)" }
   # Tokens desats per Streamlabs (40 caràcters hexadecimals)
-  $tokens = @()
-  foreach ($f in Get-ChildItem (Join-Path $dir "Local Storage\leveldb") -File -ErrorAction SilentlyContinue | Where-Object { $_.Extension -in ".log", ".ldb" }) {
+  # Busca a tots els fitxers de configuració de Streamlabs (no a les memòries cau)
+  $tokens = @(); $on = @()
+  $fitxers = Get-ChildItem $dir -File -Recurse -ErrorAction SilentlyContinue |
+    Where-Object { $_.Length -lt 30MB -and $_.FullName -notmatch '\\(Cache|Code Cache|GPUCache|DawnCache|ShaderCache|Crashpad|blob_storage)\\' }
+  foreach ($f in $fitxers) {
     $txt = Llegeix $f.FullName
-    $tokens += [regex]::Matches($txt, 'token\W{1,6}([0-9a-f]{40})') | ForEach-Object { $_.Groups[1].Value }
+    if ($txt -notmatch '(?i)tcpserver|token') { continue }
+    $ts = [regex]::Matches($txt, '(?i)token[\s\S]{1,12}?([0-9a-f]{32,64})') | ForEach-Object { $_.Groups[1].Value.ToLower() }
+    if ($txt -match '(?i)tcpserver') { $on += $f.FullName.Substring($dir.Length + 1) }
+    $tokens += $ts
   }
-  $tokens = $tokens | Select-Object -Unique
+  $tokens = @($tokens | Select-Object -Unique)
+  if ($on) { Write-Host ("  Fitxers amb configuració del control remot: " + (($on | Select-Object -Unique -First 5) -join " · ")) -ForegroundColor DarkGray }
   $pids = $procs[$usuari]
   $ports = @()
   if ($pids) { $ports = $escolta | Where-Object { $pids -contains $_.OwningProcess -and $_.LocalPort -ge 59000 -and $_.LocalPort -le 60999 } | ForEach-Object { $_.LocalPort } | Select-Object -Unique }
