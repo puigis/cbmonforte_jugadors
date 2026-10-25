@@ -68,6 +68,19 @@ def llegeix_publicats():
         return set()
 
 
+PUNTS = {"G": 2, "E": 1, "P": 0}
+
+
+def marcador(m):
+    """Resultat del partit en punts de les partides (2 per victòria, 1 per empat): p. ex. 6-2.
+    Si la Federació no dona les partides individuals, el resultat oficial del match."""
+    res = [r.get("res") for r in m.get("results") or []]
+    if res and all(r in PUNTS for r in res):
+        nos = sum(PUNTS[r] for r in res)
+        return nos, 2 * len(res) - nos
+    return m["punts_match"][0], m["punts_match"][1]
+
+
 def converteix(equips_path, ref=None, dies=7, publicats=None):
     """Partits del cartell de la setmana, segons la data OFICIAL de cada jornada:
     - jornada oficial dins la setmana amb resultat -> resultat (encara que s'hagi jugat abans, avançat)
@@ -91,7 +104,7 @@ def converteix(equips_path, ref=None, dies=7, publicats=None):
                 fila = {**base, "jornada": str(c["jornada"]), "casa": c["venue"] == "L",
                         "rival": nom_club(c["rival"])}
                 if m:
-                    fila.update(monforte=m["punts_match"][0], contrari=m["punts_match"][1])
+                    fila.update(zip(("monforte", "contrari"), marcador(m)))
                 else:
                     fila["ajornat"] = True
                 partits.append(fila)
@@ -100,8 +113,8 @@ def converteix(equips_path, ref=None, dies=7, publicats=None):
             elif oficial < inici and m and f"{lletra}-{c['jornada']}" not in publicats:
                 recuperats[m["date"]] += 1
                 partits.append({**base, "jornada": str(c["jornada"]), "casa": c["venue"] == "L",
-                                "rival": nom_club(c["rival"]), "monforte": m["punts_match"][0],
-                                "contrari": m["punts_match"][1], "nota": f"Partit ajornat · J{c['jornada']}"})
+                                "rival": nom_club(c["rival"]), **dict(zip(("monforte", "contrari"), marcador(m))),
+                                "nota": f"Partit ajornat · J{c['jornada']}"})
     # Si no hi ha cap resultat, o no hi ha partits o la Federació encara no els ha publicat:
     # millor no generar res que un cartell ple d'ajornats.
     if not any(not p.get("ajornat") for p in partits):
