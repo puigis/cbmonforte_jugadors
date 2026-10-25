@@ -97,6 +97,14 @@ mark{background:none;color:var(--felt);font-weight:700}
 .pagina>.wrap{padding-bottom:0}
 .cams{width:calc(100% - 32px);max-width:528px;margin:28px auto 120px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--surface)}
 .cams h2{margin-bottom:12px}
+.tit{border:2px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);display:flex;flex-direction:column;gap:6px}
+.tit .cap{display:flex;align-items:center;justify-content:space-between;gap:8px;font-family:var(--display);font-weight:700;letter-spacing:.05em}
+.tit .txt{font-size:.85rem;line-height:1.35;color:var(--fg);word-break:break-word}
+.tit .buit{font-size:.8rem;color:var(--muted)}
+.tit .copia{appearance:none;border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:8px;padding:6px 12px;font:700 .8rem var(--body);cursor:pointer}
+.tit .copia.fet{border-color:var(--green,#1d7a3a);color:var(--green,#1d7a3a)}
+.titnou{margin-top:12px;padding:12px;border:2px dashed var(--line);border-radius:12px}
+.titnou .txt{font-size:.92rem;margin:6px 0 10px;word-break:break-word}
 .cams .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
 .cam{appearance:none;border:2px solid var(--line);background:var(--bg);color:var(--fg);border-radius:12px;padding:14px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;font-family:var(--display);font-weight:700;letter-spacing:.05em}
 .cam .nom{font-size:1rem}
@@ -218,9 +226,9 @@ pre.sim{white-space:pre-wrap;font-size:.72rem;max-height:300px;overflow:auto;bac
 </div>
 
 <aside class="cams" aria-labelledby="camsTitol">
-  <h2 class="label" id="camsTitol">Càmeres YouTube</h2>
+  <h2 class="label" id="camsTitol">Títol YouTube</h2>
   <div class="grid" id="cams"></div>
-  <p class="note" id="camsNote">Encara no està connectat amb el PC del club: de moment els botons només marquen l'estat.</p>
+  <p class="note" id="camsNote">Prem «Copiar», obre la icona BILLAR de la taula a l'escriptori i enganxa el títol (Ctrl+V) abans de prémer «Transmitir en directo».</p>
 </aside>
 </div>
 
@@ -584,8 +592,12 @@ function crear(){
     const avis=notes.some(x=>/no s'ha|no he pogut|no s'ha desat/i.test(x));
     out.innerHTML=`<div class="msg ok">Partida creada a la taula ${state.taula}.</div>`+
       (notes.length?`<div class="msg ${avis?"err":"ok"}">${notes.map(esc).join("<br>")}</div>`:"");
+    const tit=titolYT(nomPool(), state.taula, (state.jugador1.marcFinal||state.jugador1.marc), (state.jugador2.marcFinal||state.jugador2.marc));
+    out.insertAdjacentHTML("beforeend", `<div class="titnou"><strong>Títol YouTube</strong><div class="txt">${esc(tit)}</div><button type="button" class="next" id="copiaNou">Copiar títol YouTube</button></div>`);
+    $("copiaNou").onclick=e=>copia(tit, e.currentTarget);
     b.textContent="Fet";
-    setTimeout(reinicia, notes.length ? 8000 : 2000);
+    llegeixTitols();
+    setTimeout(reinicia, 20000);
   }).catch(e=>{
     out.innerHTML=`<div class="msg err">${esc(e.message||"No s'ha pogut crear la partida")}</div>`;
     b.disabled=false; b.textContent=PROVA?"Simular":"Tornar-ho a provar";
@@ -655,43 +667,41 @@ function anular(n){
   });
 }
 
-/* ---------- càmeres ---------- */
-// L'app envia l'ordre pel canal i el programa del PC del club prem les tecles de Streamlabs.
-
-let CAMS = {}, PC_OK = false, ENVIANT = {};
-function pintaCams(){
+/* ---------- títol de YouTube per copiar ---------- */
+// El títol es fa amb l'acta del wifibillar: "Competició · Taula N · Jugador 1 vs Jugador 2".
+let TITOLS = {};
+const netNom = t => String(t||"").replace(/\s*\(\d+\)\s*$/,"").trim();
+function titolYT(comp, taula, a, b){
+  let t=[comp, "Taula "+taula, (a&&b)? netNom(a)+" vs "+netNom(b) : ""].filter(Boolean).join(" · ").replace(/[<>]/g,"");
+  return t.length>100 ? t.slice(0,99)+"…" : t;
+}
+function copia(text, boto){
+  const ok=()=>{ const t=boto.textContent; boto.textContent="Copiat ✓"; boto.classList.add("fet"); setTimeout(()=>{boto.textContent=t; boto.classList.remove("fet");},2500); };
+  if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(text).then(ok).catch(()=>vell());
+  else vell();
+  function vell(){ const a=document.createElement("textarea"); a.value=text; a.style.position="fixed"; a.style.opacity="0"; document.body.appendChild(a); a.select();
+    try{ document.execCommand("copy"); ok(); }catch(e){ prompt("Copia el títol:", text); } a.remove(); }
+}
+function pintaTitols(){
   const c=$("cams"); c.innerHTML="";
   for (let n=1;n<=4;n++){
-    const on=!!CAMS[n], env=ENVIANT[n], b=document.createElement("button");
-    b.type="button"; b.className="cam"; b.setAttribute("aria-pressed", String(on));
-    b.disabled=!!env;
-    b.setAttribute("aria-label", `Taula ${n}: ${on?"en emissió, prem per aturar":"apagada, prem per emetre"}`);
-    const txt = env ? (env.on?"Engegant…":"Aturant…") : on ? "En emissió" : "Apagada";
-    b.innerHTML=`<span class="nom">TAULA</span><span class="num">${n}</span><span class="estat"><span class="punt"></span>${txt}</span>`;
-    b.onclick=()=>canviaCam(n, !on);
-    c.appendChild(b);
+    const t=TITOLS[n], d=document.createElement("div");
+    d.className="tit";
+    d.innerHTML=`<div class="cap"><span>TAULA ${n}</span>${t?'<button type="button" class="copia">Copiar</button>':""}</div>`+
+      (t?`<div class="txt">${esc(t)}</div>`:`<div class="buit">Sense partida</div>`);
+    if (t) d.querySelector(".copia").onclick=e=>copia(t, e.currentTarget);
+    c.appendChild(d);
   }
-  $("camsNote").textContent = PC_OK ? "Connectat amb el PC del club." : "El PC del club no respon: comprova que està encès i que el programa «MARCADORS càmeres» està en marxa.";
 }
-function canviaCam(n, on){
-  ENVIANT[n]={on, t:Date.now()}; pintaCams();
-  fetch(INTERMEDIARI+"?accio=cam&taula="+n+"&on="+(on?1:0),{method:"POST"}).then(()=>setTimeout(llegeixEstat,3000)).catch(()=>{});
-  setTimeout(()=>{ if(ENVIANT[n]){ delete ENVIANT[n]; pintaCams(); } }, on ? 120000 : 20000);   // engegar pot trigar si cal obrir el Streamlabs
+function llegeixTitols(){
+  return api("").then(d=>{
+    TITOLS={};
+    (d.taules||[]).forEach(t=>{ if(t.ocupada){ const [a,b]=String(t.equips||"").split(" – "); TITOLS[t.taula]=titolYT(t.competicio||"", t.taula, a, b); } });
+    pintaTitols();
+  }).catch(()=>pintaTitols());
 }
-function aplicaEstat(e){
-  PC_OK = (Date.now()/1000 - e.t) < 420;
-  for (let n=1;n<=4;n++){
-    CAMS[n]=!!(e.cams||{})[n];
-    if (ENVIANT[n] && CAMS[n]===ENVIANT[n].on) delete ENVIANT[n];
-  }
-  pintaCams();
-}
-function llegeixEstat(){
-  return fetch(INTERMEDIARI+"?accio=estat&t="+Date.now()).then(r=>r.json()).then(e=>{ if(e && e.cams) aplicaEstat(e); else { PC_OK=false; pintaCams(); } })
-    .catch(()=>{ PC_OK=false; pintaCams(); });
-}
-setInterval(()=>{ if(!document.hidden) llegeixEstat(); }, 5000);
-pintaCams(); llegeixEstat();
+setInterval(()=>{ if(!document.hidden) llegeixTitols(); }, 30000);
+pintaTitols(); llegeixTitols();
 
 function reinicia(){
   Object.assign(state,{taula:null,jugador1:null,jugador2:null});
