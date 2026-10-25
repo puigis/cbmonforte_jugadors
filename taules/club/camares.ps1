@@ -58,25 +58,6 @@ $feina = {
   [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
   function Escriu($t) { $l = "{0:yyyy-MM-dd HH:mm:ss}  {1}" -f (Get-Date), $t; try { Add-Content -Path $LOG -Value $l -Encoding UTF8 } catch {} ; $estat.text = $t }
   $cams = @{ "1" = $false; "2" = $false; "3" = $false; "4" = $false }
-  $titols = @{}
-  function ProvaTitols {
-    foreach ($t in @($titols.Keys)) {
-      $p = $titols[$t]
-      if ((Get-Date) -lt $p.proper) { continue }
-      if ((Get-Date) -gt $p.fins) { Escriu "Taula ${t}: no he pogut posar el títol de YouTube (el directe no ha arrencat a temps)"; $titols.Remove($t); continue }
-      try {
-        $wc = New-Object Net.WebClient; $wc.Encoding = [Text.Encoding]::UTF8
-        $r = $wc.DownloadString("$URL`?accio=yt_titol&taula=$t&clau=$CANAL") | ConvertFrom-Json
-        if ($r.ok) { Escriu "Taula ${t}: títol de YouTube posat ($($r.canal)): $($r.titol)"; $titols.Remove($t) }
-        elseif ($r.error) { Escriu "Taula ${t}: títol de YouTube - $($r.error)"; $titols.Remove($t) }
-        else { $p.proper = (Get-Date).AddSeconds(15) }
-      } catch {
-        $msg = $_.Exception.Message
-        try { $cos = (New-Object IO.StreamReader($_.Exception.InnerException.Response.GetResponseStream())).ReadToEnd(); if ($cos) { $msg = $cos } } catch {}
-        Escriu "Taula ${t}: títol de YouTube - $msg"; $titols.Remove($t)
-      }
-    }
-  }
   function PublicaEstat {
     $cos = @{ pc = "ok"; cams = $cams; t = [DateTimeOffset]::UtcNow.ToUnixTimeSeconds() } | ConvertTo-Json -Compress
     try { $wc = New-Object Net.WebClient; $wc.Headers.Add("Content-Type", "application/json"); $wc.UploadString("$URL`?accio=estat&clau=$CANAL", $cos) | Out-Null; $estat.ok = $true }
@@ -144,8 +125,6 @@ $feina = {
     $deadline = (Get-Date).AddSeconds(5)
     while ($estat.cua.Count -gt 0 -and (Get-Date) -lt $deadline) { Start-Sleep -Milliseconds 100 }
     $cams["$taula"] = [bool]$on
-    # Títol de YouTube: es prova quan el directe ja ha arrencat (pot tardar)
-    if ($on) { $titols["$taula"] = @{ fins = (Get-Date).AddMinutes(4); proper = (Get-Date).AddSeconds(20) } } else { $titols.Remove("$taula") }
     Escriu ("Taula {0} (Streamlabs BILLAR {1}): {2}" -f $taula, $sl, $(if ($on) { "INICIAR emissió" } else { "ATURAR emissió" }))
   }
 
@@ -184,7 +163,6 @@ $feina = {
       $errors++; $estat.ok = $false
       if ($errors -eq 1 -or $errors % 20 -eq 0) { Escriu "Sense connexió amb l'intermediari: $($_.Exception.Message)" }
     }
-    if ($titols.Count) { try { ProvaTitols } catch { Escriu "Error amb el títol: $($_.Exception.Message)" } }
     if (((Get-Date) - $ultim).TotalMinutes -ge 5) { PublicaEstat; $ultim = Get-Date }
     Start-Sleep -Seconds 3
   }
