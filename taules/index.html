@@ -109,13 +109,15 @@ mark{background:none;color:var(--felt);font-weight:700}
 @keyframes batec{70%{box-shadow:0 0 0 8px transparent}100%{box-shadow:0 0 0 0 transparent}}
 @media (prefers-reduced-motion:reduce){.cam[aria-pressed="true"] .punt{animation:none}}
 /* Pantalla gran: les càmeres en una columna al costat */
-@media (min-width:1000px){
-  .pagina{display:grid;grid-template-columns:minmax(0,560px) 300px;gap:32px;justify-content:center;padding:0 16px}
+/* Pantalla d'ordinador (finestra de l'app al PC del club): creació a l'esquerra, càmeres a la dreta, sempre visibles */
+@media (min-width:780px){
+  .pagina{display:grid;grid-template-columns:minmax(0,1fr) clamp(220px,30%,300px);gap:28px;max-width:960px;margin:0 auto;padding:0 20px}
   .pagina .wrap{margin:0;padding-inline:0;max-width:none;padding-bottom:120px}
-  .pagina .cams{margin:24px 0 0;max-width:none;width:auto}
-  .pagina .cams{position:sticky;top:calc(16px + env(safe-area-inset-top,0px));align-self:start}
-  .cams .grid{grid-template-columns:1fr}
-  .fin{max-width:892px}
+  .pagina .cams{margin:24px 0 0;max-width:none;width:auto;position:sticky;top:calc(16px + env(safe-area-inset-top,0px));align-self:start;max-height:calc(100vh - 120px);overflow:auto}
+  .cams .grid{grid-template-columns:1fr;gap:8px}
+  .cam{padding:10px 8px;gap:4px}
+  .cam .num{font-size:1.7rem}
+  .fin{max-width:920px}
 }
 @media (max-width:380px){.t b{font-size:1.5rem}.brand{font-size:1.7rem}}
 .wait{color:var(--muted);font-size:.9rem}
