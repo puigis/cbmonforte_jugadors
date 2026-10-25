@@ -2,15 +2,21 @@
 # Ús (PowerShell com a administrador):
 #   irm https://raw.githubusercontent.com/puigis/cbmonforte_jugadors/main/taules/club/claus-youtube.ps1 | iex
 #
-# Cada taula té el seu usuari de Windows ("Billar N") amb el seu Streamlabs.
-# L'usuari de Windows coincideix amb la taula: usuari "Billar 1" = taula 1 (accés directe BILLAR 3), etc.
+# Taula N = accés directe BILLAR N de l'escriptori. Cada accés directe obre el Streamlabs amb un
+# usuari de Windows (BILLAR 1 -> "Billar 3", BILLAR 3 -> "Billar 1"): es llegeix de l'accés directe.
 
-$TAULES = @(
-  @{ taula = 1; usuari = "Billar 1"; acces = "BILLAR 3" },
-  @{ taula = 2; usuari = "Billar 2"; acces = "BILLAR 2" },
-  @{ taula = 3; usuari = "Billar 3"; acces = "BILLAR 1" },
-  @{ taula = 4; usuari = "Billar 4"; acces = "BILLAR 4" }
-)
+$ws = New-Object -ComObject WScript.Shell
+$escriptoris = @([Environment]::GetFolderPath("Desktop"), [Environment]::GetFolderPath("CommonDesktopDirectory"))
+$TAULES = foreach ($n in 1..4) {
+  $usuari = "Billar $n"
+  $lnk = $escriptoris | ForEach-Object { Join-Path $_ "BILLAR $n.lnk" } | Where-Object { Test-Path $_ } | Select-Object -First 1
+  if ($lnk) {
+    $sc = $ws.CreateShortcut($lnk)
+    $m = [regex]::Match(($sc.TargetPath + " " + $sc.Arguments), '/user:(?:"([^"]+)"|(\S+))', "IgnoreCase")
+    if ($m.Success) { $usuari = (($(if ($m.Groups[1].Success) { $m.Groups[1].Value } else { $m.Groups[2].Value })) -replace '^.*\\', '').Trim() }
+  }
+  @{ taula = $n; usuari = $usuari; acces = "BILLAR $n" }
+}
 
 Write-Host "`nEnganxa la clau d'emissió de YouTube de cada taula (clic dret per enganxar)." -ForegroundColor Cyan
 Write-Host "Si una taula ja funciona o no la vols canviar, deixa-la en blanc i prem Enter.`n"

@@ -113,8 +113,9 @@ $feina = {
   }
 
   # Quin Streamlabs (accés directe BILLAR N) grava cada taula.
-  # Al club, el Streamlabs "BILLAR 1" és la càmera de la taula 3 i el "BILLAR 3" la de la taula 1.
-  $STREAMLABS_DE_TAULA = @{ 1 = 3; 2 = 2; 3 = 1; 4 = 4 }
+  # Cada taula té el seu accés directe amb el mateix número (Taula 1 = BILLAR 1...).
+  # El creuament és només als canals de YouTube (BILLAR 1 emet al canal 3 i BILLAR 3 al canal 1).
+  $STREAMLABS_DE_TAULA = @{ 1 = 1; 2 = 2; 3 = 3; 4 = 4 }
 
   function Camera($taula, $on) {
     if ($taula -lt 1 -or $taula -gt 4) { return }
