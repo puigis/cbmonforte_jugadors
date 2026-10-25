@@ -1,6 +1,6 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-10-25T04:48+00:00",
+ "updated": "2026-10-25T09:29+00:00",
  "jugadors": [
   {
    "id": "lopez-gallego-cristian",
@@ -246,16 +246,16 @@
    "id": "chuecos-enriquez-luis",
    "name": "Chuecos Enriquez, Luis",
    "partides": 2,
-   "G": 1,
+   "G": 0,
    "E": 1,
-   "P": 0,
-   "caramboles": 70,
-   "entrades": 86,
+   "P": 1,
+   "caramboles": 63,
+   "entrades": 96,
    "serie_major": 7,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.814,
+   "mitjana": 0.656,
    "ranking": {
     "posicio": 187,
     "mitjana": 0.51977,
@@ -406,9 +406,9 @@
    "id": "segura-mondria-francesc-xavier",
    "name": "Segura Mondriá, Francesc Xavier",
    "partides": 2,
-   "G": 1,
+   "G": 2,
    "E": 0,
-   "P": 1,
+   "P": 0,
    "caramboles": 43,
    "entrades": 97,
    "serie_major": 3,
@@ -883,12 +883,12 @@
    "equip": "C.B. MONFORTE \"C\"",
    "rival": "Bautista Vicente, Miquel",
    "equip_rival": "SBPE. CENTELLES \"A\"",
-   "car": 35,
+   "car": 28,
    "sm": 6,
-   "ent": 40,
-   "car_rival": 27,
+   "ent": 50,
+   "car_rival": 35,
    "sm_rival": 5,
-   "res": "G"
+   "res": "P"
   },
   {
    "data": "2026-10-17",
@@ -907,7 +907,7 @@
    "ent": 50,
    "car_rival": 12,
    "sm_rival": 2,
-   "res": "P"
+   "res": "G"
   },
   {
    "data": "2026-10-17",

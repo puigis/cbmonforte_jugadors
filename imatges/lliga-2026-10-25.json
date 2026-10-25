@@ -1,0 +1,26 @@
+{
+  "jornada": "Partits ajornats",
+  "data": "17 d'octubre de 2026",
+  "partits": [
+    {
+      "equip": "B",
+      "divisio": "Divisió d'Honor · Grup B",
+      "jornada": "3",
+      "casa": true,
+      "rival": "SB FOMENT MOLINS \"A\"",
+      "monforte": 3,
+      "contrari": 0,
+      "nota": "Partit ajornat · J3"
+    },
+    {
+      "equip": "C",
+      "divisio": "Primera Divisió · Grup A",
+      "jornada": "3",
+      "casa": true,
+      "rival": "SBPE CENTELLES \"A\"",
+      "monforte": 3,
+      "contrari": 0,
+      "nota": "Partit ajornat · J3"
+    }
+  ]
+}

@@ -8751,7 +8751,7 @@ encontre_id,lliga_id,competicio,temporada,divisio,grup,grup_id,jornada,data,equi
 12111,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,3,2026-10-17,"B.C. GRANOLLERS ""E""","C.B. SANT ADRIÀ ""E""",2,6,0,3,Finalitzada
 12112,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,3,2026-10-17,"C.B. SANTS ""E""",C.B. VILANOVA,2,6,0,3,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,3,2026-10-17,C.B PUNT D'ATAC,C.B PUNT D'ATAC,0,0,0,0,Finalitzada
-,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,3,2026-10-17,"C.B. SANT FELIU ""A""","S.B. LA UNIÓ CORAL ""B""",0,0,0,0,Oberta
+12114,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP A,351,3,2026-10-17,"C.B. SANT FELIU ""A""","S.B. LA UNIÓ CORAL ""B""",4,4,1,1,Finalitzada
 11719,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,3,2026-10-17,"C.B. MONFORTE ""B""","SB FOMENT MOLINS ""A""",6,2,3,0,Finalitzada
 11720,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,3,2026-10-17,"C.B. SANT ADRIÀ ""B""",S.B. CASAL CERVERA,4,4,1,1,Finalitzada
 11721,38,Lliga Catalana Tres Bandes,2026-27,HONOR,GRUP B,344,3,2026-10-17,"B.C. GRANOLLERS ""A""","C.B. BARCELONA ""A""",8,0,3,0,Finalitzada
@@ -8785,8 +8785,8 @@ encontre_id,lliga_id,competicio,temporada,divisio,grup,grup_id,jornada,data,equi
 ,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,2,2026-10-25,C.B. SANT FELIU,"C.B. VIC ""B""",0,0,0,0,Oberta
 ,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,2,2026-10-25,"S.B. CASAL CERVERA ""C""","C.B. VIC ""A""",0,0,0,0,Oberta
 12473,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,2,2026-10-25,C.B. 2000 CERDANYOLA “C”,C.B. LLIÇÀ,6,2,3,0,Finalitzada
-,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,2,2026-10-25,C.B. VILANOVA,"C.B. MONT-ROIG ""B""",0,0,0,0,Oberta
-,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,2,2026-10-25,"C.B. SANTS ""A""","S.B. CASAL CERVERA ""B""",0,0,0,0,Oberta
+12474,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,2,2026-10-25,C.B. VILANOVA,"C.B. MONT-ROIG ""B""",0,0,0,0,Oberta
+12331,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,2,2026-10-25,"C.B. SANTS ""A""","S.B. CASAL CERVERA ""B""",0,0,0,0,Oberta
 12332,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,2,2026-10-25,"S.B. FOMENT MOLINS ""A""",C.B. LLEIDA,3,5,0,3,Finalitzada
 ,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,2,2026-10-25,"S.B. CASAL CERVERA ""A""","C.B. SANT ADRIÀ ""A""",0,0,0,0,Oberta
 ,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,2,2026-10-25,C.B. TARRAGONA,C.B. LLINARS,0,0,0,0,Oberta

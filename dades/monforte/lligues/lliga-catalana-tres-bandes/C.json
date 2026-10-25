@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 1a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-10-25T04:48+00:00",
+ "updated": "2026-10-25T09:29+00:00",
  "players": [
   {
    "id": "castro-tellez-henry",
@@ -205,20 +205,20 @@
     },
     {
      "pid": "chuecos-enriquez-luis",
-     "car": 35,
-     "ent": 40,
+     "car": 28,
+     "ent": 50,
      "sm": 6,
-     "res": "G",
+     "res": "P",
      "mod": "Tres bandes",
      "rival": "Bautista Vicente, Miquel",
-     "car_rival": 27
+     "car_rival": 35
     },
     {
      "pid": "segura-mondria-francesc-xavier",
      "car": 18,
      "ent": 50,
      "sm": 3,
-     "res": "P",
+     "res": "G",
      "mod": "Tres bandes",
      "rival": "Jiménez Martínez, Jesús",
      "car_rival": 12
