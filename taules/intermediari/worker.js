@@ -156,17 +156,41 @@ const taulesOcupades = async () => Promise.all(TAULES.map(llegirTaula));
 
 /* ---------- lectura ---------- */
 
+// Pàgina de generar partides segons el tipus de pool: carambola (3 bandes, banda, lliure...) o quilles (també el biatló)
+const GENERADOR = { "": "generar_partides12.php", quilles: "generar_partides12_quilles.php" };
+const generador = tipus => GENERADOR[tipus === "quilles" ? "quilles" : ""];
 async function pools() {
-  const html = await pagina("generar_partides12.php?vinc=1&refrescar=0");
-  return (opcions(html, "clau_pool") || []).filter(o => o.valor !== "X").map(o => ({ id: o.valor, nom: o.text }));
+  const [car, qui] = await Promise.all([
+    pagina("generar_partides12.php?vinc=1&refrescar=0"),
+    pagina("generar_partides12_quilles.php?vinc=1&refrescar=0").catch(() => ""),
+  ]);
+  const llista = (opcions(car, "clau_pool") || []).filter(o => o.valor !== "X").map(o => ({ id: o.valor, nom: o.text }));
+  for (const o of (opcions(qui, "clau_pool") || []).filter(o => o.valor !== "X"))
+    if (!llista.some(p => p.id === o.valor)) llista.push({ id: o.valor, nom: o.text, tipus: "quilles" });
+  return llista;
 }
-async function fases(pool) {
-  const html = await pagina("generar_partides12.php", [["clau_pool", pool], ["vinc", "4"]]);
+async function fases(pool, tipus) {
+  const html = await pagina(generador(tipus), [["clau_pool", pool], ["vinc", "4"]]);
   return (opcions(html, "fase") || []).filter(o => o.valor !== "X").map(o => ({ id: o.valor, nom: o.text }));
 }
+// Tots els camps de cada taula lliure (nom[t]) amb el valor que proposa el wifibillar, i els camps ocults generals.
+// Serveix per a la pàgina de quilles, que té camps propis: s'envien tal com venen i només es canvien jugadors, caramboles i entrades.
+function campsFormulari(html) {
+  const perTaula = {}, generals = [];
+  const afegeix = (nom, v) => { const m = nom.match(/\[(\d+)\]$/); if (m) (perTaula[m[1]] = perTaula[m[1]] || []).push([nom, v]); else generals.push([nom, v]); };
+  for (const i of inputs(html)) {
+    if (["submit", "button", "reset", "image", "file"].includes(i.tipus)) continue;
+    if ((i.tipus === "checkbox" || i.tipus === "radio") && !/\bchecked\b/i.test(i.tag)) continue;
+    if (!/\[\d+\]$/.test(i.nom) && i.tipus !== "hidden") continue;
+    afegeix(i.nom, i.valor);
+  }
+  for (const m of html.matchAll(/<select[^>]*name\s*=\s*['"]([^'"]+)['"]/gi)) afegeix(m[1], triat(opcions(html, m[1])) ?? "");
+  for (const m of html.matchAll(/<textarea[^>]*name\s*=\s*['"]([^'"]+)['"][^>]*>([\s\S]*?)<\/textarea>/gi)) afegeix(m[1], entitats(m[2]));
+  return { perTaula, generals: generals.filter(([k]) => k !== "vinc") };
+}
 // Formulari de generar partides d'una pool i fase
-async function formulariGenerar(pool, fase) {
-  const html = await pagina("generar_partides12.php", [["clau_pool", pool], ["fase", fase], ["vinc", "3"]]);
+async function formulariGenerar(pool, fase, tipus) {
+  const html = await pagina(generador(tipus), [["clau_pool", pool], ["fase", fase], ["vinc", "3"]]);
   const lliures = inputs(html).filter(i => /^taula\[\d+\]$/.test(i.nom)).map(i => +i.valor);
   const t0 = lliures[0];
   const jugadors = t0 ? (opcions(html, `idjugador1[${t0}]`) || []).filter(o => o.valor !== "N").map(o => ({ id: o.valor, nom: o.text })) : [];
@@ -174,6 +198,7 @@ async function formulariGenerar(pool, fase) {
   return {
     html, lliures, jugadors, modalitats,
     modalitat: t0 ? triat(opcions(html, `modalitat[${t0}]`)) : null,
+    camps: tipus === "quilles" ? campsFormulari(html) : null,
     entrades: t0 ? valorInput(html, `topeent[${t0}]`) : null,
     ocultes: {
       clau_pool: valorInput(html, "clau_pool"),
@@ -355,12 +380,13 @@ async function crear(d, simular) {
   }
 
   // 2. Assignar (només els que encara no hi són)
-  let form = await formulariGenerar(pool, fase);
+  const tipus = d.tipus === "quilles" ? "quilles" : "";
+  let form = await formulariGenerar(pool, fase, tipus);
   const falten = ids.filter(id => !form.jugadors.some(j => j.id === id));
   if (falten.length) {
     await assignar(pool, fase, falten.filter(id => !id.startsWith("NOU:")), simular, registre);
     if (falten.some(id => id.startsWith("NOU:"))) registre.push({ pas: "assignar", nota: "També s'hi assignarien els jugadors nous" });
-    if (!simular) form = await formulariGenerar(pool, fase);
+    if (!simular) form = await formulariGenerar(pool, fase, tipus);
   }
 
   // 3. Generar la partida
@@ -368,6 +394,28 @@ async function crear(d, simular) {
   if (!form.ocultes.indexacio) throw new Error("No s'ha pogut obrir el formulari de generar partides");
   if (!simular) for (const id of ids) if (!form.jugadors.some(j => j.id === id)) throw new Error("Un jugador no ha quedat assignat a la pool (" + id + ")");
   const camps = [];
+  if (tipus === "quilles") {
+    // Pàgina de quilles: tots els camps tal com els proposa el wifibillar; només es canvien jugadors, caramboles i entrades
+    const fc = form.camps;
+    for (const t of form.lliures) {
+      const meva = t === taula;
+      for (const [nom, v] of fc.perTaula[t] || []) {
+        const base = nom.replace(/\[\d+\]$/, "");
+        let val = v;
+        if (base === "idjugador1") val = meva ? ids[0] : "N";
+        else if (base === "idjugador2") val = meva ? ids[1] : "N";
+        else if (meva && base === "topecar1" && d.caramboles?.[0]) val = String(d.caramboles[0]);
+        else if (meva && base === "topecar2" && d.caramboles?.[1]) val = String(d.caramboles[1]);
+        else if (meva && base === "topeent" && d.entrades) val = String(d.entrades);
+        else if (base === "id_partida") val = "X";
+        camps.push([nom, val ?? ""]);
+      }
+    }
+    for (const [k, v] of fc.generals) if (k !== "vinc") camps.push([k, v ?? ""]);
+    camps.push(["vinc", "2"]);
+    if (simular) { registre.push({ pas: "generar partida (quilles)", camps }); return { simulat: true, registre }; }
+    await pagina(generador(tipus), camps);
+  } else {
   for (const t of form.lliures) {
     const meva = t === taula;
     camps.push(
@@ -382,6 +430,7 @@ async function crear(d, simular) {
   camps.push(["vinc", "2"]);
   if (simular) { registre.push({ pas: "generar partida", camps }); return { simulat: true, registre }; }
   await pagina("generar_partides12.php", camps);
+  }
 
   // 4. Comprovar
   const ara = await llegirTaula(taula);
@@ -680,9 +729,9 @@ export default {
       if (accio && accio.startsWith("biatlo")) return await biatlo(request, params, env);
       if (!accio) return json({ actualitzat: new Date().toISOString(), taules: await taulesOcupades() });
       if (accio === "pools") return json(await pools());
-      if (accio === "fases") return json(await fases(params.get("pool")));
+      if (accio === "fases") return json(await fases(params.get("pool"), params.get("tipus")));
       if (accio === "formulari") {
-        const f = await formulariGenerar(params.get("pool"), params.get("fase"));
+        const f = await formulariGenerar(params.get("pool"), params.get("fase"), params.get("tipus"));
         return json({ lliures: f.lliures, jugadors: f.jugadors, modalitats: f.modalitats, modalitat: f.modalitat, entrades: f.entrades });
       }
       if (accio === "jugadors") return json(await totsJugadors());

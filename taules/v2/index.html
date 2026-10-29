@@ -269,6 +269,7 @@ function botons(cont, items, actiu, onTria){
 /* ---------- pools i fases ---------- */
 function carDefecte(nomPool){
   const n=norm(nomPool);
+  if (/BIATL/.test(n)) return 15;   // Biatló: grups 15 car. / 30 entrades (eliminatòries 20 / 40)
   if (!/LLIGA/.test(n)) return null;
   if (/HONOR/.test(n)) return 40;
   if (/\b1(A|ª)\b|1A DIV|1ª/.test(n)) return 35;
@@ -278,6 +279,11 @@ function carDefecte(nomPool){
   return null;
 }
 const esManual = () => { const p=POOLS.find(p=>p.id===state.pool); return p && /MANUAL/i.test(p.nom); };
+// Pools de quilles (el biatló es juga com una partida de quilles al wifibillar)
+const poolActual = () => POOLS.find(p=>p.id===state.pool) || {};
+const esQuilles = () => poolActual().tipus==="quilles";
+const esBiatlo = () => /BIATL/.test(norm(poolActual().nom||""));
+const tipusQ = () => esQuilles() ? "&tipus=quilles" : "";
 // Ordre: primer les lligues catalanes (Honor, 1a, 3a, 4a i finals), després la resta per ordre alfabètic i al final la Lliga Nacional
 function ordrePool(p){
   const n=norm(p.nom);
@@ -292,6 +298,7 @@ function ordenaPools(ps){
 }
 // De moment només es mostren: lliga de 3 bandes (divisions), prèvies i partida única
 function poolVisible(p){
+  if (p.tipus==="quilles") return /BIATL/.test(norm(p.nom));
   const n=norm(p.nom);
   if (/MANUAL/.test(n)) return true;
   if (/PREVIA/.test(n)) return true;
@@ -301,6 +308,7 @@ function nomVisible(p){ return /MANUAL/.test(norm(p.nom)) ? "Partida única" : p
 function ordreVisible(p){
   const n=norm(p.nom);
   if (/LLIGA NAC/.test(n)) return 4;
+  if (/BIATL/.test(n)) return 2.5;
   if (/LLIGA/.test(n)) return 1;
   if (/PREVIA/.test(n)) return 2;
   return 3;   // partida única
@@ -316,7 +324,7 @@ function triaPool(id){
   state.jugador1=null; state.jugador2=null; state.car1=""; state.car2="";
   pintaPools(); refaPicks();
   $("modalitats").innerHTML='<span class="wait">Carregant…</span>';
-  api("accio=fases&pool="+id).then(fs=>{
+  api("accio=fases&pool="+id+tipusQ()).then(fs=>{
     if (state.pool!==id) return;
     if (fs.length===1){ $("secFase").hidden=true; triaFase(fs[0].id); }
     else { $("secFase").hidden=false; botons($("fases"), fs, state.fase, f=>{ triaFase(f); botons($("fases"), fs, f, ()=>{}); }); }
@@ -325,17 +333,21 @@ function triaPool(id){
 }
 function triaFase(f){
   state.fase=f;
-  api("accio=formulari&pool="+state.pool+"&fase="+f).then(d=>{
+  api("accio=formulari&pool="+state.pool+"&fase="+f+tipusQ()).then(d=>{
     if (state.fase!==f) return;
     FORM=d;
     state.modalitat = MODALITATS_OK.includes(String(d.modalitat)) ? String(d.modalitat) : null;
+    if (esQuilles()) state.modalitat = d.modalitat ? String(d.modalitat) : "Q";   // la pàgina de quilles fa servir la modalitat que porta la pool
     if (d.entrades && !esManual()) state.entrades=+d.entrades;
+    if (esBiatlo() && !d.entrades) state.entrades=30;
+    if (!esBiatlo() && String(state.entrades)==="30") state.entrades=50;
     const dc = carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"");
     if (dc){ state.car1=dc; state.car2=dc; }
-    pintaModalitats(); pintaCars(); refaPicks(); render();
+    pintaModalitats(); pintaCars(); pintaEnt(); refaPicks(); render();
   }).catch(e=>{ $("modalitats").innerHTML='<span class="wait">No s\'ha pogut llegir la pool: '+esc(e.message)+'</span>'; });
 }
 function pintaModalitats(){
+  if (esQuilles()){ $("modalitats").innerHTML=`<button class="o" type="button" aria-pressed="true">${esBiatlo()?"Biatló (3 bandes + 5 quilles)":"5 quilles"}</button>`; return; }
   const ms=(FORM?.modalitats||[]).filter(m=>MODALITATS_OK.includes(String(m.id))).sort((a,b)=>a.nom.localeCompare(b.nom,"ca",{numeric:true}));
   botons($("modalitats"), ms, state.modalitat, id=>{ state.modalitat=String(id); pintaModalitats(); render(); });
 }
@@ -343,16 +355,16 @@ function pintaModalitats(){
 /* ---------- caramboles i entrades ---------- */
 function pintaCars(){
   const iguals = String(state.car1)===String(state.car2) ? String(state.car1) : null;
-  botons($("carOpts"), CAR_OPCIONS.map(c=>({id:c,nom:c})), iguals, c=>{ state.car1=c; state.car2=c; $("carOther").value=""; pintaCars(); render(); });
+  botons($("carOpts"), (esBiatlo()?[15,20]:CAR_OPCIONS).map(c=>({id:c,nom:c})), iguals, c=>{ state.car1=c; state.car2=c; $("carOther").value=""; pintaCars(); render(); });
   if (document.activeElement!==$("car1")) $("car1").value=state.car1;
   if (document.activeElement!==$("car2")) $("car2").value=state.car2;
   const dc=carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"");
-  $("carNote").textContent = dc ? `Aquesta lliga es juga a ${dc} caramboles. Les pots canviar si cal.` : "";
+  $("carNote").textContent = esBiatlo() ? "Biatló: grups 15 caramboles / 30 entrades; eliminatòries 20 caramboles / 40 entrades." : dc ? `Aquesta lliga es juga a ${dc} caramboles. Les pots canviar si cal.` : "";
 }
 $("carOther").addEventListener("input",()=>{ const v=parseInt($("carOther").value,10); if(v>0){state.car1=v;state.car2=v;} pintaCars(); render(); });
 $("car1").addEventListener("input",()=>{ state.car1=$("car1").value; pintaCars(); render(); });
 $("car2").addEventListener("input",()=>{ state.car2=$("car2").value; pintaCars(); render(); });
-function pintaEnt(){ botons($("entOpts"), [{id:50,nom:50,def:true},{id:40,nom:40}], state.entrades, e=>{ state.entrades=e; pintaEnt(); render(); }); }
+function pintaEnt(){ botons($("entOpts"), esBiatlo() ? [{id:30,nom:30,def:true},{id:40,nom:40}] : [{id:50,nom:50,def:true},{id:40,nom:40}], state.entrades, e=>{ state.entrades=e; pintaEnt(); render(); }); }
 
 /* ---------- jugadors ---------- */
 // Wifibillar: "COGNOMS, NOM(nom marcador) [Grup: A]"
@@ -473,7 +485,7 @@ function drawPick(box){
 function refaPicks(){ document.querySelectorAll(".pick").forEach(drawPick); }
 // Si la pool no té caramboles fixades, demana al wifibillar les del jugador
 function carsJugador(){
-  if (carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"") || esManual()) return;
+  if (carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"") || esManual() || esQuilles()) return;
   ["jugador1","jugador2"].forEach((k,i)=>{
     const j=state[k]; if(!j||j.tipus!=="pool") return;
     api(`accio=caramboles&pool=${state.pool}&fase=${state.fase}&jugador=${j.id}`).then(d=>{
@@ -538,7 +550,7 @@ $("next").onclick=revisio;
 function crear(){
   const b=$("crear"), out=$("resultat");
   const jug=j=>j.id?{id:j.id, marcador:(j.marcFinal||"").trim()||undefined}:{nou:{alfabetic:j.alf.trim(),marcador:j.marc.trim()}};
-  const d={pool:state.pool,fase:state.fase,taula:state.taula,modalitat:state.modalitat,entrades:state.entrades,
+  const d={pool:state.pool,fase:state.fase,taula:state.taula,modalitat:state.modalitat,entrades:state.entrades,tipus:esQuilles()?"quilles":"",
     caramboles:[+state.car1,+state.car2],jugadors:[jug(state.jugador1),jug(state.jugador2)]};
   b.disabled=true; b.textContent=PROVA?"Simulant…":"Creant…"; out.innerHTML="";
   const req = PROVA
@@ -566,7 +578,7 @@ $("refresh").onclick=()=>{
   const fi=()=>{ b.classList.remove("gira"); b.disabled=false; };
   Promise.allSettled([
     api("accio=jugadors").then(w=>{WIFI=w;}),
-    state.pool&&state.fase ? api("accio=formulari&pool="+state.pool+"&fase="+state.fase).then(d=>{FORM=d;}) : null,
+    state.pool&&state.fase ? api("accio=formulari&pool="+state.pool+"&fase="+state.fase+tipusQ()).then(d=>{FORM=d;}) : null,
   ]).then(()=>setTimeout(fi,400));
 };
 
