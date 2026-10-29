@@ -525,6 +525,7 @@ async function convocatories(request, params, env) {
 const ADMINS_BIATLO = {
   isaacpuig:  { nom: "Isaac Puig",        sal: "45f2da5272921d9f67f43b35ed91abed", hash: "90cf0dc67406432f268717b67fa96623012883157cf71bb59d2b30f8f8f90ddf" },
   jonhzuleta: { nom: "John Jairo Zuleta", sal: "1258a391afcdaf8fae321ac20e1c506e", hash: "5009b6baf6e7570c68f7a9739a5b505dc58f3b5b9181cb570f03784a43956815" },
+  monforte:   { nom: "CB Monforte",       sal: "cf7d786767e0e356d24cffe787e5895c", hash: "9fab81578a586a4d41d2c36d35740639cf986307ea78fb366cd0dbdc9b0c9171" },
 };
 const hexBytes = h => new Uint8Array(h.match(/../g).map(x => parseInt(x, 16)));
 const bytesHex = b => [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, "0")).join("");
