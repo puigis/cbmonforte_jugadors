@@ -185,24 +185,24 @@ const NOM_CRITERI = {
   mit3b: "Mitjana de tres bandes (caramboles ÷ entrades)",
 };
 
-const J = { // posició al rànquing inicial -> jugador
-  1:["Pau Bonet","C.B. Monforte"], 2:["Àngel Viladomat","C.B. Alba"], 3:["Lluís Gómez","S.B.F. Molins de Rei"],
-  4:["Lino Brizzi","S.B.F. Molins de Rei"], 5:["Josep Torrent","C.B. Alba"], 6:["Jordi Santamaría","C.B. Alba"],
-  7:["Héctor Fabio Suárez","C.B. Sant Adrià"], 8:["Joel Sánchez","C.B. Mataró"], 9:["F. Xavier Segura","C.B. Monforte"],
-  10:["Isaac Puig","C.B. Monforte"], 11:["Carlos Rojo","C.B. Alba"], 12:["Duvan Mejía","C.B. Monforte"],
-  13:["Pere Adell","C.B. Monforte"], 14:["Alberto Daude","Unió Coral"], 15:["David Bosqued","C.B. Sant Adrià"],
-  16:["Miguel Sánchez","S.B.F. Molins de Rei"], 17:["Ricardo García","C.B. Monforte"], 18:["Juan Merino","C.B. Sant Adrià"],
+const J = { // número de la fase final -> jugador (imatge "Fase final · Grups", 29/10/2026)
+  1:["Lluís Gómez","S.B.F. Molins de Rei"], 2:["Lino Brizzi","S.B.F. Molins de Rei"], 3:["Josep Torrent","C.B. Alba"],
+  4:["Jordi Santamaría","C.B. Alba"], 5:["Héctor Fabio Suárez","C.B. Sant Adrià"], 6:["Joel Sánchez","C.B. Mataró"],
+  7:["F. Xavier Segura","C.B. Monforte"], 8:["Isaac Puig","C.B. Monforte"], 9:["Carlos Rojo","C.B. Alba"],
+  10:["Duvan Mejía","C.B. Monforte"], 11:["Pere Adell","C.B. Monforte"], 12:["Alberto Daude","Unió Coral"],
+  13:["David Bosqued","C.B. Sant Adrià"], 14:["Miguel Sánchez","S.B.F. Molins de Rei"], 15:["Francisco Fariña","C.B. Monforte"],
+  16:["Ricardo García","C.B. Monforte"], 17:["Juan Merino","C.B. Sant Adrià"], 18:["Bernardo Rolan","C.B. Monforte"],
   19:["Fernando Segura","C.B. Monforte"], 20:["Brian Villate","C.B. Monforte"], 21:["John Jairo Zuleta","C.B. Monforte"],
 };
-// p: jugadors (1, 2, 3 del grup); obre: qui juga la 1a partida; fix: qui espera; hores i billar (dissabte 14)
+// p: jugadors (1, 2, 3 del grup); obre: qui juga la 1a partida; fix: qui espera; hores i billar (dissabte 14) — imatge "Horaris", 29/10/2026
 const GRUPS = [
-  {g:"A", p:[1,14,21], obre:[0,2], fix:1, h:["16:00","17:30","19:00"], b:1},
-  {g:"B", p:[2,13,20], obre:[1,2], fix:0, h:["16:00","17:30","19:00"], b:2},
-  {g:"C", p:[3,12,19], obre:[1,2], fix:0, h:["16:00","17:30","19:00"], b:3},
-  {g:"D", p:[4,11,18], obre:[0,2], fix:1, h:["16:00","17:30","19:00"], b:4},
-  {g:"E", p:[5,10,17], obre:[1,2], fix:0, h:["9:30","11:00","12:30"], b:1},
-  {g:"F", p:[6,9,16],  obre:[1,2], fix:0, h:["9:30","11:00","12:30"], b:2},
-  {g:"G", p:[7,8,15],  obre:[0,2], fix:1, h:["9:30","11:00","12:30"], b:3},
+  {g:"A", p:[1,14,21], obre:[0,1], fix:2, h:["16:00","17:30","19:00"], b:1},   // Gómez – M. Sánchez; Zuleta espera
+  {g:"B", p:[2,13,20], obre:[1,2], fix:0, h:["16:00","17:30","19:00"], b:2},   // Bosqued – Villate; Brizzi espera
+  {g:"C", p:[3,12,19], obre:[1,2], fix:0, h:["16:00","17:30","19:00"], b:3},   // Daude – F. Segura; Torrent espera
+  {g:"D", p:[4,11,18], obre:[1,2], fix:0, h:["16:00","17:30","19:00"], b:4},   // Adell – Rolan; Santamaría espera
+  {g:"E", p:[5,10,17], obre:[0,2], fix:1, h:["9:30","11:00","12:30"], b:1},    // Suárez – Merino; Mejía espera
+  {g:"F", p:[6,9,16],  obre:[1,2], fix:0, h:["9:30","11:00","12:30"], b:2},    // Rojo – R. García; J. Sánchez espera
+  {g:"G", p:[7,8,15],  obre:[1,2], fix:0, h:["9:30","11:00","12:30"], b:3},    // Puig – Fariña; X. Segura espera
 ];
 // Eliminatòries (diumenge 15). a/b: posició 1-8 de la fase final o guanyador d'una partida
 const KO = [
