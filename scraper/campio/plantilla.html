@@ -73,9 +73,9 @@ prova.innerHTML=`${D.campionat} · <b>${D.modalitat}</b>`;
 // encongeix el nom si és llarg
 let m=92; while(nom.scrollWidth>nom.clientWidth&&m>50){m-=2;nom.style.fontSize=m+'px'}
 // boles segons modalitat
-const colors={snooker:['#c4121c','#111','#e7c21a','#1a7a2e','#6b3a1d','#1d4fb8','#e46ab0'],'3bandes':['#f3f1e6','#e7c21a','#c4121c']}[D.boles]||['#c4121c'];
+const colors={snooker:['#c4121c','#111','#e7c21a','#1a7a2e','#6b3a1d','#1d4fb8','#e46ab0'],'3bandes':['#f3f1e6','#e7c21a','#c4121c'],bola9:['#9','#111','#e7b81a','#c4121c','#e8731a','#1d4fb8','#5b2a86']}[D.boles]||['#c4121c'];
 const pos=[[70,1080,120,1],[900,1110,140,0],[180,1230,90,3],[820,1250,100,2],[-30,820,110,6],[960,860,80,5],[330,1275,60,4]];
-boles.innerHTML=pos.slice(0,Math.max(colors.length,3)).map(([x,y,s,b],i)=>`<div class="bola" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;--b:${b}px;background:radial-gradient(circle at 35% 30%,${colors[i%colors.length]} 0 40%,#000 140%)"></div>`).join('');
+boles.innerHTML=pos.slice(0,Math.max(colors.length,3)).map(([x,y,s,b],i)=>`<div class="bola" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;--b:${b}px;background:${colors[i%colors.length]=='#9'?'radial-gradient(circle at 35% 30%,rgba(0,0,0,0) 0 40%,rgba(0,0,0,.9) 140%),linear-gradient(180deg,#f3f1e6 0 28%,#e7b81a 28% 72%,#f3f1e6 72%)':'radial-gradient(circle at 35% 30%,'+colors[i%colors.length]+' 0 40%,#000 140%)'}">${colors[i%colors.length]=='#9'?`<span style="position:absolute;left:50%;top:50%;width:40%;height:40%;transform:translate(-50%,-50%);border-radius:50%;background:#f6f3e8;display:grid;place-items:center;font:700 ${s*.26}px Oswald;color:#111">9</span>`:''}</div>`).join('');
 // confeti daurat (aleatori però fix)
 let s=7; const r=()=>(s=(s*16807)%2147483647)/2147483647;
 function conf(el,n,davant){let h='';for(let i=0;i<n;i++){const w=10+r()*(davant?60:30),hh=w*(0.35+r()*0.5),x=r()*1100-10,y=r()*1350,rot=r()*360,bl=davant?(r()<.5?r()*6:0):r()*3,op=davant?.95:.55+r()*.4;
