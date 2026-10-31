@@ -6,6 +6,10 @@
 :root{--or1:#fff1b8;--or2:#e9b949;--or3:#a8741a}
 *{margin:0;padding:0;box-sizing:border-box}
 html,body{width:1080px;height:1350px;overflow:hidden}
+html.reel,html.reel body{height:1920px}
+.marc{position:absolute;left:0;top:0;width:1080px;height:1350px}
+html.reel .marc{top:285px}
+html.reel .tapet{height:1100px;top:900px}
 body{position:relative;background:#0b0b0c;color:#fff;font-family:Oswald}
 .fons{position:absolute;inset:0;background:
  radial-gradient(ellipse 620px 520px at 50% 58%,rgba(255,214,120,.16),transparent 70%),
@@ -30,8 +34,27 @@ body{position:relative;background:#0b0b0c;color:#fff;font-family:Oswald}
 .club{position:absolute;left:0;right:0;bottom:70px;text-align:center;font:600 26px Oswald;letter-spacing:12px;color:rgba(255,255,255,.7)}
 .club span{color:var(--or2)}
 .ln{position:absolute;left:50%;bottom:118px;width:120px;height:3px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--or2),transparent)}
+/* ===== Reel ===== */
+html.reel *{animation-fill-mode:both}
+html.reel .t1{animation:cop .7s cubic-bezier(.2,1.5,.4,1) .3s both}
+html.reel .campio{animation:esq .6s cubic-bezier(.2,.9,.3,1) 1.0s both}
+html.reel .temp{animation:pop .5s cubic-bezier(.2,1.7,.4,1) 1.4s both}
+html.reel .escut{animation:escut 1.1s cubic-bezier(.2,1.2,.4,1) 1.9s both}
+html.reel .nom{animation:puja .7s cubic-bezier(.2,.9,.3,1) 3.0s both}
+html.reel .prova{animation:puja .6s ease-out 3.5s both}
+html.reel .club,html.reel .ln{animation:fade .6s ease-out 4.1s both}
+html.reel .bola{animation:fade 1s ease-out .2s both}
+html.reel .c{animation:cau var(--d) linear var(--dl) infinite}
+@keyframes cop{from{opacity:0;transform:scale(2.2)}to{opacity:1;transform:none}}
+@keyframes esq{from{opacity:0;transform:translateX(-200px)}to{opacity:1;transform:none}}
+@keyframes pop{from{opacity:0;transform:scale(.2)}to{opacity:1;transform:none}}
+@keyframes escut{0%{opacity:0;transform:translateX(-50%) scale(.3) rotate(-30deg)}100%{opacity:1;transform:translateX(-50%)}}
+@keyframes puja{from{opacity:0;transform:translateY(60px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes cau{from{translate:0 -1500px}to{translate:0 700px}}
 </style></head><body>
-<div class="fons"></div><div class="tapet"></div><div class="gra"></div>
+<div class="fons"></div><div class="gra"></div>
+<div class="marc"><div class="tapet"></div>
 <div class="boles" id="boles"></div>
 <div class="conf" id="cdarrere"></div>
 <div class="t1">ENHORABONA</div>
@@ -41,7 +64,9 @@ body{position:relative;background:#0b0b0c;color:#fff;font-family:Oswald}
 <div class="prova" id="prova"></div>
 <div class="ln"></div><div class="club">CB <span>MONFORTE</span></div>
 <div class="conf" id="cdavant"></div>
+</div>
 <script>
+if(window.REEL)document.documentElement.classList.add("reel");
 const D=window.DADES||{nom:"David Cassadó",titol:"Campió",campionat:"Campionat social",modalitat:"Snooker",temporada:"Temp.<br>26-27",boles:"snooker"};
 nom.textContent=D.nom; titol.textContent=D.titol.toUpperCase(); temp.innerHTML=D.temporada;
 prova.innerHTML=`${D.campionat} · <b>${D.modalitat}</b>`;
@@ -54,9 +79,9 @@ boles.innerHTML=pos.slice(0,Math.max(colors.length,3)).map(([x,y,s,b],i)=>`<div 
 // confeti daurat (aleatori però fix)
 let s=7; const r=()=>(s=(s*16807)%2147483647)/2147483647;
 function conf(el,n,davant){let h='';for(let i=0;i<n;i++){const w=10+r()*(davant?60:30),hh=w*(0.35+r()*0.5),x=r()*1100-10,y=r()*1350,rot=r()*360,bl=davant?(r()<.5?r()*6:0):r()*3,op=davant?.95:.55+r()*.4;
- if(!davant&&((y>500&&y<1100&&x>150&&x<930)||(y>110&&y<330)||(y>1220&&x>350&&x<730)))continue;
- h+=`<div class="c" style="left:${x}px;top:${y}px;width:${w}px;height:${hh}px;transform:rotate(${rot}deg) skewX(${r()*30-15}deg);filter:blur(${bl}px);opacity:${op};border-radius:${r()*4}px"></div>`}el.innerHTML=h}
+ if(!window.REEL&&!davant&&((y>500&&y<1100&&x>150&&x<930)||(y>110&&y<330)||(y>1220&&x>350&&x<730)))continue;
+ h+=`<div class="c" style="--d:${5+r()*5}s;--dl:-${r()*10}s;left:${x}px;top:${y}px;width:${w}px;height:${hh}px;transform:rotate(${rot}deg) skewX(${r()*30-15}deg);filter:blur(${bl}px);opacity:${op};border-radius:${r()*4}px"></div>`}el.innerHTML=h}
 conf(cdarrere,110,false);
 s=99; let h=''; const davant=[[30,470,90],[960,40,70],[30,700,110],[970,620,90],[120,40,60],[950,1160,80],[60,960,50],[1000,1290,90],[20,1300,70]];
-davant.forEach(([x,y,w])=>{h+=`<div class="c" style="left:${x}px;top:${y}px;width:${w}px;height:${w*.55}px;transform:rotate(${r()*360}deg) skewX(${r()*30-15}deg);filter:blur(${r()*5}px)"></div>`});cdavant.innerHTML=h;
+davant.forEach(([x,y,w])=>{h+=`<div class="c" style="--d:${4+r()*3}s;--dl:-${r()*7}s;left:${x}px;top:${y}px;width:${w}px;height:${w*.55}px;transform:rotate(${r()*360}deg) skewX(${r()*30-15}deg);filter:blur(${r()*5}px)"></div>`});cdavant.innerHTML=h;
 </script></body></html>
