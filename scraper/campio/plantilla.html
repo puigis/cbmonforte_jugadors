@@ -1,0 +1,62 @@
+<!doctype html><html lang="ca"><head><meta charset="utf-8"><title>Campió social</title>
+<style>
+@font-face{font-family:BigS;src:url(fonts/BigShoulders.ttf);font-weight:100 900}
+@font-face{font-family:Anton;src:url(fonts/Anton-Regular.ttf)}
+@font-face{font-family:Oswald;src:url(fonts/Oswald.ttf);font-weight:200 700}
+:root{--or1:#fff1b8;--or2:#e9b949;--or3:#a8741a}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1080px;height:1350px;overflow:hidden}
+body{position:relative;background:#0b0b0c;color:#fff;font-family:Oswald}
+.fons{position:absolute;inset:0;background:
+ radial-gradient(ellipse 620px 520px at 50% 58%,rgba(255,214,120,.16),transparent 70%),
+ radial-gradient(ellipse 900px 700px at 50% 40%,#1d1d20,#0b0b0c 75%)}
+.gra{position:absolute;inset:0;opacity:.35;background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1.4px);background-size:7px 7px}
+/* tauler de snooker difuminat */
+.tapet{position:absolute;left:-120px;right:-120px;top:930px;height:600px;background:radial-gradient(ellipse at 50% 0%,#145a32,#06200f 70%);transform:perspective(900px) rotateX(58deg);filter:blur(2px);opacity:.55;-webkit-mask-image:linear-gradient(180deg,transparent,#000 35%)}
+.boles{position:absolute;inset:0}
+.bola{position:absolute;border-radius:50%;filter:blur(var(--b,0px));box-shadow:inset -10px -12px 22px rgba(0,0,0,.55),0 18px 30px rgba(0,0,0,.6)}
+.bola::after{content:"";position:absolute;left:22%;top:16%;width:26%;height:22%;border-radius:50%;background:rgba(255,255,255,.75);filter:blur(2px)}
+.conf{position:absolute;inset:0;pointer-events:none}
+.c{position:absolute;background:linear-gradient(135deg,var(--or1),var(--or2) 45%,var(--or3));box-shadow:0 2px 6px rgba(0,0,0,.4)}
+.t1{position:absolute;left:0;right:0;top:130px;text-align:center;font:400 206px/0.86 Anton;letter-spacing:1px;color:#f6f6f2;text-shadow:0 10px 30px rgba(0,0,0,.6)}
+.fila{position:absolute;left:0;right:0;top:340px;display:flex;justify-content:center;align-items:center;gap:34px}
+.campio{font:300 172px/0.85 BigS;letter-spacing:-2px;color:#f6f6f2;font-stretch:condensed}
+.temp{font:800 66px/0.92 Oswald;text-transform:uppercase;letter-spacing:1px;
+ background:linear-gradient(180deg,var(--or1),var(--or2) 50%,var(--or3));-webkit-background-clip:text;color:transparent;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))}
+.escut{position:absolute;left:50%;top:540px;width:300px;transform:translateX(-50%);filter:drop-shadow(0 0 40px rgba(255,210,110,.35)) drop-shadow(0 20px 30px rgba(0,0,0,.7))}
+.nom{position:absolute;left:40px;right:40px;top:905px;text-align:center;font:700 92px/1 Oswald;text-transform:uppercase;letter-spacing:3px;color:#f6f6f2;text-shadow:0 6px 20px rgba(0,0,0,.8)}
+.prova{position:absolute;left:40px;right:40px;top:1010px;text-align:center;font:400 74px/1 BigS;font-weight:500;text-transform:uppercase;color:#f6f6f2;letter-spacing:1px}
+.prova b{font-weight:800;background:linear-gradient(180deg,var(--or1),var(--or2) 50%,var(--or3));-webkit-background-clip:text;color:transparent}
+.club{position:absolute;left:0;right:0;bottom:70px;text-align:center;font:600 26px Oswald;letter-spacing:12px;color:rgba(255,255,255,.7)}
+.club span{color:var(--or2)}
+.ln{position:absolute;left:50%;bottom:118px;width:120px;height:3px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,var(--or2),transparent)}
+</style></head><body>
+<div class="fons"></div><div class="tapet"></div><div class="gra"></div>
+<div class="boles" id="boles"></div>
+<div class="conf" id="cdarrere"></div>
+<div class="t1">ENHORABONA</div>
+<div class="fila"><div class="campio" id="titol">CAMPIÓ</div><div class="temp" id="temp"></div></div>
+<img class="escut" src="escut.png">
+<div class="nom" id="nom"></div>
+<div class="prova" id="prova"></div>
+<div class="ln"></div><div class="club">CB <span>MONFORTE</span></div>
+<div class="conf" id="cdavant"></div>
+<script>
+const D=window.DADES||{nom:"David Cassadó",titol:"Campió",campionat:"Campionat social",modalitat:"Snooker",temporada:"Temp.<br>26-27",boles:"snooker"};
+nom.textContent=D.nom; titol.textContent=D.titol.toUpperCase(); temp.innerHTML=D.temporada;
+prova.innerHTML=`${D.campionat} · <b>${D.modalitat}</b>`;
+// encongeix el nom si és llarg
+let m=92; while(nom.scrollWidth>nom.clientWidth&&m>50){m-=2;nom.style.fontSize=m+'px'}
+// boles segons modalitat
+const colors={snooker:['#c4121c','#111','#e7c21a','#1a7a2e','#6b3a1d','#1d4fb8','#e46ab0'],'3bandes':['#f3f1e6','#e7c21a','#c4121c']}[D.boles]||['#c4121c'];
+const pos=[[70,1080,120,1],[900,1110,140,0],[180,1230,90,3],[820,1250,100,2],[-30,820,110,6],[960,860,80,5],[330,1275,60,4]];
+boles.innerHTML=pos.slice(0,Math.max(colors.length,3)).map(([x,y,s,b],i)=>`<div class="bola" style="left:${x}px;top:${y}px;width:${s}px;height:${s}px;--b:${b}px;background:radial-gradient(circle at 35% 30%,${colors[i%colors.length]} 0 40%,#000 140%)"></div>`).join('');
+// confeti daurat (aleatori però fix)
+let s=7; const r=()=>(s=(s*16807)%2147483647)/2147483647;
+function conf(el,n,davant){let h='';for(let i=0;i<n;i++){const w=10+r()*(davant?60:30),hh=w*(0.35+r()*0.5),x=r()*1100-10,y=r()*1350,rot=r()*360,bl=davant?(r()<.5?r()*6:0):r()*3,op=davant?.95:.55+r()*.4;
+ if(!davant&&((y>500&&y<1100&&x>150&&x<930)||(y>110&&y<330)||(y>1220&&x>350&&x<730)))continue;
+ h+=`<div class="c" style="left:${x}px;top:${y}px;width:${w}px;height:${hh}px;transform:rotate(${rot}deg) skewX(${r()*30-15}deg);filter:blur(${bl}px);opacity:${op};border-radius:${r()*4}px"></div>`}el.innerHTML=h}
+conf(cdarrere,110,false);
+s=99; let h=''; const davant=[[30,470,90],[960,40,70],[30,700,110],[970,620,90],[120,40,60],[950,1160,80],[60,960,50],[1000,1290,90],[20,1300,70]];
+davant.forEach(([x,y,w])=>{h+=`<div class="c" style="left:${x}px;top:${y}px;width:${w}px;height:${w*.55}px;transform:rotate(${r()*360}deg) skewX(${r()*30-15}deg);filter:blur(${r()*5}px)"></div>`});cdavant.innerHTML=h;
+</script></body></html>
