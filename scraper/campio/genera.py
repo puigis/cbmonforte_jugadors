@@ -1,7 +1,12 @@
 import sys,json,pathlib,subprocess,tempfile,shutil
 from playwright.sync_api import sync_playwright
-dades=json.loads(sys.argv[1]); sortida=sys.argv[2]; canco=sys.argv[3]
-u=pathlib.Path('/home/claude/cbmonforte_jugadors/scraper/campio/plantilla.html').as_uri()
+"""Cartell (1080x1350) i Reel (10 s) de campió.
+Ús: python3 genera.py '{"nom":..,"titol":"Campió","campionat":..,"modalitat":..,"temporada":..,"boles":"snooker|bola9|3bandes"}' sortida [canco.mp3]
+Per defecte sona We Are the Champions (musica/campio/), reservada només per als campions."""
+ARREL=pathlib.Path(__file__).resolve().parent
+dades=json.loads(sys.argv[1]); sortida=sys.argv[2]
+canco=sys.argv[3] if len(sys.argv)>3 else str(ARREL.parent/'cartell_lliga'/'musica'/'campio'/'queen-we-are-the-champions.mp3')
+u=(ARREL/'plantilla.html').as_uri()
 d=pathlib.Path(tempfile.mkdtemp())
 init=f"window.DADES={json.dumps(dades,ensure_ascii=False)};"
 with sync_playwright() as p:
