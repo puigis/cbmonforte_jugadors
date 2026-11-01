@@ -1,5 +1,5 @@
 {
- "updated": "2026-10-26T10:35+00:00",
+ "updated": "2026-11-01T05:10+00:00",
  "temporada": "2026-27",
  "equips": [
   {
@@ -45,9 +45,15 @@
  ],
  "modalitats": [
   {
+   "modalitat": "Quadre 47/2",
+   "jugadors": 1,
+   "partides": 2,
+   "fitxer": "monforte/modalitats/quadre-47-2.json"
+  },
+  {
    "modalitat": "Tres bandes",
    "jugadors": 31,
-   "partides": 88,
+   "partides": 91,
    "fitxer": "monforte/modalitats/tres-bandes.json"
   }
  ],
@@ -80,6 +86,7 @@
   "Obando Quintero, Carlos Ariel",
   "Oliver Sinca, Jordi",
   "Oquendo Rave, Carlos Andrés",
+  "Panadero Espín, Andrés",
   "Puig Latre, Isaac",
   "Rocha Vera, Jeferson",
   "Rodríguez Sánchez, César",

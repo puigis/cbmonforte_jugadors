@@ -1,0 +1,62 @@
+{
+ "modalitat": "Quadre 47/2",
+ "updated": "2026-11-01T05:10+00:00",
+ "jugadors": [
+  {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "partides": 2,
+   "G": 1,
+   "E": 0,
+   "P": 1,
+   "caramboles": 105,
+   "entrades": 64,
+   "serie_major": 12,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 1.641,
+   "ranking": null
+  }
+ ],
+ "partides": [
+  {
+   "data": "2026-10-31",
+   "temporada": "2026-27",
+   "tipus": "individual",
+   "competicio": "QUADRE 47/2",
+   "divisio": "4a DIVISIÓ",
+   "fase": "PRE-PRE-PRÈVIA · Grup E",
+   "jornada": "",
+   "pid": "segura-mondria-francesc-xavier",
+   "equip": "",
+   "rival": "Rodríguez Morales, Jesús,",
+   "equip_rival": "",
+   "car": 57,
+   "sm": 6,
+   "ent": 40,
+   "car_rival": 25,
+   "sm_rival": 4,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-31",
+   "temporada": "2026-27",
+   "tipus": "individual",
+   "competicio": "QUADRE 47/2",
+   "divisio": "4a DIVISIÓ",
+   "fase": "PRE-PRE-PRÈVIA · Grup E",
+   "jornada": "",
+   "pid": "segura-mondria-francesc-xavier",
+   "equip": "",
+   "rival": "Serrano Dueñas, David",
+   "equip_rival": "",
+   "car": 48,
+   "sm": 12,
+   "ent": 24,
+   "car_rival": 60,
+   "sm_rival": 10,
+   "res": "P"
+  }
+ ]
+}

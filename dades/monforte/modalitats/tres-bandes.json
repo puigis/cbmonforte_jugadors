@@ -1,6 +1,6 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-10-26T10:35+00:00",
+ "updated": "2026-11-01T05:10+00:00",
  "jugadors": [
   {
    "id": "lopez-gallego-cristian",
@@ -19,6 +19,26 @@
    "ranking": {
     "posicio": 47,
     "mitjana": 0.75084,
+    "data": "2026-10-02"
+   }
+  },
+  {
+   "id": "garcia-alarcon-ricardo",
+   "name": "García Alarcón, Ricardo",
+   "partides": 8,
+   "G": 8,
+   "E": 0,
+   "P": 0,
+   "caramboles": 320,
+   "entrades": 278,
+   "serie_major": 9,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 1.151,
+   "ranking": {
+    "posicio": 4,
+    "mitjana": 1.34112,
     "data": "2026-10-02"
    }
   },
@@ -59,26 +79,6 @@
    "ranking": {
     "posicio": 70,
     "mitjana": 0.68478,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "garcia-alarcon-ricardo",
-   "name": "García Alarcón, Ricardo",
-   "partides": 5,
-   "G": 5,
-   "E": 0,
-   "P": 0,
-   "caramboles": 200,
-   "entrades": 163,
-   "serie_major": 9,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 1.227,
-   "ranking": {
-    "posicio": 4,
-    "mitjana": 1.34112,
     "data": "2026-10-02"
    }
   },
@@ -457,7 +457,7 @@
    ],
    "mitjana": 0.272,
    "ranking": {
-    "posicio": 527,
+    "posicio": 526,
     "mitjana": 0.34615,
     "data": "2026-10-02"
    }
@@ -624,6 +624,63 @@
   }
  ],
  "partides": [
+  {
+   "data": "2026-10-31",
+   "temporada": "2026-27",
+   "tipus": "individual",
+   "competicio": "TRES BANDES INDIVIDUAL",
+   "divisio": "HONOR",
+   "fase": "FASE FINAL · Grup A",
+   "jornada": "",
+   "pid": "garcia-alarcon-ricardo",
+   "equip": "",
+   "rival": "Benitez Reina, Pau",
+   "equip_rival": "",
+   "car": 40,
+   "sm": 5,
+   "ent": 31,
+   "car_rival": 36,
+   "sm_rival": 8,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-31",
+   "temporada": "2026-27",
+   "tipus": "individual",
+   "competicio": "TRES BANDES INDIVIDUAL",
+   "divisio": "HONOR",
+   "fase": "FASE FINAL · Grup A",
+   "jornada": "",
+   "pid": "garcia-alarcon-ricardo",
+   "equip": "",
+   "rival": "Moreno Cortés, Armand",
+   "equip_rival": "",
+   "car": 40,
+   "sm": 5,
+   "ent": 50,
+   "car_rival": 37,
+   "sm_rival": 5,
+   "res": "G"
+  },
+  {
+   "data": "2026-10-31",
+   "temporada": "2026-27",
+   "tipus": "individual",
+   "competicio": "TRES BANDES INDIVIDUAL",
+   "divisio": "HONOR",
+   "fase": "FASE FINAL · Grup A",
+   "jornada": "",
+   "pid": "garcia-alarcon-ricardo",
+   "equip": "",
+   "rival": "Van Kessel, Mark Stefan",
+   "equip_rival": "",
+   "car": 40,
+   "sm": 5,
+   "ent": 34,
+   "car_rival": 33,
+   "sm_rival": 6,
+   "res": "G"
+  },
   {
    "data": "2026-10-17",
    "temporada": "2026-27",
