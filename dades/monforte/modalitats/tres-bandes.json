@@ -1,7 +1,27 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-11-01T09:49+00:00",
+ "updated": "2026-11-02T09:59+00:00",
  "jugadors": [
+  {
+   "id": "garcia-alarcon-ricardo",
+   "name": "García Alarcón, Ricardo",
+   "partides": 10,
+   "G": 9,
+   "E": 0,
+   "P": 1,
+   "caramboles": 385,
+   "entrades": 328,
+   "serie_major": 9,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 1.174,
+   "ranking": {
+    "posicio": 4,
+    "mitjana": 1.34112,
+    "data": "2026-10-02"
+   }
+  },
   {
    "id": "lopez-gallego-cristian",
    "name": "López Gallego, Cristian",
@@ -19,26 +39,6 @@
    "ranking": {
     "posicio": 47,
     "mitjana": 0.75084,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "garcia-alarcon-ricardo",
-   "name": "García Alarcón, Ricardo",
-   "partides": 8,
-   "G": 8,
-   "E": 0,
-   "P": 0,
-   "caramboles": 320,
-   "entrades": 278,
-   "serie_major": 9,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 1.151,
-   "ranking": {
-    "posicio": 4,
-    "mitjana": 1.34112,
     "data": "2026-10-02"
    }
   },
@@ -624,6 +624,44 @@
   }
  ],
  "partides": [
+  {
+   "data": "2026-11-01",
+   "temporada": "2026-27",
+   "tipus": "individual",
+   "competicio": "TRES BANDES INDIVIDUAL",
+   "divisio": "HONOR",
+   "fase": "SEMIFINALS",
+   "jornada": "",
+   "pid": "garcia-alarcon-ricardo",
+   "equip": "",
+   "rival": "Pérez Andreu, Alejandro",
+   "equip_rival": "",
+   "car": 40,
+   "sm": 9,
+   "ent": 26,
+   "car_rival": 29,
+   "sm_rival": 6,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-01",
+   "temporada": "2026-27",
+   "tipus": "individual",
+   "competicio": "TRES BANDES INDIVIDUAL",
+   "divisio": "HONOR",
+   "fase": "FINAL",
+   "jornada": "",
+   "pid": "garcia-alarcon-ricardo",
+   "equip": "",
+   "rival": "Jiménez Galera, Sergi",
+   "equip_rival": "",
+   "car": 25,
+   "sm": 3,
+   "ent": 24,
+   "car_rival": 40,
+   "sm_rival": 15,
+   "res": "P"
+  },
   {
    "data": "2026-10-31",
    "temporada": "2026-27",
