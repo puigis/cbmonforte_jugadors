@@ -50,7 +50,15 @@ def tria_canco(dia, forcada=None, dies=7):
             return per_prefix(pre)
     reservades = set(especials.values())
     normals = [c for c in cancons if not any(c.name.startswith(r) for r in reservades)] or cancons
-    return normals[ref.isocalendar()[1] % len(normals)]
+    # alterna una cançó "coneguda" (08 en endavant) amb una de lliure (01-07)
+    lliures = [c for c in normals if int(c.name[:2]) < 8]
+    conegudes = [c for c in normals if int(c.name[:2]) >= 8]
+    ordre = []
+    for i in range(max(len(lliures), len(conegudes))):
+        if i < len(conegudes): ordre.append(conegudes[i])
+        if i < len(lliures): ordre.append(lliures[i])
+    setmana = (ref - datetime.date(2026, 11, 2)).days // 7   # setmana 0 = la del 2/11/2026
+    return ordre[setmana % len(ordre)]
 
 
 def fotogrames(dades, carpeta):
