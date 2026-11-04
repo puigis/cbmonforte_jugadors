@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="ca"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Socials CB Monforte</title>
+<meta name="theme-color" content="#17573b">
+<link rel="icon" href="../icon-192.png">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Barlow:wght@400;500;600;700&display=swap">
+<style>
+body{margin:0}img{max-width:100%}[hidden]{display:none!important}:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+/* Layout: capçalera del club, llista de campionats i, dins de cada social, pestanyes de treball */
+:root{
+  --bg:#eef2ef;--surface:#ffffff;--surface2:#f6f8f6;--ink:#10241a;--muted:#55665c;--line:#d5ddd8;
+  --green:#17573b;--green2:#1f6b4a;--onGreen:#f4efe2;--red:#b3202a;--gold:#c9a43c;--goldInk:#17573b;
+  --win:#1d4ed8;--lose:#c81e1e;--warnBg:#fff4d6;--warnInk:#6b4e00;--btnInk:#17573b;
+  --display:'Barlow Condensed','Arial Narrow',sans-serif;--body:'Barlow',system-ui,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1611;--surface:#13221a;--surface2:#182a20;--ink:#e6eee8;--muted:#9db0a5;--line:#28402f;
+  --green:#2e7d55;--green2:#3a9467;--onGreen:#f4efe2;--red:#e0525b;--gold:#e3c15a;--goldInk:#10241a;
+  --win:#7aa7ff;--lose:#ff7f7f;--warnBg:#3a2f0e;--warnInk:#f3d98a;--btnInk:#8fd3ad;color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0c1611;--surface:#13221a;--surface2:#182a20;--ink:#e6eee8;--muted:#9db0a5;--line:#28402f;
+  --green:#2e7d55;--green2:#3a9467;--onGreen:#f4efe2;--red:#e0525b;--gold:#e3c15a;--goldInk:#10241a;
+  --win:#7aa7ff;--lose:#ff7f7f;--warnBg:#3a2f0e;--warnInk:#f3d98a;--btnInk:#8fd3ad;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.4}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--green)}
+.wrap{max-width:1100px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.top{background:var(--green);color:var(--onGreen);border-bottom:5px solid var(--red)}
+header.top .wrap{display:flex;align-items:center;gap:14px;padding-block:14px;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;cursor:pointer}
+.brand small{font-family:var(--display);letter-spacing:4px;font-size:13px;color:var(--gold);text-transform:uppercase}
+.brand b{font-family:var(--display);font-size:30px;line-height:1;letter-spacing:.5px;text-transform:uppercase}
+.sp{flex:1}
+main.wrap{padding-block:20px 60px;display:flex;flex-direction:column;gap:18px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:.3px}
+h1{font-size:34px;line-height:1}h2{font-size:24px}h3{font-size:19px}
+.muted{color:var(--muted)}
+button,.btn{font:600 14px var(--body);border-radius:7px;border:1.5px solid var(--btnInk);background:var(--surface);color:var(--btnInk);padding:8px 14px;cursor:pointer;min-height:38px}
+button.pri{background:var(--green);color:var(--onGreen);border-color:var(--green)}
+button.gold{background:var(--gold);color:var(--goldInk);border-color:var(--gold)}
+button.danger{border-color:var(--red);color:var(--red);background:var(--surface)}
+button.danger.solid{background:var(--red);color:#fff}
+button.small{padding:4px 9px;min-height:30px;font-size:13px}
+button:disabled{opacity:.45;cursor:not-allowed}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:1px}
+header.top button{background:transparent;color:var(--onGreen);border-color:var(--onGreen)}
+header.top button.gold{background:var(--gold);color:var(--goldInk);border-color:var(--gold)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px}
+.soc{display:flex;flex-direction:column;gap:8px;cursor:pointer;border-left:0}
+.soc:hover{border-color:var(--green2)}
+.soc .mod{font-family:var(--display);font-size:13px;letter-spacing:2px;text-transform:uppercase;color:var(--red)}
+.pill{display:inline-block;font-size:12px;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--surface2);border:1px solid var(--line);color:var(--muted)}
+.pill.g{background:var(--green);color:var(--onGreen);border-color:var(--green)}
+.pill.y{background:var(--gold);color:var(--goldInk);border-color:var(--gold)}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;border-bottom:2px solid var(--line)}
+.tabs button{border:0;border-bottom:3px solid transparent;border-radius:0;background:none;color:var(--muted);font-family:var(--display);font-size:18px;letter-spacing:.5px;padding:8px 12px;margin-bottom:-2px}
+.tabs button.on{color:var(--ink);border-bottom-color:var(--red)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,480px),1fr));gap:16px}
+.scroll{overflow-x:auto;min-width:0}
+table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums}
+th{font:700 12px var(--body);text-transform:uppercase;letter-spacing:1px;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:2px solid var(--line);white-space:nowrap}
+td{padding:6px 8px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.n,th.n{text-align:right}
+tr.q td:first-child{box-shadow:inset 4px 0 0 var(--green2)}
+.gh{display:flex;align-items:baseline;gap:10px;margin-bottom:8px}
+.gh h3{background:var(--green);color:var(--onGreen);padding:2px 12px;border-radius:5px}
+input,select,textarea{font:500 15px var(--body);color:var(--ink);background:var(--surface2);border:1.5px solid var(--line);border-radius:6px;padding:6px 8px;min-height:36px}
+input.sc{width:58px;text-align:center;font-weight:700;padding:4px}
+input.dt{width:96px}
+label{display:flex;flex-direction:column;gap:4px;font-weight:600;font-size:13px;color:var(--muted)}
+textarea{width:100%;min-height:200px;font-family:ui-monospace,Menlo,monospace;font-size:14px}
+.match{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 10px;padding:8px 0;border-bottom:1px solid var(--line)}
+.match .pl{display:flex;align-items:center;gap:8px;min-width:0}
+.match .pl .nm{font-weight:600;overflow-wrap:anywhere}
+.match .pl .ds{font-family:var(--display);font-size:17px;color:var(--gold);min-width:26px;text-align:right}
+.match .ins{display:flex;gap:6px;align-items:center}
+.match .meta{grid-column:1/-1;display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.w{color:var(--win)!important}.l{color:var(--lose)!important}
+.w input,.l input{color:inherit}
+.rnd{font:700 12px var(--body);text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-top:10px}
+.bracket{display:flex;gap:16px;overflow-x:auto;padding-bottom:8px}
+.bcol{display:flex;flex-direction:column;gap:12px;min-width:280px;flex:1}
+.bcol h3{color:var(--red)}
+.bm{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;gap:6px}
+.bm .lab{font-size:12px;color:var(--muted);font-weight:700;letter-spacing:1px;text-transform:uppercase}
+.bp{display:flex;align-items:center;gap:8px}
+.bp .nm{flex:1;font-weight:600;min-width:0;overflow-wrap:anywhere}
+.bp .seed{font:700 12px var(--body);background:var(--surface2);border:1px solid var(--line);border-radius:4px;padding:1px 6px;color:var(--muted)}
+.tbd{color:var(--muted);font-style:italic;font-weight:500}
+.champ{background:var(--green);color:var(--onGreen);border-radius:12px;padding:22px;display:flex;flex-direction:column;gap:12px;border-bottom:6px solid var(--gold)}
+.champ small{font-family:var(--display);letter-spacing:4px;color:var(--gold);font-size:14px;text-transform:uppercase}
+.champ b{font-family:var(--display);font-size:46px;line-height:1}
+.champ button{align-self:flex-start}
+.notice{background:var(--warnBg);color:var(--warnInk);border-radius:8px;padding:10px 14px;font-weight:500}
+.confirm{border:2px solid var(--red);border-radius:10px;padding:14px;display:flex;flex-direction:column;gap:10px;background:var(--surface)}
+.form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.empty{text-align:center;padding:40px 16px;display:flex;flex-direction:column;gap:12px;align-items:center}
+.toast{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));background:var(--ink);color:var(--bg);padding:8px 14px;border-radius:8px;font-weight:600;opacity:0;transition:opacity .2s;pointer-events:none}
+.toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){.toast{transition:none}}
+@media (max-width:560px){h1{font-size:28px}.brand b{font-size:24px}input.sc{width:50px}}
+</style>
+</head><body>
+
+<header class="top"><div class="wrap">
+  <div class="brand" id="home" role="link" tabindex="0"><small>CB Monforte</small><b>Campionats socials</b></div>
+  <div class="sp"></div>
+  <button id="keyBtn">Clau de la junta</button><button class="gold" id="newBtn">+ Nou campionat</button>
+</div></header>
+<div class="wrap" id="keyBox" hidden style="padding-block:12px"></div>
+<main class="wrap" id="app"><div class="card empty"><h2>Carregant campionats…</h2><p class="muted">Aquí apareixeran els socials en curs. Amb «Nou campionat» en pots crear un.</p></div></main>
+<div class="toast" id="toast"></div>
+
+<script>
+const CAR=['3 bandes','Banda','Lliure','Quadre'];
+const MODS=['3 bandes','Banda','Lliure','Quadre','Bola 9','Bola 8','Snooker','Altres'];
+const S={db:null,socials:{},cur:null,tab:'partits',view:'home',confirmDel:false,ok:false};
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const uid=()=>Math.random().toString(36).slice(2,9);
+const num=v=>v===''||v==null?null:Number(String(v).replace(',','.'));
+const f3=x=>x==null||!isFinite(x)?'—':x.toFixed(3).replace('.',',');
+function toast(t){const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),1600)}
+const isCar=c=>c.tipus==='carambola';
+const P=(c,id)=>c.jugadors.find(j=>j.id===id)||{nom:'?',dist:''};
+
+/* ---------- desar (full de Google via Apps Script) ---------- */
+const API='__API__';
+const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+let CLAU=LS.get('socials_clau')||'';let pend=0;let queue=Promise.resolve();
+async function post(body){const r=await fetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify({...body,clau:CLAU})});const j=await r.json();if(!j.ok)throw j;return j}
+function send(body,id){pend++;queue=queue.then(()=>post(body)).then(j=>{toast('Desat')}).catch(e=>{if(e&&e.error==='clau'){toast('Cal la clau de la junta per desar');showKey()}else toast('No s\'ha pogut desar. Revisa la connexió.')}).finally(()=>{pend--});return queue}
+let saveT={};
+function save(c,now,patch){if(!CLAU){toast('Posa la clau de la junta per desar');showKey();return}
+  if(patch){send({accio:'patch',id:c.id,path:patch.path,value:patch.value,del:patch.del||[]},c.id);return}
+  clearTimeout(saveT[c.id]);const go=()=>send({accio:'desar',id:c.id,doc:JSON.parse(JSON.stringify(c))},c.id);if(now)go();else saveT[c.id]=setTimeout(go,500)}
+async function load(){const r=await fetch(API+'?t='+Date.now());const j=await r.json();if(!j.ok)throw j;return j.socials||{}}
+function showKey(){const b=$('#keyBox');b.hidden=false;b.innerHTML=`<div class="card row"><label style="flex:1;min-width:200px">Clau de la junta (només per anotar resultats)<input id="keyIn" type="password" autocomplete="current-password" value="${esc(CLAU)}"></label><button class="pri" id="keyOk">Guardar la clau</button><button id="keyX">Tancar</button></div>`;
+  $('#keyOk').onclick=()=>{CLAU=$('#keyIn').value.trim();LS.set('socials_clau',CLAU);b.hidden=true;toast(CLAU?'Clau guardada en aquest mòbil':'Clau esborrada')};$('#keyX').onclick=()=>{b.hidden=true}}
+/* ---------- lligueta ---------- */
+function roundRobin(ids){const a=ids.slice();if(a.length<2)return[];if(a.length%2)a.push(null);const n=a.length,R=[];
+  for(let r=0;r<n-1;r++){const pr=[];for(let i=0;i<n/2;i++){const x=a[i],y=a[n-1-i];if(x&&y)pr.push(r%2?[y,x]:[x,y])}R.push(pr);a.splice(1,0,a.pop())}return R}
+function getRes(c,a,b){const r=c.gres[a+'|'+b];if(r)return{...r};const s=c.gres[b+'|'+a];if(!s)return{};return{ca:s.cb,ea:s.eb,cb:s.ca,eb:s.ea,sa:s.sb,sb:s.sa,w:s.w==='a'?'b':s.w==='b'?'a':s.w,data:s.data}}
+function putRes(c,a,b,obj){delete c.gres[b+'|'+a];c.gres[a+'|'+b]=obj}
+function judge(c,r,da,db){ // -> {played, w:'a'|'b'|'x'(empat)|null}
+  if(isCar(c)){const ca=num(r.ca),cb=num(r.cb);if(r.w==='a'||r.w==='b')return{played:true,w:r.w};if(ca==null||cb==null)return{played:false};
+    const ra=ca/(num(da)||1),rb=cb/(num(db)||1);return{played:true,w:ra>rb?'a':rb>ra?'b':'x'}}
+  const sa=num(r.sa),sb=num(r.sb);if(r.w==='a'||r.w==='b')return{played:true,w:r.w};if(sa==null||sb==null)return{played:false};return{played:true,w:sa>sb?'a':sb>sa?'b':'x'}}
+function standings(c,gi){const ids=c.grups[gi]||[];const T={};ids.forEach(id=>{const j=P(c,id);T[id]={id,nom:j.nom,dist:j.dist,pj:0,pg:0,pts:0,car:0,ent:0,fav:0,con:0}});
+  roundRobin(ids).flat().forEach(([a,b])=>{const r=getRes(c,a,b),A=T[a],B=T[b],j=judge(c,r,A.dist,B.dist);if(!j.played)return;A.pj++;B.pj++;
+    if(j.w==='a'){A.pts+=2;A.pg++}else if(j.w==='b'){B.pts+=2;B.pg++}else{A.pts++;B.pts++}
+    if(isCar(c)){A.car+=num(r.ca)||0;A.ent+=num(r.ea)||0;B.car+=num(r.cb)||0;B.ent+=num(r.eb)||0}
+    else{const sa=num(r.sa)||0,sb=num(r.sb)||0;A.fav+=sa;A.con+=sb;B.fav+=sb;B.con+=sa}});
+  const L=Object.values(T);L.forEach(t=>{t.prom=t.ent?t.car/t.ent:null;t.coef=t.prom!=null?t.prom/((num(t.dist)||50)/50):null;t.dif=t.fav-t.con});
+  L.sort(cmp(c));return L}
+const cmp=c=>(x,y)=>y.pts-x.pts||(isCar(c)?((y.coef??-1)-(x.coef??-1)):(y.dif-x.dif||y.fav-x.fav));
+function groupMatches(c,gi){return roundRobin(c.grups[gi]||[]).map((pr,ri)=>pr.map(([a,b])=>({a,b,ronda:ri+1})))}
+function groupsDone(c){return c.grups.every((g,gi)=>groupMatches(c,gi).flat().every(m=>judge(c,getRes(c,m.a,m.b),P(c,m.a).dist,P(c,m.b).dist).played))}
+
+/* ---------- eliminatòries ---------- */
+function bracketOrder(n){let o=[1];while(o.length<n){const m=o.length*2+1;o=o.flatMap(s=>[s,m-s])}return o}
+function buildSeeds(c){if(!c.grups.length)return c.jugadors.map(j=>j.id);const st=c.grups.map((g,gi)=>standings(c,gi));const out=[];
+  for(let p=0;p<(c.passen||2);p++){const L=st.map(s=>s[p]).filter(Boolean);L.sort(cmp(c));out.push(...L.map(t=>t.id))}return out}
+function koRes(c,ri,a,b){const R=c.ko.res;const k=ri+':'+a+'|'+b,k2=ri+':'+b+'|'+a;if(R[k])return{...R[k]};const t=R[k2];if(!t)return{};return{ca:t.cb,ea:t.eb,cb:t.ca,eb:t.ea,sa:t.sb,sb:t.sa,w:t.w==='a'?'b':t.w==='b'?'a':t.w,data:t.data}}
+function koPut(c,ri,a,b,v){delete c.ko.res[ri+':'+b+'|'+a];c.ko.res[ri+':'+a+'|'+b]=v}
+function perf(c,m,id){ // rendiment del guanyador a la seva partida: coeficient (carambola) o diferència de partides
+  if(!m||m.a==='BYE'||m.b==='BYE')return 99;const side=m.a===id?'a':'b',o=side==='a'?'b':'a',r=m.res;
+  if(isCar(c)){const car=num(r['c'+side])||0,ent=num(r['e'+side])||0,d=num(P(c,id).dist)||50;return ent?(car/ent)/(d/50):0}
+  return (num(r['s'+side])||0)-(num(r['s'+o])||0)}
+function koTree(c){if(!c.ko)return null;const seeds=c.ko.seeds;let size=1;while(size<seeds.length)size*=2;const ord=bracketOrder(size);const R=[];
+  const fin=m=>{m.res=koRes(c,m.r,m.a,m.b);if(m.a==='BYE'&&m.b==='BYE')m.win='BYE';else if(m.b==='BYE')m.win=m.a;else if(m.a==='BYE')m.win=m.b;
+    else if(m.a&&m.b){const j=judge(c,m.res,P(c,m.a).dist,P(c,m.b).dist);m.j=j;m.win=j.w==='a'?m.a:j.w==='b'?m.b:null}};
+  let cur=[];for(let i=0;i<size;i+=2){const sa=ord[i],sb=ord[i+1];const m={r:0,i:i/2,a:seeds[sa-1]||'BYE',b:seeds[sb-1]||'BYE'};fin(m);cur.push(m)}
+  R.push(cur);
+  while(cur.length>1){const n=cur.length/2;const ws=cur.map(m=>m.win).filter(w=>w&&w!=='BYE');const done=cur.every(m=>m.win);let nx=[];
+    if(done){const L=ws.map(id=>({id,p:perf(c,cur.find(m=>m.win===id),id),s:seeds.indexOf(id)}));L.sort((x,y)=>y.p-x.p||x.s-y.s);
+      for(let i=0;i<n;i++){const A=L[i],B=L[L.length-1-i];const m={r:R.length,i,a:A?A.id:'BYE',b:(B&&B!==A&&L.length-1-i>i)?B.id:'BYE',pa:A&&A.p,pb:B&&B.p};fin(m);nx.push(m)}}
+    else{for(let i=0;i<n;i++)nx.push({r:R.length,i,a:null,b:null,res:{}});nx.waiting=ws}
+    R.push(nx);cur=nx;if(!done)break}
+  // rondes que encara no existeixen
+  let len=R[R.length-1].length;while(len>1){len/=2;const nx=[];for(let i=0;i<len;i++)nx.push({r:R.length,i,a:null,b:null,res:{}});R.push(nx)}
+  return R}
+const rname=n=>({1:'Final',2:'Semifinals',4:'Quarts de final',8:'Vuitens de final',16:'Setzens de final'}[n]||('Ronda de '+n*2));
+function champion(c){const R=koTree(c);if(!R)return null;const f=R[R.length-1][0];return f.win&&f.win!=='BYE'?f.win:null}
+
+/* ---------- vistes ---------- */
+function fkey(el){if(!el||!el.closest)return null;const h=el.closest('[data-g],[data-k],[data-j]');const f=el.dataset&&(el.dataset.f||el.dataset.jf||(el.hasAttribute('data-jg')?'jg':''))||el.id;if(!f)return null;return{h:h?(h.dataset.g?'[data-g="'+h.dataset.g+'"]':h.dataset.k?'[data-k="'+h.dataset.k+'"]':'[data-j="'+h.dataset.j+'"]'):'',f}}
+function render(){const k=fkey(document.activeElement);draw();if(k){const sel=(k.h?k.h+' ':'')+(k.f==='jg'?'[data-jg]':'[data-f="'+k.f+'"],'+(k.h?k.h+' ':'')+'[data-jf="'+k.f+'"]');let el=null;try{el=document.querySelector(sel)||document.getElementById(k.f)}catch(e){}if(el&&el.focus)el.focus()}}
+function draw(){const app=$('#app');
+  if(!S.ok){return}
+  if(S.view==='new'){app.innerHTML=newForm();bindNew();return}
+  const c=S.socials[S.cur];
+  if(S.view==='soc'&&c){app.innerHTML=socView(c);bindSoc(c);return}
+  S.view='home';const L=Object.values(S.socials).sort((a,b)=>(b.creat||0)-(a.creat||0));
+  app.innerHTML=`<div class="row"><h1>Socials en curs</h1><span class="sp"></span><span class="muted">${L.length} campionat${L.length==1?'':'s'}</span></div>`+
+  (L.length?`<div class="grid">${L.map(c=>{const ch=champion(c);const total=c.grups.reduce((s,g,gi)=>s+groupMatches(c,gi).flat().length,0);
+    const fets=c.grups.reduce((s,g,gi)=>s+groupMatches(c,gi).flat().filter(m=>judge(c,getRes(c,m.a,m.b),P(c,m.a).dist,P(c,m.b).dist).played).length,0);
+    const fase=ch?'<span class="pill y">Campió: '+esc(P(c,ch).nom)+'</span>':c.ko?'<span class="pill g">Eliminatòries</span>':'<span class="pill">Fase de grups · '+fets+'/'+total+'</span>';
+    return `<div class="card soc" data-open="${c.id}" role="button" tabindex="0"><span class="mod">${esc(c.modalitat)}</span><h2>${esc(c.nom)}</h2><div class="row">${fase}<span class="muted">${c.jugadors.length} jugadors · ${c.grups.length||'sense'} grups</span></div></div>`}).join('')}</div>`
+  :`<div class="card empty"><h2>Encara no hi ha cap social</h2><p class="muted">Crea'n un amb el botó «Nou campionat»: hi poses els participants, es fan els grups i ja pots anotar resultats.</p><div class="row"><button class="pri" id="emptyNew">Crear el primer campionat</button><button id="seedBtn">Carregar la JamonCup i el social de 3 bandes</button></div></div>`);
+  app.querySelectorAll('[data-open]').forEach(e=>{const f=()=>open(e.dataset.open);e.onclick=f;e.onkeydown=k=>{if(k.key==='Enter')f()}});
+  const en=$('#emptyNew');if(en)en.onclick=()=>{S.view='new';render()};const sb=$('#seedBtn');if(sb)sb.onclick=async()=>{if(!CLAU){showKey();return}sb.disabled=true;sb.textContent='Carregant…';try{await carregaInicial();toast('Campionats carregats')}catch(e){toast(e&&e.error==='clau'?'Clau incorrecta':'No s\'ha pogut carregar');sb.disabled=false}}}
+function open(id){S.cur=id;S.view='soc';S.tab='partits';S.confirmDel=false;location.hash='c-'+id;render();scrollTo(0,0)}
+
+function socView(c){const ch=champion(c);const tabs=[['partits','Partits'],['class','Classificació'],['ko','Eliminatòries'],['jug','Participants']];
+  return `<div class="row"><button class="small" id="back">← Tots els socials</button></div>
+  <div><span class="mod" style="font-family:var(--display);letter-spacing:3px;text-transform:uppercase;color:var(--red)">${esc(c.modalitat)}</span><h1>${esc(c.nom)}</h1>
+  <p class="muted">${c.jugadors.length} jugadors · ${c.grups.length?c.grups.length+' grups · passen '+(c.passen||2)+' per grup':'eliminatòria directa'} · ${isCar(c)?'guanya la millor relació caramboles / distància':'guanya qui fa més partides'}</p></div>
+  ${ch?champBox(c,ch):''}
+  <div class="tabs" role="tablist">${tabs.map(([k,t])=>`<button role="tab" data-tab="${k}" class="${S.tab===k?'on':''}">${t}</button>`).join('')}</div>
+  <section id="tabBody">${S.tab==='partits'?tabPartits(c):S.tab==='class'?tabClass(c):S.tab==='ko'?tabKO(c):tabJug(c)}</section>`}
+function champBox(c,ch){return `<div class="champ"><small>Campió del social</small><b>${esc(P(c,ch).nom)}</b>
+  ${S.confirmDel?`<div class="confirm" style="color:var(--ink)"><b style="font-size:20px;font-family:var(--display)">Esborrar «${esc(c.nom)}»?</b><span>S'esborraran els participants, tots els resultats i el quadre. No es pot desfer.</span><div class="row"><button class="danger solid" id="delYes">Sí, esborrar el campionat</button><button id="delNo">Cancel·lar</button></div></div>`
+  :`<button class="gold" id="delAsk">Esborrar el campionat</button>`}</div>`}
+
+function scoreIns(c,r,side,cls){if(isCar(c))return `<span class="ins ${cls}"><input class="sc" inputmode="numeric" aria-label="Caramboles" placeholder="car" data-f="c${side}" value="${esc(r['c'+side]??'')}"><input class="sc" inputmode="numeric" aria-label="Entrades" placeholder="ent" data-f="e${side}" value="${esc(r['e'+side]??'')}"></span>`;
+  return `<span class="ins ${cls}"><input class="sc" inputmode="numeric" aria-label="Partides guanyades" placeholder="—" data-f="s${side}" value="${esc(r['s'+side]??'')}"></span>`}
+function matchRow(c,a,b,r,j,attrs,extra){const ca=j&&j.played?(j.w==='a'?'w':j.w==='b'?'l':''):'',cb=j&&j.played?(j.w==='b'?'w':j.w==='a'?'l':''):'';
+  const A=P(c,a),B=P(c,b);
+  return `<div class="match" ${attrs}>
+   <div class="pl ${ca}"><span class="nm">${esc(A.nom)}</span>${isCar(c)?`<span class="ds">${esc(A.dist)}</span>`:''}</div>${scoreIns(c,r,'a',ca)}
+   <div class="pl ${cb}"><span class="nm">${esc(B.nom)}</span>${isCar(c)?`<span class="ds">${esc(B.dist)}</span>`:''}</div>${scoreIns(c,r,'b',cb)}
+   <div class="meta">${extra||''}<input class="dt" placeholder="data" aria-label="Data" data-f="data" value="${esc(r.data??'')}">
+   <select data-f="w" aria-label="Guanyador manual"><option value="">Guanyador automàtic</option><option value="a" ${r.w==='a'?'selected':''}>Guanya ${esc(A.nom)} (abandó / desempat)</option><option value="b" ${r.w==='b'?'selected':''}>Guanya ${esc(B.nom)} (abandó / desempat)</option></select>
+   ${j&&j.played&&j.w==='x'?'<span class="pill">Empat</span>':''}</div></div>`}
+function tabPartits(c){if(!c.grups.length)return `<p class="muted">Aquest social és d'eliminatòria directa. Les partides són a la pestanya «Eliminatòries».</p>`;
+  return `${isCar(c)?'<p class="muted">Per a cada jugador: caramboles i entrades. Guanya qui té més caramboles respecte a la seva distància.</p>':'<p class="muted">Per a cada jugador: partides (racks o frames) guanyades.</p>'}
+  <div class="cols">${c.grups.map((g,gi)=>`<div class="card"><div class="gh"><h3>Grup ${String.fromCharCode(65+gi)}</h3><span class="muted">${g.length} jugadors</span></div>
+  ${groupMatches(c,gi).map((pr,ri)=>`<div class="rnd">Jornada ${ri+1}</div>`+pr.map(m=>{const r=getRes(c,m.a,m.b);const j=judge(c,r,P(c,m.a).dist,P(c,m.b).dist);return matchRow(c,m.a,m.b,r,j,`data-g="${m.a}|${m.b}"`)}).join('')).join('')}</div>`).join('')}</div>`}
+function tabClass(c){if(!c.grups.length)return `<p class="muted">No hi ha fase de grups.</p>`;
+  const done=groupsDone(c);
+  return `<div class="row">${c.ko?'<span class="pill g">Eliminatòries generades</span>':''}<button class="pri" id="genKO">${c.ko?'Tornar a generar les eliminatòries':'Generar les eliminatòries'}</button>${!done?'<span class="muted">Encara hi ha partides de grups sense resultat.</span>':''}</div>
+  <div id="koAsk"></div>
+  <div class="cols">${c.grups.map((g,gi)=>{const L=standings(c,gi);return `<div class="card"><div class="gh"><h3>Grup ${String.fromCharCode(65+gi)}</h3><span class="muted">passen ${c.passen||2}</span></div><div class="scroll"><table>
+  <thead><tr><th>#</th><th>Jugador</th>${isCar(c)?'<th class="n">Dist</th>':''}<th class="n">PJ</th><th class="n">Pts</th>${isCar(c)?'<th class="n">Car</th><th class="n">Ent</th><th class="n">Promig</th><th class="n">Coef</th>':'<th class="n">PG</th><th class="n">Fav</th><th class="n">Con</th><th class="n">Dif</th>'}</tr></thead>
+  <tbody>${L.map((t,i)=>`<tr class="${i<(c.passen||2)?'q':''}"><td>${i+1}</td><td><b>${esc(t.nom)}</b></td>${isCar(c)?`<td class="n">${esc(t.dist)}</td>`:''}<td class="n">${t.pj}</td><td class="n"><b>${t.pts}</b></td>${isCar(c)?`<td class="n">${t.car}</td><td class="n">${t.ent}</td><td class="n">${f3(t.prom)}</td><td class="n">${f3(t.coef)}</td>`:`<td class="n">${t.pg}</td><td class="n">${t.fav}</td><td class="n">${t.con}</td><td class="n">${t.dif>0?'+':''}${t.dif}</td>`}</tr>`).join('')}</tbody></table></div></div>`}).join('')}</div>
+  <p class="muted">${isCar(c)?'Guanyar 2 punts, empatar 1. A igualtat de punts desempata el coeficient: promig ÷ (distància ÷ 50).':'Guanyar 2 punts. A igualtat de punts desempata la diferència de partides i després les partides a favor.'} La franja verda marca els classificats.</p>`}
+function tabKO(c){const R=koTree(c);if(!R)return `<div class="card empty"><h2>Encara no hi ha quadre</h2><p class="muted">Quan s'acabi la fase de grups, ves a «Classificació» i prem «Generar les eliminatòries». El millor classificat jugarà contra el pitjor.</p></div>`;
+  const seeds=c.ko.seeds;
+  return `<p class="muted">Primera ronda: els primers de grup de millor a pitjor, després els segons; el millor juga contra el pitjor. A cada ronda següent, quan s'han jugat totes les partides, els classificats s'ordenen ${isCar(c)?'pel coeficient de la seva última partida (promig ÷ distància/50)':'per la diferència de partides de la seva última partida'} i es torna a emparellar el millor contra el pitjor.</p><div class="bracket">${R.map((round,ri)=>`<div class="bcol"><h3>${rname(round.length)}</h3>${round.waiting?`<p class="muted">Classificats fins ara: ${round.waiting.length?round.waiting.map(id=>'<b>'+esc(P(c,id).nom)+'</b>').join(', '):'cap'}. Quan s\'acabin totes les partides de la ronda anterior, s\'ordenen i s\'emparellen.</p>`:''}${round.map(m=>koBox(c,m,ri,seeds,round.length)).join('')}</div>`).join('')}</div>`}
+function koBox(c,m,ri,seeds,n){const lab=n===1?'Final':({2:'Semifinal',4:'Quart',8:'Vuitè',16:'Setzè'}[n]||'Partida')+' '+(m.i+1);
+  const seedOf=id=>seeds.indexOf(id)+1;
+  if(m.a==='BYE'||m.b==='BYE'){const p=m.a==='BYE'?m.b:m.a;return `<div class="bm"><span class="lab">${lab}</span>${p&&p!=='BYE'?`<div class="bp"><span class="seed">${seedOf(p)}</span><span class="nm">${esc(P(c,p).nom)}</span><span class="pill">passa directe</span></div>`:'<span class="tbd">—</span>'}</div>`}
+  if(!m.a||!m.b)return `<div class="bm"><span class="lab">${lab}</span><div class="bp"><span class="nm ${m.a?'':'tbd'}">${m.a?esc(P(c,m.a).nom):'Pendent'}</span></div><div class="bp"><span class="nm ${m.b?'':'tbd'}">${m.b?esc(P(c,m.b).nom):'Pendent'}</span></div></div>`;
+  return `<div class="bm"><span class="lab">${lab}</span>${matchRow(c,m.a,m.b,m.res,m.j,`data-k="${ri}:${m.a}|${m.b}"`,`<span class="seed">${seedOf(m.a)}–${seedOf(m.b)}</span>`)}</div>`}
+function tabJug(c){const gl=gi=>gi<0?'—':String.fromCharCode(65+gi);
+  return `<div class="card"><div class="scroll"><table><thead><tr><th>Jugador</th>${isCar(c)?'<th>Promig</th><th>Distància</th>':''}${c.grups.length?'<th>Grup</th>':''}<th></th></tr></thead><tbody>
+  ${c.jugadors.map(j=>{const gi=c.grups.findIndex(g=>g.includes(j.id));return `<tr data-j="${j.id}"><td><input data-jf="nom" aria-label="Nom" value="${esc(j.nom)}" style="width:100%;min-width:160px"></td>
+   ${isCar(c)?`<td><input data-jf="promig" aria-label="Promig" inputmode="decimal" value="${esc(j.promig??'')}" style="width:80px"></td><td><input data-jf="dist" aria-label="Distància" inputmode="numeric" value="${esc(j.dist??'')}" style="width:70px"></td>`:''}
+   ${c.grups.length?`<td><select data-jg aria-label="Grup">${c.grups.map((g,i)=>`<option value="${i}" ${i===gi?'selected':''}>${gl(i)}</option>`).join('')}</select></td>`:''}
+   <td><button class="small danger" data-del="${j.id}">Treure</button></td></tr>`}).join('')}</tbody></table></div>
+  <div class="row" style="margin-top:12px"><input id="addNom" placeholder="Nom del nou jugador" style="flex:1;min-width:180px">${isCar(c)?'<input id="addDist" placeholder="dist." style="width:80px" inputmode="numeric">':''}<button class="pri" id="addJ">Afegir jugador</button></div>
+  <p class="muted">Canviar un jugador de grup canvia les seves partides; els resultats ja anotats entre dos jugadors es mantenen. ${c.ko?'Les eliminatòries ja estan generades: si canvies jugadors, torna-les a generar.':''}</p></div>`}
+
+/* ---------- accions ---------- */
+function bindSoc(c){$('#back').onclick=()=>{S.view='home';location.hash='';render()};
+  document.querySelectorAll('[data-tab]').forEach(b=>b.onclick=()=>{S.tab=b.dataset.tab;render()});
+  const da=$('#delAsk');if(da)da.onclick=()=>{S.confirmDel=true;render()};
+  const dn=$('#delNo');if(dn)dn.onclick=()=>{S.confirmDel=false;render()};
+  const dy=$('#delYes');if(dy)dy.onclick=async()=>{if(!CLAU){showKey();return}try{await post({accio:'esborrar',id:c.id});delete S.socials[c.id];S.view='home';location.hash='';toast('Campionat esborrat');render()}catch(e){toast('No s\'ha pogut esborrar')}};
+  document.querySelectorAll('.match').forEach(row=>{row.querySelectorAll('[data-f]').forEach(inp=>inp.addEventListener('change',()=>{
+    const vals={};row.querySelectorAll('[data-f]').forEach(i=>{if(i.value!=='')vals[i.dataset.f]=i.value.trim()});
+    if(row.dataset.g){const[a,b]=row.dataset.g.split('|');putRes(c,a,b,vals);save(c,true,{path:['gres',a+'|'+b],value:vals,del:[['gres',b+'|'+a]]})}else if(row.dataset.k){const[ri,ab]=row.dataset.k.split(':');const[a,b]=ab.split('|');koPut(c,+ri,a,b,vals);save(c,true,{path:['ko','res',ri+':'+a+'|'+b],value:vals,del:[['ko','res',ri+':'+b+'|'+a]]})}
+    paintRow(c,row)}));
+    row.addEventListener('focusout',e=>{if(row.dataset.k&&!row.contains(e.relatedTarget))setTimeout(render,0)})});
+  const gk=$('#genKO');if(gk)gk.onclick=()=>{const has=c.ko&&Object.keys(c.ko.res).length;const done=groupsDone(c);
+    if(has||!done){$('#koAsk').innerHTML=`<div class="confirm"><b>${has?'Ja hi ha resultats d\'eliminatòries. Si el tornes a generar, es perdran.':'Encara falten partides de grups. Vols generar el quadre igualment amb la classificació actual?'}</b><div class="row"><button class="pri" id="koYes">Sí, generar</button><button id="koNo">Cancel·lar</button></div></div>`;
+      $('#koYes').onclick=()=>genKO(c);$('#koNo').onclick=()=>{$('#koAsk').innerHTML=''}}else genKO(c)};
+  document.querySelectorAll('[data-j]').forEach(tr=>{const j=c.jugadors.find(x=>x.id===tr.dataset.j);
+    tr.querySelectorAll('[data-jf]').forEach(i=>i.onchange=()=>{j[i.dataset.jf]=i.value.trim();save(c)});
+    const s=tr.querySelector('[data-jg]');if(s)s.onchange=()=>{c.grups.forEach(g=>{const k=g.indexOf(j.id);if(k>=0)g.splice(k,1)});c.grups[+s.value].push(j.id);save(c);render()}});
+  document.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{const id=b.dataset.del;
+    if(b.dataset.sure!=='1'){b.dataset.sure='1';b.textContent='Segur?';b.classList.add('solid');return}
+    c.jugadors=c.jugadors.filter(j=>j.id!==id);c.grups.forEach(g=>{const k=g.indexOf(id);if(k>=0)g.splice(k,1)});
+    Object.keys(c.gres).forEach(k=>{if(k.split('|').includes(id))delete c.gres[k]});save(c,true);render()});
+  const aj=$('#addJ');if(aj)aj.onclick=()=>{const n=$('#addNom').value.trim();if(!n)return;const j={id:uid(),nom:n,dist:isCar(c)?($('#addDist').value.trim()):''};c.jugadors.push(j);
+    if(c.grups.length){let gi=0;c.grups.forEach((g,i)=>{if(g.length<c.grups[gi].length)gi=i});c.grups[gi].push(j.id)}save(c,true);render()}}
+function paintRow(c,row){let a,b,r;if(row.dataset.g){[a,b]=row.dataset.g.split('|');r=getRes(c,a,b)}else{const[ri,ab]=row.dataset.k.split(':');[a,b]=ab.split('|');r=koRes(c,+ri,a,b)}
+  const j=judge(c,r,P(c,a).dist,P(c,b).dist);const ca=j.played?(j.w==='a'?'w':j.w==='b'?'l':''):'',cb=j.played?(j.w==='b'?'w':j.w==='a'?'l':''):'';
+  const pl=row.querySelectorAll('.pl'),ins=row.querySelectorAll('.ins');[[0,ca],[1,cb]].forEach(([i,k])=>{[pl[i],ins[i]].forEach(e=>{e.classList.remove('w','l');if(k)e.classList.add(k)})})}
+function genKO(c){c.ko={seeds:buildSeeds(c),res:{}};save(c,true);S.tab='ko';render()}
+
+/* ---------- nou campionat ---------- */
+function newForm(){return `<div class="row"><button class="small" id="back">← Tots els socials</button></div><h1>Nou campionat</h1>
+ <div class="card" style="display:flex;flex-direction:column;gap:14px">
+ <div class="form"><label>Nom del campionat<input id="fNom" placeholder="Social de banda 2027"></label>
+ <label>Modalitat<select id="fMod">${MODS.map(m=>`<option>${m}</option>`).join('')}</select></label>
+ <label>Nombre de grups<input id="fG" type="number" min="0" value="4"><span class="muted" style="font-weight:500">0 = eliminatòria directa</span></label>
+ <label>Passen per grup<input id="fQ" type="number" min="1" value="2"></label>
+ <label>Repartiment<select id="fSort"><option value="bombos">Sorteig per bombos (per promig)</option><option value="serp">Zig-zag per ordre de la llista</option><option value="atzar">A l'atzar</option></select></label>
+ <label id="lMin">Distància mínima<input id="fMin" type="number" value="20"><span class="muted" style="font-weight:500">si poses promig i no distància: promig × 50</span></label></div>
+ <label>Participants, un per línia: <span style="font-family:ui-monospace,monospace">Nom ; promig ; distància</span> (promig i distància opcionals)
+ <textarea id="fJug" placeholder="Jorge Juárez ; 0,698 ; 35&#10;Isaac Puig ; 0,484&#10;Agustí Boix"></textarea></label>
+ <div id="fErr"></div>
+ <div class="row"><button class="pri" id="fGo">Crear i fer els grups</button></div></div>`}
+function bindNew(){$('#back').onclick=()=>{S.view='home';render()};
+  const upd=()=>{$('#lMin').hidden=!CAR.includes($('#fMod').value)};$('#fMod').onchange=upd;upd();
+  $('#fGo').onclick=()=>{const nom=$('#fNom').value.trim(),mod=$('#fMod').value,G=Math.max(0,parseInt($('#fG').value)||0),Q=Math.max(1,parseInt($('#fQ').value)||2),min=num($('#fMin').value)||0;
+    const car=CAR.includes(mod);
+    const js=$('#fJug').value.split('\n').map(l=>l.trim()).filter(Boolean).map(l=>{const p=l.split(';').map(s=>s.trim());const pr=num(p[1]);let d=p[2]||'';
+      if(car&&!d)d=String(Math.max(min,pr!=null?Math.round(pr*50):min));return{id:uid(),nom:p[0],promig:p[1]||'',dist:car?d:''}});
+    const err=m=>{$('#fErr').innerHTML='<div class="notice">'+m+'</div>'};
+    if(!nom)return err('Posa un nom al campionat.');if(js.length<2)return err('Calen almenys 2 participants.');if(G&&js.length<G*2)return err('Amb '+js.length+' jugadors no hi caben '+G+' grups d\'almenys 2.');
+    const grups=Array.from({length:G},()=>[]);
+    if(G){let L=js.slice();const sort=$('#fSort').value;
+      if(sort==='bombos'){L.sort((a,b)=>(num(b.promig)??-1)-(num(a.promig)??-1));for(let i=0;i<L.length;i+=G){const pot=L.slice(i,i+G);shuffle(pot);const order=shuffle([...Array(G).keys()]);pot.forEach((j,k)=>grups[order[k]].push(j.id))}}
+      else{if(sort==='atzar')shuffle(L);L.forEach((j,i)=>{const r=Math.floor(i/G),k=i%G;grups[r%2?G-1-k:k].push(j.id)})}}
+    const c={id:uid(),nom,modalitat:mod,tipus:car?'carambola':'partides',creat:Date.now(),jugadors:js,grups,passen:Q,gres:{},ko:G?null:{seeds:js.map(j=>j.id),res:{}}};
+    S.socials[c.id]=c;save(c,true);open(c.id)}}
+function shuffle(a){for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+
+/* ---------- arrencada ---------- */
+$('#newBtn').onclick=()=>{S.view='new';render()};
+$('#home').onclick=()=>{S.view='home';location.hash='';render()};
+$('#home').onkeydown=k=>{if(k.key==='Enter'){S.view='home';render()}};
+function fromHash(){const h=location.hash.slice(1);if(h.startsWith('c-')&&S.socials[h.slice(2)]){S.cur=h.slice(2);S.view='soc'}}
+window.addEventListener('hashchange',()=>{fromHash();render()});
+$('#keyBtn').onclick=showKey;
+function typing(){const a=document.activeElement;return a&&/INPUT|TEXTAREA|SELECT/.test(a.tagName)}
+async function refresh(first){try{if(!first&&(pend||typing()))return;const m=await load();if(pend||(!first&&typing()))return;if(S.view==='new'&&!first){S.socials=m;return}S.socials=m;S.ok=true;if(first)fromHash();if(first||!typing())render()}
+  catch(e){if(first){S.ok=false;$('#app').innerHTML='<div class="card empty"><h2>No es poden carregar els campionats</h2><p class="muted">Revisa la connexió a internet i torna a obrir la pàgina.</p></div>'}}}
+if(API.startsWith('__')){$('#app').innerHTML='<div class="card empty"><h2>Falta connectar el full de Google</h2><p class="muted">Cal posar l\'adreça de l\'Apps Script a la pàgina.</p></div>'}
+else{refresh(true);setInterval(()=>{if(document.visibilityState==='visible'&&!typing())refresh(false)},15000);document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')refresh(false)})}
+// càrrega inicial dels campionats
+window.carregaInicial=async()=>{const s=await (await fetch('seed.json')).json();for(const c of s){await post({accio:'desar',id:c.id,doc:c})}refresh(false)};
+
+</script>
+</body></html>
