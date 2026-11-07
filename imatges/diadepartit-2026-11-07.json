@@ -1,0 +1,35 @@
+{
+  "sub": "Lliga 3 Bandes · <b>Avui</b> · Dissabte 7 de novembre",
+  "dia": "Dissabte 7 de novembre",
+  "partits": [
+    {
+      "equip": "B",
+      "divisio": "Equip <b>B</b> · Divisió d'Honor · Grup B<br>Jornada 4",
+      "jornada": "4",
+      "rival": "CB MOLLET \"A\"",
+      "hora": "",
+      "jugadors": []
+    },
+    {
+      "equip": "D",
+      "divisio": "Equip <b>D</b> · Tercera Divisió · Grup A<br>Jornada 4",
+      "jornada": "4",
+      "rival": "SB GEIEG",
+      "hora": "",
+      "jugadors": [
+        "Isaac Puig",
+        "Santiago Cano",
+        "Luis Barragán",
+        "Jeferson Rocha"
+      ]
+    },
+    {
+      "equip": "E",
+      "divisio": "Equip <b>E</b> · Quarta Divisió · Grup B<br>Jornada 4",
+      "jornada": "4",
+      "rival": "CB MATARÓ \"D\"",
+      "hora": "",
+      "jugadors": []
+    }
+  ]
+}
