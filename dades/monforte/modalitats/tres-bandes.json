@@ -1,6 +1,6 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-11-08T05:25+00:00",
+ "updated": "2026-11-08T09:51+00:00",
  "jugadors": [
   {
    "id": "garcia-alarcon-ricardo",
@@ -203,26 +203,6 @@
    }
   },
   {
-   "id": "segura-mondria-francesc-xavier",
-   "name": "Segura Mondriá, Francesc Xavier",
-   "partides": 4,
-   "G": 3,
-   "E": 0,
-   "P": 1,
-   "caramboles": 88,
-   "entrades": 197,
-   "serie_major": 4,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.447,
-   "ranking": {
-    "posicio": 225,
-    "mitjana": 0.47453,
-    "data": "2026-11-02"
-   }
-  },
-  {
    "id": "cervera-sans-gabriel",
    "name": "Cervera Sans, Gabriel",
    "partides": 3,
@@ -299,6 +279,46 @@
    "ranking": {
     "posicio": 452,
     "mitjana": 0.47619,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "partides": 3,
+   "G": 0,
+   "E": 0,
+   "P": 3,
+   "caramboles": 61,
+   "entrades": 144,
+   "serie_major": 4,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.424,
+   "ranking": {
+    "posicio": 273,
+    "mitjana": 0.42982,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "partides": 3,
+   "G": 3,
+   "E": 0,
+   "P": 0,
+   "caramboles": 65,
+   "entrades": 147,
+   "serie_major": 4,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.442,
+   "ranking": {
+    "posicio": 225,
+    "mitjana": 0.47453,
     "data": "2026-11-02"
    }
   },
@@ -499,26 +519,6 @@
    "ranking": {
     "posicio": 359,
     "mitjana": 0.32482,
-    "data": "2026-11-02"
-   }
-  },
-  {
-   "id": "segura-gonzalvez-fernando",
-   "name": "Segura Gonzálvez, Fernando",
-   "partides": 2,
-   "G": 0,
-   "E": 0,
-   "P": 2,
-   "caramboles": 38,
-   "entrades": 94,
-   "serie_major": 4,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.404,
-   "ranking": {
-    "posicio": 273,
-    "mitjana": 0.42982,
     "data": "2026-11-02"
    }
   },
@@ -857,7 +857,7 @@
    "divisio": "1a DIVISIÓ",
    "fase": "GRUP A",
    "jornada": "4",
-   "pid": "segura-mondria-francesc-xavier",
+   "pid": "segura-gonzalvez-fernando",
    "equip": "C.B. MONFORTE \"C\"",
    "rival": "Boronat Pujals, Jaume",
    "equip_rival": "C.B. MONT-ROIG \"B\"",
@@ -883,8 +883,8 @@
    "car": 20,
    "sm": 3,
    "ent": 31,
-   "car_rival": 5,
-   "sm_rival": 25,
+   "car_rival": 25,
+   "sm_rival": 5,
    "res": "P"
   },
   {

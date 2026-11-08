@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 3a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-11-08T05:25+00:00",
+ "updated": "2026-11-08T09:51+00:00",
  "players": [
   {
    "id": "adell-casarramona-pere",
@@ -268,7 +268,7 @@
      "res": "P",
      "mod": "Tres bandes",
      "rival": "Calle Ortega, Eusebi",
-     "car_rival": 5
+     "car_rival": 25
     },
     {
      "pid": "panadero-espin-andres",

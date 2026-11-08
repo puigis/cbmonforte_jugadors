@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 1a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-11-08T05:25+00:00",
+ "updated": "2026-11-08T09:51+00:00",
  "players": [
   {
    "id": "castro-tellez-henry",
@@ -55,6 +55,14 @@
     "Tres bandes": "0.483"
    },
    "initial": "0.483"
+  },
+  {
+   "id": "segura-gonzalvez-fernando",
+   "name": "Segura Gonzálvez, Fernando",
+   "initials": {
+    "Tres bandes": "0.451"
+   },
+   "initial": "0.451"
   },
   {
    "id": "segura-mondria-francesc-xavier",
@@ -267,7 +275,7 @@
      "car_rival": 33
     },
     {
-     "pid": "segura-mondria-francesc-xavier",
+     "pid": "segura-gonzalvez-fernando",
      "car": 23,
      "ent": 50,
      "sm": 3,

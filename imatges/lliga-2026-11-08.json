@@ -1,0 +1,51 @@
+{
+  "jornada": "Jornada 4",
+  "data": "7 de novembre de 2026",
+  "partits": [
+    {
+      "equip": "A",
+      "divisio": "Divisió d'Honor · Grup A",
+      "jornada": "4",
+      "casa": false,
+      "rival": "CB MATARÓ \"A\"",
+      "monforte": 2,
+      "contrari": 6
+    },
+    {
+      "equip": "B",
+      "divisio": "Divisió d'Honor · Grup B",
+      "jornada": "4",
+      "casa": true,
+      "rival": "CB MOLLET \"A\"",
+      "monforte": 4,
+      "contrari": 4
+    },
+    {
+      "equip": "C",
+      "divisio": "Primera Divisió · Grup A",
+      "jornada": "4",
+      "casa": false,
+      "rival": "CB MONT-ROIG \"B\"",
+      "monforte": 2,
+      "contrari": 6
+    },
+    {
+      "equip": "D",
+      "divisio": "Tercera Divisió · Grup A",
+      "jornada": "4",
+      "casa": true,
+      "rival": "SB GEIEG",
+      "monforte": 6,
+      "contrari": 2
+    },
+    {
+      "equip": "E",
+      "divisio": "Quarta Divisió · Grup B",
+      "jornada": "4",
+      "casa": true,
+      "rival": "CB MATARÓ \"D\"",
+      "monforte": 8,
+      "contrari": 0
+    }
+  ]
+}
