@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 1a Divisió · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-11-02T09:59+00:00",
+ "updated": "2026-11-08T05:25+00:00",
  "players": [
   {
    "id": "castro-tellez-henry",
@@ -224,6 +224,59 @@
      "car_rival": 12
     }
    ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2026-11-07",
+   "rival": "C.B. MONT-ROIG \"B\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "lozano-villegas-mauricio",
+     "car": 30,
+     "ent": 50,
+     "sm": 3,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Alberich Sánchez, Vicente",
+     "car_rival": 29
+    },
+    {
+     "pid": "hernandez-giraldo-fabian-alberto",
+     "car": 20,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Moruno Raya, Ignacio",
+     "car_rival": 29
+    },
+    {
+     "pid": "chuecos-enriquez-luis",
+     "car": 21,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Prats Quiñones, Josep Mª",
+     "car_rival": 33
+    },
+    {
+     "pid": "segura-mondria-francesc-xavier",
+     "car": 23,
+     "ent": 50,
+     "sm": 3,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Boronat Pujals, Jaume",
+     "car_rival": 28
+    }
+   ]
   }
  ],
  "calendar": [
@@ -253,7 +306,7 @@
    "date": "2026-11-07",
    "rival": "C.B. MONT-ROIG \"B\"",
    "venue": "F",
-   "played": false
+   "played": true
   },
   {
    "jornada": "5",

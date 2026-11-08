@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · 4a Divisió · Grup B",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-11-02T09:59+00:00",
+ "updated": "2026-11-08T05:25+00:00",
  "players": [
   {
    "id": "cervera-sans-gabriel",
@@ -224,6 +224,59 @@
      "car_rival": 8
     }
    ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2026-11-07",
+   "rival": "C.B. MATARÓ \"D\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "tormo-calatayud-jorge",
+     "car": 20,
+     "ent": 39,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Serramitjana Juan, Marta",
+     "car_rival": 10
+    },
+    {
+     "pid": "fernandez-nunez-manuel",
+     "car": 19,
+     "ent": 50,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "De Los Ríos Martínez, José",
+     "car_rival": 18
+    },
+    {
+     "pid": "villate-malagon-brian-steven",
+     "car": 20,
+     "ent": 39,
+     "sm": 2,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "López Esquerdo, José Ramón",
+     "car_rival": 6
+    },
+    {
+     "pid": "gili-bertral-joan",
+     "car": 20,
+     "ent": 50,
+     "sm": 4,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Muñoz Giménez, Josep",
+     "car_rival": 19
+    }
+   ]
   }
  ],
  "calendar": [
@@ -253,7 +306,7 @@
    "date": "2026-11-07",
    "rival": "C.B. MATARÓ \"D\"",
    "venue": "L",
-   "played": false
+   "played": true
   },
   {
    "jornada": "5",

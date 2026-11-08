@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · Honor · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-11-02T09:59+00:00",
+ "updated": "2026-11-08T05:25+00:00",
  "players": [
   {
    "id": "garcia-alarcon-ricardo",
@@ -31,6 +31,14 @@
     "Tres bandes": "0.751"
    },
    "initial": "0.751"
+  },
+  {
+   "id": "lopez-gallego-cristian",
+   "name": "López Gallego, Cristian",
+   "initials": {
+    "Tres bandes": "0.705"
+   },
+   "initial": "0.705"
   },
   {
    "id": "munoz-lopez-javier",
@@ -216,6 +224,59 @@
      "car_rival": 29
     }
    ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2026-11-07",
+   "rival": "C.B. MATARÓ \"A\"",
+   "venue": "F",
+   "punts_match": [
+    0,
+    3
+   ],
+   "results": [
+    {
+     "pid": "garcia-alarcon-ricardo",
+     "car": 40,
+     "ent": 34,
+     "sm": 9,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Garriga Comas, Jordi",
+     "car_rival": 39
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 36,
+     "ent": 34,
+     "sm": 9,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Benitez Reina, Pau",
+     "car_rival": 40
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 29,
+     "ent": 47,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Uceda López, Raúl",
+     "car_rival": 40
+    },
+    {
+     "pid": "lopez-gallego-cristian",
+     "car": 28,
+     "ent": 28,
+     "sm": 6,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Avilés, Sergio",
+     "car_rival": 40
+    }
+   ]
   }
  ],
  "calendar": [
@@ -245,7 +306,7 @@
    "date": "2026-11-07",
    "rival": "C.B. MATARÓ \"A\"",
    "venue": "F",
-   "played": false
+   "played": true
   },
   {
    "jornada": "5",

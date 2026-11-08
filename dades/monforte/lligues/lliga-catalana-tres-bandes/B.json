@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · Honor · Grup B",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-11-02T09:59+00:00",
+ "updated": "2026-11-08T05:25+00:00",
  "players": [
   {
    "id": "cardona-gallego-julian-alberto",
@@ -15,6 +15,14 @@
     "Tres bandes": "0.704"
    },
    "initial": "0.704"
+  },
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "initials": {
+    "Tres bandes": "0.614"
+   },
+   "initial": "0.614"
   },
   {
    "id": "farina-villanueva-francisco",
@@ -232,6 +240,59 @@
      "car_rival": 23
     }
    ]
+  },
+  {
+   "id": "j04",
+   "jornada": "4",
+   "date": "2026-11-07",
+   "rival": "C. B. MOLLET “A”",
+   "venue": "L",
+   "punts_match": [
+    1,
+    1
+   ],
+   "results": [
+    {
+     "pid": "cardona-gallego-julian-alberto",
+     "car": 20,
+     "ent": 36,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Bouterin Bote, Joan",
+     "car_rival": 40
+    },
+    {
+     "pid": "farina-villanueva-francisco",
+     "car": 22,
+     "ent": 44,
+     "sm": 4,
+     "res": "P",
+     "mod": "Tres bandes",
+     "rival": "Martínez Alberto, Xavier",
+     "car_rival": 40
+    },
+    {
+     "pid": "munoz-lopez-javier",
+     "car": 40,
+     "ent": 39,
+     "sm": 8,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pérez Zorrilla, Rafael",
+     "car_rival": 32
+    },
+    {
+     "pid": "castro-tellez-henry",
+     "car": 35,
+     "ent": 50,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Ortiz Alamillo, Jacinto",
+     "car_rival": 29
+    }
+   ]
   }
  ],
  "calendar": [
@@ -261,7 +322,7 @@
    "date": "2026-11-07",
    "rival": "C. B. MOLLET “A”",
    "venue": "L",
-   "played": false
+   "played": true
   },
   {
    "jornada": "5",

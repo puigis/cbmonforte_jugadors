@@ -1,145 +1,185 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-11-02T09:59+00:00",
+ "updated": "2026-11-08T05:25+00:00",
  "jugadors": [
   {
    "id": "garcia-alarcon-ricardo",
    "name": "García Alarcón, Ricardo",
-   "partides": 10,
-   "G": 9,
+   "partides": 11,
+   "G": 10,
    "E": 0,
    "P": 1,
-   "caramboles": 385,
-   "entrades": 328,
+   "caramboles": 425,
+   "entrades": 362,
    "serie_major": 9,
    "temporades": [
     "2026-27"
    ],
    "mitjana": 1.174,
    "ranking": {
-    "posicio": 4,
-    "mitjana": 1.34112,
-    "data": "2026-10-02"
+    "posicio": 7,
+    "mitjana": 1.18958,
+    "data": "2026-11-02"
    }
   },
   {
    "id": "lopez-gallego-cristian",
    "name": "López Gallego, Cristian",
-   "partides": 10,
+   "partides": 11,
    "G": 4,
    "E": 0,
-   "P": 6,
-   "caramboles": 276,
-   "entrades": 362,
+   "P": 7,
+   "caramboles": 304,
+   "entrades": 390,
    "serie_major": 6,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.762,
+   "mitjana": 0.779,
    "ranking": {
-    "posicio": 47,
-    "mitjana": 0.75084,
-    "data": "2026-10-02"
+    "posicio": 44,
+    "mitjana": 0.75652,
+    "data": "2026-11-02"
    }
   },
   {
    "id": "zuleta-giraldo-john-jairo",
    "name": "Zuleta Giraldo, John Jairo",
-   "partides": 7,
+   "partides": 8,
    "G": 2,
    "E": 0,
-   "P": 5,
-   "caramboles": 214,
-   "entrades": 302,
-   "serie_major": 6,
+   "P": 6,
+   "caramboles": 250,
+   "entrades": 336,
+   "serie_major": 9,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.709,
+   "mitjana": 0.744,
    "ranking": {
-    "posicio": 33,
-    "mitjana": 0.81026,
-    "data": "2026-10-02"
+    "posicio": 46,
+    "mitjana": 0.74335,
+    "data": "2026-11-02"
    }
   },
   {
    "id": "cardona-gallego-julian-alberto",
    "name": "Cardona Gallego, Julián Alberto",
-   "partides": 6,
+   "partides": 7,
    "G": 4,
    "E": 0,
-   "P": 2,
-   "caramboles": 157,
-   "entrades": 218,
+   "P": 3,
+   "caramboles": 177,
+   "entrades": 254,
    "serie_major": 5,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.72,
+   "mitjana": 0.697,
    "ranking": {
-    "posicio": 70,
-    "mitjana": 0.68478,
-    "data": "2026-10-02"
+    "posicio": 61,
+    "mitjana": 0.7026,
+    "data": "2026-11-02"
    }
   },
   {
    "id": "lozano-herrero-manuel",
    "name": "Lozano Herrero, Manuel",
-   "partides": 5,
+   "partides": 6,
    "G": 3,
    "E": 0,
-   "P": 2,
-   "caramboles": 143,
-   "entrades": 199,
+   "P": 3,
+   "caramboles": 172,
+   "entrades": 246,
    "serie_major": 5,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.719,
+   "mitjana": 0.699,
    "ranking": {
-    "posicio": 57,
-    "mitjana": 0.71273,
-    "data": "2026-10-02"
+    "posicio": 47,
+    "mitjana": 0.74219,
+    "data": "2026-11-02"
    }
   },
   {
    "id": "lozano-villegas-mauricio",
    "name": "Lozano Villegas, Mauricio",
-   "partides": 5,
-   "G": 1,
+   "partides": 6,
+   "G": 2,
    "E": 2,
    "P": 2,
-   "caramboles": 147,
-   "entrades": 207,
+   "caramboles": 177,
+   "entrades": 257,
    "serie_major": 7,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.71,
+   "mitjana": 0.689,
    "ranking": {
-    "posicio": 108,
-    "mitjana": 0.60156,
-    "data": "2026-10-02"
+    "posicio": 107,
+    "mitjana": 0.60945,
+    "data": "2026-11-02"
    }
   },
   {
    "id": "munoz-lopez-javier",
    "name": "Muñoz López, Javier",
-   "partides": 5,
-   "G": 3,
+   "partides": 6,
+   "G": 4,
    "E": 0,
    "P": 2,
-   "caramboles": 121,
-   "entrades": 207,
-   "serie_major": 5,
+   "caramboles": 161,
+   "entrades": 246,
+   "serie_major": 8,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.585,
+   "mitjana": 0.654,
    "ranking": {
-    "posicio": 91,
-    "mitjana": 0.64541,
-    "data": "2026-10-02"
+    "posicio": 97,
+    "mitjana": 0.62146,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "castro-tellez-henry",
+   "name": "Castro Téllez, Henry",
+   "partides": 4,
+   "G": 3,
+   "E": 0,
+   "P": 1,
+   "caramboles": 130,
+   "entrades": 170,
+   "serie_major": 6,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.765,
+   "ranking": {
+    "posicio": 90,
+    "mitjana": 0.64834,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "farina-villanueva-francisco",
+   "name": "Fariña Villanueva, Francisco",
+   "partides": 4,
+   "G": 0,
+   "E": 0,
+   "P": 4,
+   "caramboles": 80,
+   "entrades": 157,
+   "serie_major": 4,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.51,
+   "ranking": {
+    "posicio": 70,
+    "mitjana": 0.69182,
+    "data": "2026-11-02"
    }
   },
   {
@@ -157,29 +197,29 @@
    ],
    "mitjana": 0.672,
    "ranking": {
-    "posicio": 78,
-    "mitjana": 0.66767,
-    "data": "2026-10-02"
+    "posicio": 82,
+    "mitjana": 0.66124,
+    "data": "2026-11-02"
    }
   },
   {
-   "id": "castro-tellez-henry",
-   "name": "Castro Téllez, Henry",
-   "partides": 3,
-   "G": 2,
+   "id": "segura-mondria-francesc-xavier",
+   "name": "Segura Mondriá, Francesc Xavier",
+   "partides": 4,
+   "G": 3,
    "E": 0,
    "P": 1,
-   "caramboles": 95,
-   "entrades": 120,
-   "serie_major": 6,
+   "caramboles": 88,
+   "entrades": 197,
+   "serie_major": 4,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.792,
+   "mitjana": 0.447,
    "ranking": {
-    "posicio": 96,
-    "mitjana": 0.61932,
-    "data": "2026-10-02"
+    "posicio": 225,
+    "mitjana": 0.47453,
+    "data": "2026-11-02"
    }
   },
   {
@@ -197,29 +237,129 @@
    ],
    "mitjana": 0.28,
    "ranking": {
-    "posicio": 322,
-    "mitjana": 0.38117,
-    "data": "2026-10-02"
+    "posicio": 340,
+    "mitjana": 0.35526,
+    "data": "2026-11-02"
    }
   },
   {
-   "id": "farina-villanueva-francisco",
-   "name": "Fariña Villanueva, Francisco",
+   "id": "chuecos-enriquez-luis",
+   "name": "Chuecos Enriquez, Luis",
    "partides": 3,
    "G": 0,
-   "E": 0,
-   "P": 3,
-   "caramboles": 58,
-   "entrades": 113,
-   "serie_major": 3,
+   "E": 1,
+   "P": 2,
+   "caramboles": 84,
+   "entrades": 146,
+   "serie_major": 7,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.513,
+   "mitjana": 0.575,
    "ranking": {
-    "posicio": 68,
-    "mitjana": 0.69182,
-    "data": "2026-10-02"
+    "posicio": 174,
+    "mitjana": 0.53001,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "hernandez-giraldo-fabian-alberto",
+   "name": "Hernandez Giraldo, Fabian Alberto",
+   "partides": 3,
+   "G": 2,
+   "E": 0,
+   "P": 1,
+   "caramboles": 90,
+   "entrades": 148,
+   "serie_major": 5,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.608,
+   "ranking": {
+    "posicio": 406,
+    "mitjana": 0.71429,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "rocha-vera-jeferson",
+   "name": "Rocha Vera, Jeferson",
+   "partides": 3,
+   "G": 1,
+   "E": 0,
+   "P": 2,
+   "caramboles": 63,
+   "entrades": 122,
+   "serie_major": 4,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.516,
+   "ranking": {
+    "posicio": 452,
+    "mitjana": 0.47619,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "tormo-calatayud-jorge",
+   "name": "Tormo Calatayud, Jorge",
+   "partides": 3,
+   "G": 3,
+   "E": 0,
+   "P": 0,
+   "caramboles": 60,
+   "entrades": 108,
+   "serie_major": 4,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.556,
+   "ranking": {
+    "posicio": 327,
+    "mitjana": 0.37679,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "villate-malagon-brian-steven",
+   "name": "Villate Malagón, Brian Steven",
+   "partides": 3,
+   "G": 2,
+   "E": 0,
+   "P": 1,
+   "caramboles": 42,
+   "entrades": 120,
+   "serie_major": 2,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.35,
+   "ranking": {
+    "posicio": 540,
+    "mitjana": 0.33652,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "adell-casarramona-pere",
+   "name": "Adell Casarramona, Pere",
+   "partides": 2,
+   "G": 2,
+   "E": 0,
+   "P": 0,
+   "caramboles": 47,
+   "entrades": 95,
+   "serie_major": 6,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.495,
+   "ranking": {
+    "posicio": 220,
+    "mitjana": 0.47738,
+    "data": "2026-11-02"
    }
   },
   {
@@ -237,49 +377,49 @@
    ],
    "mitjana": 0.36,
    "ranking": {
-    "posicio": 256,
-    "mitjana": 0.44479,
-    "data": "2026-10-02"
+    "posicio": 265,
+    "mitjana": 0.43609,
+    "data": "2026-11-02"
    }
   },
   {
-   "id": "chuecos-enriquez-luis",
-   "name": "Chuecos Enriquez, Luis",
-   "partides": 2,
-   "G": 0,
-   "E": 1,
-   "P": 1,
-   "caramboles": 63,
-   "entrades": 96,
-   "serie_major": 7,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.656,
-   "ranking": {
-    "posicio": 187,
-    "mitjana": 0.51977,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "hernandez-giraldo-fabian-alberto",
-   "name": "Hernandez Giraldo, Fabian Alberto",
+   "id": "fernandez-nunez-manuel",
+   "name": "Fernández Núñez, Manuel",
    "partides": 2,
    "G": 2,
    "E": 0,
    "P": 0,
-   "caramboles": 70,
-   "entrades": 98,
-   "serie_major": 5,
+   "caramboles": 38,
+   "entrades": 100,
+   "serie_major": 4,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.714,
+   "mitjana": 0.38,
    "ranking": {
-    "posicio": 408,
-    "mitjana": 0.72917,
-    "data": "2026-10-02"
+    "posicio": 331,
+    "mitjana": 0.36709,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "gili-bertral-joan",
+   "name": "Gili Bertral, Joan",
+   "partides": 2,
+   "G": 2,
+   "E": 0,
+   "P": 0,
+   "caramboles": 40,
+   "entrades": 95,
+   "serie_major": 4,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.421,
+   "ranking": {
+    "posicio": 358,
+    "mitjana": 0.32558,
+    "data": "2026-11-02"
    }
   },
   {
@@ -297,9 +437,9 @@
    ],
    "mitjana": 0.7,
    "ranking": {
-    "posicio": 56,
-    "mitjana": 0.71725,
-    "data": "2026-10-02"
+    "posicio": 64,
+    "mitjana": 0.69829,
+    "data": "2026-11-02"
    }
   },
   {
@@ -317,9 +457,9 @@
    ],
    "mitjana": 0.52,
    "ranking": {
-    "posicio": 437,
-    "mitjana": 0.52381,
-    "data": "2026-10-02"
+    "posicio": 435,
+    "mitjana": 0.52301,
+    "data": "2026-11-02"
    }
   },
   {
@@ -337,29 +477,9 @@
    ],
    "mitjana": 0.5,
    "ranking": {
-    "posicio": 217,
-    "mitjana": 0.48322,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "rocha-vera-jeferson",
-   "name": "Rocha Vera, Jeferson",
-   "partides": 2,
-   "G": 1,
-   "E": 0,
-   "P": 1,
-   "caramboles": 43,
-   "entrades": 91,
-   "serie_major": 4,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.473,
-   "ranking": {
-    "posicio": 447,
-    "mitjana": 0.48921,
-    "data": "2026-10-02"
+    "posicio": 214,
+    "mitjana": 0.48357,
+    "data": "2026-11-02"
    }
   },
   {
@@ -377,9 +497,9 @@
    ],
    "mitjana": 0.368,
    "ranking": {
-    "posicio": 358,
-    "mitjana": 0.32766,
-    "data": "2026-10-02"
+    "posicio": 359,
+    "mitjana": 0.32482,
+    "data": "2026-11-02"
    }
   },
   {
@@ -397,89 +517,9 @@
    ],
    "mitjana": 0.404,
    "ranking": {
-    "posicio": 257,
-    "mitjana": 0.4438,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "segura-mondria-francesc-xavier",
-   "name": "Segura Mondriá, Francesc Xavier",
-   "partides": 2,
-   "G": 2,
-   "E": 0,
-   "P": 0,
-   "caramboles": 43,
-   "entrades": 97,
-   "serie_major": 3,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.443,
-   "ranking": {
-    "posicio": 220,
-    "mitjana": 0.47889,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "tormo-calatayud-jorge",
-   "name": "Tormo Calatayud, Jorge",
-   "partides": 2,
-   "G": 2,
-   "E": 0,
-   "P": 0,
-   "caramboles": 40,
-   "entrades": 69,
-   "serie_major": 4,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.58,
-   "ranking": {
-    "posicio": 328,
-    "mitjana": 0.37483,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "villate-malagon-brian-steven",
-   "name": "Villate Malagón, Brian Steven",
-   "partides": 2,
-   "G": 1,
-   "E": 0,
-   "P": 1,
-   "caramboles": 22,
-   "entrades": 81,
-   "serie_major": 2,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.272,
-   "ranking": {
-    "posicio": 526,
-    "mitjana": 0.34615,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "adell-casarramona-pere",
-   "name": "Adell Casarramona, Pere",
-   "partides": 1,
-   "G": 1,
-   "E": 0,
-   "P": 0,
-   "caramboles": 25,
-   "entrades": 45,
-   "serie_major": 3,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.556,
-   "ranking": {
-    "posicio": 221,
-    "mitjana": 0.47738,
-    "data": "2026-10-02"
+    "posicio": 273,
+    "mitjana": 0.42982,
+    "data": "2026-11-02"
    }
   },
   {
@@ -497,9 +537,9 @@
    ],
    "mitjana": 0.581,
    "ranking": {
-    "posicio": 281,
-    "mitjana": 0.42,
-    "data": "2026-10-02"
+    "posicio": 271,
+    "mitjana": 0.43146,
+    "data": "2026-11-02"
    }
   },
   {
@@ -517,29 +557,9 @@
    ],
    "mitjana": 0.42,
    "ranking": {
-    "posicio": 253,
-    "mitjana": 0.44662,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "fernandez-nunez-manuel",
-   "name": "Fernández Núñez, Manuel",
-   "partides": 1,
-   "G": 1,
-   "E": 0,
-   "P": 0,
-   "caramboles": 19,
-   "entrades": 50,
-   "serie_major": 4,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.38,
-   "ranking": {
-    "posicio": 341,
-    "mitjana": 0.35865,
-    "data": "2026-10-02"
+    "posicio": 258,
+    "mitjana": 0.44211,
+    "data": "2026-11-02"
    }
   },
   {
@@ -557,29 +577,9 @@
    ],
    "mitjana": 0.56,
    "ranking": {
-    "posicio": 76,
-    "mitjana": 0.67699,
-    "data": "2026-10-02"
-   }
-  },
-  {
-   "id": "gili-bertral-joan",
-   "name": "Gili Bertral, Joan",
-   "partides": 1,
-   "G": 1,
-   "E": 0,
-   "P": 0,
-   "caramboles": 20,
-   "entrades": 45,
-   "serie_major": 2,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.444,
-   "ranking": {
-    "posicio": 360,
-    "mitjana": 0.32558,
-    "data": "2026-10-02"
+    "posicio": 78,
+    "mitjana": 0.67353,
+    "data": "2026-11-02"
    }
   },
   {
@@ -597,10 +597,26 @@
    ],
    "mitjana": 0.44,
    "ranking": {
-    "posicio": 495,
-    "mitjana": 0.39706,
-    "data": "2026-10-02"
+    "posicio": 498,
+    "mitjana": 0.40114,
+    "data": "2026-11-02"
    }
+  },
+  {
+   "id": "panadero-espin-andres",
+   "name": "Panadero Espín, Andrés",
+   "partides": 1,
+   "G": 1,
+   "E": 0,
+   "P": 0,
+   "caramboles": 25,
+   "entrades": 47,
+   "serie_major": 3,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.532,
+   "ranking": null
   },
   {
    "id": "tirado-gutierrez-francisco",
@@ -617,13 +633,393 @@
    ],
    "mitjana": 0.34,
    "ranking": {
-    "posicio": 392,
-    "mitjana": 0.27432,
-    "data": "2026-10-02"
+    "posicio": 384,
+    "mitjana": 0.28667,
+    "data": "2026-11-02"
    }
   }
  ],
  "partides": [
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "garcia-alarcon-ricardo",
+   "equip": "C.B. MONFORTE \"A\"",
+   "rival": "Garriga Comas, Jordi",
+   "equip_rival": "C.B. MATARÓ \"A\"",
+   "car": 40,
+   "sm": 9,
+   "ent": 34,
+   "car_rival": 39,
+   "sm_rival": 7,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "zuleta-giraldo-john-jairo",
+   "equip": "C.B. MONFORTE \"A\"",
+   "rival": "Benitez Reina, Pau",
+   "equip_rival": "C.B. MATARÓ \"A\"",
+   "car": 36,
+   "sm": 9,
+   "ent": 34,
+   "car_rival": 40,
+   "sm_rival": 7,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "lozano-herrero-manuel",
+   "equip": "C.B. MONFORTE \"A\"",
+   "rival": "Uceda López, Raúl",
+   "equip_rival": "C.B. MATARÓ \"A\"",
+   "car": 29,
+   "sm": 4,
+   "ent": 47,
+   "car_rival": 40,
+   "sm_rival": 6,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "lopez-gallego-cristian",
+   "equip": "C.B. MONFORTE \"A\"",
+   "rival": "Martínez Avilés, Sergio",
+   "equip_rival": "C.B. MATARÓ \"A\"",
+   "car": 28,
+   "sm": 6,
+   "ent": 28,
+   "car_rival": 40,
+   "sm_rival": 7,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "4",
+   "pid": "cardona-gallego-julian-alberto",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Bouterin Bote, Joan",
+   "equip_rival": "C. B. MOLLET “A”",
+   "car": 20,
+   "sm": 4,
+   "ent": 36,
+   "car_rival": 40,
+   "sm_rival": 5,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "4",
+   "pid": "farina-villanueva-francisco",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Martínez Alberto, Xavier",
+   "equip_rival": "C. B. MOLLET “A”",
+   "car": 22,
+   "sm": 4,
+   "ent": 44,
+   "car_rival": 40,
+   "sm_rival": 6,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "4",
+   "pid": "munoz-lopez-javier",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Pérez Zorrilla, Rafael",
+   "equip_rival": "C. B. MOLLET “A”",
+   "car": 40,
+   "sm": 8,
+   "ent": 39,
+   "car_rival": 32,
+   "sm_rival": 10,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP B",
+   "jornada": "4",
+   "pid": "castro-tellez-henry",
+   "equip": "C.B. MONFORTE \"B\"",
+   "rival": "Ortiz Alamillo, Jacinto",
+   "equip_rival": "C. B. MOLLET “A”",
+   "car": 35,
+   "sm": 6,
+   "ent": 50,
+   "car_rival": 29,
+   "sm_rival": 6,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "1a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "lozano-villegas-mauricio",
+   "equip": "C.B. MONFORTE \"C\"",
+   "rival": "Alberich Sánchez, Vicente",
+   "equip_rival": "C.B. MONT-ROIG \"B\"",
+   "car": 30,
+   "sm": 3,
+   "ent": 50,
+   "car_rival": 29,
+   "sm_rival": 4,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "1a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "hernandez-giraldo-fabian-alberto",
+   "equip": "C.B. MONFORTE \"C\"",
+   "rival": "Moruno Raya, Ignacio",
+   "equip_rival": "C.B. MONT-ROIG \"B\"",
+   "car": 20,
+   "sm": 3,
+   "ent": 50,
+   "car_rival": 29,
+   "sm_rival": 4,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "1a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "chuecos-enriquez-luis",
+   "equip": "C.B. MONFORTE \"C\"",
+   "rival": "Prats Quiñones, Josep Mª",
+   "equip_rival": "C.B. MONT-ROIG \"B\"",
+   "car": 21,
+   "sm": 3,
+   "ent": 50,
+   "car_rival": 33,
+   "sm_rival": 5,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "1a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "segura-mondria-francesc-xavier",
+   "equip": "C.B. MONFORTE \"C\"",
+   "rival": "Boronat Pujals, Jaume",
+   "equip_rival": "C.B. MONT-ROIG \"B\"",
+   "car": 23,
+   "sm": 3,
+   "ent": 50,
+   "car_rival": 28,
+   "sm_rival": 3,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "3a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "rocha-vera-jeferson",
+   "equip": "C.B. MONFORTE \"D\"",
+   "rival": "Calle Ortega, Eusebi",
+   "equip_rival": "S.B.GEiEG",
+   "car": 20,
+   "sm": 3,
+   "ent": 31,
+   "car_rival": 5,
+   "sm_rival": 25,
+   "res": "P"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "3a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "panadero-espin-andres",
+   "equip": "C.B. MONFORTE \"D\"",
+   "rival": "Galeano Amado, Ramón",
+   "equip_rival": "S.B.GEiEG",
+   "car": 25,
+   "sm": 3,
+   "ent": 47,
+   "car_rival": 16,
+   "sm_rival": 3,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "3a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "adell-casarramona-pere",
+   "equip": "C.B. MONFORTE \"D\"",
+   "rival": "Calle Ortega, Antoni",
+   "equip_rival": "S.B.GEiEG",
+   "car": 22,
+   "sm": 6,
+   "ent": 50,
+   "car_rival": 20,
+   "sm_rival": 3,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "3a DIVISIÓ",
+   "fase": "GRUP A",
+   "jornada": "4",
+   "pid": "segura-mondria-francesc-xavier",
+   "equip": "C.B. MONFORTE \"D\"",
+   "rival": "Saavedra Ruiz, Victor Estainer",
+   "equip_rival": "S.B.GEiEG",
+   "car": 22,
+   "sm": 4,
+   "ent": 50,
+   "car_rival": 12,
+   "sm_rival": 2,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "4a DIVISIÓ",
+   "fase": "GRUP B",
+   "jornada": "4",
+   "pid": "tormo-calatayud-jorge",
+   "equip": "C.B. MONFORTE \"E\"",
+   "rival": "Serramitjana Juan, Marta",
+   "equip_rival": "C.B. MATARÓ \"D\"",
+   "car": 20,
+   "sm": 2,
+   "ent": 39,
+   "car_rival": 10,
+   "sm_rival": 2,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "4a DIVISIÓ",
+   "fase": "GRUP B",
+   "jornada": "4",
+   "pid": "fernandez-nunez-manuel",
+   "equip": "C.B. MONFORTE \"E\"",
+   "rival": "De Los Ríos Martínez, José",
+   "equip_rival": "C.B. MATARÓ \"D\"",
+   "car": 19,
+   "sm": 2,
+   "ent": 50,
+   "car_rival": 18,
+   "sm_rival": 2,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "4a DIVISIÓ",
+   "fase": "GRUP B",
+   "jornada": "4",
+   "pid": "villate-malagon-brian-steven",
+   "equip": "C.B. MONFORTE \"E\"",
+   "rival": "López Esquerdo, José Ramón",
+   "equip_rival": "C.B. MATARÓ \"D\"",
+   "car": 20,
+   "sm": 2,
+   "ent": 39,
+   "car_rival": 6,
+   "sm_rival": 3,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-07",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "4a DIVISIÓ",
+   "fase": "GRUP B",
+   "jornada": "4",
+   "pid": "gili-bertral-joan",
+   "equip": "C.B. MONFORTE \"E\"",
+   "rival": "Muñoz Giménez, Josep",
+   "equip_rival": "C.B. MATARÓ \"D\"",
+   "car": 20,
+   "sm": 4,
+   "ent": 50,
+   "car_rival": 19,
+   "sm_rival": 5,
+   "res": "G"
+  },
   {
    "data": "2026-11-01",
    "temporada": "2026-27",
