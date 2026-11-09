@@ -1532,8 +1532,8 @@ temporada,lliga_id,competicio,divisio,grup,grup_id,posicio,equip,punts_match,pun
 2026-27,38,Lliga Catalana Tres Bandes,2a DIVISIÓ,GRUP B,348,6,"C.B. CARDONA ""A""",3,10,4
 2026-27,38,Lliga Catalana Tres Bandes,2a DIVISIÓ,GRUP B,348,7,"C.B. LLINARS ""B""",2,8,4
 2026-27,38,Lliga Catalana Tres Bandes,2a DIVISIÓ,GRUP B,348,8,"SB FOMENT MOLINS ""C""",1,6,4
-2026-27,38,Lliga Catalana Tres Bandes,3a DIVISIÓ,GRUP A,349,1,"C.B. LLIÇÀ ""B""",7,20,4
-2026-27,38,Lliga Catalana Tres Bandes,3a DIVISIÓ,GRUP A,349,2,S.B.GEiEG,7,20,4
+2026-27,38,Lliga Catalana Tres Bandes,3a DIVISIÓ,GRUP A,349,1,S.B.GEiEG,7,20,4
+2026-27,38,Lliga Catalana Tres Bandes,3a DIVISIÓ,GRUP A,349,2,"C.B. LLIÇÀ ""B""",7,20,4
 2026-27,38,Lliga Catalana Tres Bandes,3a DIVISIÓ,GRUP A,349,3,"C.B. MONFORTE ""D""",7,19,4
 2026-27,38,Lliga Catalana Tres Bandes,3a DIVISIÓ,GRUP A,349,4,"C.B. LLINARS ""C""",7,17,4
 2026-27,38,Lliga Catalana Tres Bandes,3a DIVISIÓ,GRUP A,349,5,"C.B. SANTS ""D""",5,13,4
@@ -1555,8 +1555,8 @@ temporada,lliga_id,competicio,divisio,grup,grup_id,posicio,equip,punts_match,pun
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP A,351,5,"C.B. SANTS ""E""",3,9,4
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP A,351,6,"C.B. SANT ADRIÀ ""E""",3,8,3
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP A,351,7,"B.C. GRANOLLERS ""E""",0,4,4
-2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP B,352,1,"C.B. MONFORTE ""E""",10,23,4
-2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP B,352,2,C.B.BORGES,9,20,4
+2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP B,352,1,C.B.BORGES,12,28,4
+2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP B,352,2,"C.B. MONFORTE ""E""",10,23,4
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP B,352,3,"C.B. SANT FELIU ""B""",6,20,4
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP B,352,4,"C.B. MONT-ROIG ""D""",6,15,4
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP B,352,5,"C.B. MATARÓ ""D""",6,14,4
@@ -1565,8 +1565,8 @@ temporada,lliga_id,competicio,divisio,grup,grup_id,posicio,equip,punts_match,pun
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP B,352,8,"C.B. BANYOLES ""D""",0,4,4
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,1,"S. C. CORAL COLÓN ""B""",10,24,4
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,2,"C.B. CARDONA ""B""",6,16,4
-2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,3,"C.B. VIC ""B""",6,14,3
-2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,4,"C.B. CANET ""C""",6,14,3
+2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,3,"C.B. CANET ""C""",6,14,3
+2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,4,"C.B. VIC ""B""",6,14,3
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,5,"S.B.ESPLUGUES L'AVENÇ ""B""",4,12,3
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,6,"C.B. MANRESA ""B""",2,12,4
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP C,353,7,"C.B. MATARÓ ""E""",0,4,3
@@ -1578,11 +1578,11 @@ temporada,lliga_id,competicio,divisio,grup,grup_id,posicio,equip,punts_match,pun
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP D,354,6,C.B. MATADEPERA,2,10,3
 2026-27,38,Lliga Catalana Tres Bandes,4a DIVISIÓ,GRUP D,354,7,"C.B. LLEIDA ""C""",1,8,4
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,1,"C.B. MATARÓ ""A""",12,27,4
-2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,2,"C.B. SANT ADRIÀ ""A""",9,20,3
-2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,3,"C.B. MONT-ROIG ""A""",7,18,3
+2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,2,"C.B. MONT-ROIG ""A""",10,24,4
+2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,3,"C.B. SANT ADRIÀ ""A""",9,22,4
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,4,"C.B. MONFORTE ""A""",6,17,4
-2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,5,"C.B. LLEIDA ""A""",4,15,4
-2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,6,"B.C. GRANOLLERS ""B""",4,15,4
+2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,5,"B.C. GRANOLLERS ""B""",4,15,4
+2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,6,"C.B. LLEIDA ""A""",4,15,4
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,7,"C.B. SANT BOI ""A""",1,4,4
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,8,B. C. OLESA,0,4,4
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP B,344,1,"B.C. GRANOLLERS ""A""",12,32,4
@@ -1608,8 +1608,8 @@ temporada,lliga_id,competicio,divisio,grup,grup_id,posicio,equip,punts_match,pun
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,5,C.B. 2000 CERDANYOLA “B”,1,4,2
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,6,"C.B. VIC ""B""",0,0,2
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,1,C.B. VILANOVA,6,14,2
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,2,C.B. 2000 CERDANYOLA “C”,4,10,2
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,3,"C.B. VIC ""A""",4,10,2
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,2,"C.B. VIC ""A""",4,10,2
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,3,C.B. 2000 CERDANYOLA “C”,4,10,2
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,4,C.B. LLIÇÀ,3,8,2
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,5,"S.B. CASAL CERVERA ""C""",0,4,2
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,6,"C.B. MONT-ROIG ""B""",0,2,2
