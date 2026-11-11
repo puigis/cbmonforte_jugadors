@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>5 QUILLES · Puntuació</title>
+<meta name="description" content="Calculadora de puntuació de 5 quilles per als àrbitres del CB Monforte">
+<meta name="theme-color" content="#0e3b28">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="escut.png">
+<link rel="apple-touch-icon" href="escut.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="5 QUILLES">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@800;900&family=Barlow:wght@500;600;700;800&display=swap">
+<style>
+:root{
+  --felt:#0e3b28; --felt2:#1f7a4a; --cloth:#1d6f44; --wood:#5b3a1e; --lime:#d6ff2e; --red:#d0102a; --yellow:#f2c21c;
+  --bg:#eef3ee; --card:#ffffff; --ink:#122219; --mute:#5b6d62; --line:#d3ddd5; --soft:#f4f8f4;
+  --ok:#1f7a45; --ok-bg:#e1f3e7; --bad:#b3121f; --bad-bg:#fde6e8;
+  --display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --body:"Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#08150f; --card:#11231a; --ink:#e7efe9; --mute:#93a89b; --line:#23392d; --soft:#0d1d15;
+  --ok:#5fd18e; --ok-bg:#12301f; --bad:#ff7b85; --bad-bg:#3a1418; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#08150f; --card:#11231a; --ink:#e7efe9; --mute:#93a89b; --line:#23392d; --soft:#0d1d15;
+  --ok:#5fd18e; --ok-bg:#12301f; --bad:#ff7b85; --bad-bg:#3a1418; color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.4;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+.wrap{max-width:560px;margin:0 auto;padding:14px 16px 40px}
+button{font:inherit;color:inherit;cursor:pointer}
+:focus-visible{outline:3px solid var(--lime);outline-offset:2px}
+
+.head{display:flex;align-items:center;gap:12px;background:var(--felt);color:#fff;border-radius:16px;padding:12px 14px;position:relative;overflow:hidden}
+.head::after{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:repeating-linear-gradient(90deg,var(--lime) 0 18px,var(--red) 18px 36px)}
+.head img{width:44px}
+.head small{display:block;font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--lime)}
+.head h1{margin:0;font-family:var(--display);font-weight:900;font-size:34px;line-height:.95;letter-spacing:.01em}
+
+.tabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:5px;margin:12px 0}
+.tabs button{border:0;background:none;border-radius:10px;padding:10px 6px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;font-size:14px;color:var(--mute)}
+.tabs button[aria-selected="true"]{background:var(--felt);color:var(--lime)}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:12px}
+.hint{font-size:14px;color:var(--mute);margin:0 2px 8px}
+.table{width:100%;height:auto;display:block;touch-action:manipulation;user-select:none}
+.pin{cursor:pointer}
+.pin .hit{fill:transparent}
+.pin:focus{outline:none}
+.pin:focus-visible .ring{stroke:var(--lime);stroke-width:4}
+
+.toggles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.tg{border:2px solid var(--line);background:var(--soft);border-radius:12px;padding:10px 10px;text-align:left;min-height:58px}
+.tg b{display:block;font-size:16px}
+.tg span{font-size:12.5px;color:var(--mute)}
+.tg[aria-pressed="true"]{border-color:var(--felt2);background:var(--ok-bg)}
+.tg.falta[aria-pressed="true"]{border-color:var(--red);background:var(--bad-bg)}
+.tg[aria-pressed="true"] b::before{content:"✓ ";color:var(--ok)}
+.tg.falta[aria-pressed="true"] b::before{color:var(--bad)}
+
+.res{margin-top:12px;border-radius:16px;padding:12px 14px;background:var(--card);border:2px solid var(--felt2)}
+.res.f{border-color:var(--red)}
+.res table{width:100%;border-collapse:collapse;font-size:15px}
+.res td{padding:4px 2px;border-bottom:1px dashed var(--line)}
+.res td.n{text-align:right;font-weight:800;font-variant-numeric:tabular-nums;width:60px}
+.res .buit td{color:var(--mute);font-style:italic}
+.tot{display:flex;align-items:baseline;justify-content:space-between;margin-top:6px}
+.tot span{font-weight:800;letter-spacing:.06em;font-size:14px}
+.tot b{font-family:var(--display);font-weight:900;font-size:56px;line-height:1;color:var(--ok);font-variant-numeric:tabular-nums}
+.res.f .tot b{color:var(--bad)}
+.per{font-weight:800;font-size:15px;color:var(--ok)}
+.res.f .per{color:var(--bad)}
+.max{display:inline-block;background:var(--red);color:#fff;font-size:11px;font-weight:800;letter-spacing:.08em;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:3px}
+.acts{display:flex;gap:8px;margin-top:10px}
+.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:800;min-height:46px}
+.btn.p{background:var(--felt);color:var(--lime);flex:1}
+.btn.g{background:var(--line)}
+
+.barem{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin-top:12px}
+.barem div{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:6px 2px;text-align:center;font-size:11px;font-weight:700;line-height:1.15;color:var(--mute)}
+.barem b{display:block;font-family:var(--display);font-size:24px;color:var(--ink)}
+.barem .r b{color:var(--red)}
+h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin:16px 2px 8px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips button{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 12px;font-size:14px;font-weight:700}
+
+/* Pràctica */
+.q{font-size:17px;font-weight:700;margin:4px 2px 10px}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opts button{border:2px solid var(--line);background:var(--card);border-radius:12px;padding:12px;font-weight:800;font-size:16px;min-height:56px}
+.opts button.ok{border-color:var(--ok);background:var(--ok-bg)}
+.opts button.ko{border-color:var(--bad);background:var(--bad-bg)}
+.fb{margin-top:10px;border-radius:12px;padding:10px 12px;font-weight:600}
+.fb.ok{background:var(--ok-bg);color:var(--ok)}
+.fb.ko{background:var(--bad-bg);color:var(--bad)}
+.score{font-size:14px;color:var(--mute);font-weight:700}
+.note{font-size:13px;color:var(--mute);margin-top:14px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="head">
+    <img src="escut.png" alt="">
+    <div><small>CB MONFORTE · BIATLÓ</small><h1>5 QUILLES</h1><div style="font-weight:700;font-size:14px;opacity:.9">Calculadora de puntuació</div></div>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <button role="tab" id="tCalc" aria-selected="true">Calculadora</button>
+    <button role="tab" id="tProva" aria-selected="false">Posa't a prova</button>
+  </nav>
+
+  <!-- CALCULADORA -->
+  <section id="vCalc">
+    <div class="card">
+      <p class="hint">Toca les quilles que han caigut.</p>
+      <svg id="taula" class="table" viewBox="0 0 400 220" role="group" aria-label="Taula de billar amb les 5 quilles"></svg>
+      <div class="toggles">
+        <button class="tg" id="bCar" aria-pressed="false"><b>Carambola</b><span>normal o russa · 2 punts</span></button>
+        <button class="tg falta" id="bFalta" aria-pressed="false"><b>Falta</b><span>p. ex. tira amb la bola contrària</span></button>
+      </div>
+    </div>
+    <div class="res" id="res" aria-live="polite"></div>
+    <div class="acts"><button class="btn g" id="bReset">Torna a començar</button></div>
+
+    <div class="barem" aria-label="Barem">
+      <div><b>2</b>quilla blanca</div>
+      <div class="r"><b>4</b>vermell amb blancs</div>
+      <div class="r"><b>10</b>vermell sol</div>
+      <div><b>2</b>carambola</div>
+      <div class="r"><b>2</b>falta + tir lliure</div>
+    </div>
+
+    <h2>Exemples</h2>
+    <div class="chips" id="exemples"></div>
+  </section>
+
+  <!-- PRÀCTICA -->
+  <section id="vProva" hidden>
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center"><span class="score" id="marc">0 de 0</span><button class="btn g" id="bNova" style="min-height:38px;padding:8px 14px">Nova jugada</button></div>
+      <svg id="taulaP" class="table" viewBox="0 0 400 220" role="img" aria-label="Jugada de pràctica"></svg>
+      <div class="q" id="pregunta"></div>
+      <div class="opts" id="opts"></div>
+      <div class="fb" id="fb" hidden></div>
+    </div>
+  </section>
+
+  <p class="note">En una falta, el contrari suma els 2 punts de la falta i tot el que s'hagi fet a la jugada, i té tir lliure. Màxim d'una jugada: 16 punts.</p>
+</div>
+
+<script>
+/* ===== Regles (barem del club) ===== */
+const P = { blanc: 2, vermellAmbBlancs: 4, vermellSol: 10, carambola: 2, falta: 2 };
+const BLANCS = ["n", "s", "e", "w"];
+
+function calcula(e) {
+  // e = { caigudes: Set de "c","n","s","e","w", car: bool, falta: bool }
+  const nb = BLANCS.filter(k => e.caigudes.has(k)).length;
+  const verm = e.caigudes.has("c");
+  const linies = [];
+  if (e.falta) linies.push(["Falta", P.falta]);
+  if (e.car) linies.push(["Carambola", P.carambola]);
+  if (nb) linies.push([`${nb} ${nb === 1 ? "quilla blanca" : "quilles blanques"} × ${P.blanc}`, nb * P.blanc]);
+  if (verm) linies.push(nb ? ["Vermell (amb blancs)", P.vermellAmbBlancs] : ["Vermell sol", P.vermellSol]);
+  const total = linies.reduce((s, l) => s + l[1], 0);
+  return { linies, total, perContrari: e.falta };
+}
+
+/* ===== Dibuix de la taula ===== */
+const POS = { c: [200, 105], n: [200, 72], s: [200, 138], e: [250, 105], w: [150, 105] };
+const ns = "http://www.w3.org/2000/svg";
+function el(tag, at, pare) { const x = document.createElementNS(ns, tag); for (const k in at) x.setAttribute(k, at[k]); if (pare) pare.appendChild(x); return x; }
+
+function pintaTaula(svg, e, interactiu) {
+  svg.innerHTML = "";
+  el("rect", { x: 4, y: 4, width: 392, height: 212, rx: 18, fill: "#5b3a1e" }, svg);
+  el("rect", { x: 20, y: 20, width: 360, height: 180, rx: 6, fill: "#1d6f44" }, svg);
+  // boles
+  const tira = e.falta ? "#f2c21c" : "#ffffff", altra = e.falta ? "#ffffff" : "#f2c21c";
+  el("line", { x1: 30, y1: 196, x2: 74, y2: 172, stroke: "#e9d3a6", "stroke-width": 7, "stroke-linecap": "round" }, svg);
+  el("circle", { cx: 88, cy: 165, r: 13, fill: tira, stroke: "#111", "stroke-width": 1.5 }, svg);
+  el("circle", { cx: 318, cy: 58, r: 13, fill: altra, stroke: "#111", "stroke-width": 1.5 }, svg);
+  el("circle", { cx: 318, cy: 160, r: 12, fill: "#d0102a", stroke: "#111", "stroke-width": 1.5 }, svg);
+  // quilles
+  for (const k of ["c", ...BLANCS]) {
+    const [x, y] = POS[k], caiguda = e.caigudes.has(k), col = k === "c" ? "#d0102a" : "#ffffff";
+    const g = el("g", { class: "pin", "data-k": k }, svg);
+    if (interactiu) {
+      g.setAttribute("tabindex", "0"); g.setAttribute("role", "button");
+      g.setAttribute("aria-pressed", caiguda ? "true" : "false");
+      g.setAttribute("aria-label", (k === "c" ? "Quilla vermella" : "Quilla blanca") + (caiguda ? ", tombada" : ", dreta"));
+      el("circle", { class: "hit", cx: x, cy: y, r: 22 }, g);
+    }
+    if (caiguda) {
+      el("circle", { class: "ring", cx: x, cy: y, r: 10, fill: "none", stroke: col, "stroke-width": 2.5, "stroke-dasharray": "3 3" }, g);
+      el("path", { d: `M${x - 7} ${y - 7}L${x + 7} ${y + 7}M${x + 7} ${y - 7}L${x - 7} ${y + 7}`, stroke: "#ffd400", "stroke-width": 3.5, "stroke-linecap": "round" }, g);
+    } else {
+      el("circle", { class: "ring", cx: x, cy: y, r: 10, fill: col, stroke: "#111", "stroke-width": 1.5 }, g);
+    }
+  }
+  // etiquetes
+  if (e.car) { const g = el("g", { transform: "translate(30,28)" }, svg); el("rect", { width: 112, height: 26, rx: 5, fill: "#ffd400" }, g); const t = el("text", { x: 56, y: 18, "text-anchor": "middle", "font-size": 15, "font-weight": 800, fill: "#13264A", "font-family": "Barlow,sans-serif" }, g); t.textContent = "CARAMBOLA"; }
+  if (e.falta) { const g = el("g", { transform: "translate(236,176)" }, svg); el("rect", { width: 80, height: 26, rx: 5, fill: "#d0102a" }, g); const t = el("text", { x: 40, y: 18, "text-anchor": "middle", "font-size": 15, "font-weight": 800, fill: "#fff", "font-family": "Barlow,sans-serif" }, g); t.textContent = "FALTA"; }
+}
+
+/* ===== Calculadora ===== */
+const $ = s => document.querySelector(s);
+let E = { caigudes: new Set(), car: false, falta: false };
+
+function pinta() {
+  pintaTaula($("#taula"), E, true);
+  $("#bCar").setAttribute("aria-pressed", E.car);
+  $("#bFalta").setAttribute("aria-pressed", E.falta);
+  const r = calcula(E);
+  const files = r.linies.length ? r.linies.map(([a, b]) => `<tr><td>${a}</td><td class="n">${b}</td></tr>`).join("") : `<tr class="buit"><td>Cap punt</td><td class="n">0</td></tr>`;
+  $("#res").className = "res" + (r.perContrari ? " f" : "");
+  $("#res").innerHTML = `<table>${files}</table>
+    <div class="tot"><span>TOTAL${r.total === 16 ? '<span class="max">MÀXIM</span>' : ""}</span><b>${r.total}</b></div>
+    <div class="per">${r.perContrari ? "Per al CONTRARI + TIR LLIURE" : r.total ? "Per al jugador que tira" : "Ningú no suma punts"}</div>`;
+}
+$("#taula").addEventListener("click", ev => { const g = ev.target.closest(".pin"); if (!g) return; const k = g.dataset.k; E.caigudes.has(k) ? E.caigudes.delete(k) : E.caigudes.add(k); pinta(); });
+$("#taula").addEventListener("keydown", ev => { if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest(".pin")) { ev.preventDefault(); const k = ev.target.closest(".pin").dataset.k; E.caigudes.has(k) ? E.caigudes.delete(k) : E.caigudes.add(k); pinta(); setTimeout(() => document.querySelector(`#taula .pin[data-k="${k}"]`)?.focus(), 0); } });
+$("#bCar").onclick = () => { E.car = !E.car; pinta(); };
+$("#bFalta").onclick = () => { E.falta = !E.falta; pinta(); };
+$("#bReset").onclick = () => { E = { caigudes: new Set(), car: false, falta: false }; pinta(); };
+
+const EXEMPLES = [
+  ["2 blancs", { c: ["n", "e"] }],
+  ["Vermell amb blancs", { c: ["c", "n", "s"] }],
+  ["Vermell sol", { c: ["c"] }],
+  ["Totes", { c: ["c", ...BLANCS] }],
+  ["Carambola + 2 blancs", { c: ["w", "s"], car: 1 }],
+  ["Tira amb la bola contrària", { c: [], falta: 1 }],
+  ["Falta + vermell sol", { c: ["c"], falta: 1 }],
+  ["Falta + carambola + totes", { c: ["c", ...BLANCS], car: 1, falta: 1 }],
+];
+$("#exemples").innerHTML = EXEMPLES.map((x, i) => `<button data-i="${i}">${x[0]}</button>`).join("");
+$("#exemples").onclick = ev => { const b = ev.target.closest("button"); if (!b) return; const x = EXEMPLES[+b.dataset.i][1]; E = { caigudes: new Set(x.c), car: !!x.car, falta: !!x.falta }; pinta(); scrollTo({ top: 0, behavior: "smooth" }); };
+
+/* ===== Pràctica ===== */
+let Q = null, encerts = 0, fetes = 0;
+function jugadaAleatoria() {
+  const c = new Set();
+  if (Math.random() < .45) c.add("c");
+  for (const k of BLANCS) if (Math.random() < .45) c.add(k);
+  return { caigudes: c, car: Math.random() < .35, falta: Math.random() < .35 };
+}
+function opcions(correcte) {
+  const s = new Set([correcte]);
+  const cand = [correcte + 2, correcte - 2, correcte + 4, correcte - 4, correcte + 6, correcte + 8, 10, 12, 14, 16, 4, 6, 8];
+  for (const v of cand.sort(() => Math.random() - .5)) { if (s.size >= 4) break; if (v >= 0 && v <= 18) s.add(v); }
+  return [...s].sort((a, b) => a - b);
+}
+function novaJugada() {
+  Q = jugadaAleatoria(); Q.r = calcula(Q);
+  pintaTaula($("#taulaP"), Q, false);
+  const qui = Q.falta ? "Jugador 1 tira amb la bola groga (la del contrari)." : "Jugador 1 tira amb la bola blanca.";
+  $("#pregunta").textContent = qui + " Quants punts són?";
+  $("#opts").innerHTML = opcions(Q.r.total).map(v => `<button data-v="${v}">${v}</button>`).join("");
+  $("#fb").hidden = true;
+}
+$("#opts").onclick = ev => {
+  const b = ev.target.closest("button"); if (!b || !Q || Q.resposta != null) return;
+  Q.resposta = +b.dataset.v; fetes++;
+  const ok = Q.resposta === Q.r.total; if (ok) encerts++;
+  [...$("#opts").children].forEach(x => { if (+x.dataset.v === Q.r.total) x.classList.add("ok"); else if (x === b) x.classList.add("ko"); });
+  const det = Q.r.linies.length ? Q.r.linies.map(([a, v]) => `${a} (${v})`).join(" + ") : "cap punt";
+  $("#fb").className = "fb " + (ok ? "ok" : "ko");
+  $("#fb").innerHTML = `${ok ? "Correcte!" : "No."} ${det} = <b>${Q.r.total}</b>. ${Q.falta ? "Per al contrari, amb tir lliure." : Q.r.total ? "Per al jugador que tira." : ""}`;
+  $("#fb").hidden = false;
+  $("#marc").textContent = `${encerts} de ${fetes}`;
+};
+$("#bNova").onclick = novaJugada;
+
+/* ===== Pestanyes ===== */
+function vista(p) {
+  $("#vCalc").hidden = p; $("#vProva").hidden = !p;
+  $("#tCalc").setAttribute("aria-selected", !p); $("#tProva").setAttribute("aria-selected", p);
+  if (p && !Q) novaJugada();
+}
+$("#tCalc").onclick = () => vista(false);
+$("#tProva").onclick = () => vista(true);
+pinta();
+</script>
+</body>
+</html>
