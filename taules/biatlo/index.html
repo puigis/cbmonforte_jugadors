@@ -70,10 +70,13 @@ button{cursor:pointer}
 .chips a{flex:0 0 auto;width:42px;height:42px;border-radius:11px;display:grid;place-items:center;text-decoration:none;font-family:var(--display);font-weight:900;font-size:26px;background:var(--card);border:1px solid var(--line);color:var(--ink)}
 .chips a.done{background:var(--felt);color:var(--lime);border-color:var(--felt)}
 .group{background:var(--card);border:1px solid var(--line);border-radius:16px;margin-top:14px;overflow:hidden;scroll-margin-top:70px}
-.ghead{display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
+.ghead{display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:center;padding:12px 14px;border-bottom:1px solid var(--line)}
 .gl{width:46px;height:46px;border-radius:11px;background:var(--felt);color:var(--lime);font-family:var(--display);font-weight:900;font-size:32px;display:grid;place-items:center}
 .gname{font-weight:700}
 .gsub{color:var(--mute);font-size:13px}
+.npbtn{border:1px solid var(--line);background:var(--soft);border-radius:999px;padding:7px 12px;font-weight:700;font-size:12px;color:var(--mute);white-space:nowrap}
+.tag.np{background:#f9dcdc;color:#9b1c22}
+tr.npr .pn{text-decoration:line-through;opacity:.7}
 .wa{display:inline-flex;align-items:center;gap:6px;border:0;border-radius:999px;background:#25d366;color:#06301a;font-weight:700;font-size:13px;padding:8px 12px;text-decoration:none;white-space:nowrap}
 .wa svg{width:16px;height:16px}
 
@@ -253,8 +256,19 @@ function res(id) {
   let w = t1 > t2 ? 1 : t2 > t1 ? 2 : (r.g || 0);
   return { ...r, t1, t2, w };
 }
+// Jugador no presentat del grup (número) o null
+function npDe(G) { const r = R["NP" + G.g]; return r && G.p.includes(r.np) ? r.np : null; }
 // Jugadors de cada partida del grup (null si encara depèn d'un resultat)
+// Si un jugador no s'ha presentat: els dos que queden juguen anada i tornada (1a i 2a hora); la 3a no es juga.
 function partidesGrup(G) {
+  const np = npDe(G);
+  if (np) {
+    const [x, y] = G.p.filter(n => n !== np);
+    return [
+      { id:"G"+G.g+"1", p1:x, p2:y, h:G.h[0], txt:null, et:"Anada" },
+      { id:"G"+G.g+"2", p1:y, p2:x, h:G.h[1], txt:null, et:"Tornada" },
+    ];
+  }
   const [i, k] = G.obre, f = G.p[G.fix], a = G.p[i], c = G.p[k];
   const r1 = res("G" + G.g + "1");
   let gan = null, per = null;
@@ -281,7 +295,9 @@ function statsGrup(G) {
   const llista = Object.values(S);
   llista.forEach(s => { s.mitQ = s.reb ? s.fets / s.reb : (s.fets ? 99 : 0); s.mit3b = s.ent ? s.car / s.ent : 0; });
   llista.sort(compara);
-  return { llista, ms, fet: ms.every(m => res(m.id) && m.p1 && m.p2) };
+  const np = npDe(G);
+  if (np) { const i = llista.findIndex(s => s.n === np); const s = llista.splice(i, 1)[0]; s.np = true; llista.push(s); }
+  return { llista, ms, np, fet: ms.every(m => res(m.id) && m.p1 && m.p2) };
 }
 function compara(x, y) {
   for (const c of CRITERIS) {
@@ -338,20 +354,23 @@ function pintaGrups() {
   const cl = classificats();
   let h = `<nav class="chips" aria-label="Grups">${GRUPS.map(G => `<a href="#${G.g}" class="${statsGrup(G).fet ? "done" : ""}">${G.g}</a>`).join("")}</nav>`;
   for (const G of GRUPS) {
-    const { llista, ms, fet } = statsGrup(G);
+    const { llista, ms, fet, np } = statsGrup(G);
     const mill = cl.fets && cl.millorSegon.g === G.g;
     h += `<section class="group" id="${G.g}">
       <div class="ghead"><div class="gl">${G.g}</div>
-        <div><div class="gname">Grup ${G.g}</div><div class="gsub">Dissabte 14 · ${G.h[0]} h · Billar ${G.b}${fet ? " · Acabat" : ""}</div></div></div>
+        <div><div class="gname">Grup ${G.g}</div><div class="gsub">Dissabte 14 · ${G.h[0]} h · Billar ${G.b}${fet ? " · Acabat" : ""}</div></div>
+        ${admin ? `<button class="npbtn" data-np="${G.g}">${np ? "No presentat ✓" : "No presentat…"}</button>` : ""}</div>
       <table class="std"><thead><tr><th></th><th>Jugador</th><th>PJ</th><th>Pts</th><th>Quilles</th><th class="hide">M. quill.</th><th class="hide">M. 3B</th></tr></thead><tbody>
-      ${llista.map((s, i) => `<tr class="${i === 0 && fet ? "q" : ""} ${mon(s.n) ? "mon" : ""}">
-        <td class="pos">${i + 1}</td>
-        <td class="pl"><div class="pn">${esc(nom(s.n))}${fet && i === 0 ? '<span class="tag q">Quarts</span>' : ""}${fet && i === 1 && mill ? '<span class="tag b">Millor 2n</span>' : ""}</div><div class="pc">${esc(club(s.n))}</div></td>
+      ${llista.map((s, i) => `<tr class="${i === 0 && fet ? "q" : ""} ${mon(s.n) ? "mon" : ""} ${s.np ? "npr" : ""}">
+        <td class="pos">${s.np ? "–" : i + 1}</td>
+        <td class="pl"><div class="pn">${esc(nom(s.n))}${s.np ? '<span class="tag np">No presentat</span>' : ""}${fet && i === 0 ? '<span class="tag q">Quarts</span>' : ""}${fet && i === 1 && mill ? '<span class="tag b">Millor 2n</span>' : ""}</div><div class="pc">${esc(club(s.n))}</div></td>
         <td class="num">${s.pj}</td><td class="num pts">${s.pts}</td><td class="num">${s.fets}</td>
         <td class="num hide">${s.pj ? dec(s.mitQ) : "–"}</td><td class="num hide">${s.ent ? dec(s.mit3b) : "–"}</td></tr>`).join("")}
       </tbody></table>
       <div class="sheet"><h4>Full de resultats · ${DIST_GRUP}</h4>
-        ${ms.map((m, i) => filaPartida({ ...m, top: `${i + 1}a partida · ${m.h} h · Billar ${G.b}` }, m.p1 && m.p2 ? res(m.id) : null)).join("")}
+        ${np ? `<div class="pend" style="margin:4px 4px 0">${esc(nom(np))} no s'ha presentat: els altres dos juguen anada i tornada.</div>` : ""}
+        ${ms.map((m, i) => filaPartida({ ...m, top: `${m.et ? m.et : (i + 1) + "a partida"} · ${m.h} h · Billar ${G.b}` }, m.p1 && m.p2 ? res(m.id) : null)).join("")}
+        ${np ? `<div class="pend" style="margin:8px 4px 0">${G.h[2]} h · 3a partida: no es juga.</div>` : ""}
       </div></section>`;
   }
   h += `<div class="card rules"><b>Com es classifica</b><ol>${CRITERIS.map(c => `<li>${NOM_CRITERI[c]}</li>`).join("")}</ol>
@@ -448,7 +467,7 @@ async function desa(id, dades) {
 
 /* ===== Anotar ===== */
 function trobaPartida(id) {
-  if (id[0] === "G") { const G = GRUPS.find(g => g.g === id[1]); const m = partidesGrup(G)[+id[2] - 1]; return { ...m, dist: DIST_GRUP, titol: `Grup ${G.g} · ${id[2]}a partida` }; }
+  if (id[0] === "G") { const G = GRUPS.find(g => g.g === id[1]); const m = partidesGrup(G)[+id[2] - 1]; return { ...m, dist: DIST_GRUP, titol: `Grup ${G.g} · ${m.et ? m.et : id[2] + "a partida"}` }; }
   const m = KO.find(k => k.id === id), [p1, p2] = jugadorsKO(m, classificats());
   return { id, p1, p2, dist: DIST_KO, titol: m.id === "F" ? "Final" : m.r + " " + m.id.slice(1) };
 }
@@ -465,7 +484,7 @@ function obre(id) {
     <div class="tie" id="tie" hidden>Els dos tenen els mateixos punts. Qui ha guanyat?<select name="g"><option value="1">${esc(nom(m.p1))}</option><option value="2">${esc(nom(m.p2))}</option></select></div>
     <div class="acts">${R[id] ? '<button class="btn d" value="del">Esborrar</button>' : ""}<button class="btn g" value="no">Cancel·lar</button><button class="btn p" value="ok">Desar</button></div>`;
   const f = $("#frm");
-  f.onsubmit = null;
+  f.onsubmit = null; f.onchange = null;
   if (r.g) f.g.value = r.g;
   const calc = () => {
     const c1 = +f.c1.value || 0, c2 = +f.c2.value || 0, q1 = +f.q1.value || 0, q2 = +f.q2.value || 0;
@@ -499,7 +518,46 @@ function vista(v) {
 }
 $("#tGrups").onclick = () => { history.replaceState(null, "", location.pathname + location.search + (PROVA ? "#prova" : "")); vista("grups"); scrollTo(0, 0); };
 $("#tQuadre").onclick = () => { history.replaceState(null, "", "#quadre" + (PROVA ? "-prova" : "")); vista("quadre"); scrollTo(0, 0); };
-document.addEventListener("click", e => { const b = e.target.closest(".match.edit"); if (b && admin) obre(b.dataset.id); });
+document.addEventListener("click", e => {
+  const n = e.target.closest("[data-np]"); if (n && admin) { obreNP(n.dataset.np); return; }
+  const b = e.target.closest(".match.edit"); if (b && admin) obre(b.dataset.id);
+});
+// Marcar (o desfer) el jugador no presentat d'un grup
+function obreNP(g) {
+  const G = GRUPS.find(x => x.g === g), ara = npDe(G);
+  $("#frm").innerHTML = `<h3>Grup ${g} · No presentat</h3>
+    <div class="s">Si un jugador no es presenta, els altres dos juguen anada i tornada a les ${G.h[0]} i a les ${G.h[1]} h. La partida de les ${G.h[2]} h no es juga.</div>
+    <div class="f2" style="grid-template-columns:1fr">
+      ${G.p.map(n => `<label style="text-transform:none;font-size:15px;color:var(--ink);display:flex;gap:10px;align-items:center"><input type="radio" name="np" value="${n}" ${ara === n ? "checked" : ""} style="width:auto;margin:0">${esc(nom(n))}</label>`).join("")}
+      <label style="text-transform:none;font-size:15px;color:var(--ink);display:flex;gap:10px;align-items:center"><input type="radio" name="np" value="0" ${ara ? "" : "checked"} style="width:auto;margin:0">Tots presents</label>
+    </div>
+    <div class="tie" id="avisnp" hidden></div>
+    <div class="acts"><button class="btn g" value="no">Cancel·lar</button><button class="btn p" value="ok">Desar</button></div>`;
+  const f = $("#frm"), dlg = $("#dlg");
+  f.onsubmit = null; f.oninput = null;
+  // Quines partides ja anotades deixarien de valer amb el canvi
+  const afectades = nou => {
+    const abans = partidesGrup(G), copia = R["NP" + g];
+    if (nou) R["NP" + g] = { np: nou }; else delete R["NP" + g];
+    const despres = partidesGrup(G);
+    if (copia) R["NP" + g] = copia; else delete R["NP" + g];
+    return abans.filter(m => R[m.id]).filter(m => { const d = despres.find(x => x.id === m.id); return !d || d.p1 !== m.p1 || d.p2 !== m.p2; }).map(m => m.id);
+  };
+  const avisa = () => {
+    const v = +(f.querySelector("input[name=np]:checked") || {}).value || 0, ids = afectades(v);
+    $("#avisnp").hidden = !ids.length;
+    $("#avisnp").textContent = ids.length ? (ids.length === 1 ? "Atenció: s'esborrarà el resultat ja anotat que deixa de valer." : `Atenció: s'esborraran els ${ids.length} resultats ja anotats que deixen de valer.`) : "";
+  };
+  f.onchange = avisa; avisa();
+  dlg.onclose = async () => {
+    if (dlg.returnValue !== "ok") return;
+    const v = +(f.querySelector("input[name=np]:checked") || {}).value || 0;
+    if ((v || null) === ara) return;
+    for (const id of afectades(v)) if (!(await desa(id, null))) return;
+    if (await desa("NP" + g, v ? { np: v } : null)) toast(v ? nom(v) + ": no presentat" : "Grup " + g + ": tots presents");
+  };
+  dlg.returnValue = ""; dlg.showModal();
+}
 $("#bAdm").onclick = async () => {
   if (admin && !local) {
     fetch(API + "?accio=biatlo-sortir", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ token }) }).catch(() => {});
@@ -515,6 +573,7 @@ function entrar() {
     <div class="tie" id="err" hidden></div>
     <div class="acts"><button class="btn g" value="no">Cancel·lar</button><button class="btn p" value="ok">Entrar</button></div>`;
   const f = $("#frm"), dlg = $("#dlg");
+  f.onchange = null; f.oninput = null;
   f.onsubmit = async e => {
     if (e.submitter && e.submitter.value === "no") return;
     e.preventDefault();

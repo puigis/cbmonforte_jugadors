@@ -612,6 +612,16 @@ async function biatlo(request, params, env) {
   const qui = await usuariDelToken(kv, cos && cos.token);
   if (!qui) return json({ error: "Cal entrar com a administrador" }, 401);
   const id = String(cos.id || "");
+  if (/^NP[A-G]$/.test(id)) {   // jugador no presentat d'un grup
+    if (cos.dades === null) delete res[id];
+    else {
+      const np = parseInt((cos.dades || {}).np, 10);
+      if (!(np >= 1 && np <= 21)) return json({ error: "Jugador incorrecte" }, 400);
+      res[id] = { np, t: Date.now(), per: qui };
+    }
+    await kv.put(clau, JSON.stringify(res));
+    return json({ resultats: res });
+  }
   if (!/^(G[A-G][123]|Q[1-4]|S[12]|F)$/.test(id)) return json({ error: "Partida incorrecta" }, 400);
   if (cos.dades === null) { delete res[id]; }
   else {
