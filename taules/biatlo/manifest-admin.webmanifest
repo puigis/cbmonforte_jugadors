@@ -1,0 +1,19 @@
+{
+  "name": "BIATLÓ · Administració",
+  "short_name": "BIATLÓ Admin",
+  "description": "Resultats del Campionat de Catalunya de Biatló al CB Monforte",
+  "start_url": "./?admin",
+  "scope": "./",
+  "id": "./?admin",
+  "display": "standalone",
+  "background_color": "#0e3b28",
+  "theme_color": "#0e3b28",
+  "lang": "ca",
+  "icons": [
+    {
+      "src": "escut.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

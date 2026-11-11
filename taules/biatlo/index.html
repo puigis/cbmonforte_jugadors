@@ -9,11 +9,19 @@
 <meta property="og:title" content="Campionat de Catalunya de Biatló · CB Monforte">
 <meta property="og:description" content="Resultats en directe dels grups i de les eliminatòries · 14 i 15 de novembre">
 <meta property="og:image" content="https://taules-monforte.vercel.app/biatlo/og.jpg">
-<link rel="manifest" href="manifest.webmanifest">
+<link rel="manifest" href="manifest.webmanifest" id="manif">
+<script>
+// Versió d'administrador: en instal·lar-la, l'app s'obre ja en mode administrador
+if (new URLSearchParams(location.search).has("admin")) {
+  document.getElementById("manif").href = "manifest-admin.webmanifest";
+  document.title = "BIATLÓ · Administració";
+}
+</script>
 <link rel="icon" href="escut.png">
 <link rel="apple-touch-icon" href="escut.png">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="BIATLÓ">
+<meta name="apple-mobile-web-app-title" content="BIATLÓ" id="aptitle">
+<script>if (new URLSearchParams(location.search).has("admin")) document.getElementById("aptitle").content = "BIATLÓ Admin";</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;900&family=Barlow:wght@400;500;600;700&display=swap">
 <style>
