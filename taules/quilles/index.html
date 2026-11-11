@@ -119,8 +119,9 @@ h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute
       <p class="hint">Toca les quilles que han caigut.</p>
       <svg id="taula" class="table" viewBox="0 0 400 220" role="group" aria-label="Taula de billar amb les 5 quilles"></svg>
       <div class="toggles">
-        <button class="tg" id="bCar" aria-pressed="false"><b>Carambola</b><span>normal o russa · 2 punts</span></button>
-        <button class="tg falta" id="bFalta" aria-pressed="false"><b>Falta</b><span>p. ex. tira amb la bola contrària</span></button>
+        <button class="tg" id="bCarN" aria-pressed="false"><b>Carambola normal</b><span>4 punts · amb falta 2</span></button>
+        <button class="tg" id="bCarR" aria-pressed="false"><b>Carambola russa</b><span>3 punts · amb falta 2</span></button>
+        <button class="tg falta" id="bFalta" aria-pressed="false" style="grid-column:1/-1"><b>Falta</b><span>p. ex. tira amb la bola contrària · 2 punts + tir lliure al contrari</span></button>
       </div>
     </div>
     <div class="res" id="res" aria-live="polite"></div>
@@ -130,7 +131,7 @@ h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute
       <div><b>2</b>quilla blanca</div>
       <div class="r"><b>4</b>vermell amb blancs</div>
       <div class="r"><b>10</b>vermell sol</div>
-      <div><b>2</b>carambola</div>
+      <div><b>4 · 3</b>carambola normal · russa</div>
       <div class="r"><b>2</b>falta + tir lliure</div>
     </div>
 
@@ -149,21 +150,24 @@ h2{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute
     </div>
   </section>
 
-  <p class="note">En una falta, el contrari suma els 2 punts de la falta i tot el que s'hagi fet a la jugada, i té tir lliure. Màxim d'una jugada: 16 punts.</p>
+  <p class="note">En una falta, el contrari suma els 2 punts de la falta i tot el que s'hagi fet a la jugada, i té tir lliure. Amb falta, la carambola (normal o russa) val 2. Màxim d'una jugada: 16 punts (amb falta no són 18).</p>
 </div>
 
 <script>
 /* ===== Regles (barem del club) ===== */
-const P = { blanc: 2, vermellAmbBlancs: 4, vermellSol: 10, carambola: 2, falta: 2 };
+const P = { blanc: 2, vermellAmbBlancs: 4, vermellSol: 10, carNormal: 4, carRussa: 3, carAmbFalta: 2, falta: 2 };
 const BLANCS = ["n", "s", "e", "w"];
 
 function calcula(e) {
-  // e = { caigudes: Set de "c","n","s","e","w", car: bool, falta: bool }
+  // e = { caigudes: Set de "c","n","s","e","w", car: "" | "n" (normal) | "r" (russa), falta: bool }
   const nb = BLANCS.filter(k => e.caigudes.has(k)).length;
   const verm = e.caigudes.has("c");
   const linies = [];
   if (e.falta) linies.push(["Falta", P.falta]);
-  if (e.car) linies.push(["Carambola", P.carambola]);
+  if (e.car) {
+    const nomC = e.car === "r" ? "Carambola russa" : "Carambola normal";
+    linies.push(e.falta ? [nomC + " (amb falta)", P.carAmbFalta] : [nomC, e.car === "r" ? P.carRussa : P.carNormal]);
+  }
   if (nb) linies.push([`${nb} ${nb === 1 ? "quilla blanca" : "quilles blanques"} × ${P.blanc}`, nb * P.blanc]);
   if (verm) linies.push(nb ? ["Vermell (amb blancs)", P.vermellAmbBlancs] : ["Vermell sol", P.vermellSol]);
   const total = linies.reduce((s, l) => s + l[1], 0);
@@ -203,17 +207,18 @@ function pintaTaula(svg, e, interactiu) {
     }
   }
   // etiquetes
-  if (e.car) { const g = el("g", { transform: "translate(30,28)" }, svg); el("rect", { width: 112, height: 26, rx: 5, fill: "#ffd400" }, g); const t = el("text", { x: 56, y: 18, "text-anchor": "middle", "font-size": 15, "font-weight": 800, fill: "#13264A", "font-family": "Barlow,sans-serif" }, g); t.textContent = "CARAMBOLA"; }
+  if (e.car) { const g = el("g", { transform: "translate(30,28)" }, svg); el("rect", { width: 112, height: 26, rx: 5, fill: "#ffd400" }, g); const t = el("text", { x: 56, y: 18, "text-anchor": "middle", "font-size": 15, "font-weight": 800, fill: "#13264A", "font-family": "Barlow,sans-serif" }, g); t.textContent = e.car === "r" ? "C. RUSSA" : "CARAMBOLA"; }
   if (e.falta) { const g = el("g", { transform: "translate(236,176)" }, svg); el("rect", { width: 80, height: 26, rx: 5, fill: "#d0102a" }, g); const t = el("text", { x: 40, y: 18, "text-anchor": "middle", "font-size": 15, "font-weight": 800, fill: "#fff", "font-family": "Barlow,sans-serif" }, g); t.textContent = "FALTA"; }
 }
 
 /* ===== Calculadora ===== */
 const $ = s => document.querySelector(s);
-let E = { caigudes: new Set(), car: false, falta: false };
+let E = { caigudes: new Set(), car: "", falta: false };
 
 function pinta() {
   pintaTaula($("#taula"), E, true);
-  $("#bCar").setAttribute("aria-pressed", E.car);
+  $("#bCarN").setAttribute("aria-pressed", E.car === "n");
+  $("#bCarR").setAttribute("aria-pressed", E.car === "r");
   $("#bFalta").setAttribute("aria-pressed", E.falta);
   const r = calcula(E);
   const files = r.linies.length ? r.linies.map(([a, b]) => `<tr><td>${a}</td><td class="n">${b}</td></tr>`).join("") : `<tr class="buit"><td>Cap punt</td><td class="n">0</td></tr>`;
@@ -224,22 +229,23 @@ function pinta() {
 }
 $("#taula").addEventListener("click", ev => { const g = ev.target.closest(".pin"); if (!g) return; const k = g.dataset.k; E.caigudes.has(k) ? E.caigudes.delete(k) : E.caigudes.add(k); pinta(); });
 $("#taula").addEventListener("keydown", ev => { if ((ev.key === "Enter" || ev.key === " ") && ev.target.closest(".pin")) { ev.preventDefault(); const k = ev.target.closest(".pin").dataset.k; E.caigudes.has(k) ? E.caigudes.delete(k) : E.caigudes.add(k); pinta(); setTimeout(() => document.querySelector(`#taula .pin[data-k="${k}"]`)?.focus(), 0); } });
-$("#bCar").onclick = () => { E.car = !E.car; pinta(); };
+$("#bCarN").onclick = () => { E.car = E.car === "n" ? "" : "n"; pinta(); };
+$("#bCarR").onclick = () => { E.car = E.car === "r" ? "" : "r"; pinta(); };
 $("#bFalta").onclick = () => { E.falta = !E.falta; pinta(); };
-$("#bReset").onclick = () => { E = { caigudes: new Set(), car: false, falta: false }; pinta(); };
+$("#bReset").onclick = () => { E = { caigudes: new Set(), car: "", falta: false }; pinta(); };
 
 const EXEMPLES = [
   ["2 blancs", { c: ["n", "e"] }],
   ["Vermell amb blancs", { c: ["c", "n", "s"] }],
   ["Vermell sol", { c: ["c"] }],
-  ["Totes", { c: ["c", ...BLANCS] }],
-  ["Carambola + 2 blancs", { c: ["w", "s"], car: 1 }],
+  ["Carambola normal + totes", { c: ["c", ...BLANCS], car: "n" }],
+  ["Carambola russa + 2 blancs", { c: ["w", "s"], car: "r" }],
   ["Tira amb la bola contrària", { c: [], falta: 1 }],
-  ["Falta + vermell sol", { c: ["c"], falta: 1 }],
-  ["Falta + carambola + totes", { c: ["c", ...BLANCS], car: 1, falta: 1 }],
+  ["Falta + carambola + 2 blancs", { c: ["n", "e"], car: "n", falta: 1 }],
+  ["Falta + carambola + totes", { c: ["c", ...BLANCS], car: "n", falta: 1 }],
 ];
 $("#exemples").innerHTML = EXEMPLES.map((x, i) => `<button data-i="${i}">${x[0]}</button>`).join("");
-$("#exemples").onclick = ev => { const b = ev.target.closest("button"); if (!b) return; const x = EXEMPLES[+b.dataset.i][1]; E = { caigudes: new Set(x.c), car: !!x.car, falta: !!x.falta }; pinta(); scrollTo({ top: 0, behavior: "smooth" }); };
+$("#exemples").onclick = ev => { const b = ev.target.closest("button"); if (!b) return; const x = EXEMPLES[+b.dataset.i][1]; E = { caigudes: new Set(x.c), car: x.car || "", falta: !!x.falta }; pinta(); scrollTo({ top: 0, behavior: "smooth" }); };
 
 /* ===== Pràctica ===== */
 let Q = null, encerts = 0, fetes = 0;
@@ -247,18 +253,19 @@ function jugadaAleatoria() {
   const c = new Set();
   if (Math.random() < .45) c.add("c");
   for (const k of BLANCS) if (Math.random() < .45) c.add(k);
-  return { caigudes: c, car: Math.random() < .35, falta: Math.random() < .35 };
+  const r = Math.random();
+  return { caigudes: c, car: r < .2 ? "n" : r < .35 ? "r" : "", falta: Math.random() < .35 };
 }
 function opcions(correcte) {
   const s = new Set([correcte]);
-  const cand = [correcte + 2, correcte - 2, correcte + 4, correcte - 4, correcte + 6, correcte + 8, 10, 12, 14, 16, 4, 6, 8];
+  const cand = [correcte + 2, correcte - 2, correcte + 1, correcte - 1, correcte + 4, correcte - 4, correcte + 6, 10, 12, 14, 16, 18, 4, 6, 8];
   for (const v of cand.sort(() => Math.random() - .5)) { if (s.size >= 4) break; if (v >= 0 && v <= 18) s.add(v); }
   return [...s].sort((a, b) => a - b);
 }
 function novaJugada() {
   Q = jugadaAleatoria(); Q.r = calcula(Q);
   pintaTaula($("#taulaP"), Q, false);
-  const qui = Q.falta ? "Jugador 1 tira amb la bola groga (la del contrari)." : "Jugador 1 tira amb la bola blanca.";
+  const qui = (Q.falta ? "Jugador 1 tira amb la bola groga (la del contrari)." : "Jugador 1 tira amb la bola blanca.") + (Q.car === "r" ? " Fa carambola russa." : Q.car === "n" ? " Fa carambola normal." : "");
   $("#pregunta").textContent = qui + " Quants punts són?";
   $("#opts").innerHTML = opcions(Q.r.total).map(v => `<button data-v="${v}">${v}</button>`).join("");
   $("#fb").hidden = true;
