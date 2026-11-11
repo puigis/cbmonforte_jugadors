@@ -310,7 +310,7 @@ function botons(cont, items, actiu, onTria){
 /* ---------- pools i fases ---------- */
 function carDefecte(nomPool){
   const n=norm(nomPool);
-  if (/BIATL/.test(n)) return 15;   // Biatló: grups 15 car. / 30 entrades (eliminatòries 20 / 40)
+  if (/BIATL/.test(n)) return 150;  // Biatló al wifimarcador: grups 150 punts, eliminatòries 200; entrades 999
   if (!/LLIGA/.test(n)) return null;
   if (/HONOR/.test(n)) return 40;
   if (/\b1(A|ª)\b|1A DIV|1ª/.test(n)) return 35;
@@ -360,6 +360,7 @@ function pintaPools(){
     .map(p=>({id:p.id, nom:nomVisible(p)}));
   botons($("pools"), llista, state.pool, triaPool);
 }
+let FASES=[];
 function triaPool(id){
   state.pool=id; state.fase=null; FORM=null; state.modalitat=null;
   state.jugador1=null; state.jugador2=null; state.car1=""; state.car2="";
@@ -367,6 +368,7 @@ function triaPool(id){
   $("modalitats").innerHTML='<span class="wait">Carregant…</span>';
   api("accio=fases&pool="+id+tipusQ()).then(fs=>{
     if (state.pool!==id) return;
+    FASES=fs;
     if (fs.length===1){ $("secFase").hidden=true; triaFase(fs[0].id); }
     else { $("secFase").hidden=false; botons($("fases"), fs, state.fase, f=>{ triaFase(f); botons($("fases"), fs, f, ()=>{}); }); }
   }).catch(e=>{ $("modalitats").innerHTML='<span class="wait">No s\'han pogut llegir les fases: '+esc(e.message)+'</span>'; });
@@ -380,9 +382,11 @@ function triaFase(f){
     state.modalitat = MODALITATS_OK.includes(String(d.modalitat)) ? String(d.modalitat) : null;
     if (esQuilles()) state.modalitat = d.modalitat ? String(d.modalitat) : "Q";   // la pàgina de quilles fa servir la modalitat que porta la pool
     if (d.entrades && !esManual()) state.entrades=+d.entrades;
-    if (esBiatlo() && !d.entrades) state.entrades=30;
-    if (!esBiatlo() && String(state.entrades)==="30") state.entrades=50;
-    const dc = carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"");
+    if (esBiatlo()) state.entrades=999;   // el wifimarcador porta el biatló com a quilles: total de punts i entrades 999
+    if (!esBiatlo() && ["30","999"].includes(String(state.entrades))) state.entrades=50;
+    let dc = carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"");
+    // Biatló: a les eliminatòries (quarts, semis, final, K.O.) es juga a 200 punts
+    if (esBiatlo() && /QUART|SEMI|FINAL|K\.?\s*O\b|ELIMIN/.test(norm(((FASES||[]).find(x=>x.id===f)||{}).nom||""))) dc = 200;
     if (dc){ state.car1=dc; state.car2=dc; }
     pintaModalitats(); pintaCars(); pintaEnt(); refaPicks(); render();
   }).catch(e=>{ $("modalitats").innerHTML='<span class="wait">No s\'ha pogut llegir la pool: '+esc(e.message)+'</span>'; });
@@ -396,16 +400,16 @@ function pintaModalitats(){
 /* ---------- caramboles i entrades ---------- */
 function pintaCars(){
   const iguals = String(state.car1)===String(state.car2) ? String(state.car1) : null;
-  botons($("carOpts"), (esBiatlo()?[15,20]:CAR_OPCIONS).map(c=>({id:c,nom:c})), iguals, c=>{ state.car1=c; state.car2=c; $("carOther").value=""; pintaCars(); render(); });
+  botons($("carOpts"), (esBiatlo()?[150,200]:CAR_OPCIONS).map(c=>({id:c,nom:c})), iguals, c=>{ state.car1=c; state.car2=c; $("carOther").value=""; pintaCars(); render(); });
   if (document.activeElement!==$("car1")) $("car1").value=state.car1;
   if (document.activeElement!==$("car2")) $("car2").value=state.car2;
   const dc=carDefecte((POOLS.find(p=>p.id===state.pool)||{}).nom||"");
-  $("carNote").textContent = esBiatlo() ? "Biatló: grups 15 caramboles / 30 entrades; eliminatòries 20 caramboles / 40 entrades." : dc ? `Aquesta lliga es juga a ${dc} caramboles. Les pots canviar si cal.` : "";
+  $("carNote").textContent = esBiatlo() ? "Biatló: al marcador es posa el total de punts de la partida, 150 a la fase de grups i 200 a les eliminatòries, amb 999 entrades." : dc ? `Aquesta lliga es juga a ${dc} caramboles. Les pots canviar si cal.` : "";
 }
 $("carOther").addEventListener("input",()=>{ const v=parseInt($("carOther").value,10); if(v>0){state.car1=v;state.car2=v;} pintaCars(); render(); });
 $("car1").addEventListener("input",()=>{ state.car1=$("car1").value; pintaCars(); render(); });
 $("car2").addEventListener("input",()=>{ state.car2=$("car2").value; pintaCars(); render(); });
-function pintaEnt(){ botons($("entOpts"), esBiatlo() ? [{id:30,nom:30,def:true},{id:40,nom:40}] : [{id:50,nom:50,def:true},{id:40,nom:40}], state.entrades, e=>{ state.entrades=e; pintaEnt(); render(); }); }
+function pintaEnt(){ botons($("entOpts"), esBiatlo() ? [{id:999,nom:999,def:true}] : [{id:50,nom:50,def:true},{id:40,nom:40}], state.entrades, e=>{ state.entrades=e; pintaEnt(); render(); }); }
 
 /* ---------- jugadors ---------- */
 // Wifibillar: "COGNOMS, NOM(nom marcador) [Grup: A]"
@@ -569,8 +573,8 @@ function revisio(){
     <dt>Taula</dt><dd>${state.taula}</dd>
     <dt>Pool</dt><dd>${esc(nomPool())}</dd>
     <dt>Modalitat</dt><dd>${esc(nomModalitat())}</dd>
-    <dt>Jugador 1</dt><dd>${esc(state.jugador1.alf)} · ${state.car1} car.</dd>
-    <dt>Jugador 2</dt><dd>${esc(state.jugador2.alf)} · ${state.car2} car.</dd>
+    <dt>Jugador 1</dt><dd>${esc(state.jugador1.alf)} · ${state.car1} ${esBiatlo()?"punts":"car."}</dd>
+    <dt>Jugador 2</dt><dd>${esc(state.jugador2.alf)} · ${state.car2} ${esBiatlo()?"punts":"car."}</dd>
     <dt>Entrades</dt><dd>${state.entrades}</dd>
   </dl>
   ${[state.jugador1,state.jugador2].filter(j=>j.tipus!=="nou").map((j,i)=>`<div class="nou-box"><p>${esc(j.alf)}: nom al marcador${j.marcFinal!==j.marc?" (s'actualitzarà al wifibillar)":""}.</p>
