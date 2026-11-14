@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>MARCADOR · CB Monforte</title>
+<meta name="description" content="Marcador de billar del CB Monforte: 3 bandes i biatló, des de qualsevol mòbil o tauleta">
+<meta name="theme-color" content="#0b3320">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="escut.png">
+<link rel="apple-touch-icon" href="escut.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MARCADOR">
+<style>
+:root{
+  --verd:#0e4a2c; --verd2:#0b3320; --verd3:#16673f; --llima:#d6ff2e; --groc:#ffea00; --vermell:#d0102a;
+  --ink:#111; --bg:#06200f;
+  --sans:"Arial Black","Segoe UI Black",Inter,system-ui,-apple-system,sans-serif;
+  --body:system-ui,-apple-system,"Segoe UI",Roboto,Inter,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{background:var(--bg);color:#fff;font-family:var(--body);-webkit-tap-highlight-color:transparent;overscroll-behavior:none}
+[hidden]{display:none!important}
+button{font:inherit;color:inherit;cursor:pointer;touch-action:manipulation}
+:focus-visible{outline:3px solid var(--llima);outline-offset:2px}
+
+.app{min-height:100%;display:flex;flex-direction:column;padding:max(8px,env(safe-area-inset-top)) max(8px,env(safe-area-inset-right)) max(8px,env(safe-area-inset-bottom)) max(8px,env(safe-area-inset-left));gap:8px}
+
+/* ===== Marcador ===== */
+.board{background:var(--verd);border-radius:14px;overflow:hidden;border:3px solid var(--verd3);display:flex;flex-direction:column}
+.top{display:flex;align-items:center;gap:10px;padding:6px 12px;background:var(--verd2);border-bottom:3px solid var(--llima)}
+.top img{height:clamp(30px,6vw,56px)}
+.comp{font-family:var(--sans);font-weight:900;font-size:clamp(14px,2.6vw,30px);line-height:1.05;text-transform:uppercase;flex:1;min-width:0}
+.comp small{display:block;font-family:var(--body);font-weight:700;font-size:clamp(10px,1.5vw,16px);color:var(--llima);letter-spacing:.08em}
+.fase{font-family:var(--sans);font-size:clamp(11px,1.8vw,20px);background:var(--llima);color:var(--verd2);padding:4px 10px;border-radius:999px;white-space:nowrap}
+.fase.q{background:var(--vermell);color:#fff}
+
+.score{display:grid;grid-template-columns:1fr minmax(84px,15%) 1fr;gap:8px;padding:8px}
+.pl{border-radius:10px;color:var(--ink);display:flex;flex-direction:column;align-items:center;padding:clamp(20px,2.6vw,30px) 6px 8px;position:relative;min-width:0;border:4px solid transparent}
+.pl.b{background:#fff}
+.pl.g{background:var(--groc)}
+.pl.torn{border-color:var(--vermell);box-shadow:0 0 0 3px #fff inset}
+.pl .nom{font-family:var(--sans);font-weight:900;font-size:clamp(16px,3.6vw,44px);line-height:1.05;text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pl .club{font-weight:800;font-size:clamp(11px,2vw,24px);line-height:1.1;text-align:center;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pl .pts{font-family:var(--sans);font-weight:900;line-height:.9;font-size:clamp(70px,min(19vw,30vh),300px);font-variant-numeric:tabular-nums;margin:2px 0}
+.pl .row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;font-weight:800;font-size:clamp(11px,1.9vw,22px)}
+.pl .row b{font-family:var(--sans)}
+.pl .dist{position:absolute;top:6px;left:8px;font-weight:800;font-size:clamp(10px,1.5vw,16px);opacity:.75}
+.pl .tornb{position:absolute;top:6px;right:8px;width:clamp(12px,2vw,22px);height:clamp(12px,2vw,22px);border-radius:50%;background:var(--vermell);opacity:0}
+.pl.torn .tornb{opacity:1}
+
+.mid{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:4px}
+.mid .taula{font-weight:700;font-size:clamp(14px,2.6vw,30px)}
+.mid .lab{font-weight:800;font-size:clamp(11px,1.8vw,20px);color:var(--llima);text-transform:uppercase;letter-spacing:.06em}
+.mid .ent{font-family:var(--sans);font-weight:900;font-size:clamp(40px,min(10vw,16vh),150px);line-height:.95;font-variant-numeric:tabular-nums}
+.mid .ent.llarg{font-size:clamp(28px,min(6vw,11vh),96px)}
+.mid .lim{font-size:clamp(10px,1.5vw,16px);opacity:.8;font-weight:700}
+
+/* ===== Controls ===== */
+.ctrl{display:grid;gap:8px}
+.ctrl .r{display:grid;gap:8px}
+.k{border:0;border-radius:12px;min-height:64px;font-weight:900;font-size:22px;background:#21412e;color:#fff}
+.k.big{background:var(--llima);color:var(--verd2);font-size:30px;min-height:84px}
+.k.min{background:#3a4c41}
+.k.canvi{background:#fff;color:var(--verd2)}
+.k.falta{background:#3a4c41}
+.k.falta[aria-pressed="true"]{background:var(--vermell)}
+.k.und{background:#3a4c41;font-size:17px}
+.k small{display:block;font-size:12px;font-weight:700;opacity:.8}
+.qk{grid-template-columns:repeat(5,1fr)}
+.bar{display:flex;gap:8px;flex-wrap:wrap}
+.bar button{flex:1;min-height:44px;border:1px solid #2f5a42;background:transparent;border-radius:10px;font-weight:700;font-size:14px;color:#cfe;min-width:96px}
+.msg{background:#12301f;border:2px solid var(--llima);border-radius:12px;padding:10px 12px;font-weight:700}
+.msg .k{min-height:52px;font-size:18px;margin-top:8px;width:100%}
+
+/* ===== Pantalla neta (només marcador) ===== */
+body.net .ctrl, body.net .bar, body.net .msg{display:none!important}
+body.net .board{flex:1}
+body.net .score{flex:1;align-items:stretch}
+body.net .pl{justify-content:center}
+body.net .pl .pts{font-size:clamp(90px,min(24vw,42vh),420px)}
+
+/* ===== Diàlegs ===== */
+dialog{border:0;border-radius:16px;padding:0;width:min(560px,calc(100vw - 20px));max-height:calc(100vh - 20px);background:#fff;color:var(--ink)}
+dialog::backdrop{background:rgba(0,0,0,.6)}
+.dlg{padding:16px}
+.dlg h2{margin:0 0 10px;font-size:20px;color:var(--verd2)}
+.dlg label{display:block;font-size:12px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#456;margin-top:10px}
+.dlg input,.dlg select{width:100%;font:inherit;font-size:16px;padding:10px;border:1px solid #bcc;border-radius:10px;margin-top:4px;background:#fff;color:var(--ink)}
+.dlg .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dlg fieldset{border:2px solid #dde5df;border-radius:12px;margin:12px 0 0;padding:6px 12px 12px}
+.dlg legend{font-weight:900;padding:0 6px}
+.dlg .acts{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+.dlg .btn{border:0;border-radius:10px;padding:12px 18px;font-weight:800;font-size:16px}
+.dlg .p{background:var(--verd);color:var(--llima)}
+.dlg .g{background:#e3e9e5}
+.dlg .hint{font-size:13px;color:#567;margin-top:6px}
+.acta{width:100%;border-collapse:collapse;font-size:15px;margin-top:6px}
+.acta th,.acta td{border:1px solid #cdd;padding:6px;text-align:center}
+.acta th:first-child,.acta td:first-child{text-align:left}
+.acta thead th{background:#eef3ef;font-size:12px}
+.guanya{font-size:22px;font-weight:900;color:var(--verd2);margin:2px 0 6px}
+
+@media (orientation:landscape) and (min-width:820px){
+  .app{flex-direction:column}
+}
+@media (max-width:520px){
+  .score{grid-template-columns:1fr 64px 1fr;gap:6px;padding:6px}
+  .k{min-height:58px;font-size:20px}
+  .k.big{min-height:76px}
+}
+</style>
+</head>
+<body>
+<div class="app">
+  <section class="board" aria-label="Marcador">
+    <div class="top">
+      <img src="escut.png" alt="CB Monforte">
+      <div class="comp"><span id="vComp">Campionat</span><small id="vSub">CB MONFORTE</small></div>
+      <span class="fase" id="vFase">3 BANDES</span>
+    </div>
+    <div class="score">
+      <div class="pl b" id="p0">
+        <span class="dist" id="d0"></span><span class="tornb"></span>
+        <div class="nom" id="n0">Jugador 1</div><div class="club" id="c0">(Club)</div>
+        <div class="pts" id="s0">0</div>
+        <div class="row" id="r0"></div>
+      </div>
+      <div class="mid">
+        <div class="taula" id="vTaula">Taula 1</div>
+        <div class="lab" id="vEntLab">Entrada</div>
+        <div class="ent" id="vEnt">1</div>
+        <div class="lim" id="vLim"></div>
+      </div>
+      <div class="pl g" id="p1">
+        <span class="dist" id="d1"></span><span class="tornb"></span>
+        <div class="nom" id="n1">Jugador 2</div><div class="club" id="c1">(Club)</div>
+        <div class="pts" id="s1">0</div>
+        <div class="row" id="r1"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="msg" id="msg" hidden></div>
+
+  <!-- Controls 3 bandes -->
+  <section class="ctrl" id="ctrl3">
+    <div class="r" style="grid-template-columns:1fr 2fr 1fr">
+      <button class="k min" id="bMenys" aria-label="Treure una carambola">−1</button>
+      <button class="k big" id="bMes">+1 <small>carambola</small></button>
+      <button class="k und" id="bDesfer3">Desfer</button>
+    </div>
+    <button class="k canvi" id="bCanvi">Canvi de torn <small id="canviTxt">acaba l'entrada del jugador</small></button>
+  </section>
+
+  <!-- Controls quilles -->
+  <section class="ctrl" id="ctrlQ" hidden>
+    <div class="r qk" id="qkeys"></div>
+    <div class="r" style="grid-template-columns:1fr 1fr 1fr">
+      <button class="k falta" id="bFalta" aria-pressed="false">Falta <small>punts al contrari</small></button>
+      <button class="k" id="bZero">0 <small>sense punts</small></button>
+      <button class="k und" id="bDesferQ">Desfer</button>
+    </div>
+  </section>
+
+  <div class="bar">
+    <button id="bNet">Pantalla neta</button>
+    <button id="bFull">Pantalla completa</button>
+    <button id="bActa">Resultat / acta</button>
+    <button id="bConfig">Nova partida</button>
+  </div>
+</div>
+
+<dialog id="dConfig"><form class="dlg" method="dialog" id="fConfig">
+  <h2>Nova partida</h2>
+  <label>Competició<input name="comp" required></label>
+  <div class="two">
+    <label>Taula<select name="taula"><option>1</option><option>2</option><option>3</option><option>4</option></select></label>
+    <label>Modalitat<select name="mode">
+      <option value="bg">Biatló · grups (15/30 · 150)</option>
+      <option value="bk">Biatló · eliminatòries (20/40 · 200)</option>
+      <option value="3b">3 bandes</option>
+    </select></label>
+  </div>
+  <div class="two" id="opt3b" hidden>
+    <label>Caramboles<input name="dist" type="number" min="1" max="999" inputmode="numeric" value="25"></label>
+    <label>Entrades<input name="ent" type="number" min="1" max="999" inputmode="numeric" value="50"></label>
+  </div>
+  <fieldset><legend>Bola blanca (comença)</legend>
+    <label>Nom (p. ex. I.Puig)<input name="n0" list="llista" required autocomplete="off"></label>
+    <label>Club<input name="c0" list="clubs" autocomplete="off"></label>
+  </fieldset>
+  <fieldset><legend>Bola groga</legend>
+    <label>Nom<input name="n1" list="llista" required autocomplete="off"></label>
+    <label>Club<input name="c1" list="clubs" autocomplete="off"></label>
+  </fieldset>
+  <p class="hint">Escriu les primeres lletres i tria el jugador: el club s'omple sol.</p>
+  <datalist id="llista"></datalist><datalist id="clubs"></datalist>
+  <div class="acts"><button class="btn g" value="no" formnovalidate>Cancel·lar</button><button class="btn p" value="ok">Començar</button></div>
+</form></dialog>
+
+<dialog id="dActa"><form class="dlg" method="dialog">
+  <h2>Resultat de la partida</h2>
+  <div id="actaBody"></div>
+  <div class="acts"><button class="btn p" value="ok">Tancar</button></div>
+</form></dialog>
+
+<script>
+/* ===== Jugadors del Campionat (per omplir ràpid) ===== */
+const JUGADORS = [
+  ["L.Gómez","SBF Molins de Rei","A"],["M.Sánchez","SBF Molins de Rei","A"],["J.Zuleta","CB Monforte","A"],
+  ["L.Brizzi","SBF Molins de Rei","B"],["D.Bosqued","CB Sant Adrià","B"],["B.Villate","CB Monforte","B"],
+  ["J.Torrent","CB Alba","C"],["A.Daude","SB La Unió Coral","C"],["F.Segura","CB Monforte","C"],
+  ["J.Santamaría","CB Alba","D"],["P.Adell","CB Monforte","D"],["B.Rolan","CB Monforte","D"],
+  ["H.Suárez","CB Sant Adrià","E"],["D.Mejía","CB Monforte","E"],["J.Merino","CB Sant Adrià","E"],
+  ["J.Sánchez","CB Mataró","F"],["C.Rojo","CB Alba","F"],["R.García","CB Monforte","F"],
+  ["X.Segura","CB Monforte","G"],["I.Puig","CB Monforte","G"],["F.Fariña","CB Monforte","G"],
+];
+const MODES = {
+  bg: { biatlo: true, dist: 15, ent: 30, quilles: 150, nom: "Biatló · Fase de grups" },
+  bk: { biatlo: true, dist: 20, ent: 40, quilles: 200, nom: "Biatló · Eliminatòries" },
+  "3b": { biatlo: false, nom: "3 bandes" },
+};
+const PUNTS_Q = [2, 3, 4, 6, 7, 8, 10, 12, 14, 16];
+
+/* ===== Estat ===== */
+const CLAU = "marcador-cbm-v1";
+let S = null, H = [];
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function desa() { try { localStorage.setItem(CLAU, JSON.stringify({ S, H: H.slice(-300) })); } catch (e) {} }
+function carrega() { try { const d = JSON.parse(localStorage.getItem(CLAU) || "null"); if (d && d.S) { S = d.S; H = d.H || []; } } catch (e) {} }
+function pas(fn) { H.push(JSON.stringify(S)); fn(); desa(); pinta(); }
+function desfer() { if (!H.length) return; S = JSON.parse(H.pop()); desa(); pinta(); }
+
+function nova(cfg) {
+  const m = MODES[cfg.mode];
+  S = {
+    comp: cfg.comp, taula: cfg.taula, mode: cfg.mode,
+    dist: m.biatlo ? m.dist : +cfg.dist, entLim: m.biatlo ? m.ent : +cfg.ent, quilles: m.biatlo ? m.quilles : 0,
+    p: [{ nom: cfg.n0, club: cfg.c0 }, { nom: cfg.n1, club: cfg.c1 }],
+    fase: "3b", torn: 0, entrada: 1, car: [0, 0], inn: [1, 0], serie: [0, 0], smax: [0, 0],
+    igualar: false, q: [0, 0], sortida: [0, 0], fi3b: null, falta: false, guanya: null, t0: Date.now(),
+  };
+  H = []; desa(); pinta();
+}
+
+/* ===== Regles 3 bandes ===== */
+function fi3bandes(motiu) {
+  S.fi3b = { car: [...S.car], inn: [...S.inn], smax: [...S.smax], entrada: S.entrada, motiu };
+  if (MODES[S.mode].biatlo) {
+    S.fase = "q"; S.sortida = [S.car[0] * 5, S.car[1] * 5]; S.q = [...S.sortida];
+    S.torn = 1;   // la sortida a quilles la fa la bola groga
+    S.falta = false;
+  } else {
+    S.fase = "fi";
+    S.guanya = S.car[0] > S.car[1] ? 0 : S.car[1] > S.car[0] ? 1 : -1;
+  }
+}
+function mesUna() {
+  if (S.fase !== "3b") return;
+  pas(() => {
+    const t = S.torn; S.car[t]++; S.serie[t]++; S.smax[t] = Math.max(S.smax[t], S.serie[t]);
+    if (S.car[t] >= S.dist) {
+      if (MODES[S.mode].biatlo) fi3bandes(`${S.p[t].nom} arriba a ${S.dist} caramboles`);   // sense contra sortida
+      else if (t === 0) { S.igualar = true; S.serie[0] = 0; S.torn = 1; S.inn[1]++; }       // 3 bandes: la groga iguala
+      else fi3bandes("distància");
+    }
+  });
+}
+function menysUna() {
+  if (S.fase !== "3b" || S.car[S.torn] <= 0) return;
+  pas(() => { S.car[S.torn]--; S.serie[S.torn] = Math.max(0, S.serie[S.torn] - 1); });
+}
+function canvi() {
+  if (S.fase !== "3b") return;
+  pas(() => {
+    S.serie[S.torn] = 0;
+    if (S.torn === 0) { S.torn = 1; S.inn[1]++; return; }
+    // acaba la groga: s'acaba l'entrada
+    if (S.igualar) { fi3bandes("igualada"); return; }
+    if (S.entrada >= S.entLim) { fi3bandes(`límit de ${S.entLim} entrades`); return; }
+    S.entrada++; S.torn = 0; S.inn[0]++;
+  });
+}
+
+/* ===== Regles 5 quilles ===== */
+function quilles(v) {
+  if (S.fase !== "q") return;
+  pas(() => {
+    const qui = S.falta ? 1 - S.torn : S.torn;
+    S.q[qui] += v;
+    S.falta = false;
+    if (S.q[qui] >= S.quilles) { S.fase = "fi"; S.guanya = qui; return; }
+    S.torn = 1 - S.torn;   // a quilles cada jugador fa una tirada
+  });
+}
+
+/* ===== Pintar ===== */
+const prom = (c, i) => i ? (c / i).toFixed(3).replace(".", ",") : "0,000";
+function pinta() {
+  if (!S) return;
+  const m = MODES[S.mode], biatlo = m.biatlo;
+  $("#vComp").textContent = S.comp;
+  $("#vSub").textContent = m.nom.toUpperCase();
+  $("#vTaula").textContent = "Taula " + S.taula;
+  const fase = $("#vFase");
+  fase.className = "fase" + (S.fase === "q" ? " q" : "");
+  fase.textContent = S.fase === "3b" ? "3 BANDES" : S.fase === "q" ? "5 QUILLES" : "FINAL";
+  for (const i of [0, 1]) {
+    $("#n" + i).textContent = S.p[i].nom || (i ? "Jugador 2" : "Jugador 1");
+    $("#c" + i).textContent = S.p[i].club ? `(${S.p[i].club})` : "";
+    const enQ = S.fase === "q" || (S.fase === "fi" && biatlo);
+    $("#s" + i).textContent = enQ ? S.q[i] : S.car[i];
+    $("#p" + i).classList.toggle("torn", S.fase !== "fi" && S.torn === i);
+    const car = S.fi3b ? S.fi3b.car[i] : S.car[i], inn = S.fi3b ? S.fi3b.inn[i] : S.inn[i], smax = S.fi3b ? S.fi3b.smax[i] : S.smax[i];
+    if (enQ) {
+      $("#r" + i).innerHTML = `<span>Sortida <b>${S.sortida[i]}</b></span><span>3B <b>${car}</b>/${inn}</span><span>Prom. <b>${prom(car, inn)}</b></span>`;
+      $("#d" + i).textContent = `a ${S.quilles}`;
+    } else {
+      $("#r" + i).innerHTML = `<span>Prom. <b>${prom(car, inn)}</b></span><span>Sèrie <b>${S.serie[i]}</b></span><span>Màx. <b>${smax}</b></span>`;
+      $("#d" + i).textContent = `a ${S.dist}`;
+    }
+  }
+  if (S.fase === "3b") {
+    $("#vEntLab").textContent = "Entrada"; $("#vEnt").textContent = S.entrada; $("#vLim").textContent = `de ${S.entLim}`;
+  } else if (S.fase === "q") {
+    $("#vEntLab").textContent = "Quilles"; $("#vEnt").textContent = S.quilles; $("#vLim").textContent = "punts";
+  } else {
+    $("#vEntLab").textContent = "Final"; $("#vEnt").textContent = "✓"; $("#vLim").textContent = "";
+  }
+  $("#vEnt").classList.toggle("llarg", $("#vEnt").textContent.length > 2);
+  $("#ctrl3").hidden = S.fase !== "3b";
+  $("#ctrlQ").hidden = S.fase !== "q";
+  $("#bFalta").setAttribute("aria-pressed", S.falta);
+  $("#canviTxt").textContent = S.torn === 0 ? `acaba la blanca (${S.p[0].nom || "J1"})` : (S.igualar ? "última entrada de la groga" : S.entrada >= S.entLim ? "acaba la groga · fi de les 3 bandes" : `acaba la groga i passa a l'entrada ${S.entrada + 1}`);
+  const msg = $("#msg");
+  if (S.fase === "q" && S.q[0] === S.sortida[0] && S.q[1] === S.sortida[1] && S.torn === 1 && !S.falta) {
+    msg.hidden = false;
+    msg.innerHTML = `Fi de les 3 bandes (${esc(S.fi3b.motiu)}). <b>Anoteu les 3 bandes a l'acta.</b> Sortida a quilles: ${esc(S.p[0].nom)} ${S.sortida[0]} · ${esc(S.p[1].nom)} ${S.sortida[1]}. Comença la bola groga.`;
+  } else if (S.fase === "q") {
+    msg.hidden = false;
+    msg.innerHTML = S.falta ? `<b>FALTA:</b> toca els punts de la jugada (falta 2 + carambola 2 + quilles). Se sumen a <b>${esc(S.p[1 - S.torn].nom)}</b>.` : `Tira <b>${esc(S.p[S.torn].nom)}</b> (${S.torn ? "groga" : "blanca"}). Toca els punts que fa.`;
+  } else if (S.fase === "fi") {
+    msg.hidden = false;
+    const g = S.guanya;
+    msg.innerHTML = `<b>${g >= 0 ? "Guanya " + esc(S.p[g].nom) : "Empat"}</b>. Partida acabada.<button class="k canvi" id="bVeureActa">Veure el resultat per a l'acta</button>`;
+    $("#bVeureActa").onclick = obreActa;
+  } else msg.hidden = true;
+}
+
+/* ===== Acta ===== */
+function obreActa() {
+  if (!S) return;
+  const f = S.fi3b || { car: S.car, inn: S.inn, smax: S.smax };
+  const biatlo = MODES[S.mode].biatlo;
+  const fila = i => `<tr><td><b>${esc(S.p[i].nom)}</b><br><small>${esc(S.p[i].club)}</small></td><td>${f.car[i]}</td><td>${f.inn[i]}</td><td>${f.smax[i]}</td>${biatlo ? `<td>${S.sortida[i]}</td><td>${S.fase === "3b" ? "–" : S.q[i] - S.sortida[i]}</td><td><b>${S.fase === "3b" ? "–" : S.q[i]}</b></td>` : ""}</tr>`;
+  const g = S.fase === "fi" ? (S.guanya >= 0 ? `Guanya ${esc(S.p[S.guanya].nom)}` : "Empat") : "Partida en joc";
+  $("#actaBody").innerHTML = `<div class="guanya">${g}</div><div class="hint">${esc(S.comp)} · Taula ${S.taula} · ${MODES[S.mode].nom}</div>
+    <table class="acta"><thead><tr><th>Jugador</th><th>Car.</th><th>Entr.</th><th>Sèrie</th>${biatlo ? "<th>Sortida</th><th>Quilles fetes</th><th>Total</th>" : ""}</tr></thead>
+    <tbody>${fila(0)}${fila(1)}</tbody></table>`;
+  $("#dActa").showModal();
+}
+
+/* ===== Configuració ===== */
+function omplirLlistes() {
+  $("#llista").innerHTML = JUGADORS.map(j => `<option value="${esc(j[0])}">${esc(j[1])} · grup ${j[2]}</option>`).join("");
+  $("#clubs").innerHTML = [...new Set(JUGADORS.map(j => j[1]))].map(c => `<option value="${esc(c)}">`).join("");
+}
+function obreConfig() {
+  const f = $("#fConfig");
+  f.comp.value = (S && S.comp) || "Campionat de Catalunya de Biatló";
+  f.taula.value = (S && S.taula) || "1";
+  f.mode.value = (S && S.mode) || "bg";
+  f.n0.value = ""; f.c0.value = ""; f.n1.value = ""; f.c1.value = "";
+  $("#opt3b").hidden = f.mode.value !== "3b";
+  $("#dConfig").showModal();
+}
+$("#fConfig").mode.onchange = e => { $("#opt3b").hidden = e.target.value !== "3b"; };
+for (const i of [0, 1]) {
+  $("#fConfig")["n" + i].addEventListener("input", e => {
+    const j = JUGADORS.find(x => x[0].toLowerCase() === e.target.value.trim().toLowerCase());
+    if (j) $("#fConfig")["c" + i].value = j[1];
+  });
+}
+$("#dConfig").addEventListener("close", () => {
+  if ($("#dConfig").returnValue !== "ok") return;
+  const f = $("#fConfig");
+  if (S && S.fase !== "fi" && (S.car[0] || S.car[1]) && !confirm("Hi ha una partida en joc. Vols començar-ne una de nova?")) return;
+  nova({ comp: f.comp.value.trim(), taula: f.taula.value, mode: f.mode.value, dist: f.dist.value, ent: f.ent.value,
+         n0: f.n0.value.trim(), c0: f.c0.value.trim(), n1: f.n1.value.trim(), c1: f.c1.value.trim() });
+});
+
+/* ===== Esdeveniments ===== */
+$("#bMes").onclick = mesUna;
+$("#bMenys").onclick = menysUna;
+$("#bCanvi").onclick = canvi;
+$("#bDesfer3").onclick = desfer;
+$("#bDesferQ").onclick = desfer;
+$("#qkeys").innerHTML = PUNTS_Q.map(v => `<button class="k" data-v="${v}">${v}</button>`).join("");
+$("#qkeys").onclick = e => { const b = e.target.closest("button"); if (b) quilles(+b.dataset.v); };
+$("#bZero").onclick = () => quilles(0);
+$("#bFalta").onclick = () => { if (S.fase !== "q") return; S.falta = !S.falta; desa(); pinta(); };
+$("#bConfig").onclick = obreConfig;
+$("#bActa").onclick = obreActa;
+$("#bNet").onclick = () => { document.body.classList.add("net"); };
+document.querySelector(".board").addEventListener("click", () => { if (document.body.classList.contains("net")) document.body.classList.remove("net"); });
+$("#bFull").onclick = () => { const d = document.documentElement; if (!document.fullscreenElement) (d.requestFullscreen || d.webkitRequestFullscreen || (() => {})).call(d); else document.exitFullscreen && document.exitFullscreen(); };
+
+// Mantenir la pantalla encesa
+let wl = null;
+async function despert() { try { if ("wakeLock" in navigator) wl = await navigator.wakeLock.request("screen"); } catch (e) {} }
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "visible") despert(); });
+despert();
+
+// Funciona sense connexió un cop obert
+if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
+
+omplirLlistes();
+carrega();
+if (S) pinta(); else obreConfig();
+</script>
+</body>
+</html>

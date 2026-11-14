@@ -1,0 +1,14 @@
+{
+  "name": "MARCADOR · CB Monforte",
+  "short_name": "MARCADOR",
+  "description": "Marcador de billar del CB Monforte (3 bandes i biatló)",
+  "start_url": "./",
+  "scope": "./",
+  "id": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#06200f",
+  "theme_color": "#0b3320",
+  "lang": "ca",
+  "icons": [{ "src": "escut.png", "sizes": "any", "type": "image/png" }]
+}
