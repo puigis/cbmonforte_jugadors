@@ -471,11 +471,19 @@ function drawPick(box){
     if(q.length<2){ul.hidden=true;return}
     const usat=state[other]?.key;
     const ordre={pool:0,wifi:1,nou:2};
-    res=llistaJugadors().filter(j=>j.key!==usat && norm(j.alf+" "+j.marc).includes(q)).sort((a,b)=>ordre[a.tipus]-ordre[b.tipus]).slice(0,10);
+    const paraules=q.split(/\s+/).filter(Boolean);   // totes les paraules, en qualsevol ordre ("carlos rojo" troba "ROJO LUCIO, CARLOS")
+    res=llistaJugadors().filter(j=>j.key!==usat && paraules.every(w=>norm(j.alf+" "+j.marc).includes(w))).sort((a,b)=>ordre[a.tipus]-ordre[b.tipus]).slice(0,10);
+    // Jugador que no surt enlloc: es pot donar d'alta amb el nom escrit ("Nom Cognom1 Cognom2" o "COGNOMS, NOM")
+    const txt=inp.value.trim().replace(/\s+/g," ");
+    if (txt.split(" ").length>=2 || txt.includes(",")){
+      let alf=txt.toUpperCase();
+      if(!alf.includes(",")){ const w=alf.split(" "); alf=w.slice(1).join(" ")+", "+w[0]; }
+      if(!res.some(j=>norm(j.alf)===norm(alf))) res.push({key:"m"+norm(alf), id:null, alf, marc:marcadorNou(alf,"").trim(), club:"", tipus:"nou", manual:true});
+    }
     act=0; ul.hidden=false;
     ul.innerHTML=res.length
-      ? res.map((j,i)=>`<li data-i="${i}" class="${i===act?"act":""}"><span>${highlight(j.alf,q)}${BADGE[j.tipus]}</span><small>${esc(j.marc)}</small></li>`).join("")
-      : `<li class="empty">Cap jugador trobat</li>`;
+      ? res.map((j,i)=>`<li data-i="${i}" class="${i===act?"act":""}"><span>${j.manual?"➕ Donar d'alta: ":""}${highlight(j.alf,paraules[0]||q)}${BADGE[j.tipus]}</span><small>${esc(j.marc)}${j.manual?" · podràs corregir el nom del marcador a la revisió":""}</small></li>`).join("")
+      : `<li class="empty">Cap jugador trobat. Escriu nom i cognom per donar-lo d'alta.</li>`;
     ul.querySelectorAll("li[data-i]").forEach(li=>li.onmousedown=e=>{e.preventDefault();choose(res[+li.dataset.i])});
   };
   inp.addEventListener("input",update);
