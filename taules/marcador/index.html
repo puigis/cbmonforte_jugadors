@@ -81,6 +81,33 @@ body.net .score{flex:1;align-items:stretch}
 body.net .pl{justify-content:center}
 body.net .pl .pts{font-size:clamp(90px,min(24vw,42vh),420px)}
 
+.conn{font-size:14px;font-weight:700;padding:6px 10px;border-radius:10px;text-align:center}
+.conn.on{background:#12301f;color:var(--llima)}
+.conn.off{background:#3a1418;color:#ffb3b9}
+/* ===== Mode pantalla (TV de la taula) ===== */
+body.pantalla{cursor:none}
+body.pantalla .app{height:100vh;padding:1.2vh 1.2vw}
+body.pantalla .conn{position:fixed;right:1vw;bottom:.6vh;background:transparent!important;font-size:1.4vh;padding:0;opacity:.7;display:block!important}
+body.pantalla .top img{height:7vh}
+body.pantalla .comp{font-size:3.6vh}
+body.pantalla .comp small{font-size:2vh}
+body.pantalla .fase{font-size:2.6vh}
+body.pantalla .pl .nom{font-size:6.5vh}
+body.pantalla .pl .club{font-size:3.4vh}
+body.pantalla .pl .pts{font-size:min(30vh,22vw)}
+body.pantalla .pl .row{font-size:3.2vh}
+body.pantalla .pl .dist{font-size:2.2vh}
+body.pantalla .mid .taula{font-size:4.2vh}
+body.pantalla .mid .lab{font-size:2.8vh}
+body.pantalla .mid .ent{font-size:16vh}
+body.pantalla .mid .ent.llarg{font-size:10vh}
+body.pantalla .mid .lim{font-size:2.4vh}
+.tria{position:fixed;inset:0;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;text-align:center;cursor:auto;padding:20px}
+.tria img{height:110px}.tria h1{margin:0;font-size:34px}.tria p{margin:0;color:#cfe;font-size:18px}
+.tria .tb{display:grid;grid-template-columns:repeat(2,minmax(150px,1fr));gap:14px;margin-top:10px}
+.tria a{background:var(--llima);color:var(--verd2);text-decoration:none;font-weight:900;font-size:28px;padding:26px 20px;border-radius:16px}
+.fsb{position:fixed;left:50%;bottom:3vh;transform:translateX(-50%);border:0;border-radius:12px;background:var(--llima);color:var(--verd2);font-weight:900;font-size:22px;padding:14px 26px;cursor:pointer;z-index:5}
+.espera{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);background:rgba(6,32,15,.92);border:3px solid var(--llima);border-radius:16px;padding:20px 28px;font-size:3vh;font-weight:800;text-align:center;z-index:4}
 /* ===== Diàlegs ===== */
 dialog{border:0;border-radius:16px;padding:0;width:min(560px,calc(100vw - 20px));max-height:calc(100vh - 20px);background:#fff;color:var(--ink)}
 dialog::backdrop{background:rgba(0,0,0,.6)}
@@ -164,6 +191,7 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
     </div>
   </section>
 
+  <div class="conn off" id="vConn">📡 Connectant amb la pantalla…</div>
   <div class="bar">
     <button id="bNet">Pantalla neta</button>
     <button id="bFull">Pantalla completa</button>
@@ -171,6 +199,15 @@ dialog::backdrop{background:rgba(0,0,0,.6)}
     <button id="bConfig">Nova partida</button>
   </div>
 </div>
+
+<div class="tria" id="vTria" hidden>
+  <img src="escut.png" alt="">
+  <h1>Pantalla del marcador</h1>
+  <p>Tria la taula d'aquesta pantalla</p>
+  <div class="tb"><a href="?pantalla=1">Taula 1</a><a href="?pantalla=2">Taula 2</a><a href="?pantalla=3">Taula 3</a><a href="?pantalla=4">Taula 4</a></div>
+</div>
+<button class="fsb" id="bFsTv" hidden>Pantalla completa</button>
+<div class="espera" id="vEspera" hidden>Esperant el mòbil de l'àrbitre de la taula <b id="vEsperaN"></b>…</div>
 
 <dialog id="dConfig"><form class="dlg" method="dialog" id="fConfig">
   <h2>Nova partida</h2>
@@ -224,12 +261,85 @@ const MODES = {
 };
 const PUNTS_Q = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
+/* ===== Connexió amb les pantalles de les taules =====
+   El mòbil de l'àrbitre publica el marcador; la pantalla de la taula N el rep en directe.
+   Protocol MQTT 3.1.1 sobre WebSocket (client propi, sense llibreries), a dos servidors públics
+   alhora. El missatge queda "retingut": una pantalla que s'encén rep a l'instant l'últim marcador. */
+const QS = new URLSearchParams(location.search);
+const PANT = QS.has("pantalla") ? (QS.get("pantalla") || "tria") : null;
+const BROKERS = ["wss://broker.emqx.io:8084/mqtt", "wss://broker.hivemq.com:8884/mqtt"];
+const TEMA = n => `cbmonforte-r7q2/marcador/taula/${n}`;
+const enc = new TextEncoder(), dec = new TextDecoder();
+function lenVar(n) { const o = []; do { let b = n % 128; n = Math.floor(n / 128); if (n > 0) b |= 128; o.push(b); } while (n > 0); return o; }
+function str(t) { const b = enc.encode(t); return [b.length >> 8, b.length & 255, ...b]; }
+function paquet(tipus, cos) { return new Uint8Array([tipus, ...lenVar(cos.length), ...cos]); }
+class Mqtt {
+  constructor(url, onMsg, onEstat) { this.url = url; this.onMsg = onMsg; this.onEstat = onEstat; this.ok = false; this.subs = []; this.buf = new Uint8Array(0); this.obre(); }
+  obre() {
+    let ws; try { ws = new WebSocket(this.url, ["mqtt"]); } catch (e) { return this.reintenta(); }
+    this.ws = ws; ws.binaryType = "arraybuffer";
+    ws.onopen = () => {
+      const id = "cbm" + Math.random().toString(36).slice(2, 12);
+      ws.send(paquet(0x10, [...str("MQTT"), 4, 0x02, 0, 30, ...str(id)]));   // CONNECT, sessió neta, keepalive 30 s
+    };
+    ws.onmessage = e => this.rep(new Uint8Array(e.data));
+    ws.onclose = () => { this.ok = false; clearInterval(this.ping); this.onEstat(); this.reintenta(); };
+    ws.onerror = () => { try { ws.close(); } catch (e) {} };
+  }
+  reintenta() { clearTimeout(this.rt); this.rt = setTimeout(() => this.obre(), 4000); }
+  rep(dades) {
+    const b = new Uint8Array(this.buf.length + dades.length); b.set(this.buf); b.set(dades, this.buf.length); this.buf = b;
+    while (this.buf.length >= 2) {
+      let mult = 1, len = 0, i = 1, byte;
+      do { if (i >= this.buf.length) return; byte = this.buf[i++]; len += (byte & 127) * mult; mult *= 128; } while (byte & 128);
+      if (this.buf.length < i + len) return;
+      const tipus = this.buf[0], cos = this.buf.slice(i, i + len); this.buf = this.buf.slice(i + len);
+      if ((tipus >> 4) === 2) {                       // CONNACK
+        if (cos[1] === 0) { this.ok = true; this.ping = setInterval(() => this.ws.readyState === 1 && this.ws.send(new Uint8Array([0xC0, 0])), 25000);
+          this.subs.forEach((t, k) => this.ws.send(paquet(0x82, [0, k + 1, ...str(t), 0]))); this.onEstat(true); }
+      } else if ((tipus >> 4) === 3) {                // PUBLISH rebut
+        const tl = (cos[0] << 8) | cos[1], tema = dec.decode(cos.slice(2, 2 + tl));
+        let p = 2 + tl; if ((tipus >> 1) & 3) p += 2;
+        this.onMsg(tema, dec.decode(cos.slice(p)));
+      }
+    }
+  }
+  subscriu(t) { this.subs.push(t); if (this.ok) this.ws.send(paquet(0x82, [0, this.subs.length, ...str(t), 0])); }
+  publica(t, text) { if (!this.ok) return false; this.ws.send(paquet(0x31, [...str(t), ...enc.encode(text)])); return true; }   // QoS 0, retingut
+}
+let CONN = [], darrerT = 0, darrerRebut = 0, pendent = false;
+function estatConn() {
+  const n = CONN.filter(c => c.ok).length, el = document.getElementById("vConn");
+  if (!el) return;
+  if (PANT) { el.textContent = n ? "● en directe" : "○ connectant…"; el.className = "conn " + (n ? "on" : "off"); return; }
+  el.textContent = n ? `📡 En directe a la pantalla de la Taula ${S ? S.taula : "?"}` : "📡 Sense connexió amb la pantalla (s'enviarà quan torni)";
+  el.className = "conn " + (n ? "on" : "off");
+  if (n && pendent) envia();
+}
+function envia() {
+  if (PANT || !S || !CONN.length) return;
+  const text = JSON.stringify({ t: Date.now(), S });
+  const fet = CONN.map(c => c.publica(TEMA(S.taula), text)).some(Boolean);
+  pendent = !fet;
+}
+function connecta() {
+  if (PANT) {
+    CONN = BROKERS.map(u => new Mqtt(u, (tema, text) => {
+      try { const d = JSON.parse(text); if (d && d.S && d.t > darrerT) { darrerT = d.t; darrerRebut = Date.now(); S = d.S; pinta(); } } catch (e) {}
+    }, estatConn));
+    CONN.forEach(c => c.subscriu(TEMA(PANT)));
+  } else {
+    CONN = BROKERS.map(u => new Mqtt(u, () => {}, ok => { estatConn(); if (ok) envia(); }));
+    setInterval(envia, 20000);   // recordatori periòdic
+  }
+}
+
 /* ===== Estat ===== */
 const CLAU = "marcador-cbm-v1";
 let S = null, H = [];
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-function desa() { try { localStorage.setItem(CLAU, JSON.stringify({ S, H: H.slice(-300) })); } catch (e) {} }
+function desa() { if (PANT) return; try { localStorage.setItem(CLAU, JSON.stringify({ S, H: H.slice(-300) })); } catch (e) {} envia(); }
 function carrega() { try { const d = JSON.parse(localStorage.getItem(CLAU) || "null"); if (d && d.S) { S = d.S; H = d.H || []; } } catch (e) {} }
 function pas(fn) { H.push(JSON.stringify(S)); fn(); desa(); pinta(); }
 function desfer() { if (!H.length) return; S = JSON.parse(H.pop()); desa(); pinta(); }
@@ -243,7 +353,7 @@ function nova(cfg) {
     fase: "3b", torn: 0, entrada: 1, car: [0, 0], inn: [1, 0], serie: [0, 0], smax: [0, 0],
     igualar: false, q: [0, 0], sortida: [0, 0], fi3b: null, falta: false, guanya: null, t0: Date.now(),
   };
-  H = []; desa(); pinta();
+  H = []; desa(); pinta(); estatConn();
 }
 
 /* ===== Regles 3 bandes ===== */
@@ -405,7 +515,7 @@ $("#bFalta").onclick = () => { if (S.fase !== "q") return; S.falta = !S.falta; d
 $("#bConfig").onclick = obreConfig;
 $("#bActa").onclick = obreActa;
 $("#bNet").onclick = () => { document.body.classList.add("net"); };
-document.querySelector(".board").addEventListener("click", () => { if (document.body.classList.contains("net")) document.body.classList.remove("net"); });
+document.querySelector(".board").addEventListener("click", () => { if (!PANT && document.body.classList.contains("net")) document.body.classList.remove("net"); });
 $("#bFull").onclick = () => { const d = document.documentElement; if (!document.fullscreenElement) (d.requestFullscreen || d.webkitRequestFullscreen || (() => {})).call(d); else document.exitFullscreen && document.exitFullscreen(); };
 
 // Mantenir la pantalla encesa
@@ -418,8 +528,26 @@ despert();
 if ("serviceWorker" in navigator && location.protocol === "https:") navigator.serviceWorker.register("sw.js").catch(() => {});
 
 omplirLlistes();
-carrega();
-if (S) pinta(); else obreConfig();
+if (PANT === "tria") {
+  document.getElementById("vTria").hidden = false;
+} else if (PANT) {
+  document.body.classList.add("net", "pantalla");
+  document.title = "Pantalla Taula " + PANT + " · Marcador";
+  S = { comp: "CB Monforte", taula: PANT, mode: "bg", dist: 15, entLim: 30, quilles: 150, p: [{ nom: "", club: "" }, { nom: "", club: "" }],
+        fase: "3b", torn: 0, entrada: 1, car: [0, 0], inn: [0, 0], serie: [0, 0], smax: [0, 0], q: [0, 0], sortida: [0, 0], fi3b: null };
+  pinta();
+  $("#vEsperaN").textContent = PANT;
+  const espera = () => { $("#vEspera").hidden = !!darrerT; };
+  espera(); setInterval(espera, 1000);
+  const fs = $("#bFsTv"); fs.hidden = false;
+  fs.onclick = () => { const d = document.documentElement; (d.requestFullscreen || d.webkitRequestFullscreen || (() => {})).call(d); fs.hidden = true; };
+  setTimeout(() => { fs.hidden = true; }, 30000);
+  connecta();
+} else {
+  carrega();
+  if (S) pinta(); else obreConfig();
+  connecta();
+}
 </script>
 </body>
 </html>
