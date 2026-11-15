@@ -6,7 +6,7 @@
  "competicio": "Lliga Catalana Tres Bandes · Honor · Grup A",
  "modalitat": "Tres bandes",
  "temporada": "2026-27",
- "updated": "2026-11-09T09:57+00:00",
+ "updated": "2026-11-15T12:24+00:00",
  "players": [
   {
    "id": "garcia-alarcon-ricardo",
@@ -277,6 +277,59 @@
      "car_rival": 40
     }
    ]
+  },
+  {
+   "id": "j05",
+   "jornada": "5",
+   "date": "2026-11-21",
+   "rival": "C.B. SANT BOI \"A\"",
+   "venue": "L",
+   "punts_match": [
+    3,
+    0
+   ],
+   "results": [
+    {
+     "pid": "garcia-alarcon-ricardo",
+     "car": 40,
+     "ent": 27,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Sánchez Martínez, Pascual",
+     "car_rival": 16
+    },
+    {
+     "pid": "zuleta-giraldo-john-jairo",
+     "car": 40,
+     "ent": 39,
+     "sm": 8,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Gascón Reyes, Rafael",
+     "car_rival": 29
+    },
+    {
+     "pid": "lozano-herrero-manuel",
+     "car": 40,
+     "ent": 46,
+     "sm": 6,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Pastor Rivas, Manuel",
+     "car_rival": 29
+    },
+    {
+     "pid": "juarez-de-alarcon-jorge",
+     "car": 40,
+     "ent": 40,
+     "sm": 5,
+     "res": "G",
+     "mod": "Tres bandes",
+     "rival": "Megias Navas, Mateu",
+     "car_rival": 24
+    }
+   ]
   }
  ],
  "calendar": [
@@ -313,7 +366,7 @@
    "date": "2026-11-21",
    "rival": "C.B. SANT BOI \"A\"",
    "venue": "L",
-   "played": false
+   "played": true
   },
   {
    "jornada": "6",

@@ -1,21 +1,21 @@
 {
  "modalitat": "Tres bandes",
- "updated": "2026-11-09T09:57+00:00",
+ "updated": "2026-11-15T12:24+00:00",
  "jugadors": [
   {
    "id": "garcia-alarcon-ricardo",
    "name": "García Alarcón, Ricardo",
-   "partides": 11,
-   "G": 10,
+   "partides": 12,
+   "G": 11,
    "E": 0,
    "P": 1,
-   "caramboles": 425,
-   "entrades": 362,
+   "caramboles": 465,
+   "entrades": 389,
    "serie_major": 9,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 1.174,
+   "mitjana": 1.195,
    "ranking": {
     "posicio": 7,
     "mitjana": 1.18958,
@@ -45,17 +45,17 @@
   {
    "id": "zuleta-giraldo-john-jairo",
    "name": "Zuleta Giraldo, John Jairo",
-   "partides": 8,
-   "G": 2,
+   "partides": 9,
+   "G": 3,
    "E": 0,
    "P": 6,
-   "caramboles": 250,
-   "entrades": 336,
+   "caramboles": 290,
+   "entrades": 375,
    "serie_major": 9,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.744,
+   "mitjana": 0.773,
    "ranking": {
     "posicio": 46,
     "mitjana": 0.74335,
@@ -85,17 +85,17 @@
   {
    "id": "lozano-herrero-manuel",
    "name": "Lozano Herrero, Manuel",
-   "partides": 6,
-   "G": 3,
+   "partides": 7,
+   "G": 4,
    "E": 0,
    "P": 3,
-   "caramboles": 172,
-   "entrades": 246,
-   "serie_major": 5,
+   "caramboles": 212,
+   "entrades": 292,
+   "serie_major": 6,
    "temporades": [
     "2026-27"
    ],
-   "mitjana": 0.699,
+   "mitjana": 0.726,
    "ranking": {
     "posicio": 47,
     "mitjana": 0.74219,
@@ -259,6 +259,26 @@
    "ranking": {
     "posicio": 406,
     "mitjana": 0.71429,
+    "data": "2026-11-02"
+   }
+  },
+  {
+   "id": "juarez-de-alarcon-jorge",
+   "name": "Juárez De Alarcón, Jorge",
+   "partides": 3,
+   "G": 2,
+   "E": 1,
+   "P": 0,
+   "caramboles": 110,
+   "entrades": 140,
+   "serie_major": 6,
+   "temporades": [
+    "2026-27"
+   ],
+   "mitjana": 0.786,
+   "ranking": {
+    "posicio": 64,
+    "mitjana": 0.69829,
     "data": "2026-11-02"
    }
   },
@@ -443,26 +463,6 @@
    }
   },
   {
-   "id": "juarez-de-alarcon-jorge",
-   "name": "Juárez De Alarcón, Jorge",
-   "partides": 2,
-   "G": 1,
-   "E": 1,
-   "P": 0,
-   "caramboles": 70,
-   "entrades": 100,
-   "serie_major": 6,
-   "temporades": [
-    "2026-27"
-   ],
-   "mitjana": 0.7,
-   "ranking": {
-    "posicio": 64,
-    "mitjana": 0.69829,
-    "data": "2026-11-02"
-   }
-  },
-  {
    "id": "mejia-arias-duvan",
    "name": "Mejia Arias, Duvan",
    "partides": 2,
@@ -640,6 +640,82 @@
   }
  ],
  "partides": [
+  {
+   "data": "2026-11-21",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP A",
+   "jornada": "5",
+   "pid": "garcia-alarcon-ricardo",
+   "equip": "C.B. MONFORTE \"A\"",
+   "rival": "Sánchez Martínez, Pascual",
+   "equip_rival": "C.B. SANT BOI \"A\"",
+   "car": 40,
+   "sm": 6,
+   "ent": 27,
+   "car_rival": 16,
+   "sm_rival": 2,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-21",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP A",
+   "jornada": "5",
+   "pid": "zuleta-giraldo-john-jairo",
+   "equip": "C.B. MONFORTE \"A\"",
+   "rival": "Gascón Reyes, Rafael",
+   "equip_rival": "C.B. SANT BOI \"A\"",
+   "car": 40,
+   "sm": 8,
+   "ent": 39,
+   "car_rival": 29,
+   "sm_rival": 5,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-21",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP A",
+   "jornada": "5",
+   "pid": "lozano-herrero-manuel",
+   "equip": "C.B. MONFORTE \"A\"",
+   "rival": "Pastor Rivas, Manuel",
+   "equip_rival": "C.B. SANT BOI \"A\"",
+   "car": 40,
+   "sm": 6,
+   "ent": 46,
+   "car_rival": 29,
+   "sm_rival": 4,
+   "res": "G"
+  },
+  {
+   "data": "2026-11-21",
+   "temporada": "2026-27",
+   "tipus": "lliga",
+   "competicio": "Lliga Catalana Tres Bandes",
+   "divisio": "HONOR",
+   "fase": "GRUP A",
+   "jornada": "5",
+   "pid": "juarez-de-alarcon-jorge",
+   "equip": "C.B. MONFORTE \"A\"",
+   "rival": "Megias Navas, Mateu",
+   "equip_rival": "C.B. SANT BOI \"A\"",
+   "car": 40,
+   "sm": 5,
+   "ent": 40,
+   "car_rival": 24,
+   "sm_rival": 4,
+   "res": "G"
+  },
   {
    "data": "2026-11-07",
    "temporada": "2026-27",
