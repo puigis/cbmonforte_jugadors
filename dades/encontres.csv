@@ -8843,11 +8843,11 @@ encontre_id,lliga_id,competicio,temporada,divisio,grup,grup_id,jornada,data,equi
 12285,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,4,2026-11-07,C.B. 2000 CERDANYOLA “C”,"C.B. BANYOLES ""C""",4,4,1,1,Finalitzada
 ,38,Lliga Catalana Tres Bandes,2026-27,4a DIVISIÓ,GRUP D,354,4,2026-11-07,"S.B. LA GRAN PENYA ""C""",Descans,0,0,0,0,Finalitzada
 12445,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,3,2026-11-15,"C.B. VIC ""B""",B.C. GRANOLLERS,0,8,0,3,Finalitzada
-12446,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,3,2026-11-15,C.B. 2000 CERDANYOLA “B”,S. C. CORAL COLÓN,0,0,0,0,Oberta
+12446,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,3,2026-11-15,C.B. 2000 CERDANYOLA “B”,S. C. CORAL COLÓN,2,6,0,3,Finalitzada
 12447,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP A,356,3,2026-11-15,C.B. CANET,C.B. SANT FELIU,6,2,3,0,Finalitzada
 12475,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,3,2026-11-15,"C.B. MONT-ROIG ""B""",C.B. 2000 CERDANYOLA “C”,4,4,1,1,Finalitzada
 12476,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,3,2026-11-15,C.B. LLIÇÀ,"S.B. CASAL CERVERA ""C""",4,4,1,1,Finalitzada
-12477,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,3,2026-11-15,"C.B. VIC ""A""",C.B. VILANOVA,0,0,0,0,Oberta
+12477,39,Lliga Catalana 4 Modalitats,2026-27,2a Divisió,GRUP B,357,3,2026-11-15,"C.B. VIC ""A""",C.B. VILANOVA,8,0,3,0,Finalitzada
 12335,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,3,2026-11-15,"S.B. CASAL CERVERA ""B""",C.B. TARRAGONA,4,4,1,1,Finalitzada
 12336,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,3,2026-11-15,"C.B. SANT ADRIÀ ""A""",C.B. LLINARS,6,2,3,0,Finalitzada
 12337,39,Lliga Catalana 4 Modalitats,2026-27,Honor,UNIC,355,3,2026-11-15,C.B. LLEIDA,"S.B. CASAL CERVERA ""A""",6,2,3,0,Finalitzada

@@ -1581,8 +1581,8 @@ temporada,lliga_id,competicio,divisio,grup,grup_id,posicio,equip,punts_match,pun
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,2,"C.B. MONT-ROIG ""A""",10,24,4
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,3,"C.B. MONFORTE ""A""",9,25,5
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,4,"C.B. SANT ADRIÀ ""A""",9,22,4
-2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,5,"C.B. LLEIDA ""A""",4,15,4
-2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,6,"B.C. GRANOLLERS ""B""",4,15,4
+2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,5,"B.C. GRANOLLERS ""B""",4,15,4
+2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,6,"C.B. LLEIDA ""A""",4,15,4
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,7,"C.B. SANT BOI ""A""",1,4,5
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP A,343,8,B. C. OLESA,0,4,4
 2026-27,38,Lliga Catalana Tres Bandes,HONOR,GRUP B,344,1,"B.C. GRANOLLERS ""A""",12,32,4
@@ -1601,18 +1601,18 @@ temporada,lliga_id,competicio,divisio,grup,grup_id,posicio,equip,punts_match,pun
 2026-27,39,Lliga Catalana 4 Modalitats,1a Divisió,Únic,342,6,"C.B. SANTS ""B""",2,10,3
 2026-27,39,Lliga Catalana 4 Modalitats,1a Divisió,Únic,342,7,S.B.P.E. CENTELLES,1,6,3
 2026-27,39,Lliga Catalana 4 Modalitats,1a Divisió,Únic,342,8,C.B PUNT D'ATAC,0,6,3
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,1,B.C. GRANOLLERS,6,18,3
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,2,C.B. CANET,6,15,3
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,3,S. C. CORAL COLÓN,6,13,2
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,1,S. C. CORAL COLÓN,9,19,3
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,2,B.C. GRANOLLERS,6,18,3
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,3,C.B. CANET,6,15,3
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,4,C.B. SANT FELIU,4,14,3
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,5,C.B. 2000 CERDANYOLA “B”,1,4,2
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,5,C.B. 2000 CERDANYOLA “B”,1,6,3
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP A,356,6,"C.B. VIC ""B""",0,0,3
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,1,C.B. VILANOVA,6,14,2
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,1,"C.B. VIC ""A""",7,18,3
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,2,C.B. 2000 CERDANYOLA “C”,5,14,3
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,3,C.B. LLIÇÀ,4,12,3
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,4,"C.B. VIC ""A""",4,10,2
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,3,C.B. VILANOVA,5,14,3
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,4,C.B. LLIÇÀ,4,12,3
 2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,5,"S.B. CASAL CERVERA ""C""",1,8,3
-2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,6,"C.B. MONT-ROIG ""B""",1,6,3
+2026-27,39,Lliga Catalana 4 Modalitats,2a Divisió,GRUP B,357,6,"C.B. MONT-ROIG ""B""",0,6,3
 2026-27,39,Lliga Catalana 4 Modalitats,Honor,UNIC,355,1,"C.B. SANT ADRIÀ ""A""",7,18,3
 2026-27,39,Lliga Catalana 4 Modalitats,Honor,UNIC,355,2,C.B. LLEIDA,7,15,3
 2026-27,39,Lliga Catalana 4 Modalitats,Honor,UNIC,355,3,C.B. TARRAGONA,4,14,3
