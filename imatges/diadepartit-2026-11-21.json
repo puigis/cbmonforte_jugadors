@@ -1,0 +1,19 @@
+{
+  "sub": "Lliga 3 Bandes · <b>Avui</b> · Dissabte 21 de novembre",
+  "dia": "Dissabte 21 de novembre",
+  "partits": [
+    {
+      "equip": "C",
+      "divisio": "Equip <b>C</b> · Primera Divisió · Grup A<br>Jornada 5",
+      "jornada": "5",
+      "rival": "CB PRAT \"A\"",
+      "hora": "",
+      "jugadors": [
+        "Mauricio Lozano",
+        "Luis Chuecos",
+        "Fabian Hernandez",
+        "Pau Bonet"
+      ]
+    }
+  ]
+}
